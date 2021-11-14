@@ -8,7 +8,6 @@ class Wedding extends Model
 {
     protected $table = 'weddings';
     protected $fillable = [
-        'id',
         'slug',
         'title',
         'description',
