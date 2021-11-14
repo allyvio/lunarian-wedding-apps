@@ -25,6 +25,7 @@ class CreateWeddingsTable extends Migration
             $table->enum('theme', ['default']);
             $table->softDeletes();
             $table->timestamps();
+            $table->index(['id', 'slug']);
         });
     }
 
