@@ -6,7 +6,7 @@ use Illuminate\Database\Eloquent\Model;
 
 class Wedding extends Model
 {
-    protected $tables = 'weddings';
+    protected $table = 'weddings';
     protected $fillable = [
         'id',
         'slug',
@@ -22,8 +22,25 @@ class Wedding extends Model
         'theme' => 'default',
     ];
 
-    function getRouteKeyName()
+    public function getRouteKeyName()
     {
         return 'slug';
+    }
+
+    public function events()
+    {
+        return $this->hasMany('App\Models\Event');
+    }
+    public function medias()
+    {
+        return $this->hasMany('App\Models\Medias');
+    }
+    public function invitations()
+    {
+        return $this->hasMany('App\Models\Invitation');
+    }
+    public function comments()
+    {
+        return $this->hasManyThrough('App\Models\Comments', 'App\Models\Invitation');
     }
 }

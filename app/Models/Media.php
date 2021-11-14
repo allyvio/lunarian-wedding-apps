@@ -6,5 +6,16 @@ use Illuminate\Database\Eloquent\Model;
 
 class Media extends Model
 {
-    //
+
+    protected $table = 'medias';
+    protected $fillable = [
+        'wedding_id',
+        'filename',
+        'media_type'
+    ];
+
+    public function wedding()
+    {
+        return $this->belongsTo('App\Models\Wedding');
+    }
 }
