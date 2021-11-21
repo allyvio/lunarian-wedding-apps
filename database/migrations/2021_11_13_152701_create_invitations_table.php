@@ -20,7 +20,6 @@ class CreateInvitationsTable extends Migration
             $table->string('name', 100)->nullable();
             $table->string('email', 100)->nullable();
             $table->string('phone', 100)->nullable();
-            $table->boolean('is_vip');
             $table->tinyInteger('count');
             $table->enum('status', ['hadir', 'tidak hadir'])->nullable();
             $table->timestamp('invited_at')->nullable();

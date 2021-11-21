@@ -1,10 +1,11 @@
 <head>
     <meta charset="utf-8">
-    <title>{{config('app.name')}} - Wedding Theme</title>
+    <title>{{$wedding->title}}</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="Lunarian Wedding Theme">
-    <meta name="keywords" content="wedding,couple,ceremony,reception,rsvp,gallery,event,countdown">
-    <meta name="author" content="lunarian-id">
+    <meta name="description" content="Lunarian Digital Invitation">
+    <meta name="keywords" content="wedding,couple,ceremony,reception,rsvp,gallery,event,digital invitation,lunarian id">
+    <meta name="author" content="https://lunarian-id.com/">
+    <meta name="csrf-token" content="{{ csrf_token() }}">
 
     <link rel="stylesheet" href="{{asset('assets/themes/default/css/bootstrap.css')}}" type="text/css">
     <link rel="stylesheet" href="{{asset('assets/themes/default/css/animate.css')}}" type="text/css">
@@ -13,6 +14,7 @@
     <link rel="stylesheet" href="{{asset('assets/themes/default/css/jquery.countdown.css')}}" type="text/css">
     <link rel="stylesheet" href="{{asset('assets/themes/default/css/style.css')}}" type="text/css">
     <link rel="stylesheet" href="{{asset('assets/themes/default/css/animsition.min.css')}}" type="text/css">
+    <link rel="stylesheet" href="{{asset('vendor/izitoast/iziToast.min.css')}}" type="text/css">
 
     <!-- custom background -->
     <link rel="stylesheet" href="{{asset('assets/themes/default/css/bg.css')}}" type="text/css">

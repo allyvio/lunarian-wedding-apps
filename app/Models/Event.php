@@ -11,11 +11,17 @@ class Event extends Model
         'wedding_id',
         'title',
         'description',
-        'date',
-        'start',
-        'end',
+        'start_date',
+        'end_date',
         'location',
         'is_main'
+    ];
+    protected $atrribute = [
+        'is_main' => false
+    ];
+    protected $casts = [
+        'start_date' => 'datetime',
+        'end_date' => 'datetime',
     ];
 
     public function wedding()

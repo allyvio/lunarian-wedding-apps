@@ -4,15 +4,7 @@
 
 <body id="homepage">
     <div id="wrapper">
-        <!-- topnav begin -->
-        @include('themes.default.layout.topnav')
-        <!-- topnav end -->
-
         <div id="content" class="no-bottom no-top">
-            <!-- rsvp popup begin -->
-            @include('themes.default.components.rsvp-popup')
-            <!-- section end -->
-
             <!-- hero section begin -->
             @include('themes.default.components.hero-slider')
             <!-- section end -->
@@ -32,13 +24,18 @@
             <!-- event section begin -->
             @include('themes.default.components.event')
             <!-- section end -->
-
-            <!-- comment section begin -->
-            @include('themes.default.components.comment')
+            <!-- rsvp popup begin -->
+            @if($wedding->invitation)
+            @include('themes.default.components.rsvp.show')
+            @endif
+            <!-- section end -->
+            <!-- gallery section begin -->
+            <!-- @include('themes.default.components.gallery') -->
             <!-- section end -->
 
-            <!-- gallery section begin -->
-            @include('themes.default.components.gallery')
+            <!-- comment section begin -->
+            @include('themes.default.components.comments.form')
+            @include('themes.default.components.comments.show')
             <!-- section end -->
         </div>
 
@@ -70,6 +67,17 @@
         </div>
     </div>
     @include('themes.default.layout.footerjs')
+    @stack('scripts')
+    <script>
+        if ('{{session()->has("error")}}') {
+            var message = '{{session()->get("error")}}';
+            iziToast.error({
+                title: 'Error',
+                message: message,
+                position:'topCenter'
+            });
+        }
+    </script>
 </body>
 
 </html>
