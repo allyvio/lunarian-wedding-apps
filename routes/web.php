@@ -16,6 +16,8 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', function () {
     return view('welcome');
 });
-Route::get('/default-theme', function () {
-    return view('themes.default.wrapper');
-});
+
+Route::resource('/themes-themes2','themes2Controller');
+Route::resource('/themes-themes3','themes3Controller');
+Route::resource('/argon-home','ArgonController');
+Route::resource('/argon-dashboard','DashboardController');
