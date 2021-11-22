@@ -22,7 +22,7 @@ class Invitation extends Model
     ];
     protected $attributes = [
         'is_vip' => false,
-        'count' => 1,
+        'count' => 0,
     ];
 
     public function wedding()

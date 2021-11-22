@@ -18,9 +18,8 @@ class CreateEventsTable extends Migration
             $table->foreignId('wedding_id');
             $table->string('title');
             $table->text('description')->nullable();
-            $table->date('date');
-            $table->time('start');
-            $table->time('end')->nullable();
+            $table->dateTime('start_date');
+            $table->dateTime('end_date')->nullable();
             $table->text('location')->nullable();
             $table->boolean('is_main');
             $table->timestamps();

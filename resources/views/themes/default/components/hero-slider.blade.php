@@ -10,14 +10,17 @@
                     <div class="row">
                         <div class="spacer-single"></div>
                         <div class="col-md-5 text-right text-center-sm relative">
-                            <h2 class="name">Laurie</h2>
+                            <h2 class="name">{{$wedding->calon_wanita}}</h2>
                         </div>
                         <div class="col-md-2 text-center">
                             <span class="deco-big" data-scroll-speed="2">&amp;</span>
                         </div>
                         <div class="col-md-5 text-left text-center-sm relative">
-                            <h2 class="name">Briant</h2>
+                            <h2 class="name">{{$wedding->calon_pria}}</h2>
                         </div>
+                    </div>
+                    <div class="text-center">
+                        <h2 class="s2" style="font-style: italic;">{{$wedding->description ?? ''}}</h2>
                     </div>
                 </div>
             </div>
