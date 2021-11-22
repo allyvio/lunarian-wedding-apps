@@ -14,3 +14,11 @@
 <script src="{{asset('assets/themes/default/js/countdown-custom.js')}}"></script>
 <script src="{{asset('assets/themes/default/js/animsition.min.js')}}"></script>
 <script src="{{asset('assets/themes/default/js/designesia.js')}}"></script>
+<script src="{{asset('vendor/izitoast/iziToast.min.js')}}"></script>
+<script>
+    $.ajaxSetup({
+        headers: {
+            'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+        }
+    });
+</script>

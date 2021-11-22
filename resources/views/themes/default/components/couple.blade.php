@@ -3,40 +3,28 @@
         <div class="row">
 
             <div class="col-md-5 col-md-offset-1 text-center">
-                <img src="{{asset('assets/themes/default/images/misc/1.jpg')}}" alt="" class="img-responsive img-rounded wow fadeInLeft" data-wow-delay=".2s" />
+                <img src="{{asset('storage/couple/' . $wedding->calon_wanita_photo)}}" alt="bride-photo" class="img-couple img-rounded wow fadeInLeft" data-wow-delay=".2s" />
                 <div class="padding40">
-                    <h2>Laurie</h2>
-                    <p>Singer, writter, chef. Love music, reading and cooking. "Love isn't something you
+                    <h2>{{$wedding->calon_wanita}}</h2>
+                    <!-- <p>Singer, writter, chef. Love music, reading and cooking. "Love isn't something you
                         find. Love
                         is something that finds you."</p>
-                    <!-- social icons -->
                     <div class="social-icons-sm">
-                        <a href="#"><i class="fa fa-facebook"></i></a>
-                        <a href="#"><i class="fa fa-twitter"></i></a>
-                        <a href="#"><i class="fa fa-rss"></i></a>
-                        <a href="#"><i class="fa fa-google-plus"></i></a>
-                        <a href="#"><i class="fa fa-envelope-o"></i></a>
-                    </div>
-                    <!-- social icons close -->
+                        <a href="#"><i class="fa fa-instagram"></i></a>
+                    </div> -->
                 </div>
             </div>
 
             <div class="col-md-5 text-center">
-                <img src="{{asset('assets/themes/default/images/misc/2.jpg')}}" alt="" class="img-responsive img-rounded wow fadeInRight" data-wow-delay=".2s" />
+                <img src="{{asset('storage/couple/' . $wedding->calon_pria_photo)}}" alt="groom-photo" class="img-couple img-rounded wow fadeInRight" data-wow-delay=".2s" />
                 <div class="padding40">
-                    <h2>Briant</h2>
-                    <p>Hipster, designer, ilustrator. Love music and adventure. "There is only one happiness
+                    <h2>{{$wedding->calon_pria}}</h2>
+                    <!-- <p>Hipster, designer, ilustrator. Love music and adventure. "There is only one happiness
                         in
                         this life, to love and be loved."</p>
-                    <!-- social icons -->
                     <div class="social-icons-sm">
-                        <a href="#"><i class="fa fa-facebook"></i></a>
-                        <a href="#"><i class="fa fa-twitter"></i></a>
-                        <a href="#"><i class="fa fa-rss"></i></a>
-                        <a href="#"><i class="fa fa-google-plus"></i></a>
-                        <a href="#"><i class="fa fa-envelope-o"></i></a>
-                    </div>
-                    <!-- social icons close -->
+                        <a href="#"><i class="fa fa-instagram"></i></a>
+                    </div> -->
                 </div>
             </div>
 

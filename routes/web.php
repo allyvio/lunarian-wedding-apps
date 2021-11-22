@@ -17,5 +17,11 @@ Route::get('/', function () {
     return view('welcome');
 });
 Route::get('/default-theme', function () {
-    return view('themes.default.wrapper');
+    return view('themes.default.index');
 });
+Route::resource('wedding', 'WeddingController')->except([
+    'show'
+]);
+Route::get('/{wedding}', 'WeddingController@show')->name('wedding.page');
+Route::get('/{wedding}/{code}', 'WeddingController@show')->name('wedding.invitation');
+Route::post('/{wedding}/{code}', 'InvitationController@rsvp')->name('rsvp.confirm');
