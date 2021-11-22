@@ -1,0 +1,10 @@
+ <script src="js/ourlove/jquery-1.12.4.min.js"></script>
+ <script src="js/ourlove/modernizr.custom.js"></script>
+ <script src="js/ourlove/bootstrap.min.js"></script>
+ <script src="js/ourlove/jquery.stellar.min.js"></script>
+ <script src="js/ourlove/validator.js"></script>
+ <script src="js/ourlove/owl.carousel.min.js"></script>
+ <script src="js/ourlove/jquery.magnific-popup.min.js"></script>
+ <script src="js/ourlove/jquery.countdown.js"></script>
+ <script src="js/ourlove/jquery.malihu.PageScroll2id.min.js"></script>
+ <script src="js/ourlove/main.js"></script>
