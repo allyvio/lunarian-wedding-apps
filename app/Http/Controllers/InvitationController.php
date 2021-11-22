@@ -35,7 +35,7 @@ class InvitationController extends Controller
 
     public function codeChecker($wedding_id, $code)
     {
-        return Invitation::where(['code', $code])->where(['wedding_id', $wedding_id])->get();
+        return Invitation::where(['code', $code])->where(['wedding_id', $wedding_id])->first();
         // Rule::unique('invitations', 'code')->where(function ($query) use ($weddingId) {
         //     return $query->where('wedding_id', $weddingId);
         // });

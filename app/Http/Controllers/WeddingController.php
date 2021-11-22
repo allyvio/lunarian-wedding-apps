@@ -58,6 +58,7 @@ class WeddingController extends Controller
     }
 
     public function show(Wedding $wedding, $code = null)
+    
     {
         $main_event = $wedding->events->where('is_main', true)->first();
         $wedding->main_date = $main_event->start_date;
