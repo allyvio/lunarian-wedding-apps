@@ -72,7 +72,7 @@ class WeddingController extends Controller
             if (!$wedding->invitation)
                 return redirect()->route('wedding.page', $wedding)->with('error', 'Invitation is invalid');
         }
-        // dd($wedding);
+        // dd($wedding->invitation);
         return view('themes.' . $theme . '.index', compact('wedding'));
     }
 

@@ -51,8 +51,10 @@ class InvitationController extends Controller
         if ($status === 'reset') {
             $invitation->status = null;
             $invitation->rsvp_at = null;
+            $invitation->count = 0;
         } else {
             $invitation->status = $status;
+            $invitation->count = 1;
             $invitation->rsvp_at = now();
         }
         $invitation->save();
@@ -64,5 +66,18 @@ class InvitationController extends Controller
             return response()->json(['html' => $view]);
         }
         // return response()->json(['wedding' => $wedding, 'request' => $request->all()]);
+    }
+
+    public function count(Invitation $invitation, Request $request)
+    {
+        $request->validate([
+            'rsvp_count' => ['required', 'integer', 'between:1,5']
+        ]);
+        $invitation->count = $request->rsvp_count;
+        $invitation->save();
+        if ($request->ajax()) {
+            return response()->json(['count' => $invitation->count]);
+        }
+        // return $request->all();
     }
 }

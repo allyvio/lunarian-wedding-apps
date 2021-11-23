@@ -1,4 +1,4 @@
-<section aria-label="section">
+<section aria-label="section" style="background-color: white;">
     <div class="container">
         <div class="row">
             <div class="col-md-12 text-center">

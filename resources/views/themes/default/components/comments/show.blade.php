@@ -1,5 +1,5 @@
 @if($wedding->comments->count() > 0)
-<section data-stellar-background-ratio=".2" class="no-top">
+<section data-stellar-background-ratio=".2" class="no-top" style="background-color: white;">
     <div class="container relative">
         <div class="row">
             <div id="testimonial-carousel" class="de_carousel" data-wow-delay=".3s">

@@ -3800,10 +3800,9 @@ video, object {
 }
 .btn-primary {
 	text-shadow: none;
-	border: none !important;
 }
 .btn.btn-primary:hover {
-	background: #555;
+	background: #c4a12e;
 }
 .img-responsive {
 	display: inline-block;

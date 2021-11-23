@@ -2,32 +2,34 @@
 
 use Illuminate\Support\Facades\Route;
 
-/*
-|--------------------------------------------------------------------------
-| Web Routes
-|--------------------------------------------------------------------------
-|
-| Here is where you can register web routes for your application. These
-| routes are loaded by the RouteServiceProvider within a group which
-| contains the "web" middleware group. Now create something great!
-|
-*/
-
 Route::get('/', function () {
-    return view('welcome');
+    return view('argon.home.index');
 });
 
-Route::resource('/themes-themes2','themes2Controller');
-Route::resource('/themes-themes3','themes3Controller');
-Route::resource('/argon-home','ArgonController');
-Route::resource('/argon-dashboard','DashboardController');
+// Route::resource('/argon-home', 'ArgonController');
+Route::resource('/themes-themes2', 'themes2Controller');
+Route::resource('/themes-themes3', 'themes3Controller');
+Route::resource('/argon-dashboard', 'DashboardController');
 
+Route::get('/dashboard', function () {
+    return view('pages.dashboard.index');
+});
 Route::get('/default-theme', function () {
     return view('themes.default.index');
 });
 Route::resource('wedding', 'WeddingController')->except([
     'show'
 ]);
+
+/** 
+ * ------------------------- WEDDING -------------------------
+ */
 Route::get('/{wedding}', 'WeddingController@show')->name('wedding.page');
 Route::get('/{wedding}/{code}', 'WeddingController@show')->name('wedding.invitation');
-Route::post('/{wedding}/{code}', 'InvitationController@rsvp')->name('rsvp.confirm');
+
+/** 
+ * ------------------------- INVITATION -------------------------
+ */
+Route::post('/{wedding}/invitation/{code}/rsvp', 'InvitationController@rsvp')->name('invitation.rsvp');
+Route::post('/{wedding}/rsvp/{code}/confirm', 'InvitationController@rsvp')->name('rsvp.confirm');
+Route::post('/invitation/{invitation}/count', 'InvitationController@count')->name('rsvp.count');
