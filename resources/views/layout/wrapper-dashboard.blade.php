@@ -1,21 +1,21 @@
 <!DOCTYPE html>
 <html>
 
-@include('layout.header')
+@include('layout.components.header')
 
 <body>
   <!-- Sidenav -->
-  @include('layout.sidenav')
+  @include('layout.components.sidenav')
   <!-- End Sidenav -->
 
   <!-- Main content -->
   <div class="main-content" id="panel">
     <!-- Topnav -->
-    @include('layout.topnav-dashboard')
+    @include('layout.components.topnav-dashboard')
     <!-- End Topnav -->
 
     <!-- Header -->
-    @include('pages.dashboard.components.section-header')
+    @yield('dashboard-header')
     <!-- End Header -->
 
     <!-- Page content -->
@@ -26,7 +26,7 @@
     </div>
   </div>
   <!-- Argon Scripts -->
-  @include('layout.footerjs')
+  @include('layout.components.footerjs')
   <!-- End Argon Scripts -->
 
 </body>

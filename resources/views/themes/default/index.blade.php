@@ -74,7 +74,7 @@
         if ('{{session()->has("error")}}') {
             var message = '{{session()->get("error")}}';
             iziToast.error({
-                title: 'Error',
+                title: 'Invalid',
                 message: message,
                 position: 'topCenter'
             });

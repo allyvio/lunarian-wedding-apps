@@ -111,7 +111,7 @@
             success: function(response) {
                 setTimeout(function() {
                     rsvp_container.html(response.html)
-                }, 500)
+                }, 50)
             }
         })
     }
@@ -131,7 +131,7 @@
             complete: function(a) {
                 setTimeout(function() {
                     input.parent().removeClass('btn-progress')
-                }, 500)
+                }, 100)
             }
         })
     }

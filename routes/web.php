@@ -6,7 +6,6 @@ Route::get('/', function () {
     return view('argon.home.index');
 });
 
-// Route::resource('/argon-home', 'ArgonController');
 Route::resource('/themes-themes2', 'themes2Controller');
 Route::resource('/themes-themes3', 'themes3Controller');
 Route::resource('/argon-dashboard', 'DashboardController');
@@ -30,6 +29,6 @@ Route::get('/{wedding}/{code}', 'WeddingController@show')->name('wedding.invitat
 /** 
  * ------------------------- INVITATION -------------------------
  */
-Route::post('/{wedding}/invitation/{code}/rsvp', 'InvitationController@rsvp')->name('invitation.rsvp');
+Route::post('/{wedding}/invitation/{code}/rsvp', 'InvitationController@show')->name('invitation.rsvp');
 Route::post('/{wedding}/rsvp/{code}/confirm', 'InvitationController@rsvp')->name('rsvp.confirm');
 Route::post('/invitation/{invitation}/count', 'InvitationController@count')->name('rsvp.count');
