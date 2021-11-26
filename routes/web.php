@@ -6,23 +6,27 @@ Route::get('/', function () {
     return view('argon.home.index');
 });
 
-Route::resource('/themes-themes2', 'themes2Controller');
-Route::resource('/themes-themes3', 'themes3Controller');
-Route::resource('/argon-dashboard', 'DashboardController');
+// Route::resource('/argon-dashboard', 'DashboardController');
 
+Route::get('/themes2', function () {
+    return view('themes.themes2.index');
+});
+Route::get('/themes3', function () {
+    return view('themes.themes3.index');
+});
 Route::get('/dashboard', function () {
     return view('pages.dashboard.index');
 });
 Route::get('/default-theme', function () {
     return view('themes.default.index');
 });
-Route::resource('wedding', 'WeddingController')->except([
-    'show'
-]);
 
 /** 
  * ------------------------- WEDDING -------------------------
  */
+Route::resource('wedding', 'WeddingController')->except([
+    'show'
+]);
 Route::get('/{wedding}', 'WeddingController@show')->name('wedding.page');
 Route::get('/{wedding}/{code}', 'WeddingController@show')->name('wedding.invitation');
 

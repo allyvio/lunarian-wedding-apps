@@ -20,7 +20,7 @@
             </div>
             <div class="col-md-4 col-md-offset-4 col-sm-8 col-sm-offset-2 text-center">
                 <div class="img-round">
-                    <div class="img"><img src="img/destiny/story1.jpg" alt="" class="img"></div>
+                    <div class="img"><img src="{{asset('assets/themes/destiny/img/story1.jpg')}}" alt="" class="img"></div>
                     <svg viewBox="0 0 103 103" version="1.1" xmlns="http://www.w3.org/2000/svg" class="dashed-border">
                         <circle cx="50%" cy="50%" r="50" />
                     </svg>
@@ -89,7 +89,7 @@
         <div class="row">
             <div class="col-md-4 col-md-offset-4 col-sm-8 col-sm-offset-2 text-center">
                 <div class="img-round">
-                    <div class="img"><img src="img/destiny/story2.jpg" alt="" class="img"></div>
+                    <div class="img"><img src="{{asset('assets/themes/destiny/img/story2.jpg')}}" alt="" class="img"></div>
                     <svg viewBox="0 0 103 103" version="1.1" xmlns="http://www.w3.org/2000/svg" class="dashed-border">
                         <circle cx="50%" cy="50%" r="50" />
                     </svg>

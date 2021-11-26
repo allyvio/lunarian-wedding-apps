@@ -1,6 +1,6 @@
 <section id="home" class="home-section clearfix">
     <div id="hs-image-block" class="hs-image-block"
-        style="background-image: url(img/ourlove/hero.jpg); background-attachment: fixed; background-position: 50% 0;"
+        style="background-image: url('assets/themes/ourlove/img/hero.jpg'); background-attachment: fixed; background-position: 50% 0;"
         data-stellar-background-ratio="0.3">
         <div class="hs-mask"></div>
     </div>
@@ -31,7 +31,7 @@
                     </div>
 
                     <div class="photo">
-                        <img src="img/ourlove/story1.jpg" alt="">
+                        <img src="{{asset('assets/themes/ourlove/img/story1.jpg')}}" alt="">
                     </div>
                 </div>
                 <div class="bottom-block">
@@ -41,7 +41,7 @@
             </div>
 
             <div class="heart">
-                <img src="img/ourlove/heart_img.png" alt="">
+                <img src="{{asset('assets/themes/ourlove/img/heart_img.png')}}" alt="">
             </div>
 
             <div class="about-us-block second-block">
@@ -64,7 +64,7 @@
                     </div>
 
                     <div class="photo">
-                        <img src="img/ourlove/story2.jpg" alt="">
+                        <img src="{{asset('assets/themes/ourlove/img/story2.jpg')}}" alt="">
                     </div>
                 </div>
                 <div class="bottom-block">
