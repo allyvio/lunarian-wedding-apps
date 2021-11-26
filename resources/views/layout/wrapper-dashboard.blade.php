@@ -22,7 +22,7 @@
     <div class="container-fluid mt--6">
       @yield('dashboard-content')
       <!-- Footer -->
-      <!-- @include('argon.dashboard.componens.footer') -->
+      @include('layout.components.footer')
     </div>
   </div>
   <!-- Argon Scripts -->
