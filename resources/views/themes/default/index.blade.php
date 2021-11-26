@@ -27,6 +27,8 @@
             <!-- rsvp popup begin -->
             @if($wedding->invitation)
             @include('themes.default.components.rsvp.show')
+            @else
+            @include('themes.default.components.rsvp.form')
             @endif
             <!-- section end -->
             <!-- gallery section begin -->
@@ -72,9 +74,9 @@
         if ('{{session()->has("error")}}') {
             var message = '{{session()->get("error")}}';
             iziToast.error({
-                title: 'Error',
+                title: 'Invalid',
                 message: message,
-                position:'topCenter'
+                position: 'topCenter'
             });
         }
     </script>

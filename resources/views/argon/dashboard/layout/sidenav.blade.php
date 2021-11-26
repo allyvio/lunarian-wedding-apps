@@ -22,6 +22,12 @@
       <!-- Nav items -->
       <ul class="navbar-nav">
         <li class="nav-item">
+          <a class="nav-link" href="../../pages/widgets.html">
+            <i class="ni ni-archive-2 text-green"></i>
+            <span class="nav-link-text">Wedding</span>
+          </a>
+        </li>
+        <li class="nav-item">
           <a class="nav-link active" href="#navbar-dashboards" data-toggle="collapse" role="button" aria-expanded="true" aria-controls="navbar-dashboards">
             <i class="ni ni-shop text-primary"></i>
             <span class="nav-link-text">Dashboards</span>

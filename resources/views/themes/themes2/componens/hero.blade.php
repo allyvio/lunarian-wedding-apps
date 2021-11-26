@@ -1,6 +1,6 @@
  <section class="hero overlay">
      <div class="background-img">
-         <img src="img/destiny/hero.jpg" alt="">
+         <img src="{{asset('assets/themes/destiny/img/hero.jpg')}}" alt="">
      </div>
      <!--topnav begin-->
      @include('themes.themes2.layout.topnav')

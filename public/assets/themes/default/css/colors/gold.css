@@ -133,7 +133,8 @@ header div#logo h2 span,
 .form-transparent input[type=text]:focus, .form-transparent textarea:focus, .form-transparent input[type=email]:focus,
 .de_tab.tab_steps.style-2 .de_nav li.active span,
 #filters a.selected,
-.box-border
+.box-border,
+.btn-primary,.btn-primary:hover
 {
 
 	border-color:#D4AF37 ;

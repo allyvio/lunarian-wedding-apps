@@ -11,7 +11,7 @@
             <!-- Ceremony Block -->
             <div class="col-md-6 event-block">
                 <div class="event-photo scale-image-effect">
-                    <img src="img/ourlove/story1.jpg" alt="">
+                    <img src="{{asset('assets/themes/ourlove/img/story1.jpg')}}" alt="">
                 </div>
 
                 <div class="event-title">
@@ -33,7 +33,7 @@
             <!-- Party Block -->
             <div class="col-md-6 event-block">
                 <div class="event-photo scale-image-effect">
-                    <img src="img/ourlove/story2.jpg" alt="">
+                    <img src="{{asset('assets/themes/ourlove/img/story2.jpg')}}" alt="">
                 </div>
 
                 <div class="event-title">

@@ -7,7 +7,7 @@
         <div class="row story-row">
             <div class="col-sm-12 col-md-5 story-block text-center">
                 <div class="story-image scale-image-effect">
-                    <img src="img/ourlove/story1.jpg" alt="">
+                    <img src="{{asset('assets/themes/ourlove/img/story1.jpg')}}" alt="">
                 </div>
             </div>
             <div class="col-sm-12 col-md-2 story-block text-center">
@@ -31,7 +31,7 @@
         <div class="row story-row">
             <div class="col-sm-12 col-md-5 col-md-push-7 story-block text-center">
                 <div class="story-image scale-image-effect">
-                    <img src="img/ourlove/story2.jpg" alt="">
+                    <img src="{{asset('assets/themes/ourlove/img/story2.jpg')}}" alt="">
                 </div>
             </div>
             <div class="col-sm-12 col-md-2 story-block text-center">
@@ -55,7 +55,7 @@
         <div class="row story-row">
             <div class="col-sm-12 col-md-5 story-block text-center">
                 <div class="story-image scale-image-effect">
-                    <img src="img/ourlove/story1.jpg" alt="">
+                    <img src="{{asset('assets/themes/ourlove/img/story1.jpg')}}" alt="">
                 </div>
             </div>
             <div class="col-sm-12 col-md-2 story-block text-center">

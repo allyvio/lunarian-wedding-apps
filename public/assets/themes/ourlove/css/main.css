@@ -340,7 +340,7 @@ textarea.form-control:focus {
     display: inline-block;
     position: absolute;
     top: 0;
-    background: url(../images/heart_img.png) no-repeat;
+    background: url(../img/heart_img.png) no-repeat;
     background-size: 100%;
     -webkit-animation: bounce 2s infinite ease-in-out;
     animation: bounce 2s infinite ease-in-out;
@@ -810,7 +810,7 @@ ul.social-links li a:hover i {
 
 .story-date {
     display: inline-block;
-    background: url(../images/heart_img_story.png) no-repeat;
+    background: url(../img/heart_img_story.png) no-repeat;
     background-size: 90px;
     width: 90px;
     height: 90px;

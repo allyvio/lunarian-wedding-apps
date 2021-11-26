@@ -29,13 +29,13 @@
     <div class="col-xs-6 col-md-2 col-xs-offset-3 col-md-offset-5">
         <div class="input-group">
             <span class="input-group-btn">
-                <button type="button" class="btn btn-secondary btn-number" disabled="disabled" data-type="minus" data-field="quant[1]">
+                <button type="button" class="btn btn-secondary btn-number" data-type="minus" data-field="quant[1]" {{$wedding->invitation->count <= 1 ? 'disabled' : ''}}>
                     &minus;
                 </button>
             </span>
-            <input type="text" name="quant[1]" class="form-control input-number" value="1" min="1" max="5">
+            <input type="text" name="quant[1]" class="form-control input-number" value="{{$wedding->invitation->count}}" min="1" max="5">
             <span class="input-group-btn">
-                <button type="button" class="btn btn-secondary btn-number" data-type="plus" data-field="quant[1]">
+                <button type="button" class="btn btn-secondary btn-number" data-type="plus" data-field="quant[1]" {{$wedding->invitation->count >= 5 ? 'disabled' : ''}}>
                     &plus;
                 </button>
             </span>

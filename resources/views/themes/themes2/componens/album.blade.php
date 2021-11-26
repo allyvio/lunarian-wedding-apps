@@ -7,27 +7,27 @@
             <h2 class="indent">Photo album</h2>
             <div class="col-md-4 col-sm-4 col-xs-12 ">
                 <div class="block-img">
-                    <a href="img/destiny/story1.jpg" class="venobox">
+                    <a href="{{asset('assets/themes/destiny/img/story1.jpg')}}" class="venobox">
                         <div class="background-img">
-                            <img alt="" src="img/destiny/story1.jpg">
+                            <img alt="" src="{{asset('assets/themes/destiny/img/story1.jpg')}}">
                         </div>
                     </a>
                 </div>
             </div>
             <div class="col-md-4 col-sm-4 col-xs-12 ">
                 <div class="block-img">
-                    <a href="img/destiny/story2.jpg" class="venobox">
+                    <a href="{{asset('assets/themes/destiny/img/story2.jpg')}}" class="venobox">
                         <div class="background-img">
-                            <img alt="" src="img/destiny/story2.jpg">
+                            <img alt="" src="{{asset('assets/themes/destiny/img/story2.jpg')}}">
                         </div>
                     </a>
                 </div>
             </div>
             <div class="col-md-4 col-sm-4 col-xs-12 ">
                 <div class="block-img">
-                    <a href="img/destiny/story1.jpg" class="venobox">
+                    <a href="{{asset('assets/themes/destiny/img/story1.jpg')}}" class="venobox">
                         <div class="background-img">
-                            <img alt="" src="img/destiny/story1.jpg">
+                            <img alt="" src="{{asset('assets/themes/destiny/img/story1.jpg')}}">
                         </div>
                     </a>
                 </div>
@@ -38,27 +38,27 @@
         <div class="row ">
             <div class="col-md-4 col-sm-4 col-xs-12 ">
                 <div class="block-img">
-                    <a href="img/destiny/story2.jpg" class="venobox">
+                    <a href="{{asset('assets/themes/destiny/img/story2.jpg')}}" class="venobox">
                         <div class="background-img">
-                            <img alt="" src="img/destiny/story2.jpg">
+                            <img alt="" src="{{asset('assets/themes/destiny/img/story2.jpg')}}">
                         </div>
                     </a>
                 </div>
             </div>
             <div class="col-md-4 col-sm-4 col-xs-12 ">
                 <div class="block-img">
-                    <a href="img/destiny/story1.jpg" class="venobox">
+                    <a href="{{asset('assets/themes/destiny/img/story1.jpg')}}" class="venobox">
                         <div class="background-img">
-                            <img alt="" src="img/destiny/story1.jpg">
+                            <img alt="" src="{{asset('assets/themes/destiny/img/story1.jpg')}}">
                         </div>
                     </a>
                 </div>
             </div>
             <div class="col-md-4 col-sm-4 col-xs-12 ">
                 <div class="block-img">
-                    <a href="img/destiny/story2.jpg" class="venobox">
+                    <a href="{{asset('assets/themes/destiny/img/story2.jpg')}}" class="venobox">
                         <div class="background-img">
-                            <img alt="" src="img/destiny/story2.jpg">
+                            <img alt="" src="{{asset('assets/themes/destiny/img/story2.jpg')}}">
                         </div>
                     </a>
                 </div>

@@ -67,7 +67,7 @@
             <!-- Footer (Thank You block) -->
             <footer id="thanks" class="footer">
                 <div id="footer-image-block" class="footer-image-block"
-                    style="background-image: url(img/ourlove/hero.jpg); background-attachment: fixed; background-position: 50%;"
+                    style="background-image: url('assets/themes/ourlove/img/hero.jpg'); background-attachment: fixed; background-position: 50%;"
                     data-stellar-background-ratio="0.3">
                     <div class="footer-mask"></div>
                 </div>

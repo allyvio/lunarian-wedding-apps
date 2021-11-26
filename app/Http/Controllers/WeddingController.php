@@ -70,9 +70,9 @@ class WeddingController extends Controller
             // }]);
             $wedding->invitation = InvitationController::show($wedding->id, $code);
             if (!$wedding->invitation)
-                return redirect()->route('wedding.page', $wedding)->with('error', 'Invitation is invalid');
+                return redirect()->route('wedding.page', $wedding)->with('error', 'Invitation not found');
         }
-        // dd($wedding);
+        // dd($wedding->invitation);
         return view('themes.' . $theme . '.index', compact('wedding'));
     }
 

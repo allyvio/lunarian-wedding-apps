@@ -8,10 +8,10 @@
     <meta name="author" content="lmpixels (Linar Miftakhov)" />
     <link rel="shortcut icon" href="favicon.ico">
 
-    <link rel="stylesheet" href="css/ourlove/bootstrap.css">
-    <link rel="stylesheet" href="css/ourlove/normalize.css">
-    <link rel="stylesheet" href="css/ourlove/owl.carousel.css">
-    <link rel="stylesheet" href="css/ourlove/magnific-popup.css">
-    <link rel="stylesheet" href="css/ourlove/animate.css">
-    <link rel="stylesheet" href="css/main3.css" type="text/css">
+    <link rel="stylesheet" href="{{('assets/themes/ourlove/css/bootstrap.css')}}" type="text/css">
+    <link rel="stylesheet" href="{{('assets/themes/ourlove/css/normalize.css')}}" type="text/css">
+    <link rel="stylesheet" href="{{('assets/themes/ourlove/css/owl.carousel.css')}}" type="text/css">
+    <link rel="stylesheet" href="{{('assets/themes/ourlove/css/magnific-popup.css')}}" type="text/css">
+    <link rel="stylesheet" href="{{('assets/themes/ourlove/css/animate.css')}}" type="text/css">
+    <link rel="stylesheet" href="{{('assets/themes/ourlove/css/main.css')}}" type="text/css">
 </head>
