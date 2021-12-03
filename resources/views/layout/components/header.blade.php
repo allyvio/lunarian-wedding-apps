@@ -15,3 +15,9 @@
   <!-- Argon CSS -->
   <link rel="stylesheet" href="{{asset('css/argon.css?v=1.1.0')}}" type="text/css">
 </head>
+<style>
+    .error {
+        color: red;
+        font-size: 12px;
+    }
+</style>

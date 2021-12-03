@@ -11,4 +11,9 @@
 <!-- Argon JS -->
 <script src="{{asset('js/argon.js?v=1.1.0')}}"></script>
 <!-- Demo JS - remove this in your project -->
-<script src="{{asset('js/demo.min.js')}}"></script>
+<!-- <script src="{{asset('js/demo.min.js')}}"></script> -->
+<!-- validasi -->
+<script src="https://cdn.jsdelivr.net/jquery.validation/1.16.0/jquery.validate.min.js"></script>
+<!-- sweetalert -->
+<script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+@stack('scripts')
