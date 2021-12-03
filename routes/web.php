@@ -3,10 +3,8 @@
 use Illuminate\Support\Facades\Route;
 
 Route::get('/', function () {
-    return view('argon.home.index');
+    return view('welcome');
 });
-
-// Route::resource('/argon-dashboard', 'DashboardController');
 
 Route::get('/themes2', function () {
     return view('themes.themes2.index');
@@ -21,7 +19,19 @@ Route::get('/default-theme', function () {
     return view('themes.default.index');
 });
 
-/** 
+/**
+ * ------------------------- Fitur INVITATION -------------------------
+ */
+Route::get('/invitation','InvitationController@index')->name('invitation.index');
+Route::post('/add-invitation','InvitationController@addInvitation')->name('invitation.add');
+Route::get('/invitation/{id}','InvitationController@getInvitationById')->name('invitation.getbyid');
+Route::put('/invitation','InvitationController@updateInvitation')->name('invitation.update');
+Route::delete('/invitation/{id}','InvitationController@deleteInvitation')->name('invitation.delete');
+/**
+ * ------------------------- End Fitur INVITATION -------------------------
+ */
+
+/**
  * ------------------------- WEDDING -------------------------
  */
 Route::resource('wedding', 'WeddingController')->except([
@@ -30,7 +40,7 @@ Route::resource('wedding', 'WeddingController')->except([
 Route::get('/{wedding}', 'WeddingController@show')->name('wedding.page');
 Route::get('/{wedding}/{code}', 'WeddingController@show')->name('wedding.invitation');
 
-/** 
+/**
  * ------------------------- INVITATION -------------------------
  */
 Route::post('/{wedding}/invitation/{code}/rsvp', 'InvitationController@show')->name('invitation.rsvp');
