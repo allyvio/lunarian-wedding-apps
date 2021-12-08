@@ -14,6 +14,7 @@ class InvitationController extends Controller
         $invitation = Invitation::where('wedding_id', $wedding_id)->where('code', $code)->first();
         return $invitation;
     }
+    
     public function store(Request $request)
     {
         $weddingId = $request->wedding_id;

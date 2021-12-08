@@ -1,21 +1,10 @@
-<!-- Topnav -->
-<nav class="navbar navbar-top navbar-expand navbar-dark bg-primary border-bottom py-2">
+<nav class="navbar navbar-expand navbar-dark bg-primary py-2">
   <div class="container-fluid">
-    <div class="collapse navbar-collapse" id="navbarSupportedContent">
-      <!-- Navbar links -->
-      <ul class="navbar-nav align-items-center ml-md-auto">
-        <li class="nav-item d-xl-none">
-          <!-- Sidenav toggler -->
-          <div class="pr-3 sidenav-toggler sidenav-toggler-dark" data-action="sidenav-pin" data-target="#sidenav-main">
-            <div class="sidenav-toggler-inner">
-              <i class="sidenav-toggler-line"></i>
-              <i class="sidenav-toggler-line"></i>
-              <i class="sidenav-toggler-line"></i>
-            </div>
-          </div>
-        </li>
-      </ul>
-      <ul class="navbar-nav align-items-center ml-auto ml-md-0">
+    <a class="navbar-brand" href="./pages/dashboards/dashboard.html">
+      <img height="30" src="{{asset('img/brand/white.png')}}">
+    </a>
+    <div class="order-3 ml-auto">
+      <ul class="navbar-nav ml-lg-auto">
         <li class="nav-item dropdown">
           <a class="nav-link pr-0" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
             <div class="media align-items-center">

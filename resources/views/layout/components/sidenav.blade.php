@@ -22,15 +22,27 @@
         <!-- Nav items -->
         <ul class="navbar-nav">
           <li class="nav-item">
-            <a class="nav-link" href="../../pages/widgets.html">
+            <a class="nav-link active" href="{{route('dashboard')}}">
               <i class="fa fa-home text-primary"></i>
               <span class="nav-link-text">Beranda</span>
+            </a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="{{route('wedding.index')}}">
+              <i class="fa fa-heart text-danger"></i>
+              <span class="nav-link-text">Wedding</span>
             </a>
           </li>
           <li class="nav-item">
             <a class="nav-link" href="../../pages/widgets.html">
               <i class="ni ni-book-bookmark text-green"></i>
               <span class="nav-link-text">Undangan</span>
+            </a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="{{route('event.index')}}">
+              <i class="fa fa-calendar-day text-red"></i>
+              <span class="nav-link-text">Acara</span>
             </a>
           </li>
           <li class="nav-item">
@@ -60,12 +72,6 @@
                 </li>
               </ul>
             </div>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="../../pages/calendar.html">
-              <i class="ni ni-calendar-grid-58 text-red"></i>
-              <span class="nav-link-text">Acara</span>
-            </a>
           </li>
         </ul>
         <!-- Divider -->

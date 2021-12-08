@@ -1,31 +1,33 @@
-@stack('modals')
-<!-- Core -->
-<script src="{{asset('vendor/jquery/dist/jquery.min.js')}}"></script>
-<script src="{{asset('vendor/bootstrap/dist/js/bootstrap.bundle.min.js')}}"></script>
-<script src="{{asset('vendor/js-cookie/js.cookie.js')}}"></script>
-<script src="{{asset('vendor/jquery.scrollbar/jquery.scrollbar.min.js')}}"></script>
-<script src="{{asset('vendor/jquery-scroll-lock/dist/jquery-scrollLock.min.js')}}"></script>
-<!-- Optional JS -->
-<script src="{{asset('vendor/onscreen/dist/on-screen.umd.min.js')}}"></script>
-<script src="{{asset('vendor/chart.js/dist/Chart.min.js')}}"></script>
-<script src="{{asset('vendor/chart.js/dist/Chart.extension.js')}}"></script>
-<script src="{{asset('vendor/dropzone/dist/min/dropzone.min.js')}}"></script>
-<script src="{{asset('vendor/bootstrap-notify/bootstrap-notify.min.js')}}"></script>
-<script src="{{asset('vendor/sweetalert2/dist/sweetalert2.min.js')}}"></script>
-<script src="{{asset('vendor/izitoast/izitoast.min.js')}}"></script>
-<script src="{{asset('vendor/sweetalert2/dist/sweetalert2.min.js')}}"></script>
-<script src="{{asset('vendor/bootstrap-datepicker/dist/js/bootstrap-datepicker.min.js')}}"></script>
-<!-- Argon JS -->
-<script src="{{asset('js/argon.js')}}"></script>
-<script>
-    $.ajaxSetup({
-        headers: {
-            'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
-        }
-    });
-</script>
+@foreach($events as $date =>$event)
+<div id="event-container">
+    <div class="row">
+        <div class="col">
+            <h3>{{date('l, d F Y',strtotime($date))}}</h3>
+        </div>
+        <div class="col-auto">
+            <button class="btn btn-outline-default btn-sm" type="button" data-toggle="modal" data-target="#modal-event-date-form" data-event-date="{{$date}}" data-wedding="{{$events->wedding}}">Ubah</button>
+            <button class="btn btn-icon btn-outline-danger btn-sm" data-wedding="{{$events->wedding}}" data-date="{{$date}}" data-toggle="delete-event-bydate"><i class="fa fa-trash"></i></button>
+        </div>
+    </div>
+    <div class="row">
+        @foreach ($event as $event_detail)
+        <div class="col-md-6 mb-2">
+            @include('pages.event.components.event-detail')
+        </div>
+        @endforeach
+    </div>
+</div>
+@endforeach
+<button class="btn btn-outline-primary btn-sm" type="button" data-wedding="{{$events->wedding}}" data-toggle="modal" data-target="#modal-event-create-form"><i class="fas fa-plus"></i> Tambah Hari</button>
 
-<script type="text/javascript">
+@push('modals')
+@include('pages.event.modals.event-date-form')
+@include('pages.event.modals.event-create-form')
+@include('pages.event.modals.event-form')
+@endpush
+
+@push('scripts')
+<!--<script type="text/javascript">
     var $event_modal = $('#modal-event-form'),
         $event_date_modal = $('#modal-event-date-form'),
         $event_create_modal = $('#modal-event-create-form'),
@@ -131,8 +133,8 @@
         $.get(url, function(data) {
             $.each(data, function(k, v) {
                 if (k == 'is_main')
-                    $form.find('#' + k).prop('checked', v);
-                else $form.find('#' + k).val(v);
+                    $('#' + k).prop('checked', v);
+                else $('#' + k).val(v);
             })
         });
     }).find('form').on('submit', function(e) {
@@ -147,11 +149,11 @@
             // data: $form.serialize(),
             data: {
                 is_main: $('#is_main:checked').val(),
-                title: $form.find('#title').val(),
-                description: $form.find('#description').val(),
-                start_date: $form.find('#date').val() + " " + $form.find('#start_date').val(),
-                end_date: $form.find('#end_date').val() ? $form.find('#date').val() + " " + $form.find('#end_date').val() : null,
-                location: $form.find('#location').val(),
+                title: $('#title').val(),
+                description: $('#description').val(),
+                start_date: $('#date').val() + " " + $('#start_date').val(),
+                end_date: $('#end_date').val() ? $('#date').val() + " " + $('#end_date').val() : null,
+                location: $('#location').val(),
             },
             beforeSend: function() {
                 btn_submit.addClass('btn-progress disabled')
@@ -168,7 +170,7 @@
                         $event_modal.modal('hide')
                     } else
                         $.each(response.errors, function(k, v) {
-                            $form.find('#' + k).addClass('is-invalid').after(`<span class="invalid-feedback">` + v + `</span>`)
+                            $('#' + k).addClass('is-invalid').after(`<span class="invalid-feedback">` + v + `</span>`)
                         })
                 }, 300)
             }
@@ -200,7 +202,7 @@
                 $event_date_modal.modal('hide')
             } else
                 $.each(response.errors, function(k, v) {
-                    $form.find('input[name="' + k + '"]').addClass('is-invalid').after(`<span class="invalid-feedback">` + v + `</span>`)
+                    $('input[name="' + k + '"]').addClass('is-invalid').after(`<span class="invalid-feedback">` + v + `</span>`)
                 })
         })
     })
@@ -211,10 +213,10 @@
         $(this).find('form').data('wedding', wedding)
     }).find('form').on('submit', function(e) {
         e.preventDefault()
-        var $form = $(this),
-            action = $form.attr('action'),
-            wedding = $form.data('wedding'),
-            btn_submit = $form.find('[type="submit"]')
+        var $this = $(this),
+            action = $this.attr('action'),
+            wedding = $this.data('wedding'),
+            btn_submit = $this.find('[type="submit"]')
 
         $('.is-invalid').removeClass('is-invalid')
         $('.invalid-feedback').remove()
@@ -223,11 +225,11 @@
             method: 'post',
             data: {
                 wedding_id: wedding,
-                title: $form.find('#title_create').val(),
-                description: $form.find('#description_create').val(),
-                start_date: $form.find('#date_create').val() + ' ' + $form.find('#start_date_create').val(),
-                end_date: $form.find('#end_date_create').val() ? $form.find('#date_create').val() + ' ' + $form.find('#end_date_create').val() : null,
-                location: $form.find('#location_create').val(),
+                title: $('#title_create').val(),
+                description: $('#description_create').val(),
+                start_date: $('#date_create').val() + ' ' + $('#start_date_create').val(),
+                end_date: $('#end_date_create').val() ? $('#date_create').val() + ' ' + $('#end_date_create').val() : null,
+                location: $('#location_create').val(),
             },
             beforeSend: function() {
                 btn_submit.addClass('btn-progress disabled')
@@ -242,10 +244,10 @@
                     if (response.success) {
                         reloadEvents($event_container)
                         $event_create_modal.modal('hide')
-                        $form.trigger('reset')
+                        $this.trigger('reset')
                     } else
                         $.each(response.errors, function(k, v) {
-                            $form.find('#' + k + '_create').addClass('is-invalid').after(`<span class="invalid-feedback">` + v + `</span>`)
+                            $('#' + k + '_create').addClass('is-invalid').after(`<span class="invalid-feedback">` + v + `</span>`)
                         })
                 }, 300)
             }
@@ -258,5 +260,5 @@
             container.html(data.html)
         });
     }
-</script>
-@stack('scripts')
+</script> -->
+@endpush

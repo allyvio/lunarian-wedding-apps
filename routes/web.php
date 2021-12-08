@@ -3,7 +3,7 @@
 use Illuminate\Support\Facades\Route;
 
 Route::get('/', function () {
-    return view('argon.home.index');
+    return view('pages.landing.index');
 });
 
 // Route::resource('/argon-dashboard', 'DashboardController');
@@ -16,10 +16,17 @@ Route::get('/themes3', function () {
 });
 Route::get('/dashboard', function () {
     return view('pages.dashboard.index');
-});
+})->name('dashboard');
 Route::get('/default-theme', function () {
     return view('themes.default.index');
 });
+
+/** 
+ * ------------------------- EVENT -------------------------
+ */
+Route::post('event/date','EventController@updateDate')->name('event.date.update');
+Route::delete('event/destroy/byDate','EventController@destroyByDate')->name('event.destroy.bydate');
+Route::resource('event','EventController');
 
 /** 
  * ------------------------- WEDDING -------------------------
@@ -27,8 +34,10 @@ Route::get('/default-theme', function () {
 Route::resource('wedding', 'WeddingController')->except([
     'show'
 ]);
+
 Route::get('/{wedding}', 'WeddingController@show')->name('wedding.page');
 Route::get('/{wedding}/{code}', 'WeddingController@show')->name('wedding.invitation');
+
 
 /** 
  * ------------------------- INVITATION -------------------------
