@@ -1,9 +1,9 @@
-(function($) {
+(function ($) {
     "use strict";
 
     // Windows load
 
-    $(window).on("load", function() {
+    $(window).on("load", function () {
 
         // Site loader 
 
@@ -46,7 +46,7 @@
     var nav = $('.main-nav ul');
     var navHeight = nav.height();
 
-    $(mobileBtn).on("click", function() {
+    $(mobileBtn).on("click", function () {
 
         $(".toggle-mobile-but").toggleClass("active");
         nav.slideToggle();
@@ -56,7 +56,7 @@
 
     });
 
-    $(window).resize(function() {
+    $(window).resize(function () {
         var w = $(window).width();
         if (w > 320 && nav.is(':hidden')) {
             nav.removeAttr('style');
@@ -65,7 +65,7 @@
 
     });
 
-    $('.main-nav li a').click(function() {
+    $('.main-nav li a').click(function () {
         if ($(this).hasClass('mobile')) {
             nav.slideToggle();
             $(".toggle-mobile-but").toggleClass("active");
@@ -85,13 +85,6 @@
         $('.background-img').eq(i).css('background-position', 'initial');
 
     }
-
-
-    // Count down setup
-
-    $('.countdown').countdown('2017/6/10', function(event) {
-        $(this).html(event.strftime('%D days %H:%M:%S'));
-    });
 
 
     // Images zoom setup

@@ -15,6 +15,7 @@
         background-color: #ffffff;
         color: lightgrey;
         background-size: cover;
+        background-repeat: no-repeat;
         background-position: center center;
     }
 
@@ -24,6 +25,9 @@
         color: #0275d8;
         cursor: pointer;
         filter: brightness(90%);
+    }
+    .input-preview-label.is-invalid {
+        border-color: red;
     }
 
     #theme-selection img {

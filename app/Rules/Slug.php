@@ -35,6 +35,6 @@ class Slug implements Rule
      */
     public function message()
     {
-        return 'The :attribute must not conatins white space, replace white space with "-"';
+        return 'The :attribute must not conatins white space, you may replace white space with "-"';
     }
 }

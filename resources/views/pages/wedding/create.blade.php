@@ -56,6 +56,24 @@
                                         <label class="custom-control-label" for="theme-default">Tema Default</label>
                                     </div>
                                 </div>
+                                <div class="col-md-4">
+                                    <label for="theme-destiny">
+                                        <img alt="thumbnail" src="{{asset('assets/themes/destiny/thumbnail.png')}}" class="img-thumbnail rounded mb-2">
+                                    </label>
+                                    <div class="custom-control custom-radio custom-control-inline">
+                                        <input type="radio" id="theme-destiny" name="theme" class="custom-control-input" value="destiny">
+                                        <label class="custom-control-label" for="theme-destiny">Tema Destiny</label>
+                                    </div>
+                                </div>
+                                <div class="col-md-4">
+                                    <label for="theme-ourlove">
+                                        <img alt="thumbnail" src="{{asset('assets/themes/ourlove/thumbnail.png')}}" class="img-thumbnail rounded mb-2">
+                                    </label>
+                                    <div class="custom-control custom-radio custom-control-inline">
+                                        <input type="radio" id="theme-ourlove" name="theme" class="custom-control-input" value="ourlove">
+                                        <label class="custom-control-label" for="theme-ourlove">Tema Ourlove</label>
+                                    </div>
+                                </div>
                             </div>
                         </div>
                     </form>
@@ -127,31 +145,42 @@
     function nextTab(elem) {
         var tabpanel = $('#' + $(elem).attr('aria-controls')),
             form = tabpanel.find('form')
-        console.log(tabpanel.data('stage'));
 
-        if (tabpanel.data('stage') == 'event')
-            window.location.href = "{{route('dashboard')}}";
         if (tabpanel.next().data('stage') == 'event')
             $.get("{{route('event.index')}}", function(data) {
                 $('#events-container').html(data.html)
             });
-        else
-            response = formChecker(form)
-        setTimeout(function() {
-            response.done(f => {
-                // console.log(f);
-                $(elem).parent().next().find('a[data-toggle="tab"]').removeClass('disabled').tab('show');
-            }).fail(function(a, b, c) {
-                if (a.status === 422) {
-                    $.each(a.responseJSON.errors, function(k, v) {
-                        $('input[name="' + k + '"]').addClass('is-invalid').after('<div class="invalid-feedback">' + v + '<div>');
-                    });
-                }
-            }).always(a => {
-                console.log(a);
+        if (tabpanel.data('stage') == 'event') {
+            $('#next-step').addClass('btn-progress disabled')
+            $.post("{{route('wedding.store')}}", {
+                stage: 'event',
+            }, function(res) {
+                window.location.href = "{{route('dashboard')}}";
+            }).always(function(er) {
                 $('#next-step').removeClass('btn-progress disabled')
             })
-        }, 200)
+        } else {
+            response = formChecker(form)
+            setTimeout(function() {
+                response.done(f => {
+                    $(elem).parent().next().find('a[data-toggle="tab"]').removeClass('disabled').tab('show');
+                }).fail(function(a, b, c) {
+                    if (a.status === 422) {
+                        $.each(a.responseJSON.errors, function(k, v) {
+                            if (k == 'calon_pria_photo' || k == 'calon_wanita_photo')
+                                $('input[name="' + k + '"]').addClass('is-invalid').prev().addClass('is-invalid').parent().append('<div class="invalid-feedback show">' + v + '</div>');
+                            else
+                                $('input[name="' + k + '"]').addClass('is-invalid').after('<div class="invalid-feedback">' + v + '</div>');
+                        });
+
+                    }
+                }).always(a => {
+                    if (a.html)
+                        $('#events-container').html(a.html)
+                    $('#next-step').removeClass('btn-progress disabled')
+                })
+            }, 200)
+        }
     }
 
     function prevTab(elem) {

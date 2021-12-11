@@ -53,11 +53,7 @@
 
             <div class="subfooter">
                 <div class="container text-center">
-                    <div class="row">
-                        <div class="col-md-12">
-                            &copy; Copyright {{date('Y')}} - {{config('app.name')}}
-                        </div>
-                    </div>
+                    &copy; Copyright {{date('Y')}} - {{config('app.name')}}
                 </div>
             </div>
         </footer>

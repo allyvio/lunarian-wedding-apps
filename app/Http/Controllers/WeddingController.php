@@ -46,35 +46,90 @@ class WeddingController extends Controller
         }
 
         /**
-         * Save wedding setelah stage couple.
+         * Save wedding pada stage couple.
          * */
         if ($request->stage == 'couple') {
-            $wedding->save();
+            // $wedding->save();
 
             /** Update couple photos */
-            if (!empty($couplePhotos))
-                $this->updateCouplePhoto($request, $wedding);
+            // if (!empty($couplePhotos))
+            //     $this->updateCouplePhoto($request, $wedding);
+            if ($wedding->calon_pria_photo)
+                Storage::delete('public/couple/' . $wedding->calon_pria_photo);
+            if ($request->hasFile('calon_pria_photo')) {
+                $file = $request->file('calon_pria_photo');
+                $fullpath = $file->store('public/couple');
+                $filename = pathinfo($fullpath)['basename'];
+                $wedding->calon_pria_photo = $filename;
+            } else {
+                $wedding->calon_pria_photo = null;
+            }
+            if ($wedding->calon_wanita_photo)
+                Storage::delete('public/couple/' . $wedding->calon_wanita_photo);
+            if ($request->hasFile('calon_wanita_photo')) {
+                $file = $request->file('calon_wanita_photo');
+                $fullpath = $file->store('public/couple');
+                $filename = pathinfo($fullpath)['basename'];
+                $wedding->calon_wanita_photo = $filename;
+            } else {
+                $wedding->calon_wanita_photo = null;
+            }
+        }
+        /** 
+         * Menghapus SESSION WEDDING setelah stage terakhir 
+         * */
+        if ($request->stage == 'theme') {
 
             /** Create Event pertama kali */
             if ($wedding->events->count() == 0) {
                 $date = Carbon::now()->addDays(14);
-                $wedding->events()->create([
+                // $events = new Event();
+                // $events->fill([
+                //     'title' => 'Resepsi BOSKU',
+                //     'start_date' => $date,
+                //     'is_main' => true
+                // ]);
+                $wedding->events[0] = new Event([
                     'title' => 'Resepsi',
+                    'is_main' => true,
                     'start_date' => $date,
-                    'is_main' => true
+                    'end_date' => null,
+                    'location' => null,
+                    'description' => null,
                 ]);
+                $wedding->events[0]->id = 0;
             }
             $wedding->refresh();
-        }
-        /** Menghapus SESSION WEDDING setelah stage terakhir */
-        if ($request->stage == 'undefined') {
-            // return EventController::show(12);
+            $events = $wedding->events->sortBy('datetime')->groupBy(function ($i) {
+                return $i->date;
+            });
+            $events->wedding = $wedding;
+            $view = view('pages.event.show', compact('events'))->render();
+            return response()->json(['html' => $view]);
+            // return $wedding->events;
             // $request->session()->forget('wedding');
+            // return $request->session()->get('wedding');
         }
-
-        // return $request->session()->get('wedding');
-        return response()->json([$request->stage => true]);
-        // return $request;
+        if ($request->stage == 'event') {
+            $wedding->save();
+            $new_arr = [];
+            $prepareEvents = $wedding->events;
+            foreach ($prepareEvents as $prep) {
+                $new_arr[] = [
+                    'title' => $prep->title,
+                    'description' => $prep->description,
+                    'start_date' => $prep->date . ' ' . $prep->start_date,
+                    'end_date' => $prep->end_date ? $prep->date . ' ' . $prep->end_date : null,
+                    'location' => $prep->location,
+                    'is_main' => $prep->is_main
+                ];
+            }
+            $wedding->events()->createMany($new_arr);
+            return $request->session()->forget('wedding');
+        }
+        // return $request->all();
+        // return $wedding->events;
+        return session()->all();
     }
 
     public function show(Wedding $wedding, $code = null)

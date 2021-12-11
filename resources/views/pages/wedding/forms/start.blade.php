@@ -5,7 +5,7 @@
     </div>
     <div class="form-group">
         <label for="description" class="form-control-label">Deskripsi</label>
-        <textarea name="description" class="form-control"  id="description"></textarea>
+        <textarea name="description" class="form-control" id="description"></textarea>
     </div>
     <div class="form-group">
         <label for="date" class="form-control-label">Alamat Website</label>

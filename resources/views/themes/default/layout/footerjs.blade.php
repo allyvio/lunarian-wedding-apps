@@ -15,6 +15,7 @@
 <script src="{{asset('assets/themes/default/js/animsition.min.js')}}"></script>
 <script src="{{asset('assets/themes/default/js/designesia.js')}}"></script>
 <script src="{{asset('vendor/izitoast/iziToast.min.js')}}"></script>
+<script src="{{asset('assets/themes/main.js')}}"></script>
 <script>
     $.ajaxSetup({
         headers: {

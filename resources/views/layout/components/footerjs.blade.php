@@ -95,7 +95,6 @@
                     },
                     complete: function(a) {
                         var response = a.responseJSON
-                        console.log(response);
                         if (response.success) {
                             reloadEvents($event_container)
                         } else {
@@ -160,7 +159,6 @@
             },
             complete: function(e) {
                 var response = e.responseJSON
-                console.log(response);
                 setTimeout(function() {
                     btn_submit.removeClass('btn-progress disabled')
                     if (response.success) {
@@ -236,7 +234,6 @@
             },
             complete: function(e) {
                 var response = e.responseJSON
-                console.log(response);
                 setTimeout(function() {
                     btn_submit.removeClass('btn-progress disabled')
                     if (response.success) {

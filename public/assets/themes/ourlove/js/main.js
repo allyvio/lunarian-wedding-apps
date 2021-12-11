@@ -19,33 +19,33 @@
     // /Hide Mobile menu
 
     // Contact form validator
-    $(function () {
-        $('#rsvp-form').validator();
+    // $(function () {
+    //     $('#rsvp-form').validator();
 
-        $('#rsvp-form').on('submit', function (e) {
-            if (!e.isDefaultPrevented()) {
-                var url = "rsvp_form/rsvp_form.php";
+    //     $('#rsvp-form').on('submit', function (e) {
+    //         if (!e.isDefaultPrevented()) {
+    //             var url = "rsvp_form/rsvp_form.php";
 
-                $.ajax({
-                    type: "POST",
-                    url: url,
-                    data: $(this).serialize(),
-                    success: function (data)
-                    {
-                        var messageAlert = 'alert-' + data.type;
-                        var messageText = data.message;
+    //             $.ajax({
+    //                 type: "POST",
+    //                 url: url,
+    //                 data: $(this).serialize(),
+    //                 success: function (data)
+    //                 {
+    //                     var messageAlert = 'alert-' + data.type;
+    //                     var messageText = data.message;
 
-                        var alertBox = '<div class="alert ' + messageAlert + ' alert-dismissable"><button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>' + messageText + '</div>';
-                        if (messageAlert && messageText) {
-                            $('#rsvp-form').find('.messages').html(alertBox);
-                            $('#rsvp-form')[0].reset();
-                        }
-                    }
-                });
-                return false;
-            }
-        });
-    });
+    //                     var alertBox = '<div class="alert ' + messageAlert + ' alert-dismissable"><button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>' + messageText + '</div>';
+    //                     if (messageAlert && messageText) {
+    //                         $('#rsvp-form').find('.messages').html(alertBox);
+    //                         $('#rsvp-form')[0].reset();
+    //                     }
+    //                 }
+    //             });
+    //             return false;
+    //         }
+    //     });
+    // });
     // /Contact form validator
 
 
@@ -173,16 +173,6 @@
                     }
                 },
         });
-
-        $('#count').countdown('2017/09/01', function(event) {
-            $(this).html(event.strftime('' + 
-                '<div class="count-block days">%D<span class="count-label">day%!d</span></div>' + 
-                '<div class="count-block hours">%H<span class="count-label">%!H:hour,hours;</span></div>' + 
-                '<div class="count-block minutes">%M<span class="count-label">%!M:minute,minutes;</span></div>' + 
-                '<div class="count-block seconds">%S<span class="count-label">%!S:second,seconds;</span></div>'
-            ));
-        });
-
         $('.gallery-grid').magnificPopup({
             delegate: 'a',
             type: 'image',

@@ -8,8 +8,8 @@ Route::get('/', function () {
 
 // Route::resource('/argon-dashboard', 'DashboardController');
 
-Route::get('/themes2', function () {
-    return view('themes.themes2.index');
+Route::get('/destiny', function () {
+    return view('themes.destiny.index');
 });
 Route::get('/themes3', function () {
     return view('themes.themes3.index');
@@ -34,9 +34,9 @@ Route::resource('event','EventController');
 Route::resource('wedding', 'WeddingController')->except([
     'show'
 ]);
+Route::get('/{wedding}/{code?}', 'WeddingController@show')->name('wedding.page');
 
-Route::get('/{wedding}', 'WeddingController@show')->name('wedding.page');
-Route::get('/{wedding}/{code}', 'WeddingController@show')->name('wedding.invitation');
+// Route::get('/{wedding}/{code}', 'WeddingController@show')->name('wedding.invitation');
 
 
 /** 
