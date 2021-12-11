@@ -2015,11 +2015,6 @@ select[multiple].input-lg {
   border: 1px solid transparent;
   border-radius: 4px;
 }
-.btn:focus {
-  outline: thin dotted;
-  outline: 5px auto -webkit-focus-ring-color;
-  outline-offset: -2px;
-}
 .btn:hover,
 .btn:focus {
   color: #333;

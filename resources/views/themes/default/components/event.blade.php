@@ -7,11 +7,8 @@
             </div>
             <div class="col-md-5 col-md-offset-1 pt40 pb40 wow fadeIn" data-wow-delay=".5s">
                 <h3>{{$event->title}}</h3>
-                {{$event->start_date->format('l, d F Y')}}<br> {{$event->start_date->format('H:i')}} - {{$event->end_date ? $event->end_date->format('H:i') : 'selesai'}}<br>
-                @if($event->location)
-                {{$event->location}} <br>
-                <a href="https://maps.google.com/maps?q=221B+Baker+Street,+London,+United+Kingdom&amp;hl=en&amp;t=v&amp;hnear=221B+Baker+St,+London+NW1+6XE,+United+Kingdom" class="btn btn-custom mt30 popup-gmaps">View on map</a>
-                @endif
+                {{date('l, d F Y',strtotime($event->date))}}<br> {{$event->start_date}} - {{$event->end_date ? $event->end_date : 'selesai'}}<br>
+                {{$event->location ?? ''}}
             </div>
         </div>
         <div class="spacer-double"></div>

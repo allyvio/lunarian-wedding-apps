@@ -27,6 +27,8 @@
             <!-- rsvp popup begin -->
             @if($wedding->invitation)
             @include('themes.default.components.rsvp.show')
+            @else
+            @include('themes.default.components.rsvp.form')
             @endif
             <!-- section end -->
             <!-- gallery section begin -->
@@ -51,11 +53,7 @@
 
             <div class="subfooter">
                 <div class="container text-center">
-                    <div class="row">
-                        <div class="col-md-12">
-                            &copy; Copyright {{date('Y')}} - {{config('app.name')}}
-                        </div>
-                    </div>
+                    &copy; Copyright {{date('Y')}} - {{config('app.name')}}
                 </div>
             </div>
         </footer>
@@ -72,9 +70,9 @@
         if ('{{session()->has("error")}}') {
             var message = '{{session()->get("error")}}';
             iziToast.error({
-                title: 'Error',
+                title: 'Invalid',
                 message: message,
-                position:'topCenter'
+                position: 'topCenter'
             });
         }
     </script>
