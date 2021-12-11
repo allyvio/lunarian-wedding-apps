@@ -196,10 +196,6 @@ a.button:focus {
     position: relative;
     margin: 0 0 20px;
 }
-.form-control,
-.form-control:focus {
-    min-height: 42px;
-}
 
 .form-control,
 .form-control:focus,
@@ -391,6 +387,9 @@ textarea.form-control:focus {
 /* ============================================================================= 
 4. Site content
 ============================================================================= */
+.border{
+    border: grey 1pt solid;
+}
 .container {
     max-width: 980px;
 }
@@ -414,7 +413,7 @@ textarea.form-control:focus {
     color: #353535;
     font-size: 27px;
     font-family: "Courgette", Helvetica, sans-serif;
-    line-height: 1em;
+    /* line-height: 2em; */
 }
 
 .header-date {
@@ -496,7 +495,7 @@ textarea.form-control:focus {
 }
 
 .sections {
-    padding-top: 120px;
+    padding-top: 50px;
 }
 
 p.description {
@@ -537,6 +536,8 @@ p.intro {
     background-attachment: scroll;
     background-position: center center;
     background-repeat: no-repeat;
+    filter: brightness(90%);
+    background-image: url('../img/hero-2.jpg');
 }
 
 .hs-mask,
@@ -551,7 +552,7 @@ p.intro {
 
 .hs-section-title {
     text-align: center;
-    margin: 135px 0;
+    margin: 80px 0;
 }
 
 .hs-section-title h1 {
@@ -562,6 +563,7 @@ p.intro {
 .about-us {
     width: 100%;
     position: relative;
+    margin-bottom: 100px;
 }
 
 .about-us-block {
@@ -571,29 +573,23 @@ p.intro {
 }
 
 .about-us-block.first-block {
+    border-radius: 20px;
     float: left;
     margin-right: 2%;
 }
 
 .about-us-block.second-block {
+    border-radius: 20px;
     float: right;
 }
 
 .about-us-block .top-block {
     padding: 20px;
     min-height: 160px;
-    border-bottom: 1px solid #f2f2f2;
 }
 
 .about-us-block .name {
     text-align: center;
-    padding-right: 140px;
-}
-
-.about-us-block.second-block .name {
-    text-align: center;
-    padding-right: 0;
-    padding-left: 140px;
 }
 
 .about-us-block .name h2 {
@@ -612,20 +608,17 @@ p.intro {
 }
 
 .about-us-block .photo {
-    position: absolute;
-    right: 20px;
-    top: 20px;
-    width: 120px;
-    height: 120px;
-}
-
-.about-us-block.second-block .photo {
-    right: auto;
-    left: 20px;
+    text-align: center;
+    width: 100%;
+    height: auto;
+    padding-top: 30px;
 }
 
 .about-us-block .photo img {
-    border-radius: 60px;
+    border-radius: 50%;
+    object-fit: cover;
+    height: 300px;
+    width: 300px;
 }
 
 .about-us-block .bottom-block {
@@ -1055,7 +1048,9 @@ ul.social-links li a:hover i {
         font-size: 21px;
         line-height: 50px;
     }
-
+    .header-date p {
+        line-height: 2em;
+    }
     .menu-toggle {
         display: block;
         width: 50px;

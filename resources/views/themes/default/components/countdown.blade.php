@@ -6,7 +6,7 @@
             </div>
             <div class="col-md-8 col-md-offset-2">
                 <div class="spacer-double"></div>
-                <div id="main-date-countdown" class="wow fadeIn" data-datetime="{{$wedding->main_date}}"></div>
+                <div id="main-date-countdown" class="wow fadeIn" data-main-date="{{$wedding->main_date}}"></div>
                 <div class="spacer-single"></div>
             </div>
         </div>
@@ -16,7 +16,7 @@
 <script type="text/javascript">
     $(document).ready(function() {
         $(function() {
-            var cd_container = $('#main-date-countdown'), dt = cd_container.data('datetime');
+            var cd_container = $('#main-date-countdown'), dt = cd_container.data('main-date');
             cd_container.countdown({
                 until: new Date(dt)
             });
