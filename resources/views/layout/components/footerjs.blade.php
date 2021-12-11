@@ -15,8 +15,13 @@
 <script src="{{asset('vendor/izitoast/izitoast.min.js')}}"></script>
 <script src="{{asset('vendor/sweetalert2/dist/sweetalert2.min.js')}}"></script>
 <script src="{{asset('vendor/bootstrap-datepicker/dist/js/bootstrap-datepicker.min.js')}}"></script>
+<!-- validasi -->
+<script src="https://cdn.jsdelivr.net/jquery.validation/1.16.0/jquery.validate.min.js"></script>
+<!-- sweetalert -->
+<script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 <!-- Argon JS -->
 <script src="{{asset('js/argon.js')}}"></script>
+<!-- will be moved -->
 <script>
     $.ajaxSetup({
         headers: {

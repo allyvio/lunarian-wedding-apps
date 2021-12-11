@@ -34,7 +34,7 @@
             </a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="../../pages/widgets.html">
+            <a class="nav-link" href="{{url('/invitation')}}">
               <i class="ni ni-book-bookmark text-green"></i>
               <span class="nav-link-text">Undangan</span>
             </a>

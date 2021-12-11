@@ -6,32 +6,86 @@ use App\Models\Invitation;
 use App\Models\Wedding;
 use Illuminate\Http\Request;
 use Illuminate\Validation\Rule;
+use Illuminate\Support\Str;
+use Validator;
+use RealRashid\SweetAlert\Facades\Alert;
 
 class InvitationController extends Controller
 {
+    public function index()
+    {
+        $invitations = Invitation::orderBy('id','DESC')->get();
+        return view('pages.invitation.index', compact('invitations'));
+    }
+
+    public function addInvitation(Request $request)
+    {
+        \Validator::make($request->all(),
+        [
+          'name' => 'required',
+          'email' => 'required',
+          'phone' => 'required'
+        ],
+        [
+          'name.required' => 'Nama Tidak Boleh Kosong!',
+          'email.required' => 'Email Tidak Boleh Kosong',
+          'phone.required' => 'No Telp Tidak Boleh Kosong!'
+        ]
+        )->validate();
+
+        $invitation = new Invitation;
+        $invitation->code = Str::random(6);
+        $invitation->wedding_id = 1;
+        $invitation->name = $request->name;
+        $invitation->email = $request->email;
+        $invitation->phone = $request->phone;
+        $invitation->save();
+        Alert::success('Berhasil', 'Data Undangan Berhasil Di Tambahkan');
+        return response()->json($invitation);
+    }
+
+    public function getInvitationById($id)
+    {
+        $invitation = Invitation::find($id);
+        return response()->json($invitation);
+    }
+
+    public function updateInvitation(Request $request)
+    {
+        \Validator::make($request->all(),
+        [
+          'name' => 'required',
+          'email' => 'required',
+          'phone' => 'required'
+        ],
+        [
+          'name.required' => 'Nama Tidak Boleh Kosong!',
+          'email.required' => 'Email Tidak Boleh Kosong',
+          'phone.required' => 'No Telp Tidak Boleh Kosong!'
+        ]
+        )->validate();
+
+        $invitation = Invitation::find($request->id);
+        $invitation->name = $request->name;
+        $invitation->email = $request->email;
+        $invitation->phone = $request->phone;
+        $invitation->save();
+        Alert::success('Berhasil', 'Data Undangan Berhasil Di Edit');
+        return response()->json($invitation);
+    }
+
+    public function deleteInvitation($id)
+    {
+        $invitation = Invitation::find($id);
+        $invitation->delete();
+        Alert::success('Berhasil', 'Data Undangan Berhasil Di Hapus');
+        return response()->json();
+    }
+
     public static function show($wedding_id, $code)
     {
         $invitation = Invitation::where('wedding_id', $wedding_id)->where('code', $code)->first();
         return $invitation;
-    }
-    
-    public function store(Request $request)
-    {
-        $weddingId = $request->wedding_id;
-        $request->validateWithBag('CreateInvitation', [
-            'wedding_id' => ['required', 'exists:weddings,id'],
-            'name' => ['required', 'string', 'between:2,30'],
-            'email' => ['string', 'email', 'max:100', 'nullable'],
-            'phone' => ['string', 'between:9,16', 'nullable'],
-            'is_vip' => ['boolean', 'required'],
-        ]);
-        Invitation::create([
-            'wedding_id' => $request->wedding_id,
-            'name' => $request->name,
-            'email' => $request->email,
-            'phone' => $request->phone,
-            'is_vip' => $request->is_vip
-        ]);
     }
 
     public function rsvp(Wedding $wedding, $code, Request $request)

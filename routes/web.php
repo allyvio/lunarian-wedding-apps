@@ -28,7 +28,18 @@ Route::post('event/date','EventController@updateDate')->name('event.date.update'
 Route::delete('event/destroy/byDate','EventController@destroyByDate')->name('event.destroy.bydate');
 Route::resource('event','EventController');
 
-/** 
+/**
+ * ------------------------- INVITATION -------------------------
+ */
+Route::get('/invitation','InvitationController@index')->name('invitation.index');
+Route::post('/add-invitation','InvitationController@addInvitation')->name('invitation.add');
+Route::get('/invitation/{id}','InvitationController@getInvitationById')->name('invitation.getbyid');
+Route::put('/invitation','InvitationController@updateInvitation')->name('invitation.update');
+Route::delete('/invitation/{id}','InvitationController@deleteInvitation')->name('invitation.delete');
+Route::post('/{wedding}/invitation/{code}/rsvp', 'InvitationController@show')->name('invitation.rsvp');
+Route::post('/{wedding}/rsvp/{code}/confirm', 'InvitationController@rsvp')->name('rsvp.confirm');
+Route::post('/invitation/{invitation}/count', 'InvitationController@count')->name('rsvp.count');
+/**
  * ------------------------- WEDDING -------------------------
  */
 Route::resource('wedding', 'WeddingController')->except([
@@ -37,11 +48,3 @@ Route::resource('wedding', 'WeddingController')->except([
 Route::get('/{wedding}/{code?}', 'WeddingController@show')->name('wedding.page');
 
 // Route::get('/{wedding}/{code}', 'WeddingController@show')->name('wedding.invitation');
-
-
-/** 
- * ------------------------- INVITATION -------------------------
- */
-Route::post('/{wedding}/invitation/{code}/rsvp', 'InvitationController@show')->name('invitation.rsvp');
-Route::post('/{wedding}/rsvp/{code}/confirm', 'InvitationController@rsvp')->name('rsvp.confirm');
-Route::post('/invitation/{invitation}/count', 'InvitationController@count')->name('rsvp.count');

@@ -29,6 +29,11 @@
   @include('layout.components.footerjs')
   <!-- End Argon Scripts -->
 
+  <!-- Alert -->
+  @include('sweetalert::alert')
+  <!-- End Alert -->
+
+
 </body>
 
 </html>
