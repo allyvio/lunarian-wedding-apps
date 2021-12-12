@@ -13,7 +13,7 @@
 <script src="{{asset('vendor/bootstrap-notify/bootstrap-notify.min.js')}}"></script>
 <script src="{{asset('vendor/sweetalert2/dist/sweetalert2.min.js')}}"></script>
 <script src="{{asset('vendor/izitoast/izitoast.min.js')}}"></script>
-<script src="{{asset('vendor/sweetalert2/dist/sweetalert2.min.js')}}"></script>
+<!-- <script src="{{asset('vendor/sweetalert2/dist/sweetalert2.min.js')}}"></script> -->
 <script src="{{asset('vendor/bootstrap-datepicker/dist/js/bootstrap-datepicker.min.js')}}"></script>
 <!-- validasi -->
 <script src="https://cdn.jsdelivr.net/jquery.validation/1.16.0/jquery.validate.min.js"></script>
@@ -45,15 +45,14 @@
         var event = $(this).data('event'),
             url = "{{ route('event.destroy', ':event')}}"
         url = url.replace(':event', event)
-        swal({
+        Swal.fire({
             title: 'Are you sure?',
             text: "You won't be able to revert this!",
-            type: 'warning',
+            icon: 'warning',
             showCancelButton: true,
-            buttonsStyling: false,
-            confirmButtonClass: 'btn btn-danger',
-            confirmButtonText: 'Yes, delete it!',
-            cancelButtonClass: 'btn btn-secondary'
+            confirmButtonColor: "#DD6B55",
+            confirmButtonText: "Ya, Hapus!",
+            cancelButtonText: "Batal"
         }).then((res) => {
             if (res.value) {
                 $.ajax({
@@ -80,15 +79,14 @@
             date = $(this).data('date'),
             url = "{{ route('event.destroy.bydate') }}"
         url = url.replace(':event', event)
-        swal({
+        Swal.fire({
             title: 'Are you sure?',
             text: "You won't be able to revert this!",
-            type: 'warning',
             showCancelButton: true,
-            buttonsStyling: false,
-            confirmButtonClass: 'btn btn-danger',
-            confirmButtonText: 'Yes, delete it!',
-            cancelButtonClass: 'btn btn-secondary'
+            icon: "warning",
+            confirmButtonColor: "#DD6B55",
+            confirmButtonText: "Ya, Hapus!",
+            cancelButtonText: "Batal"
         }).then((res) => {
             if (res.value) {
                 $.ajax({
