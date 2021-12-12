@@ -18,7 +18,7 @@
 <!-- validasi -->
 <script src="https://cdn.jsdelivr.net/jquery.validation/1.16.0/jquery.validate.min.js"></script>
 <!-- sweetalert -->
-<script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+<!-- <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script> -->
 <!-- Argon JS -->
 <script src="{{asset('js/argon.js')}}"></script>
 <!-- will be moved -->

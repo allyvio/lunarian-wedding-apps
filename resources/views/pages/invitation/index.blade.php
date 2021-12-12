@@ -103,7 +103,7 @@
             </div>
             <div class="form-group">
               <label class="form-control-label" for="exampleFormControlInput1">Phone</label>
-              <input name="phone" type="number" class="form-control" placeholder="08xxxxxxx" id="phone-update">
+              <input name="phone" type="number" class="form-control" placeholder="08xxxxxxxxxx" id="phone-update">
             </div>
             <div class="modal-footer">
               <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
@@ -136,11 +136,14 @@
           <td>{{$data->status}}</td>
           <td>{{$data->code}}</td>
           <td class="table-actions">
-            <a href="javascript:void(0)" onclick="editInvitation({{$data->id}})" class="table-action table-action-delete" data-toggle="tooltip">
+            <a href="javascript:void(0)" onclick="editInvitation({{$data->id}})" class="btn btn-outline-info" data-toggle="tooltip">
               <i class="fas fa-user-edit"></i>
             </a>
-            <a href="javascript:void(0)" onclick="deleteInvitation({{$data->id}})" class="table-action table-action-delete" data-toggle="tooltip">
+            <a href="javascript:void(0)" onclick="deleteInvitation({{$data->id}})" class="btn btn-outline-danger" data-toggle="tooltip">
               <i class="fas fa-trash"></i>
+            </a>
+            <a href="https://api.whatsapp.com/send?phone=62{{$data->phone}}&text=Saya%20Harap%20Kamu%20Bisa%20Hadir%20Di%20Pernikahan%20Saya" class="btn btn-outline-success" data-toggle="tooltip" data-original-title="Whatsapp">
+              <i class="ni ni-chat-round"></i>
             </a>
           </td>
         </tr>
