@@ -11,14 +11,12 @@
 <script src="{{asset('vendor/chart.js/dist/Chart.extension.js')}}"></script>
 <script src="{{asset('vendor/dropzone/dist/min/dropzone.min.js')}}"></script>
 <script src="{{asset('vendor/bootstrap-notify/bootstrap-notify.min.js')}}"></script>
-<script src="{{asset('vendor/sweetalert2/dist/sweetalert2.min.js')}}"></script>
 <script src="{{asset('vendor/izitoast/izitoast.min.js')}}"></script>
-<!-- <script src="{{asset('vendor/sweetalert2/dist/sweetalert2.min.js')}}"></script> -->
 <script src="{{asset('vendor/bootstrap-datepicker/dist/js/bootstrap-datepicker.min.js')}}"></script>
 <!-- validasi -->
 <script src="https://cdn.jsdelivr.net/jquery.validation/1.16.0/jquery.validate.min.js"></script>
 <!-- sweetalert -->
-<!-- <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script> -->
+<script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 <!-- Argon JS -->
 <script src="{{asset('js/argon.js')}}"></script>
 <!-- will be moved -->
@@ -117,7 +115,7 @@
         $('.invalid-feedback').remove()
     });
 
-    // EVENT UPDATE & SHOW HANDLER 
+    // EVENT UPDATE & SHOW HANDLER
     $event_modal.on('show.bs.modal', function(e) {
         var $this = $(this),
             $form = $this.find('form'),
@@ -176,7 +174,7 @@
         })
     })
 
-    // EVENT DATE UPDATE FORM HANDLER 
+    // EVENT DATE UPDATE FORM HANDLER
     $event_date_modal.on('shown.bs.modal', function(e) {
         var date = $(e.relatedTarget).data('event-date'),
             wedding = $(e.relatedTarget).data('wedding')
@@ -206,7 +204,7 @@
         })
     })
 
-    // EVENT CREATE FORM HANDLER 
+    // EVENT CREATE FORM HANDLER
     $event_create_modal.on('shown.bs.modal', function(e) {
         var wedding = $(e.relatedTarget).data('wedding')
         $(this).find('form').data('wedding', wedding)

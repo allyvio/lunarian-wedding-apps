@@ -31,7 +31,7 @@
       </div>
       <div class="col-6 text-right">
         <!-- Button trigger modal -->
-        <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#invitationModal">
+        <button type="button" class="btn btn-outline-primary" data-toggle="modal" data-target="#invitationModal">
           <span class="btn-inner--icon"><i class="fas fa-plus"></i></span>
           <span class="btn-inner--text">Tambah</span>
         </button>
@@ -64,8 +64,8 @@
               <input name="phone" type="number" class="form-control" placeholder="08xxxxxxx" id="phone">
             </div>
             <div class="modal-footer">
-              <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-              <button type="submit" class="btn btn-primary">Save changes</button>
+              <button type="button" class="btn btn-secondary" data-dismiss="modal">Keluar</button>
+              <button type="submit" class="btn btn-primary">Simpan</button>
             </div>
           </form>
         </div>
@@ -129,15 +129,17 @@
           <td>{{$data->status}}</td>
           <td>{{$data->code}}</td>
           <td class="table-actions">
-            <a href="javascript:void(0)" onclick="editInvitation({{$data->id}})" class="btn btn-outline-info" data-toggle="tooltip">
+            <a href="javascript:void(0)" onclick="editInvitation({{$data->id}})" class="btn btn-icon btn-outline-info btn-sm" data-toggle="tooltip" data-original-title="Ubah">
               <i class="fas fa-user-edit"></i>
             </a>
-            <a href="javascript:void(0)" onclick="deleteInvitation({{$data->id}})" class="btn btn-outline-danger" data-toggle="tooltip">
+            <a href="javascript:void(0)" onclick="deleteInvitation({{$data->id}})" class="btn btn-icon btn-outline-danger btn-sm" data-toggle="tooltip" data-original-title="Hapus">
               <i class="fas fa-trash"></i>
             </a>
-            <a href="https://api.whatsapp.com/send?phone=62{{$data->phone}}&text=Saya%20Harap%20Kamu%20Bisa%20Hadir%20Di%20Pernikahan%20Saya" class="btn btn-outline-success" data-toggle="tooltip" data-original-title="Whatsapp">
-              <i class="ni ni-chat-round"></i>
-            </a>
+            @if($data->phone != "")
+              <a href="https://api.whatsapp.com/send?phone={{preg_replace('/^0/', '62', $data->phone)}}&text={{$data->name}}%20yang%20terhormat%2C%0AAnda%20diundang%20ke%20pernikahan%20kami!%0AMohon%20respon%20RSVP%20Anda%20dan%20tinggalkan%20komentar%20Anda%20di%20http://127.0.0.1:8000/rara-rere%2F123456" class="btn btn-icon btn-outline-success btn-sm" data-toggle="tooltip" data-original-title="Whatsapp">
+                <i class="ni ni-chat-round"></i>
+              </a>
+            @endif
           </td>
         </tr>
         @endforeach
@@ -166,11 +168,6 @@
         _token: _token.val()
       },
       success: function(response) {
-        // $('#invitationTable tbody').prepend(`<tr id="sid`+response.id+`"><td>`+response.name+`</td><td>`+response.email+`</td><td>`+response.phone+`</td><td></td><td>`+response.code+`</td><td class="table-actions">
-        // <a href="javascript:void(0)" onclick="editInvitation(`+response.id+`)" class="table-action table-action-delete" data-toggle="tooltip"><i class="fas fa-user-edit"></i></a>
-        // <a href="javascript:void(0)" onclick="deleteInvitation(`+response.id+`)" class="table-action table-action-delete" data-toggle="tooltip"><i class="fas fa-trash"></i></a></td></tr>`);
-        // $('#invitationModal').modal('toggle');
-        // $('#invitationForm')[0].reset();
         Swal.fire({
           title: 'Data sedang diproses',
           timerProgressBar: true,
@@ -193,7 +190,6 @@
         required: true
       },
       phone: {
-        required: true,
         minlength: 10,
         maxlength: 12
       }
@@ -208,7 +204,6 @@
         email: "Masukkan E-mail Dengan Benar"
       },
       phone: {
-        required: "No.Hp Tidak Boleh Kosong!",
         minlength: "No.Hp Minimal 10 Angka!",
         maxlength: "No.Hp Maximal 12 Angka!"
       }
@@ -244,10 +239,6 @@
         _token: _token
       },
       success: function(response) {
-        // console.log(response);
-        // $('#sid'+response.id +'td:nth-child(1)').text(response.name);
-        // $('#sid'+response.id +'td:nth-child(2)').text(response.email);
-        // $('#sid'+response.id +'td:nth-child(3)').text(response.phone);
         Swal.fire({
           title: 'Data sedang diproses',
           timerProgressBar: true,
@@ -271,7 +262,6 @@
         required: true
       },
       phone: {
-        required: true,
         minlength: 10,
         maxlength: 12
       }
@@ -286,7 +276,6 @@
         email: "Masukkan E-mail Dengan Benar"
       },
       phone: {
-        required: "No.Hp Tidak Boleh Kosong!",
         minlength: "No.Hp Minimal 10 Angka!",
         maxlength: "No.Hp Maximal 12 Angka!"
       }
