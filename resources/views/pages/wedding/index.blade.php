@@ -1,66 +1,54 @@
-@extends('layout.wrapper-dashboard-alt')
+@extends('layout.wrapper-dashboard')
 
-@section('dashboard-alt-content')
-<style>
-
-</style>
-<div class="container px-lg-8">
-    <div class="nav-wrapper pt-0">
-        <ul class="nav nav-pills d-flex justify-content-between nav-pills-circle" id="tabs_2" role="tablist">
-            <li class="nav-item text-center">
-                <a class="nav-link rounded-circle mb-2 active" id="start-tab" data-toggle="tab" href="#tabs-1" role="tab" aria-controls="tabs-1" aria-selected="true">
-                    <span class="nav-link-icon d-block"><i class="fa fa-pen"></i></span>
-                </a>
-            </li>
-            <li class="nav-item text-center">
-                <a class="nav-link rounded-circle mb-2" id="couple-tab" data-toggle="tab" href="#tabs-2" role="tab" aria-controls="tabs-2" aria-selected="false">
-                    <span class="nav-link-icon d-block"><i class="fa fa-heart"></i></span>
-                </a>
-            </li>
-            <li class="nav-item text-center">
-                <a class="nav-link rounded-circle mb-2" id="event-tab" data-toggle="tab" href="#tabs-3" role="tab" aria-controls="tabs-3" aria-selected="false">
-                    <span class="nav-link-icon d-block"><i class="fa fa-calendar"></i></span>
-                </a>
-            </li>
-            <li class="nav-item text-center">
-                <a class="nav-link rounded-circle mb-2" id="theme-tab" data-toggle="tab" href="#tabs-4" role="tab" aria-controls="tabs-4" aria-selected="false">
-                    <span class="nav-link-icon d-block"><i class="fas fa-clone"></i></span>
-                </a>
-            </li>
-            <li class="nav-item text-center">
-                <a class="nav-link rounded-circle mb-2" id="publish-tab" data-toggle="tab" href="#tabs-5" role="tab" aria-controls="tabs-5" aria-selected="false">
-                    <span class="nav-link-icon d-block"><i class="fas fa-share"></i></span>
-                </a>
-            </li>
-        </ul>
-    </div>
-    <div class="card shadow">
-        <div class="card-body">
-            <div class="tab-content" id="myTabContent">
-                <div class="tab-pane fade show active" id="tabs-1" role="tabpanel" aria-labelledby="start-tab">
-                    @include('pages.wedding.forms.start')
-                </div>
-                <div class="tab-pane fade" id="tabs-2" role="tabpanel" aria-labelledby="couple-tab">
-                    @include('pages.wedding.forms.couple')
-                </div>
-                <div class="tab-pane fade" id="tabs-3" role="tabpanel" aria-labelledby="event-tab">
-                    @include('pages.event.show')
+@section('dashboard-header')
+<div class="header pb-6">
+    <div class="container-fluid">
+        <div class="header-body">
+            <div class="row align-items-center py-4">
+                <div class="col-lg-12 col-7">
+                    <h6 class="h2 d-inline-block mb-0">Wedding</h6>
                 </div>
             </div>
         </div>
     </div>
-    <div class="row justify-content-between">
-        <div class="col">
-            <button class="btn btn-icon btn-primary">
-                <span class="btn-inner--icon"><i class="ni ni-bold-left"></i></span>
-                <span class="btn-inner--text">Kembali</span>
-            </button>
+</div>
+@endsection
+@section('dashboard-content')
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-3">
+            <div class="nav flex-column nav-pills" id="v-pills-tab" role="tablist" aria-orientation="vertical">
+                <a class="nav-link mb-2 active" id="v-pills-home-tab" data-toggle="pill" href="#v-pills-home" role="tab" aria-controls="v-pills-home" aria-selected="true">Home</a>
+                <a class="nav-link mb-2" id="v-pills-profile-tab" data-toggle="pill" href="#v-pills-profile" role="tab" aria-controls="v-pills-profile" aria-selected="false">Profile</a>
+            </div>
         </div>
-        <div class="col text-right">
-            <button class="btn btn-icon btn-primary">
-                <span class="btn-inner--text">Selanjutnya</span>
-                <span class="btn-inner--icon"><i class="ni ni-bold-right"></i></span>
-            </button>
+        <div class="col-9">
+            <div class="card shadow">
+                <div class="card-body">
+                    <div class="tab-content" id="v-pills-tabContent">
+                        <div class="tab-pane fade show active" id="v-pills-home" role="tabpanel" aria-labelledby="v-pills-home-tab">
+                            <div class="row mb-3">
+                                <div class="col-3">Judul</div>
+                                <div class="col-auto"> : </div>
+                                <div class="col">{{$wedding->title}}</div>
+                            </div>
+                            <div class="row mb-3">
+                                <div class="col-3">Slug</div>
+                                <div class="col-auto"> : </div>
+                                <div class="col">{{$wedding->slug}}</div>
+                            </div>
+                            <div class="row mb-3">
+                                <div class="col-3">Deskripsi</div>
+                                <div class="col-auto"> : </div>
+                                <div class="col">{{$wedding->description}}</div>
+                            </div>
+                        </div>
+                        <div class="tab-pane fade" id="v-pills-profile" role="tabpanel" aria-labelledby="v-pills-profile-tab">
+                            @include('pages.wedding.forms.couple')
+                        </div>
+                    </div>
+                </div>
+            </div>
         </div>
     </div>
 </div>

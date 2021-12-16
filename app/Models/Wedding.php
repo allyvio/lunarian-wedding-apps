@@ -18,13 +18,16 @@ class Wedding extends Model
         'theme'
     ];
     protected $attributes = ['theme' => 'default'];
-    protected $with = ['events','comments'];
+    protected $with = ['events', 'comments'];
 
     public function getRouteKeyName()
     {
         return 'slug';
     }
-
+    public function user()
+    {
+        return $this->belongsTo('App\Models\User');
+    }
     public function events()
     {
         return $this->hasMany('App\Models\Event');

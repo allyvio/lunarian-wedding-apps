@@ -1,6 +1,6 @@
 @extends('layout.wrapper-plain')
 @section('plain-content')
-<div class="header bg-primary pt-5 pb-7">
+<div class="header bg-primary py-7 py-lg-8">
     <div class="container">
         <div class="header-body">
             <div class="row align-items-center">
