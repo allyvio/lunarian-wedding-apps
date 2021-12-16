@@ -14,7 +14,7 @@
         </span>
       </div>
       <label for="customPackageDefault" class="col-md-11">
-        <span>
+        <span style="cursor:pointer;">
           <div class="card-header">
             <h3 class="mb-0">Paket Kasih</h3>
           </div>
@@ -41,7 +41,7 @@
         </span>
       </div>
       <label for="customPackage1" class="col-md-11">
-        <span>
+        <span style="cursor:pointer;">
           <div class="card-header">
             <h3 class="mb-0">Paket Sayang</h3>
           </div>
@@ -68,7 +68,7 @@
         </span>
       </div>
       <label for="customPackage2" class="col-md-11">
-        <span>
+        <span style="cursor:pointer;">
           <div class="card-header">
             <h3 class="mb-0">Paket Cinta</h3>
           </div>
