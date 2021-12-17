@@ -9,11 +9,6 @@
             </div>
             <div class="modal-body">
                 <form id="event-create-form" action="{{route('event.store')}}">
-                    <label class="custom-toggle custom-toggle-success mr-2 mb-3">
-                        <input type="checkbox" id="is_main_create" name="is_main">
-                        <span class="custom-toggle-slider rounded-circle"></span>
-                    </label>
-                    <label class="form-control-label align-top" for="is_main">Acara Utama</label>
                     <div class="form-group">
                         <label for="title" class="form-control-label">Nama Acara</label>
                         <input name="title" id="title_create" class="form-control" type="text" required>

@@ -24,7 +24,7 @@ class CreateEventsTable extends Migration
             $table->boolean('is_main');
             $table->timestamps();
 
-            $table->index(['wedding_id', 'date', 'is_main']);
+            $table->index(['wedding_id', 'start_date', 'is_main']);
             $table->foreign('wedding_id')->references('id')->on('weddings')->onDelete('cascade');
         });
     }

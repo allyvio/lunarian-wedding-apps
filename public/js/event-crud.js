@@ -227,7 +227,7 @@ $event_create_modal.on('shown.bs.modal', function (e) {
 })
 
 function reloadEvents(container) {
-    $.get("{{route('event.index')}}", function (data) {
+    $.get("{{route('event.showAll')}}", function (data) {
         container.html(data.html)
     });
 }

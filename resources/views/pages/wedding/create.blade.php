@@ -44,7 +44,7 @@
                     @include('pages.wedding.forms.couple')
                 </div>
                 <div class="tab-pane fade" id="tabs-theme" role="tabpanel" aria-labelledby="theme-tab" data-stage="theme">
-                    <form id="theme-form" action="{{route('wedding.store')}}" data-stage="theme">
+                    <form id="theme-form">
                         <div id="theme-selection">
                             <div class="form-group row">
                                 <div class="col-md-4">
@@ -129,7 +129,6 @@
                 return false;
             }
         });
-
         $("#next-step").click(function(e) {
             var $active = $('.wizard .nav-pills li .active');
             nextTab($active);
@@ -147,18 +146,13 @@
             form = tabpanel.find('form')
 
         if (tabpanel.next().data('stage') == 'event')
-            $.get("{{route('event.index')}}", function(data) {
+            $.get("{{route('event.showAll')}}", function(data) {
                 $('#events-container').html(data.html)
             });
+
         if (tabpanel.data('stage') == 'event') {
             $('#next-step').addClass('btn-progress disabled')
-            $.post("{{route('wedding.store')}}", {
-                stage: 'event',
-            }, function(res) {
-                window.location.href = "{{route('dashboard')}}";
-            }).always(function(er) {
-                $('#next-step').removeClass('btn-progress disabled')
-            })
+            window.location.href = "{{route('wedding.storeDB')}}";
         } else {
             response = formChecker(form)
             setTimeout(function() {
@@ -175,6 +169,7 @@
 
                     }
                 }).always(a => {
+                    console.log(a);
                     if (a.html)
                         $('#events-container').html(a.html)
                     $('#next-step').removeClass('btn-progress disabled')
@@ -191,7 +186,6 @@
         $('.is-invalid').removeClass('is-invalid')
         $('.invalid-feedback').remove()
         var $form = $(form),
-            url = $form.attr('action'),
             fd = new FormData($form[0])
         fd.append('stage', $form.parent().data('stage'))
         var ajax = $.ajax({

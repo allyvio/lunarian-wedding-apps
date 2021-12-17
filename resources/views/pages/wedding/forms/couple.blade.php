@@ -1,4 +1,4 @@
-<form id="couple-form" action="{{route('wedding.store')}}" enctype="multipart/form-data" data-stage="couple">
+<form id="couple-form" enctype="multipart/form-data">
     <div class="row">
         <div class="col-6 text-center">
             <label class="mt-2" for="calon_pria_photo">Calon Pengantin Pria</label>

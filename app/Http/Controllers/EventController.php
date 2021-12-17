@@ -3,35 +3,21 @@
 namespace App\Http\Controllers;
 
 use App\Models\Event;
-use App\Models\Wedding;
-use Carbon\Carbon;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Validator;
-use Illuminate\Validation\Rule;
-
-use function GuzzleHttp\Promise\all;
 
 class EventController extends Controller
 {
     public function index()
     {
-        $wedding = session()->get('wedding') ?? 1; //Nanti diganti WHERE AUTH
-
-        if (session()->has('wedding')) {
-            $events = session()->get('wedding')->events;
-        } else {
-            $events = Event::where('wedding_id', $wedding)->get();
-        }
+        $wedding = Auth::user()->wedding->id;
+        $events = Event::where('wedding_id', $wedding)->get();
         $events = $events->sortBy('datetime')->groupBy(function ($i) {
             return $i->date;
         });
         $events->wedding = $wedding;
-        // return json_encode($events);
-        if (request()->ajax()) {
-            $view = view('pages.event.show', compact('events'))->render();
-            return response()->json(['html' => $view]);
-        }
         return view('pages.event.index', compact('events'));
     }
 
@@ -92,7 +78,24 @@ class EventController extends Controller
             return response()->json($event);
         return response()->json($event);
     }
+    public function showAll()
+    {
+        $wedding =  Auth::user()->wedding->id ?? session()->get('wedding');
 
+        if (session()->has('wedding')) {
+            $events = session()->get('wedding')->events;
+        } else {
+            $events = Event::where('wedding_id', $wedding)->get();
+        }
+        $events = $events->sortBy('datetime')->groupBy(function ($i) {
+            return $i->date;
+        });
+        $events->wedding = $wedding;
+        if (request()->ajax()) {
+            $view = view('pages.event.show', compact('events'))->render();
+            return response()->json(['html' => $view]);
+        }
+    }
     public function edit($id)
     {
         //
@@ -211,7 +214,7 @@ class EventController extends Controller
             $events = session()->get('wedding')->events->where('is_main', true)->where('date', $request->date)->all();
             if (empty($events)) {
                 $keys = session()->get('wedding')->events->where('date', $request->date)->keys();
-                foreach($keys as $key){
+                foreach ($keys as $key) {
                     session()->get('wedding')->events->forget($key);
                 }
                 return response()->json(['success' => true, 'events' => $keys]);
