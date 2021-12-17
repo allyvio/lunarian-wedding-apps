@@ -20,8 +20,12 @@ Route::get('/dashboard', function () {
 Route::get('/default-theme', function () {
     return view('themes.default.index');
 });
+Route::get('/wedding/package', function () {
+    return view('pages.package.index');
+});
 
-/** 
+
+/**
  * ------------------------- EVENT -------------------------
  */
 Route::post('event/date','EventController@updateDate')->name('event.date.update');

@@ -25,6 +25,7 @@ class Invitation extends Model
         'opened_at' => null,
         'rsvp_at' => null,
         'deleted_at' => null,
+        // 'phone' => null,
         'count' => 0,
     ];
 
