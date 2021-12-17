@@ -41,9 +41,7 @@ class WeddingController extends Controller
             $request->session()->put('wedding', $wedding);
         }
 
-        /**
-         * Save wedding pada stage couple.
-         * */
+        /** Save wedding pada stage couple. */
         if ($request->stage == 'couple') {
             if ($wedding->calon_pria_photo)
                 Storage::delete('public/couple/' . $wedding->calon_pria_photo);
@@ -66,9 +64,7 @@ class WeddingController extends Controller
                 $wedding->calon_wanita_photo = null;
             }
         }
-        /** 
-         * Menghapus SESSION WEDDING setelah stage terakhir 
-         * */
+        /** Menghapus SESSION WEDDING setelah stage terakhir */
         if ($request->stage == 'theme') {
 
             /** Create Event pertama kali */
@@ -90,9 +86,15 @@ class WeddingController extends Controller
             });
             $events->wedding = $wedding;
             $view = view('pages.event.show', compact('events'))->render();
-            return response()->json([$wedding, 'html' => $view]);
+            return response()->json(['html' => $view]);
         }
-        return session()->all();
+        if ($request->stage == 'event') {
+            return response()->json(['status' => 'success', 'stage' => $request->stage]);
+        }
+        if ($request->stage == 'package') {
+            return response()->json(['status' => 'success', 'stage' => $request->stage]);
+        }
+        return $wedding;
     }
 
     public function storeDB()
