@@ -24,12 +24,7 @@ class InvitationController extends Controller
         [
           'name' => 'required',
           'email' => 'required',
-          'phone' => 'required'
-        ],
-        [
-          'name.required' => 'Nama Tidak Boleh Kosong!',
-          'email.required' => 'Email Tidak Boleh Kosong',
-          'phone.required' => 'No Telp Tidak Boleh Kosong!'
+          'phone' => 'nullable|between:10,12'
         ]
         )->validate();
 
@@ -56,12 +51,7 @@ class InvitationController extends Controller
         [
           'name' => 'required',
           'email' => 'required',
-          'phone' => 'required'
-        ],
-        [
-          'name.required' => 'Nama Tidak Boleh Kosong!',
-          'email.required' => 'Email Tidak Boleh Kosong',
-          'phone.required' => 'No Telp Tidak Boleh Kosong!'
+          'phone' => 'nullable|min:10|max:12'
         ]
         )->validate();
 

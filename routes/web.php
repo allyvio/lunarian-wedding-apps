@@ -28,6 +28,9 @@ Route::prefix('dashboard')->middleware(['auth', 'wedding'])->group(function () {
     Route::put('/invitation', 'InvitationController@updateInvitation')->name('invitation.update');
     Route::delete('/invitation/{id}', 'InvitationController@deleteInvitation')->name('invitation.delete');
 });
+Route::get('/wedding/package', function () {
+    return view('pages.package.index');
+});
 
 /**  ------------------------- EVENT ------------------------- */
 Route::post('event/date', 'EventController@updateDate')->name('event.date.update');

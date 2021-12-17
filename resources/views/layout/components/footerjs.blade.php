@@ -114,7 +114,7 @@
         $('.invalid-feedback').remove()
     });
 
-    // EVENT UPDATE & SHOW HANDLER 
+    // EVENT UPDATE & SHOW HANDLER
     $event_modal.on('show.bs.modal', function(e) {
         var $this = $(this),
             $form = $this.find('form'),
@@ -173,7 +173,7 @@
         })
     })
 
-    // EVENT DATE UPDATE FORM HANDLER 
+    // EVENT DATE UPDATE FORM HANDLER
     $event_date_modal.on('shown.bs.modal', function(e) {
         var date = $(e.relatedTarget).data('event-date'),
             wedding = $(e.relatedTarget).data('wedding')
@@ -203,7 +203,7 @@
         })
     })
 
-    // EVENT CREATE FORM HANDLER 
+    // EVENT CREATE FORM HANDLER
     $event_create_modal.on('shown.bs.modal', function(e) {
         var wedding = $(e.relatedTarget).data('wedding')
         $(this).find('form').data('wedding', wedding)
