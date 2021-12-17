@@ -1,5 +1,5 @@
-@foreach($events as $date =>$event)
 <div id="event-container">
+    @foreach($events as $date =>$event)
     <div class="row">
         <div class="col">
             <h3>{{date('l, d F Y',strtotime($date))}}</h3>
@@ -16,8 +16,9 @@
         </div>
         @endforeach
     </div>
+    <hr class="m-0 mb-4">
+    @endforeach
 </div>
-@endforeach
 <button class="btn btn-outline-primary btn-sm" type="button" data-wedding="{{$events->wedding}}" data-toggle="modal" data-target="#modal-event-create-form"><i class="fas fa-plus"></i> Tambah Hari</button>
 
 @push('modals')
