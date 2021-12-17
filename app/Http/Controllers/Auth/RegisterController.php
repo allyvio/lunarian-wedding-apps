@@ -29,7 +29,14 @@ class RegisterController extends Controller
      *
      * @var string
      */
-    protected $redirectTo = RouteServiceProvider::HOME;
+    protected function redirectPath()
+    {
+        if (session()->has('wedding')) {
+            return session()->get('url.intended');
+        } else {
+            return RouteServiceProvider::HOME;
+        }
+    }
 
     /**
      * Create a new controller instance.
