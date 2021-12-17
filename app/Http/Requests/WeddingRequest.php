@@ -49,6 +49,10 @@ class WeddingRequest extends FormRequest
             $rules += [
                 'theme' => ['required', Rule::in(['default', 'destiny', 'ourlove'])]
             ];
+        if ($stage == 'package')
+            $rules += [
+                'package_id' => ['required', 'exists:packages,id']
+            ];
         return $rules;
     }
 }
