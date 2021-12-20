@@ -120,7 +120,6 @@
     $(document).ready(function() {
         $('.nav-pills > li a[title]').tooltip();
 
-        //Wizard
         $('a[data-toggle="tab"]').on('show.bs.tab', function(e) {
             var $target = $(e.target),
                 $prevTarget = $(e.relatedTarget),
@@ -172,7 +171,6 @@
                     $('#next-step').removeClass('btn-progress disabled')
                 }, 200)
             })
-            // window.location.href = "{{route('wedding.storeDB')}}";
         } else {
             response = formChecker(form)
             setTimeout(function() {
