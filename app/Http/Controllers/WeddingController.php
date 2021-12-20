@@ -4,27 +4,24 @@ namespace App\Http\Controllers;
 
 use App\Http\Requests\WeddingRequest;
 use App\Models\Event;
-use App\Models\Invitation;
 use App\Models\Wedding;
-use App\Rules\Slug;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Session;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Storage;
-use Illuminate\Support\Str;
 
 class WeddingController extends Controller
 {
-    private $themes = ['default'];
-
     public function index()
     {
-        return view('pages.wedding.index');
+        $wedding = Auth::user()->wedding;
+        return view('pages.wedding.index', compact('wedding'));
     }
 
     public function create()
     {
-        // return $step;
+        if (auth()->check() && auth()->user()->wedding)
+            return redirect()->route('dashboard');
         return view('pages.wedding.create');
     }
 
@@ -34,7 +31,6 @@ class WeddingController extends Controller
         $couplePhotos = $request->only(['calon_pria_photo', 'calon_wanita_photo']);
 
         /** Data form wizard tiap stage disimpan dalam SESSION WEDDING */
-        // $wedding = $request->session()->forget('wedding');
         if (empty($request->session()->get('wedding'))) {
             $wedding = new Wedding();
             $wedding->fill($validated);
@@ -45,15 +41,8 @@ class WeddingController extends Controller
             $request->session()->put('wedding', $wedding);
         }
 
-        /**
-         * Save wedding pada stage couple.
-         * */
+        /** Save wedding pada stage couple. */
         if ($request->stage == 'couple') {
-            // $wedding->save();
-
-            /** Update couple photos */
-            // if (!empty($couplePhotos))
-            //     $this->updateCouplePhoto($request, $wedding);
             if ($wedding->calon_pria_photo)
                 Storage::delete('public/couple/' . $wedding->calon_pria_photo);
             if ($request->hasFile('calon_pria_photo')) {
@@ -75,20 +64,12 @@ class WeddingController extends Controller
                 $wedding->calon_wanita_photo = null;
             }
         }
-        /** 
-         * Menghapus SESSION WEDDING setelah stage terakhir 
-         * */
+        /** Menghapus SESSION WEDDING setelah stage terakhir */
         if ($request->stage == 'theme') {
 
             /** Create Event pertama kali */
             if ($wedding->events->count() == 0) {
                 $date = Carbon::now()->addDays(14);
-                // $events = new Event();
-                // $events->fill([
-                //     'title' => 'Resepsi BOSKU',
-                //     'start_date' => $date,
-                //     'is_main' => true
-                // ]);
                 $wedding->events[0] = new Event([
                     'title' => 'Resepsi',
                     'is_main' => true,
@@ -106,11 +87,21 @@ class WeddingController extends Controller
             $events->wedding = $wedding;
             $view = view('pages.event.show', compact('events'))->render();
             return response()->json(['html' => $view]);
-            // return $wedding->events;
-            // $request->session()->forget('wedding');
-            // return $request->session()->get('wedding');
         }
         if ($request->stage == 'event') {
+            return response()->json(['status' => 'success', 'stage' => $request->stage]);
+        }
+        if ($request->stage == 'package') {
+            return response()->json(['status' => 'success', 'stage' => $request->stage]);
+        }
+        return $wedding;
+    }
+
+    public function storeDB()
+    {
+        if (!Auth::user()->wedding && session()->has('wedding')) {
+            $wedding = session()->get('wedding');
+            $wedding->user_id = auth()->user()->id;
             $wedding->save();
             $new_arr = [];
             $prepareEvents = $wedding->events;
@@ -121,33 +112,28 @@ class WeddingController extends Controller
                     'start_date' => $prep->date . ' ' . $prep->start_date,
                     'end_date' => $prep->end_date ? $prep->date . ' ' . $prep->end_date : null,
                     'location' => $prep->location,
-                    'is_main' => $prep->is_main
+                    'is_main' => $prep->is_main,
                 ];
             }
             $wedding->events()->createMany($new_arr);
-            return $request->session()->forget('wedding');
+            session()->forget('wedding');
         }
-        // return $request->all();
-        // return $wedding->events;
-        return session()->all();
+        return redirect()->route('dashboard');
     }
 
     public function show(Wedding $wedding, $code = null)
     {
+        $wedding->events = $wedding->events->sortBy('datetime');
         $main_event = $wedding->events->where('is_main', true)->first();
         $wedding->main_date = $main_event->datetime;
         $wedding->calon_wanita_photo = $wedding->calon_wanita_photo ?? 'bride-default.svg';
         $wedding->calon_pria_photo = $wedding->calon_pria_photo ?? 'groom-default.svg';
         $theme = $wedding->theme;
         if ($code) {
-            // $wedding->load(['invitations' => function ($query) use ($invitation) {
-            //     $query->where('code', '=', $invitation);
-            // }]);
             $wedding->invitation = InvitationController::show($wedding->id, $code);
             if (!$wedding->invitation)
                 return redirect()->route('wedding.page', $wedding)->with('error', 'Invitation not found');
         }
-        // dd($wedding->invitation);
         return view('themes.' . $theme . '.index', compact('wedding'));
     }
 

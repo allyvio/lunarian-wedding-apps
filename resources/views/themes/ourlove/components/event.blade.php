@@ -13,7 +13,7 @@
                     <h3>{{$event->title}}</h3>
                 </div>
                 <div class="event-info">
-                    <div class="event-date"><i class="fa fa-calendar"></i> {{date('l, d F Y',strtotime($wedding->main_date))}}</div>
+                    <div class="event-date"><i class="fa fa-calendar"></i> {{date('l, d F Y',strtotime($event->date))}}</div>
                     <div class="event-time"><i class="fa fa-clock-o"></i> {{$event->start_date}} - {{$event->end_date ?? 'selesai'}}</div>
                     <div class="event-address"><i class="fa fa-map-marker"></i> {{$event->location ?? 'not set'}}</div>
                 </div>

@@ -17,18 +17,23 @@
                     </a>
                 </li>
                 <li class="nav-item text-center m-0">
-                    <a title="Pasangan" class="nav-link rounded-circle disabled" id="couple-tab" data-progress="33" data-toggle="tab" href="#tabs-couple" role="tab" aria-controls="tabs-couple" aria-selected="false">
+                    <a title="Pasangan" class="nav-link rounded-circle disabled" id="couple-tab" data-progress="25" data-toggle="tab" href="#tabs-couple" role="tab" aria-controls="tabs-couple" aria-selected="false">
                         <span class="nav-link-icon d-block"><i class="fa fa-heart"></i></span>
                     </a>
                 </li>
                 <li class="nav-item text-center m-0">
-                    <a title="Tema" class="nav-link rounded-circle disabled" id="theme-tab" data-progress="66" data-toggle="tab" href="#tabs-theme" role="tab" aria-controls="tabs-theme" aria-selected="false">
+                    <a title="Tema" class="nav-link rounded-circle disabled" id="theme-tab" data-progress="50" data-toggle="tab" href="#tabs-theme" role="tab" aria-controls="tabs-theme" aria-selected="false">
                         <span class="nav-link-icon d-block"><i class="fas fa-clone"></i></span>
                     </a>
                 </li>
                 <li class="nav-item text-center m-0">
-                    <a title="Acara" class="nav-link rounded-circle disabled" id="event-tab" data-progress="99" data-toggle="tab" href="#tabs-event" role="tab" aria-controls="tabs-event" aria-selected="false">
+                    <a title="Acara" class="nav-link rounded-circle disabled" id="event-tab" data-progress="75" data-toggle="tab" href="#tabs-event" role="tab" aria-controls="tabs-event" aria-selected="false">
                         <span class="nav-link-icon d-block"><i class="fa fa-calendar"></i></span>
+                    </a>
+                </li>
+                <li class="nav-item text-center m-0">
+                    <a title="Paket" class="nav-link rounded-circle disabled" id="package-tab" data-progress="99" data-toggle="tab" href="#tabs-package" role="tab" aria-controls="tabs-package" aria-selected="false">
+                        <span class="nav-link-icon d-block"><i class="fa fa-cube"></i></span>
                     </a>
                 </li>
             </ul>
@@ -44,7 +49,7 @@
                     @include('pages.wedding.forms.couple')
                 </div>
                 <div class="tab-pane fade" id="tabs-theme" role="tabpanel" aria-labelledby="theme-tab" data-stage="theme">
-                    <form id="theme-form" action="{{route('wedding.store')}}" data-stage="theme">
+                    <form id="theme-form">
                         <div id="theme-selection">
                             <div class="form-group row">
                                 <div class="col-md-4">
@@ -80,6 +85,9 @@
                 </div>
                 <div class="tab-pane fade" id="tabs-event" role="tabpanel" aria-labelledby="event-tab" data-stage="event">
                     <div id="events-container"></div>
+                </div>
+                <div class="tab-pane fade" id="tabs-package" role="tabpanel" aria-labelledby="package-tab" data-stage="package">
+                    @include('pages.package.forms.package')
                 </div>
             </div>
         </div>
@@ -129,7 +137,6 @@
                 return false;
             }
         });
-
         $("#next-step").click(function(e) {
             var $active = $('.wizard .nav-pills li .active');
             nextTab($active);
@@ -146,24 +153,36 @@
         var tabpanel = $('#' + $(elem).attr('aria-controls')),
             form = tabpanel.find('form')
 
-        if (tabpanel.next().data('stage') == 'event')
-            $.get("{{route('event.index')}}", function(data) {
-                $('#events-container').html(data.html)
-            });
+        // if (tabpanel.next().data('stage') == 'event')
+        //     $.get("{{route('event.showAll')}}", function(data) {
+        //         $('#events-container').html(data.html)
+        //     });
+
         if (tabpanel.data('stage') == 'event') {
             $('#next-step').addClass('btn-progress disabled')
-            $.post("{{route('wedding.store')}}", {
-                stage: 'event',
-            }, function(res) {
-                window.location.href = "{{route('dashboard')}}";
-            }).always(function(er) {
-                $('#next-step').removeClass('btn-progress disabled')
+            var event_res = $.post("{{route('wedding.store')}}", {
+                stage: 'event'
+            }, function(data) {
+                console.log(data);
+            });
+            event_res.done(function() {
+                $(elem).parent().next().find('a[data-toggle="tab"]').removeClass('disabled').tab('show');
+            }).always(a => {
+                setTimeout(function() {
+                    $('#next-step').removeClass('btn-progress disabled')
+                }, 200)
             })
+            // window.location.href = "{{route('wedding.storeDB')}}";
         } else {
             response = formChecker(form)
             setTimeout(function() {
-                response.done(f => {
+                response.done(res => {
+                    console.log(res);
                     $(elem).parent().next().find('a[data-toggle="tab"]').removeClass('disabled').tab('show');
+                    if (res.html)
+                        $('#events-container').html(res.html)
+                    if (res.stage == 'package')
+                        window.location.href = "{{route('wedding.storeDB')}}";
                 }).fail(function(a, b, c) {
                     if (a.status === 422) {
                         $.each(a.responseJSON.errors, function(k, v) {
@@ -172,11 +191,8 @@
                             else
                                 $('input[name="' + k + '"]').addClass('is-invalid').after('<div class="invalid-feedback">' + v + '</div>');
                         });
-
                     }
                 }).always(a => {
-                    if (a.html)
-                        $('#events-container').html(a.html)
                     $('#next-step').removeClass('btn-progress disabled')
                 })
             }, 200)
@@ -191,7 +207,6 @@
         $('.is-invalid').removeClass('is-invalid')
         $('.invalid-feedback').remove()
         var $form = $(form),
-            url = $form.attr('action'),
             fd = new FormData($form[0])
         fd.append('stage', $form.parent().data('stage'))
         var ajax = $.ajax({

@@ -19,7 +19,6 @@
 <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 <!-- Argon JS -->
 <script src="{{asset('js/argon.js')}}"></script>
-<!-- will be moved -->
 <script>
     $.ajaxSetup({
         headers: {
@@ -27,7 +26,7 @@
         }
     });
 </script>
-
+<!-- CRUD EVENT (will be moved) -->
 <script type="text/javascript">
     var $event_modal = $('#modal-event-form'),
         $event_date_modal = $('#modal-event-date-form'),
@@ -252,7 +251,7 @@
     })
 
     function reloadEvents(container) {
-        $.get("{{route('event.index')}}", function(data) {
+        $.get("{{route('event.showAll')}}", function(data) {
             container.html(data.html)
         });
     }
