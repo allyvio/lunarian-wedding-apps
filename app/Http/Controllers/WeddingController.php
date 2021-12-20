@@ -142,41 +142,53 @@ class WeddingController extends Controller
         //
     }
 
-    public function update(Request $request, Wedding $wedding)
+    public function update(WeddingRequest $request, Wedding $wedding)
     {
-        //
+        $wedding->update($request->validated());
+        // $this->updateCouplePhoto($request, $wedding);
+        return $request->validated();
     }
 
     public function updateCouplePhoto(Request $request, Wedding $wedding)
     {
-        if ($request->hasFile('calon_pria_photo')) {
-            if ($wedding->calon_pria_photo)
-                Storage::delete('public/couple/' . $wedding->calon_pria_photo);
-            $file = $request->file('calon_pria_photo');
-            $fullpath = $file->store('public/couple');
-            $filename = pathinfo($fullpath)['basename'];
-            $wedding->update([
-                'calon_pria_photo' => $filename
-            ]);
-        } else {
-            $wedding->update([
-                'calon_pria_photo' => null
-            ]);
-        }
-        if ($request->hasFile('calon_wanita_photo')) {
-            if ($wedding->calon_wanita_photo)
-                Storage::delete('public/couple/' . $wedding->calon_wanita_photo);
-            $file = $request->file('calon_wanita_photo');
-            $fullpath = $file->store('public/couple');
-            $filename = pathinfo($fullpath)['basename'];
-            $wedding->update([
-                'calon_wanita_photo' => $filename
-            ]);
-        } else {
-            $wedding->update([
-                'calon_wanita_photo' => null
-            ]);
-        }
+        // return $request->all();
+        $file = $request->file('calon_pria_photo');
+        $fullpath = $file->store('public/couple');
+        $filename = pathinfo($fullpath)['basename'];
+        $wedding->update([
+            'calon_pria_photo' => $filename
+        ]);
+        return response()->json(['success' => 'Foto berhasil diperbarui.']);
+        // if ($request->hasFile('calon_pria_photo')) {
+        //     if ($wedding->calon_pria_photo)
+        //         Storage::delete('public/couple/' . $wedding->calon_pria_photo);
+        //     $file = $request->file('calon_pria_photo');
+        //     $fullpath = $file->store('public/couple');
+        //     $filename = pathinfo($fullpath)['basename'];
+        //     $wedding->update([
+        //         'calon_pria_photo' => $filename
+        //     ]);
+        //     return response()->json(['success' => 'Foto berhasil diperbarui.']);
+        // } else {
+        //     $wedding->update([
+        //         'calon_pria_photo' => null
+        //     ]);
+        // }
+        // if ($request->hasFile('calon_wanita_photo')) {
+        //     if ($wedding->calon_wanita_photo)
+        //         Storage::delete('public/couple/' . $wedding->calon_wanita_photo);
+        //     $file = $request->file('calon_wanita_photo');
+        //     $fullpath = $file->store('public/couple');
+        //     $filename = pathinfo($fullpath)['basename'];
+        //     $wedding->update([
+        //         'calon_wanita_photo' => $filename
+        //     ]);
+        //     return response()->json(['success' => 'Foto berhasil diperbarui.']);
+        // } else {
+        //     $wedding->update([
+        //         'calon_wanita_photo' => null
+        //     ]);
+        // }
     }
 
     public function updateTheme(Request $request, Wedding $wedding)

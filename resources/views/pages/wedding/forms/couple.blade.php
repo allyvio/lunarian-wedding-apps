@@ -25,7 +25,7 @@
     </div>
 </form>
 @push('scripts')
-<script>
+<!-- <script>
     function readURL(input) {
         var parent = $(input).parent(),
             preview = parent.find('.input-preview-label')
@@ -56,5 +56,5 @@
         input.prop('files', e.originalEvent.dataTransfer.files);
         input.trigger('change');
     });
-</script>
+</script> -->
 @endpush

@@ -21,11 +21,6 @@ class Invitation extends Model
         'deleted_at'
     ];
     protected $attributes = [
-        'invited_at' => null,
-        'opened_at' => null,
-        'rsvp_at' => null,
-        'deleted_at' => null,
-        // 'phone' => null,
         'count' => 0,
     ];
 

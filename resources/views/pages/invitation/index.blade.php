@@ -136,9 +136,9 @@
               <i class="fas fa-trash"></i>
             </a>
             @if($data->phone != "")
-              <a href="https://api.whatsapp.com/send?phone={{preg_replace('/^0/', '62', $data->phone)}}&text={{$data->name}}%20yang%20terhormat%2C%0AAnda%20diundang%20ke%20pernikahan%20kami!%0AMohon%20respon%20RSVP%20Anda%20dan%20tinggalkan%20komentar%20Anda%20di%20http://127.0.0.1:8000/rara-rere%2F123456" class="btn btn-icon btn-outline-success btn-sm" data-toggle="tooltip" data-original-title="Whatsapp">
-                <i class="ni ni-chat-round"></i>
-              </a>
+            <a target="_blank" href="https://api.whatsapp.com/send?phone={{preg_replace('/^0/', '62', $data->phone)}}&text={{$data->name}}%20yang%20terhormat%2C%0AAnda%20diundang%20ke%20pernikahan%20kami!%0AMohon%20respon%20RSVP%20Anda%20dan%20tinggalkan%20komentar%20Anda%20di%20http://127.0.0.1:8000/rara-rere%2F123456" class="btn btn-icon btn-outline-success btn-sm" data-toggle="tooltip" data-original-title="Whatsapp">
+              <i class="ni ni-chat-round"></i>
+            </a>
             @endif
           </td>
         </tr>
@@ -162,6 +162,7 @@
       url: "{{route('invitation.add')}}",
       type: "POST",
       data: {
+        wedding_id:'{{Auth::user()->wedding->id}}',
         name: name.val(),
         email: email.val(),
         phone: phone.val(),
@@ -211,7 +212,9 @@
   });
   //Edit Invitation
   function editInvitation(id) {
-    $.get('/invitation/' + id, function(invitation) {
+    var url = '{{route("invitation.getbyid",":id")}}'
+    url = url.replace(':id', id)
+    $.get(url, function(invitation) {
       $("#id").val(invitation.id);
       $("#name-update").val(invitation.name);
       $("#email-update").val(invitation.email);
@@ -293,8 +296,10 @@
       cancelButtonText: "Batal"
     }).then((result) => {
       if (result.isConfirmed) {
+        var url = '{{route("invitation.delete",":id")}}'
+        url = url.replace(':id', id)
         $.ajax({
-          url: '/invitation/' + id,
+          url: url,
           type: 'DELETE',
           data: {
             _token: $("input[name=_token]").val()
