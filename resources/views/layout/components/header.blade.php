@@ -22,8 +22,43 @@
 
 </head>
 <style>
-    .error {
-        color: red;
-        font-size: 12px;
-    }
+  .error {
+    color: red;
+    font-size: 12px;
+  }
+  .input-preview-label {
+    text-align: center;
+    line-height: 200px;
+    width: 200px;
+    height: 200px;
+    border: 2px dashed #ddd;
+    border-radius: 3px;
+    position: relative;
+    overflow: hidden;
+    background-color: #ffffff;
+    color: lightgrey;
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center center;
+  }
+
+  .input-preview-label:hover,
+  .input-preview-label.is-dragover {
+    border-color: #0275d8;
+    color: #0275d8;
+    cursor: pointer;
+    filter: brightness(90%);
+  }
+
+  .input-preview-label.is-invalid {
+    border-color: red;
+  }
+
+  #theme-selection img {
+    object-fit: cover;
+    height: 150px;
+    width: 300px;
+    object-position: bottom;
+    cursor: pointer;
+  }
 </style>

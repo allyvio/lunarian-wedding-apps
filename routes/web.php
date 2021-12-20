@@ -17,6 +17,7 @@ Route::prefix('dashboard')->middleware(['auth', 'wedding'])->group(function () {
     Route::resource('/wedding', 'WeddingController')->except([
         'show', 'store', 'create'
     ]);
+    Route::put('/wedding/update-photos/{wedding}','WeddingController@updateCouplePhoto')->name('wedding.update.photos');
 
     /**  ------------------------- EVENT ------------------------- */
     Route::get('/event', 'EventController@index')->name('event.index');

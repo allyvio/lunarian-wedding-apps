@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Invitation;
 use App\Models\Wedding;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Validation\Rule;
 use Illuminate\Support\Str;
 use Validator;
@@ -14,7 +15,7 @@ class InvitationController extends Controller
 {
     public function index()
     {
-        $invitations = Invitation::orderBy('id','DESC')->get();
+        $invitations = Auth::user()->wedding->invitations;
         return view('pages.invitation.index', compact('invitations'));
     }
 
@@ -30,7 +31,7 @@ class InvitationController extends Controller
 
         $invitation = new Invitation;
         $invitation->code = Str::random(6);
-        $invitation->wedding_id = 1;
+        $invitation->wedding_id = $request->wedding_id;
         $invitation->name = $request->name;
         $invitation->email = $request->email;
         $invitation->phone = $request->phone;
@@ -102,7 +103,6 @@ class InvitationController extends Controller
             $view = view('themes.' . $theme . '.components.rsvp.response', compact('wedding'))->render();
             return response()->json(['html' => $view]);
         }
-        // return response()->json(['wedding' => $wedding, 'request' => $request->all()]);
     }
 
     public function count(Invitation $invitation, Request $request)
@@ -115,6 +115,5 @@ class InvitationController extends Controller
         if ($request->ajax()) {
             return response()->json(['count' => $invitation->count]);
         }
-        // return $request->all();
     }
 }

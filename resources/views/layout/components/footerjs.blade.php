@@ -256,4 +256,38 @@
         });
     }
 </script>
+
+<script>
+    function readURL(input) {
+        var parent = $(input).parent(),
+            preview = parent.find('.input-preview-label')
+        preview.removeClass('is-invalid')
+        if (input.files && input.files[0]) {
+            var reader = new FileReader();
+            reader.onload = function(e) {
+                preview.css('background-image', 'url(' + e.target.result + ')');
+            }
+            reader.readAsDataURL(input.files[0]);
+            return reader;
+        } else {
+            preview.css('background-image', '');
+        }
+    }
+
+    $('.input-preview>input[type="file"]').on('change', function(e) {
+        readURL(this)
+    })
+    $('.input-preview-label').on('drag dragstart dragend dragover dragenter dragleave drop', function(e) {
+        e.preventDefault();
+        e.stopPropagation();
+    }).on('dragover dragenter', function() {
+        $(this).addClass('is-dragover');
+    }).on('dragleave dragend drop', function() {
+        $(this).removeClass('is-dragover');
+    }).on('drop', function(e) {
+        var input = $('#' + $(this).prop('for'))
+        input.prop('files', e.originalEvent.dataTransfer.files);
+        input.trigger('change');
+    });
+</script>
 @stack('scripts')
