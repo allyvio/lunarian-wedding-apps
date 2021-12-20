@@ -17,7 +17,7 @@ class InvitationController extends Controller
 {
     public function index()
     {
-        $invitations = Invitation::where('user_id', Auth::user()->id)->orderBy('id','DESC')->get();
+        $invitations = Auth::user()->wedding->invitations;
         return view('pages.invitation.index', compact('invitations'));
     }
 
@@ -31,26 +31,15 @@ class InvitationController extends Controller
         ]
         )->validate();
         
-        // $code = Invitation::where('user_id', Auth::user()->id)->get();
-        $packet = Wedding::where('user_id', Auth::user()->id)->first()->package_id;
-		$limit = Package::findOrFail($packet)->count;
-        // return response()->json($limit);
-        $count_invitation = Invitation::where('user_id', Auth::user()->id)->get();
-        if (count($count_invitation) < $limit) {
-            $invitation = new Invitation;
-            $invitation->code = Str::random(6);
-            $invitation->wedding_id = Wedding::where('user_id', Auth::user()->id)->first()->id;
-            $invitation->user_id = auth()->user()->id;
-            $invitation->name = $request->name;
-            $invitation->email = $request->email;
-            $invitation->phone = $request->phone;
-            $invitation->save();
-            Alert::success('Berhasil', 'Data Undangan Berhasil Di Tambahkan');
-            return response()->json('Berhasil');
-        }else{
-            Alert::error('Gagal', 'Undangan Melebihi Batas');
-            return response()->json('Berhasil');
-        }
+        $invitation = new Invitation;
+        $invitation->code = Str::random(6);
+        $invitation->wedding_id = $request->wedding_id;
+        $invitation->name = $request->name;
+        $invitation->email = $request->email;
+        $invitation->phone = $request->phone;
+        $invitation->save();
+        Alert::success('Berhasil', 'Data Undangan Berhasil Di Tambahkan');
+        return response()->json($invitation);
 
     }
 
