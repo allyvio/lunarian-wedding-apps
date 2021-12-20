@@ -4,17 +4,20 @@ namespace App\Http\Controllers;
 
 use App\Models\Invitation;
 use App\Models\Wedding;
+use App\Models\Package;
 use Illuminate\Http\Request;
 use Illuminate\Validation\Rule;
 use Illuminate\Support\Str;
 use Validator;
 use RealRashid\SweetAlert\Facades\Alert;
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Database\Eloquent\ModelNotFoundException;
 
 class InvitationController extends Controller
 {
     public function index()
     {
-        $invitations = Invitation::orderBy('id','DESC')->get();
+        $invitations = Invitation::where('user_id', Auth::user()->id)->orderBy('id','DESC')->get();
         return view('pages.invitation.index', compact('invitations'));
     }
 
@@ -27,16 +30,28 @@ class InvitationController extends Controller
           'phone' => 'nullable|between:10,12'
         ]
         )->validate();
+        
+        // $code = Invitation::where('user_id', Auth::user()->id)->get();
+        $packet = Wedding::where('user_id', Auth::user()->id)->first()->package_id;
+		$limit = Package::findOrFail($packet)->count;
+        // return response()->json($limit);
+        $count_invitation = Invitation::where('user_id', Auth::user()->id)->get();
+        if (count($count_invitation) < $limit) {
+            $invitation = new Invitation;
+            $invitation->code = Str::random(6);
+            $invitation->wedding_id = Wedding::where('user_id', Auth::user()->id)->first()->id;
+            $invitation->user_id = auth()->user()->id;
+            $invitation->name = $request->name;
+            $invitation->email = $request->email;
+            $invitation->phone = $request->phone;
+            $invitation->save();
+            Alert::success('Berhasil', 'Data Undangan Berhasil Di Tambahkan');
+            return response()->json('Berhasil');
+        }else{
+            Alert::error('Gagal', 'Undangan Melebihi Batas');
+            return response()->json('Berhasil');
+        }
 
-        $invitation = new Invitation;
-        $invitation->code = Str::random(6);
-        $invitation->wedding_id = 1;
-        $invitation->name = $request->name;
-        $invitation->email = $request->email;
-        $invitation->phone = $request->phone;
-        $invitation->save();
-        Alert::success('Berhasil', 'Data Undangan Berhasil Di Tambahkan');
-        return response()->json($invitation);
     }
 
     public function getInvitationById($id)
@@ -66,7 +81,7 @@ class InvitationController extends Controller
 
     public function deleteInvitation($id)
     {
-        $invitation = Invitation::find($id);
+        $invitation = Invitation::findOrFail($id);
         $invitation->delete();
         Alert::success('Berhasil', 'Data Undangan Berhasil Di Hapus');
         return response()->json();

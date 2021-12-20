@@ -26,15 +26,34 @@
   <!-- Card header -->
   <div class="card-header border-0">
     <div class="row">
-      <div class="col-6">
-        <h3 class="mb-0">Data Tabel Undangan</h3>
-      </div>
-      <div class="col-6 text-right">
         <!-- Button trigger modal -->
-        <button type="button" class="btn btn-outline-primary" data-toggle="modal" data-target="#invitationModal">
+        <button type="button" class="btn btn-outline-primary btn-sm" data-toggle="modal" data-target="#invitationModal">
           <span class="btn-inner--icon"><i class="fas fa-plus"></i></span>
           <span class="btn-inner--text">Tambah</span>
         </button>
+        <button type="button" class="btn btn-outline-default btn-sm"data-toggle="modal" data-target="#ImportModal">
+          <span class="btn-inner--icon"><i class="fas fa-file-import"></i></span>
+          <span class="btn-inner--text">Import</span>
+        </button>
+    </div>
+  </div>
+  <!-- Modal Import -->
+  <div class="modal fade" id="ImportModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">
+          ...
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+          <button type="button" class="btn btn-primary">Save changes</button>
+        </div>
       </div>
     </div>
   </div>
@@ -167,15 +186,18 @@
         phone: phone.val(),
         _token: _token.val()
       },
-      success: function(response) {
-        Swal.fire({
+      beforeSend: function(){
+         Swal.fire({
           title: 'Data sedang diproses',
           timerProgressBar: true,
           didOpen: () => {
             Swal.showLoading()
           }
         });
+      },
+      success: function(response) {
         location.reload();
+        // console.log(response);
       }
     });
   })
