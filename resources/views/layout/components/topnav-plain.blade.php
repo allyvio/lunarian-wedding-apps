@@ -33,10 +33,15 @@
             <span class="nav-link-inner--text">Wedding</span>
           </a>
         </li>
+        <li class="nav-item">
+          <a href="{{route('wedding.create')}}" class="nav-link">
+            <span class="nav-link-inner--text">Package</span>
+          </a>
+        </li>
       </ul>
       <ul class="navbar-nav align-items-lg-center ml-lg-auto">
         <li class="nav-item">
-          <a href="{{route('register')}}" class="nav-link text-center font-weight-bold my-3 my-lg-0">
+          <a href="{{route('register')}}" class="nav-link text-center font-weight-bold my-2 my-lg-0">
             <span class="nav-link-inner--text">Register</span>
           </a>
         </li>

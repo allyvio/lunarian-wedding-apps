@@ -17,7 +17,8 @@ Route::prefix('dashboard')->middleware(['auth', 'wedding'])->group(function () {
     Route::resource('/wedding', 'WeddingController')->except([
         'show', 'store', 'create'
     ]);
-    Route::put('/wedding/update-photos/{wedding}','WeddingController@updateCouplePhoto')->name('wedding.update.photos');
+    Route::post('/wedding/update-photos/{wedding}','WeddingController@updateCouplePhoto')->name('wedding.update.photos');
+    Route::delete('/wedding/delete-photos/{wedding}','WeddingController@destroyCouplePhoto')->name('wedding.destroy.photos');
 
     /**  ------------------------- EVENT ------------------------- */
     Route::get('/event', 'EventController@index')->name('event.index');

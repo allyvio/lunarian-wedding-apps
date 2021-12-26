@@ -12,10 +12,9 @@
 <script src="{{asset('vendor/dropzone/dist/min/dropzone.min.js')}}"></script>
 <script src="{{asset('vendor/bootstrap-notify/bootstrap-notify.min.js')}}"></script>
 <script src="{{asset('vendor/izitoast/izitoast.min.js')}}"></script>
+<script src="{{asset('vendor/owlcarousel/owl.carousel.min.js')}}"></script>
 <script src="{{asset('vendor/bootstrap-datepicker/dist/js/bootstrap-datepicker.min.js')}}"></script>
-<!-- validasi -->
 <script src="https://cdn.jsdelivr.net/jquery.validation/1.16.0/jquery.validate.min.js"></script>
-<!-- sweetalert -->
 <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 <!-- Argon JS -->
 <script src="{{asset('js/argon.js')}}"></script>
@@ -255,39 +254,5 @@
             container.html(data.html)
         });
     }
-</script>
-
-<script>
-    function readURL(input) {
-        var parent = $(input).parent(),
-            preview = parent.find('.input-preview-label')
-        preview.removeClass('is-invalid')
-        if (input.files && input.files[0]) {
-            var reader = new FileReader();
-            reader.onload = function(e) {
-                preview.css('background-image', 'url(' + e.target.result + ')');
-            }
-            reader.readAsDataURL(input.files[0]);
-            return reader;
-        } else {
-            preview.css('background-image', '');
-        }
-    }
-
-    $('.input-preview>input[type="file"]').on('change', function(e) {
-        readURL(this)
-    })
-    $('.input-preview-label').on('drag dragstart dragend dragover dragenter dragleave drop', function(e) {
-        e.preventDefault();
-        e.stopPropagation();
-    }).on('dragover dragenter', function() {
-        $(this).addClass('is-dragover');
-    }).on('dragleave dragend drop', function() {
-        $(this).removeClass('is-dragover');
-    }).on('drop', function(e) {
-        var input = $('#' + $(this).prop('for'))
-        input.prop('files', e.originalEvent.dataTransfer.files);
-        input.trigger('change');
-    });
 </script>
 @stack('scripts')
