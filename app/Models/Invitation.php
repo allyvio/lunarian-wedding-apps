@@ -18,8 +18,10 @@ class Invitation extends Model
         'invited_at',
         'opened_at',
         'rsvp_at',
-        'deleted_at'
+        'deleted_at',
     ];
+
+    // protected $guarded = [];
     protected $attributes = [
         'count' => 0,
     ];

@@ -4,19 +4,24 @@ namespace App\Http\Controllers;
 
 use App\Models\Invitation;
 use App\Models\Wedding;
+use App\Models\Package;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Validation\Rule;
 use Illuminate\Support\Str;
 use Validator;
+use Storage;
 use RealRashid\SweetAlert\Facades\Alert;
+use Maatwebsite\Excel\Facades\Excel;
+use App\Imports\UsersImport;
 
 class InvitationController extends Controller
 {
     public function index()
     {
-        $invitations = Auth::user()->wedding->invitations;
-        return view('pages.invitation.index', compact('invitations'));
+        $wedding = Auth::user()->wedding;
+        $invitations = $wedding->invitations;
+        return view('pages.invitation.index', compact('wedding','invitations'));
     }
 
     public function addInvitation(Request $request)
@@ -24,20 +29,28 @@ class InvitationController extends Controller
         \Validator::make($request->all(),
         [
           'name' => 'required',
-          'email' => 'required',
-          'phone' => 'nullable|between:10,12'
+          'email' => 'required|email',
+          'phone' => 'required|between:10,12'
         ]
         )->validate();
 
-        $invitation = new Invitation;
-        $invitation->code = Str::random(6);
-        $invitation->wedding_id = $request->wedding_id;
-        $invitation->name = $request->name;
-        $invitation->email = $request->email;
-        $invitation->phone = $request->phone;
-        $invitation->save();
-        Alert::success('Berhasil', 'Data Undangan Berhasil Di Tambahkan');
-        return response()->json($invitation);
+        $packet = Wedding::where('user_id', Auth::user()->id)->first()->package_id;
+		$limit = Package::findOrFail($packet)->count;
+        $count_invitation = Invitation::where('wedding_id', Auth::user()->id)->get();
+        if (count($count_invitation) < $limit) {
+            $invitation = new Invitation;
+            $invitation->code = Str::random(6);
+            $invitation->wedding_id = Wedding::where('user_id', Auth::user()->id)->first()->id;
+            $invitation->name = $request->name;
+            $invitation->email = $request->email;
+            $invitation->phone = $request->phone;
+            $invitation->save();
+            Alert::success('Berhasil', 'Data Undangan Berhasil Di Tambahkan');
+            return response()->json('Berhasil');
+        }else{
+            Alert::error('Gagal', 'Undangan Melebihi Batas');
+            return response()->json('Berhasil');
+        }
     }
 
     public function getInvitationById($id)
@@ -51,8 +64,8 @@ class InvitationController extends Controller
         \Validator::make($request->all(),
         [
           'name' => 'required',
-          'email' => 'required',
-          'phone' => 'nullable|min:10|max:12'
+          'email' => 'required|email',
+          'phone' => 'required|between:10,12'
         ]
         )->validate();
 
@@ -67,10 +80,57 @@ class InvitationController extends Controller
 
     public function deleteInvitation($id)
     {
-        $invitation = Invitation::find($id);
+        $invitation = Invitation::findOrFail($id);
         $invitation->delete();
         Alert::success('Berhasil', 'Data Undangan Berhasil Di Hapus');
         return response()->json();
+    }
+
+    public function store(Request $request)
+    {   
+        $packet = Wedding::where('user_id', Auth::user()->id)->first()->package_id; 
+        $limit = Package::findOrFail($packet)->count;
+        $count_invitation = Invitation::where('wedding_id', Auth::user()->id)->get();
+        $invitation = $request->file('field');
+        $row = -1;
+        if (($handle = fopen($invitation, "r")) !== FALSE) {
+            while (($data = fgetcsv($handle, 1000, ",")) !== FALSE) {
+            $num = count($data);
+            $row++;
+            }
+        fclose($handle);
+        }
+        if (count($count_invitation) < $limit) {
+            if ($row <= $limit) {
+                if (count($count_invitation) == 0) {
+                    (new UsersImport)->import($invitation);
+                    Alert::success('Berhasil', 'Data Undangan Berhasil Di Tambah');
+                    return back();
+                } else{
+                    Alert::error('Gagal', 'Kosongkan Data Undangan Terlebih Dahulu!');
+                    return back();
+                }
+                
+            } else {
+                Alert::error('Gagal', 'Undangan Melebihi Batas');
+                return back();
+            }
+
+        } else {
+            Alert::error('Gagal', 'Undangan Melebihi Batas');
+            return back();
+        }
+    }
+
+    public function download()
+    {
+        try {
+            return Storage::disk('local')->download('public/csv/digital_invitation.csv');
+            return back();
+        } catch (\Throwable $th) {
+            Alert::error('Gagal', 'Coba Lagi');
+            return back();
+        }
     }
 
     public static function show($wedding_id, $code)

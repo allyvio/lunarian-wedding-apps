@@ -26,15 +26,43 @@
   <!-- Card header -->
   <div class="card-header border-0">
     <div class="row">
-      <div class="col-6">
-        <h3 class="mb-0">Data Tabel Undangan</h3>
-      </div>
-      <div class="col-6 text-right">
         <!-- Button trigger modal -->
-        <button type="button" class="btn btn-outline-primary" data-toggle="modal" data-target="#invitationModal">
+        <button type="button" class="btn btn-outline-primary btn-sm" data-toggle="modal" data-target="#invitationModal">
           <span class="btn-inner--icon"><i class="fas fa-plus"></i></span>
           <span class="btn-inner--text">Tambah</span>
         </button>
+        <button type="button" class="btn btn-outline-default btn-sm"data-toggle="modal" data-target="#ImportModal">
+          <span class="btn-inner--icon"><i class="fas fa-file-import"></i></span>
+          <span class="btn-inner--text">Import</span>
+        </button>
+        <a href="{{route('download.file')}}"class="btn btn-default" data-toggle="tooltip" data-original-title="Unduh File CSV"><i class="fas fa-print"></i></a>
+    </div>
+  </div>
+  <!-- Modal Import -->
+  <div class="modal fade" id="ImportModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="exampleModalLabel">Tambah Data Undangan</h5>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">
+          <form id="invitationImport" action="{{route('import.store')}}" method="POST" enctype="multipart/form-data">
+            @csrf
+            <div class="custom-file">
+              <!-- <input type="file" class="custom-file-input" id="customFileLang" lang="en">
+              <label class="custom-file-label" for="customFileLang">Masukkan File Excel</label> -->
+              <label for="field">PILIH FILE</label>
+              <input type="file" id="field" name="field" class="form-control" required>
+            </div>
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-secondary" data-dismiss="modal">Kembali</button>
+            <button type="submit" class="btn btn-primary">Import</button>
+          </div>
+        </form>
       </div>
     </div>
   </div>
@@ -109,7 +137,7 @@
   </div>
   <!-- Light table -->
   <div class="table-responsive">
-    <table id="invitationTable" class="table align-items-center table-flush table-striped">
+    <table class="table table-flush" id="datatable-basic">
       <thead class="thead-light">
         <tr>
           <th>Nama</th>
@@ -136,7 +164,7 @@
               <i class="fas fa-trash"></i>
             </a>
             @if($data->phone != "")
-            <a target="_blank" href="https://api.whatsapp.com/send?phone={{preg_replace('/^0/', '62', $data->phone)}}&text={{$data->name}}%20yang%20terhormat%2C%0AAnda%20diundang%20ke%20pernikahan%20kami!%0AMohon%20respon%20RSVP%20Anda%20dan%20tinggalkan%20komentar%20Anda%20di%20http://127.0.0.1:8000/rara-rere%2F123456" class="btn btn-icon btn-outline-success btn-sm" data-toggle="tooltip" data-original-title="Whatsapp">
+            <a target="_blank" href="https://api.whatsapp.com/send?phone={{preg_replace('/^0/', '62', $data->phone)}}&text={{$data->name}}%20yang%20terhormat%2C%0AAnda%20diundang%20ke%20pernikahan%20kami!%0AMohon%20respon%20RSVP%20Anda%20dan%20tinggalkan%20komentar%20Anda%20di%20http://127.0.0.1:8000/{{$wedding->slug}}%0Akode%20invitations%20%3A%20{{$data->code}}" class="btn btn-icon btn-outline-success btn-sm" data-toggle="tooltip" data-original-title="Whatsapp">
               <i class="ni ni-chat-round"></i>
             </a>
             @endif
@@ -169,7 +197,7 @@
         _token: _token.val()
       },
       success: function(response) {
-        Swal.fire({
+         Swal.fire({
           title: 'Data sedang diproses',
           timerProgressBar: true,
           didOpen: () => {
@@ -184,13 +212,14 @@
     rules: {
       name: {
         required: true,
-        minlength: 2,
+        minlength: 2
       },
       email: {
         email: true,
         required: true
       },
       phone: {
+        required: true,
         minlength: 10,
         maxlength: 12
       }
@@ -205,6 +234,7 @@
         email: "Masukkan E-mail Dengan Benar"
       },
       phone: {
+        required: "No.Hp Tidak Boleh Kosong!",
         minlength: "No.Hp Minimal 10 Angka!",
         maxlength: "No.Hp Maximal 12 Angka!"
       }
@@ -242,7 +272,7 @@
         _token: _token
       },
       success: function(response) {
-        Swal.fire({
+         Swal.fire({
           title: 'Data sedang diproses',
           timerProgressBar: true,
           didOpen: () => {
@@ -258,13 +288,14 @@
     rules: {
       name: {
         required: true,
-        minlength: 2,
+        minlength: 2
       },
       email: {
         email: true,
         required: true
       },
       phone: {
+        required: true,
         minlength: 10,
         maxlength: 12
       }
@@ -279,6 +310,7 @@
         email: "Masukkan E-mail Dengan Benar"
       },
       phone: {
+        required: "No.Hp Tidak Boleh Kosong!",
         minlength: "No.Hp Minimal 10 Angka!",
         maxlength: "No.Hp Maximal 12 Angka!"
       }
@@ -314,12 +346,26 @@
             });
           },
           success: function(response) {
-            // $('#sid'+id).remove();
             location.reload();
           }
         })
       }
     })
   }
+//import Invitation
+$('#invitationImport').validate({
+    rules: {
+      field: {
+        required: true,
+        extension: "csv"
+      }
+    },
+    messages:{
+      field:{
+        required: "File Tidak Boleh Kosong",
+        extension: "Masukkan File CSV"
+      }
+    }
+  });
 </script>
 @endpush
