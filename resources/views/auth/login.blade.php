@@ -17,7 +17,7 @@
         </svg>
     </div>
 </div>
-<div class="container mt--8 pb-5">
+<div class="container-fluid mt--8 pb-5 bg-default">
     <div class="row justify-content-center">
         <div class="col-lg-5 col-md-7">
             <div class="card bg-secondary border-0 mb-0">

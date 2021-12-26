@@ -3,7 +3,7 @@
 
 @include('layout.components.header')
 
-<body class="bg-default">
+<body>
     <!-- Topnav -->
     @include('layout.components.topnav-plain')
     <!-- End Topnav -->
@@ -17,6 +17,7 @@
     <!-- Argon Scripts -->
     @include('layout.components.footerjs')
     <!-- End Argon Scripts -->
+    @include('layout.components.footer')
 
 </body>
 
