@@ -14,10 +14,20 @@
 <script src="{{asset('vendor/izitoast/izitoast.min.js')}}"></script>
 <script src="{{asset('vendor/owlcarousel/owl.carousel.min.js')}}"></script>
 <script src="{{asset('vendor/bootstrap-datepicker/dist/js/bootstrap-datepicker.min.js')}}"></script>
+<script src="{{asset('vendor/datatables.net/js/jquery.dataTables.min.js')}}"></script>
+<script src="{{asset('vendor/datatables.net-bs4/js/dataTables.bootstrap4.min.js')}}"></script>
+<script src="{{asset('vendor/datatables.net-buttons/js/dataTables.buttons.min.js')}}"></script>
+<script src="{{asset('vendor/datatables.net-buttons-bs4/js/buttons.bootstrap4.min.js')}}"></script>
+<script src="{{asset('vendor/datatables.net-buttons/js/buttons.html5.min.js')}}"></script>
+<script src="{{asset('vendor/datatables.net-buttons/js/buttons.flash.min.js')}}"></script>
+<script src="{{asset('vendor/datatables.net-buttons/js/buttons.print.min.js')}}"></script>
+<script src="{{asset('vendor/datatables.net-select/js/dataTables.select.min.js')}}"></script>
 <script src="https://cdn.jsdelivr.net/jquery.validation/1.16.0/jquery.validate.min.js"></script>
+<script src="https://cdn.jsdelivr.net/jquery.validation/1.16.0/additional-methods.min.js"></script>
 <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 <!-- Argon JS -->
 <script src="{{asset('js/argon.js')}}"></script>
+
 <script>
     $.ajaxSetup({
         headers: {

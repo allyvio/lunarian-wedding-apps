@@ -29,6 +29,10 @@ Route::prefix('dashboard')->middleware(['auth', 'wedding'])->group(function () {
     Route::get('/invitation/{id}', 'InvitationController@getInvitationById')->name('invitation.getbyid');
     Route::put('/invitation', 'InvitationController@updateInvitation')->name('invitation.update');
     Route::delete('/invitation/{id}', 'InvitationController@deleteInvitation')->name('invitation.delete');
+
+    /** ------------------------- INVITATION Import ------------------------- */
+    Route::get('/download', 'InvitationController@download')->name('download.file');
+    Route::post('/users/import', 'InvitationController@store')->name('import.store');
 });
 Route::get('/wedding/package', function () {
     return view('pages.package.index');
