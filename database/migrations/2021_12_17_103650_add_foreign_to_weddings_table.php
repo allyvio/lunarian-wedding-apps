@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class AddColumnToWeddingsTable extends Migration
+class AddForeignToWeddingsTable extends Migration
 {
     /**
      * Run the migrations.
@@ -15,8 +15,10 @@ class AddColumnToWeddingsTable extends Migration
     {
         Schema::table('weddings', function (Blueprint $table) {
             $table->foreignId('user_id')->nullable();
-            $table->index(['user_id']);
+            $table->foreignId('package_id')->nullable();
+            $table->index(['user_id','package_id']);
             $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');
+            $table->foreign('package_id')->references('id')->on('packages')->onDelete('cascade');
         });
     }
 
@@ -28,7 +30,7 @@ class AddColumnToWeddingsTable extends Migration
     public function down()
     {
         Schema::table('weddings', function (Blueprint $table) {
-            $table->dropColumn('user_id');
+            $table->dropColumn(['user_id','package_id']);
         });
     }
 }

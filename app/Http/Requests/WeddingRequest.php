@@ -27,10 +27,9 @@ class WeddingRequest extends FormRequest
     {
         $stage = $this->request->get('stage');
         $rules =  [];
-        $wedding = $this->session()->get('wedding') ?? null;
         $rule_slug_unique = Rule::unique('weddings', 'slug');
-        if ($this->method() !== 'POST' || !empty($wedding->id)) {
-            $rule_slug_unique->ignore($wedding->id);
+        if ($this->method() !== 'POST') {
+            $rule_slug_unique->ignore($this->wedding->id);
         }
         if ($stage == 'start')
             $rules += [
@@ -48,6 +47,10 @@ class WeddingRequest extends FormRequest
         if ($stage == 'theme')
             $rules += [
                 'theme' => ['required', Rule::in(['default', 'destiny', 'ourlove'])]
+            ];
+        if ($stage == 'package')
+            $rules += [
+                'package_id' => ['required', 'exists:packages,id']
             ];
         return $rules;
     }

@@ -15,9 +15,10 @@ class Wedding extends Model
         'calon_wanita',
         'calon_pria_photo',
         'calon_wanita_photo',
-        'theme'
+        'theme',
+        'package_id'
     ];
-    protected $attributes = ['theme' => 'default'];
+    protected $attributes = ['theme' => 'default', 'package_id' => 1];
     protected $with = ['events', 'comments'];
 
     public function getRouteKeyName()

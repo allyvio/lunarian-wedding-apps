@@ -13,12 +13,12 @@ class CreatePackageTable extends Migration
      */
     public function up()
     {
-        Schema::create('package', function (Blueprint $table) {
+        Schema::create('packages', function (Blueprint $table) {
             $table->id();
-            $table->string('title', 100);
-            $table->string('jumlah_undangan'); //jumlah undangan
-            $table->string('price'); //harga paket
-            $table->string('value'); //harga dicoret
+            $table->string('name', 100);
+            $table->integer('count'); //jumlah undangan
+            $table->integer('price'); //harga paket
+            $table->integer('value')->nullable(); //harga dicoret
             $table->timestamps();
         });
     }
@@ -30,6 +30,6 @@ class CreatePackageTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('package');
+        Schema::dropIfExists('packages');
     }
 }

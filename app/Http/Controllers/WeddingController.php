@@ -41,9 +41,7 @@ class WeddingController extends Controller
             $request->session()->put('wedding', $wedding);
         }
 
-        /**
-         * Save wedding pada stage couple.
-         * */
+        /** Save wedding pada stage couple. */
         if ($request->stage == 'couple') {
             if ($wedding->calon_pria_photo)
                 Storage::delete('public/couple/' . $wedding->calon_pria_photo);
@@ -66,9 +64,7 @@ class WeddingController extends Controller
                 $wedding->calon_wanita_photo = null;
             }
         }
-        /** 
-         * Menghapus SESSION WEDDING setelah stage terakhir 
-         * */
+        /** Menghapus SESSION WEDDING setelah stage terakhir */
         if ($request->stage == 'theme') {
 
             /** Create Event pertama kali */
@@ -90,9 +86,15 @@ class WeddingController extends Controller
             });
             $events->wedding = $wedding;
             $view = view('pages.event.show', compact('events'))->render();
-            return response()->json([$wedding, 'html' => $view]);
+            return response()->json(['html' => $view]);
         }
-        return session()->all();
+        if ($request->stage == 'event') {
+            return response()->json(['status' => 'success', 'stage' => $request->stage]);
+        }
+        if ($request->stage == 'package') {
+            return response()->json(['status' => 'success', 'stage' => $request->stage]);
+        }
+        return $wedding;
     }
 
     public function storeDB()
@@ -140,13 +142,16 @@ class WeddingController extends Controller
         //
     }
 
-    public function update(Request $request, Wedding $wedding)
+    public function update(WeddingRequest $request, Wedding $wedding)
     {
-        //
+        $wedding->update($request->validated());
+        // $this->updateCouplePhoto($request, $wedding);
+        return $request->validated();
     }
 
     public function updateCouplePhoto(Request $request, Wedding $wedding)
     {
+        // return $request->all();
         if ($request->hasFile('calon_pria_photo')) {
             if ($wedding->calon_pria_photo)
                 Storage::delete('public/couple/' . $wedding->calon_pria_photo);
@@ -156,10 +161,7 @@ class WeddingController extends Controller
             $wedding->update([
                 'calon_pria_photo' => $filename
             ]);
-        } else {
-            $wedding->update([
-                'calon_pria_photo' => null
-            ]);
+            return response()->json(['photo' => asset('storage/couple/' . $filename)]);
         }
         if ($request->hasFile('calon_wanita_photo')) {
             if ($wedding->calon_wanita_photo)
@@ -170,13 +172,18 @@ class WeddingController extends Controller
             $wedding->update([
                 'calon_wanita_photo' => $filename
             ]);
-        } else {
-            $wedding->update([
-                'calon_wanita_photo' => null
-            ]);
+            return response()->json(['photo' => asset('storage/couple/' . $filename)]);
         }
     }
-
+    public function destroyCouplePhoto(Request $request, Wedding $wedding)
+    {
+        $filename = $wedding[$request->column];
+        Storage::delete('public/couple/' . $filename);
+        $wedding->update([
+            $request->column => null
+        ]);
+        return $wedding;
+    }
     public function updateTheme(Request $request, Wedding $wedding)
     {
         $request->validate([

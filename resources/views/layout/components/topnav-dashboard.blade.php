@@ -19,7 +19,7 @@
         <li class="nav-item dropdown">
           <a class="nav-link pr-0" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
             <div class="media align-items-center">
-              <div class="media-body ml-2 d-none d-lg-block">
+              <div class="media-body ml-2 d-block">
                 <span class="mb-0 text-sm  font-weight-bold">Hi, {{Auth::user()->name}}</span>
               </div>
             </div>
