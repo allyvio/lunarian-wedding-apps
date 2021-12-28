@@ -17,6 +17,8 @@
   <link rel="stylesheet" href="{{asset('vendor/animate.css/animate.min.css')}}">
   <link rel="stylesheet" href="{{asset('vendor/izitoast/izitoast.min.css')}}">
   <link rel="stylesheet" href="{{asset('vendor/sweetalert2/dist/sweetalert2.min.css')}}">
+  <link rel="stylesheet" href="{{asset('vendor/owlcarousel/owl.carousel.min.css')}}">
+  <link rel="stylesheet" href="{{asset('vendor/owlcarousel/owl.theme.default.min.css')}}">
   <link rel="stylesheet" href="{{asset('vendor/datatables.net-bs4/css/dataTables.bootstrap4.min.css')}}">
   <link rel="stylesheet" href="{{asset('vendor/datatables.net-buttons-bs4/css/buttons.bootstrap4.min.css')}}">
   <link rel="stylesheet" href="{{asset('vendor/datatables.net-select-bs4/css/select.bootstrap4.min.css')}}">
@@ -25,13 +27,87 @@
 
 </head>
 <style>
+  .owl-theme .owl-dots {
+    margin-top: 20px !important;
+  }
+
+  .owl-theme .owl-dots button {
+    outline: none;
+  }
+
+  .owl-theme .owl-dots .owl-dot.active span {
+    background-color: #6777ef;
+  }
+
+  .owl-item.active.center {
+    left: 0;
+  }
+
+  .owl-item.active.center .item {
+    box-shadow: 0 10px 20px 0 rgb(0 0 21 / 20%);
+  }
+
+  .owl-item:not(.center) {
+    opacity: 0.7;
+  }
+
+  .slider .owl-nav [class*=owl-] {
+    box-shadow: 0 10px 20px 0 rgb(0 0 21 / 20%);
+    position: absolute;
+    top: 50%;
+    left: 35px;
+    transform: translate(-50%, -50%);
+    margin: 0;
+    background-color: #fff !important;
+    outline: none;
+    border-radius: 50%;
+    color: #fff;
+    width: 40px;
+    height: 40px;
+  }
+
+  .slider .owl-nav [class*=owl-]:hover {
+    color: black !important;
+  }
+
+  .slider .owl-nav .owl-next {
+    right: 0;
+    left: initial;
+  }
+
+  .slider:hover .owl-nav [class*=owl-] {
+    opacity: 1;
+  }
+
+  .slider .slider-caption {
+    position: absolute;
+    bottom: 10px;
+    left: 0;
+    width: 100%;
+    z-index: 1;
+    background-color: rgba(0, 0, 0, 0.3);
+    color: #fff;
+    padding: 10px;
+  }
+
+  .slider .slider-caption .slider-title {
+    font-size: 16px;
+    font-weight: 700;
+    margin-bottom: 5px;
+  }
+
+  .slider .slider-caption .slider-description {
+    line-height: 26px;
+    opacity: .8;
+  }
+
   .error {
     color: red;
     font-size: 12px;
   }
+
   .input-preview-label {
     text-align: center;
-    line-height: 200px;
     width: 200px;
     height: 200px;
     border: 2px dashed #ddd;
@@ -43,6 +119,59 @@
     background-size: cover;
     background-repeat: no-repeat;
     background-position: center center;
+  }
+
+  .input-preview-label.loader {
+    pointer-events: none;
+    opacity: 0.8;
+  }
+
+  .input-preview-label.loader:after {
+    content: ' ';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 99;
+    z-index: 99;
+    background-image: url("data:image/svg+xml;base64,PHN2ZyB2ZXJzaW9uPSIxLjEiIGlkPSJsb2FkZXItMSIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIiB4bWxuczp4bGluaz0iaHR0cDovL3d3dy53My5vcmcvMTk5OS94bGluayIgeD0iMHB4IiB5PSIwcHgiDQogd2lkdGg9IjQwcHgiIGhlaWdodD0iNDBweCIgdmlld0JveD0iMCAwIDUwIDUwIiBzdHlsZT0iZW5hYmxlLWJhY2tncm91bmQ6bmV3IDAgMCA1MCA1MDsiIHhtbDpzcGFjZT0icHJlc2VydmUiPg0KPHBhdGggZmlsbD0iI2ZmZiIgZD0iTTQzLjkzNSwyNS4xNDVjMC0xMC4zMTgtOC4zNjQtMTguNjgzLTE4LjY4My0xOC42ODNjLTEwLjMxOCwwLTE4LjY4Myw4LjM2NS0xOC42ODMsMTguNjgzaDQuMDY4YzAtOC4wNzEsNi41NDMtMTQuNjE1LDE0LjYxNS0xNC42MTVjOC4wNzIsMCwxNC42MTUsNi41NDMsMTQuNjE1LDE0LjYxNUg0My45MzV6Ij4NCjxhbmltYXRlVHJhbnNmb3JtIGF0dHJpYnV0ZVR5cGU9InhtbCINCiAgYXR0cmlidXRlTmFtZT0idHJhbnNmb3JtIg0KICB0eXBlPSJyb3RhdGUiDQogIGZyb209IjAgMjUgMjUiDQogIHRvPSIzNjAgMjUgMjUiDQogIGR1cj0iMC42cyINCiAgcmVwZWF0Q291bnQ9ImluZGVmaW5pdGUiLz4NCjwvcGF0aD4NCjwvc3ZnPg0K");
+    background-size: 80px;
+    background-repeat: no-repeat;
+    background-position: center;
+  }
+
+  .input-preview .remove {
+    position: absolute;
+    border: 1pt red solid;
+    border-radius: 50%;
+    color: red;
+    top: 30px;
+    right: 20%;
+    z-index: 100;
+    background-color: white;
+    height: 30px;
+    width: 30px;
+    cursor: pointer;
+    line-height: 20pt;
+    font-weight: bold;
+  }
+
+  .input-preview .remove:hover {
+    color: white;
+    background-color: red;
+  }
+
+  .input-preview-label img {
+    height: 100%;
+    width: 100%;
+    margin: 0;
+  }
+
+  .input-preview-label,
+  .input-preview-label img {
+    object-fit: cover;
+    object-position: center center;
   }
 
   .input-preview-label:hover,

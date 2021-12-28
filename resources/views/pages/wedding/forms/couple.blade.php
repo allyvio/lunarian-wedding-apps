@@ -3,7 +3,7 @@
         <div class="col-6 text-center">
             <label class="mt-2" for="calon_pria_photo">Calon Pengantin Pria</label>
             <div class="input-preview" style="height: 250px;">
-                <label for="calon_pria_photo" id="input-preview-label" class="input-preview-label"><i class="fa fa-plus fa-2x"></i></label>
+                <label for="calon_pria_photo" id="input-preview-label" class="input-preview-label">Upload disini</label>
                 <input class="form-control" type="file" name="calon_pria_photo" id="calon_pria_photo" accept="image/*" style="display: none;" />
             </div>
             <div class="text-left">
@@ -14,7 +14,7 @@
         <div class="col-6 text-center">
             <label class="mt-2" for="calon_wanita_photo">Calon Pengantin Wanita</label>
             <div class="input-preview" style="height: 250px;">
-                <label for="calon_wanita_photo" id="input-preview-label" class="input-preview-label"><i class="fa fa-plus fa-2x"></i></label>
+                <label for="calon_wanita_photo" id="input-preview-label" class="input-preview-label">Upload disini</label>
                 <input class="form-control" type="file" name="calon_wanita_photo" id="calon_wanita_photo" accept="image/*" style="display: none;" />
             </div>
             <div class="text-left">
@@ -25,7 +25,7 @@
     </div>
 </form>
 @push('scripts')
-<!-- <script>
+<script>
     function readURL(input) {
         var parent = $(input).parent(),
             preview = parent.find('.input-preview-label')
@@ -56,5 +56,5 @@
         input.prop('files', e.originalEvent.dataTransfer.files);
         input.trigger('change');
     });
-</script> -->
+</script>
 @endpush

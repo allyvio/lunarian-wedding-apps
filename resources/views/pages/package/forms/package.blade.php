@@ -19,12 +19,12 @@
           <h3 class="mb-0">Paket {{ucfirst($package->name)}}</h3>
         </div>
         <div class="card-body">
-          <div class="row">
-            <div class="col-md-8">
+          <div class="row no-gutters">
+            <div class="col-6 col-md-8">
               <p class="description"><i class="fas fa-user mr-2"></i> {{$package->count}} Undangan</p>
               <p class="description"><i class="ni ni-email-83 mr-2"></i>10 E-mail</p>
             </div>
-            <div class="col-md-4">
+            <div class="col-6 col-md-4">
               <p class="description" style="text-align:right"> <s>Rp.{{$package->value}}</s> </p>
               <p class="description text-success font-weight-bold" style="text-align:right;">{!!$package->price ? 'Rp.'. number_format($package->price,2,",",".") : 'GRATIS'!!}</p>
             </div>
