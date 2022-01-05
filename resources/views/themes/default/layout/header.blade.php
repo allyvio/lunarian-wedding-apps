@@ -20,7 +20,7 @@
     <link rel="stylesheet" href="{{asset('assets/themes/default/css/style.css')}}" type="text/css">
     <link rel="stylesheet" href="{{asset('assets/themes/default/css/animsition.min.css')}}" type="text/css">
     <link rel="stylesheet" href="{{asset('vendor/izitoast/iziToast.min.css')}}" type="text/css">
-
+    <link rel="stylesheet" href="{{asset('vendor/quill/dist/quill.snow.css')}}">
     <!-- custom background -->
     <link rel="stylesheet" href="{{asset('assets/themes/default/css/bg.css')}}" type="text/css">
 

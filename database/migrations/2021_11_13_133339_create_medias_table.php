@@ -17,10 +17,11 @@ class CreateMediasTable extends Migration
             $table->id();
             $table->foreignId('wedding_id');
             $table->string('filename');
-            $table->string('media_type')->nullable();
+            $table->string('type')->nullable();
+            $table->enum('type', ['hero', 'quote', 'countdown', 'couple']);
             $table->timestamps();
 
-            $table->index(['wedding_id', 'filename', 'media_type']);
+            $table->index(['wedding_id', 'filename', 'type']);
             $table->foreign('wedding_id')->references('id')->on('weddings')->onDelete('cascade');
         });
     }

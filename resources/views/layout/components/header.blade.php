@@ -22,6 +22,7 @@
   <link rel="stylesheet" href="{{asset('vendor/datatables.net-bs4/css/dataTables.bootstrap4.min.css')}}">
   <link rel="stylesheet" href="{{asset('vendor/datatables.net-buttons-bs4/css/buttons.bootstrap4.min.css')}}">
   <link rel="stylesheet" href="{{asset('vendor/datatables.net-select-bs4/css/select.bootstrap4.min.css')}}">
+  <link rel="stylesheet" href="{{asset('vendor/quill/dist/quill.snow.css')}}">
   <!-- Argon CSS -->
   <link rel="stylesheet" href="{{asset('css/argon.css')}}" type="text/css">
 
@@ -121,12 +122,12 @@
     background-position: center center;
   }
 
-  .input-preview-label.loader {
+  .input-preview-label.loader,.gallery-item.loader {
     pointer-events: none;
     opacity: 0.8;
   }
 
-  .input-preview-label.loader:after {
+  .input-preview-label.loader:after,.gallery-item.loader:after {
     content: ' ';
     position: absolute;
     top: 0;
@@ -192,5 +193,70 @@
     width: 300px;
     object-position: bottom;
     cursor: pointer;
+  }
+
+  .gallery {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+  }
+
+  .gallery-item {
+    margin: 10px;
+    border-radius: 5px;
+    box-sizing: content-box;
+    height: 200px;
+    width: 200px;
+    overflow: hidden;
+    display: inline-block;
+    color: white;
+    position: relative;
+  }
+
+  .gallery-item img {
+    object-fit: cover;
+    height: 100%;
+    width: 100%;
+    transform: scale(1.0);
+    transition: transform 0.4s ease;
+  }
+
+  .caption {
+    position: absolute;
+    bottom: 5px;
+    left: 20px;
+    opacity: 0.0;
+    transition: transform 0.3s ease, opacity 0.3s ease;
+  }
+
+  .transparent-box {
+    height: 100%;
+    width: 100%;
+    background-color: rgba(0, 0, 0, 0);
+    position: absolute;
+    top: 0;
+    left: 0;
+    transition: background-color 0.3s ease;
+  }
+
+  .gallery-item:hover img {
+    transform: scale(1.1);
+  }
+
+  .gallery-item:hover .transparent-box {
+    background-color: rgba(0, 0, 0, 0.5);
+  }
+
+  .gallery-item:hover .caption {
+    transform: translateY(-20px);
+    opacity: 1.0;
+  }
+
+  .gallery-item:hover {
+    cursor: pointer;
+  }
+
+  .caption>p:nth-child(2) {
+    font-size: 0.8em;
   }
 </style>

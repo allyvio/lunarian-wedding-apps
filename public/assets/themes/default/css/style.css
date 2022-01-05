@@ -4137,7 +4137,6 @@ a, a:hover, .test-column, .test-column:hover {
 }
 .overlay-v {
 	text-align: center;
-	width: 100px;
 	position: absolute;
 	width: 100%;
 	height: 100%;
@@ -4252,6 +4251,11 @@ a, a:hover, .test-column, .test-column:hover {
 .picframe {
 	position: relative;
 	overflow: hidden;
+}
+.picframe img{
+	width: 350px;
+	height: 200px;
+	object-fit: cover;
 }
 #btn-close-x {
 	width: 100px;
