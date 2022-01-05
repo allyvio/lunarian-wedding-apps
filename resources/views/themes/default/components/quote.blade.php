@@ -4,8 +4,8 @@
         <div class="row">
             <div class="col-md-8 col-md-offset-2">
                 <!-- <blockquote class="very-big text-light wow fadeIn"> -->
-                <div class="quote">
-                    {{$wedding->quote}}
+                <div class="ql-editor" style="background-color: transparent;border: none;">
+                    {!!$wedding->quote!!}
                 </div>
                 <!-- <span>Maya Angelou</span> -->
                 <!-- </blockquote> -->
@@ -16,18 +16,9 @@
 @endif
 @push('scripts')
 <script>
-    var myobj = JSON.parse('{ "hello":"world" }');
-    console.log(myobj);
-    var delta = '{!!$wedding->quote!!}'
-    console.log(JSON.parse(delta));
-    // console.log(@php json_decode($wedding->quote)@endphp);
-    // var quill = new Quill('.quote').setContents('{{$wedding->quote}}')
-    // asd(delta)
-
-    // function asd(inputDelta) {
-    //     var tempCont = document.createElement("div");
-    //     (new Quill(tempCont)).setContents(inputDelta);
-    //     return tempCont.getElementsByClassName("ql-editor")[0].innerHTML;
-    // }
+    // var myobj = JSON.parse('{ "hello":"world" }');
+    // console.log(myobj);
+    // var delta = '{!!$wedding->quote!!}'
+    // console.log(JSON.parse(delta));
 </script>
 @endpush

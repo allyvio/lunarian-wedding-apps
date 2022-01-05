@@ -10,7 +10,7 @@ class Media extends Model
     protected $fillable = [
         'wedding_id',
         'filename',
-        'media_type'
+        'type'
     ];
 
     public function wedding()

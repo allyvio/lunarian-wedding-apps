@@ -13,7 +13,7 @@ class MediaController extends Controller
     {
         $request->validate([
             'wedding_id' => ['required', 'exists:weddings,id'],
-            'media_type' => ['required', 'in:gallery,hero,quote'],
+            'type' => ['required', 'in:gallery,hero,quote'],
             'file' => ['required', 'image']
         ]);
         if ($request->hasFile('file')) {
@@ -22,7 +22,7 @@ class MediaController extends Controller
             $filename = pathinfo($fullpath)['basename'];
             $media = Media::create([
                 'wedding_id' => $request->wedding_id,
-                'media_type' => $request->media_type,
+                'type' => $request->type,
                 'filename' => $filename
             ]);
         }
@@ -32,7 +32,7 @@ class MediaController extends Controller
     public function destroy(Media $media)
     {
         $filename = $media->filename;
-        Storage::delete('public/' . $media->media_type . '/' . $filename);
+        Storage::delete('public/' . $media->type . '/' . $filename);
         $media->delete();
         return $media;
     }
