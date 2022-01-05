@@ -9,9 +9,11 @@ class Package extends Model
     protected $table = 'packages';
     protected $fillable = [
         'name',
-        'count',
+        'count_invitation',
         'price',
         'value',
+        'music',
+        'count_galleri',
     ];
 
 }

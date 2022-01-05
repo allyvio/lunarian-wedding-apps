@@ -21,7 +21,9 @@ class InvitationController extends Controller
     {
         $wedding = Auth::user()->wedding;
         $invitations = $wedding->invitations;
-        return view('pages.invitation.index', compact('wedding','invitations'));
+        $packages = Wedding::where('user_id', Auth::user()->id)->first()->package_id;
+		$package = Package::findOrFail($packages)->count_invitation;
+        return view('pages.invitation.index', compact('wedding','invitations','package'));
     }
 
     public function addInvitation(Request $request)
@@ -35,7 +37,7 @@ class InvitationController extends Controller
         )->validate();
 
         $packet = Wedding::where('user_id', Auth::user()->id)->first()->package_id;
-		$limit = Package::findOrFail($packet)->count;
+		    $limit = Package::findOrFail($packet)->count_invitation;
         $count_invitation = Invitation::where('wedding_id', Auth::user()->id)->get();
         if (count($count_invitation) < $limit) {
             $invitation = new Invitation;
@@ -87,8 +89,8 @@ class InvitationController extends Controller
     }
 
     public function store(Request $request)
-    {   
-        $packet = Wedding::where('user_id', Auth::user()->id)->first()->package_id; 
+    {
+        $packet = Wedding::where('user_id', Auth::user()->id)->first()->package_id;
         $limit = Package::findOrFail($packet)->count;
         $count_invitation = Invitation::where('wedding_id', Auth::user()->id)->get();
         $invitation = $request->file('field');
@@ -110,7 +112,7 @@ class InvitationController extends Controller
                     Alert::error('Gagal', 'Kosongkan Data Undangan Terlebih Dahulu!');
                     return back();
                 }
-                
+
             } else {
                 Alert::error('Gagal', 'Undangan Melebihi Batas');
                 return back();

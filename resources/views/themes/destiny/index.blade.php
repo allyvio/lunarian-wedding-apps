@@ -42,6 +42,9 @@
         @include('themes.destiny.components.comment')
         <!--End Comment section-->
         <!--Just married section -->
+        @include('themes.destiny.components.protokol')
+        <!--End just married section-->
+        <!--Just married section -->
         @include('themes.destiny.components.justmarried')
         <!--End just married section-->
         <!--Footer section -->

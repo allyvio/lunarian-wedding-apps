@@ -7,6 +7,12 @@
     <meta name="keywords" content="wedding,couple,ceremony,reception,rsvp,gallery,event,digital invitation,lunarian id">
     <meta name="csrf-token" content="{{ csrf_token() }}">
 
+    <!-- Icons -->
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.15.4/css/all.css">
+
+    <!-- Argon CSS -->
+    <link rel="stylesheet" href="{{asset('css/argon.css')}}" type="text/css">
+
     <link rel="stylesheet" href="{{asset('assets/themes/ourlove/css/bootstrap.css')}}" type="text/css">
     <link rel="stylesheet" href="{{asset('assets/themes/ourlove/css/normalize.css')}}" type="text/css">
     <link rel="stylesheet" href="{{asset('assets/themes/ourlove/css/owl.carousel.css')}}" type="text/css">

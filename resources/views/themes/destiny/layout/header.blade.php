@@ -7,6 +7,12 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="csrf-token" content="{{ csrf_token() }}">
 
+    <!-- Icons -->
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.15.4/css/all.css">
+
+    <!-- Argon CSS -->
+    <link rel="stylesheet" href="{{asset('css/argon.css')}}" type="text/css">
+
     <!-- Css -->
     <link href="{{asset('assets/themes/destiny/css/bootstrap.css')}}" rel="stylesheet" type="text/css" media="all" />
     <link href="{{asset('assets/themes/destiny/css/base.css')}}" rel="stylesheet" type="text/css" media="all" />

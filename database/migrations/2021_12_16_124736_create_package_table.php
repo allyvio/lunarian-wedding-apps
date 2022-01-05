@@ -16,9 +16,10 @@ class CreatePackageTable extends Migration
         Schema::create('packages', function (Blueprint $table) {
             $table->id();
             $table->string('name', 100);
-            $table->integer('count'); //jumlah undangan
+            $table->integer('count_invitation'); //jumlah undangan
             $table->integer('price'); //harga paket
-            $table->integer('value')->nullable(); //harga dicoret
+            $table->integer('value'); //harga dicoret
+            $table->integer('count_galleri');//galleri foto
             $table->timestamps();
         });
     }

@@ -46,44 +46,44 @@
                             <nav>
                                 <ul>
                                     <li>
-                                        <h4 class="heavy normal mb-5">Tono</h4>
+                                        <h4 class="heavy normal">Tono</h4>
                                     </li>
-                                    <li class="mb-5">Happy ending we will get married Happy ending we will get married
-                                    </li>
-                                </ul>
-                                <ul>
-                                    <li>
-                                        <h4 class="heavy normal mb-5">Tono</h4>
-                                    </li>
-                                    <li class="mb-5">Happy ending we will get married Happy ending we will get married
+                                    <li>Happy ending we will get married Happy ending we will get married
                                     </li>
                                 </ul>
                                 <ul>
                                     <li>
-                                        <h4 class="heavy normal mb-5">Tono</h4>
+                                        <h4 class="heavy normal">Tono</h4>
                                     </li>
-                                    <li class="mb-5">Happy ending we will get married Happy ending we will get married
-                                    </li>
-                                </ul>
-                                <ul>
-                                    <li>
-                                        <h4 class="heavy normal mb-5">Tono</h4>
-                                    </li>
-                                    <li class="mb-5">Happy ending we will get married Happy ending we will get married
+                                    <li>Happy ending we will get married Happy ending we will get married
                                     </li>
                                 </ul>
                                 <ul>
                                     <li>
-                                        <h4 class="heavy normal mb-5">Tono</h4>
+                                        <h4 class="heavy normal">Tono</h4>
                                     </li>
-                                    <li class="mb-5">Happy ending we will get married Happy ending we will get married
+                                    <li>Happy ending we will get married Happy ending we will get married
                                     </li>
                                 </ul>
                                 <ul>
                                     <li>
-                                        <h4 class="heavy normal mb-5">Tono</h4>
+                                        <h4 class="heavy normal">Tono</h4>
                                     </li>
-                                    <li class="mb-5">Happy ending we will get married Happy ending we will get married
+                                    <li>Happy ending we will get married Happy ending we will get married
+                                    </li>
+                                </ul>
+                                <ul>
+                                    <li>
+                                        <h4 class="heavy normal">Tono</h4>
+                                    </li>
+                                    <li>Happy ending we will get married Happy ending we will get married
+                                    </li>
+                                </ul>
+                                <ul>
+                                    <li>
+                                        <h4 class="heavy normal">Tono</h4>
+                                    </li>
+                                    <li>Happy ending we will get married Happy ending we will get married
                                     </li>
                                 </ul>
                             </nav>
