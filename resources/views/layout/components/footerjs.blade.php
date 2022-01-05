@@ -25,6 +25,7 @@
 <script src="https://cdn.jsdelivr.net/jquery.validation/1.16.0/jquery.validate.min.js"></script>
 <script src="https://cdn.jsdelivr.net/jquery.validation/1.16.0/additional-methods.min.js"></script>
 <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+<script src="{{asset('vendor/quill/dist/quill.min.js')}}"></script>
 <!-- Argon JS -->
 <script src="{{asset('js/argon.js')}}"></script>
 

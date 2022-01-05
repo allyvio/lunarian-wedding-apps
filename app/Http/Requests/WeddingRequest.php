@@ -35,7 +35,7 @@ class WeddingRequest extends FormRequest
             $rules += [
                 'slug' => ['required', 'string', 'between:4,20', $rule_slug_unique, new Slug],
                 'title' => ['required', 'string', 'between:4,50'],
-                'description' => ['nullable', 'string'],
+                'description' => ['nullable', 'string', 'max:1000'],
             ];
         if ($stage == 'couple')
             $rules += [
@@ -51,6 +51,10 @@ class WeddingRequest extends FormRequest
         if ($stage == 'package')
             $rules += [
                 'package_id' => ['required', 'exists:packages,id']
+            ];
+        if ($stage == 'quote')
+            $rules += [
+                'quote' => ['nullable', 'string']
             ];
         return $rules;
     }
