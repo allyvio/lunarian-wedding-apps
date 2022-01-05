@@ -3,6 +3,12 @@
 @include('themes.default.layout.header')
 
 <body id="homepage">
+    <!-- Music -->
+    @foreach($musik as $data)
+    @if($data->status == 1)
+    <audio src="{{asset('storage/'.$data->music)}}" id="my_audio" loop="loop"></audio>
+    @endif
+    @endforeach
     <div id="wrapper">
         <div id="content" class="no-bottom no-top">
             <!-- hero section begin -->
@@ -39,6 +45,7 @@
             @include('themes.default.components.comments.form')
             @include('themes.default.components.comments.show')
             <!-- section end -->
+            @include('themes.default.components.protokol')
         </div>
 
         <!-- footer begin -->
@@ -74,6 +81,10 @@
                 message: message,
                 position: 'topCenter'
             });
+        }
+        //music
+        window.onload=function(){
+          document.getElementById("my_audio").play();
         }
     </script>
 </body>

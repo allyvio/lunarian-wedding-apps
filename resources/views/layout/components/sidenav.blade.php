@@ -22,7 +22,7 @@
         <!-- Nav items -->
         <ul class="navbar-nav">
           <li class="nav-item">
-            <a class="nav-link active" href="{{route('dashboard')}}">
+            <a class="nav-link" href="{{route('dashboard')}}">
               <i class="fa fa-home text-primary"></i>
               <span class="nav-link-text">Beranda</span>
             </a>
@@ -43,6 +43,12 @@
             <a class="nav-link" href="{{route('event.index')}}">
               <i class="fa fa-calendar-day text-red"></i>
               <span class="nav-link-text">Acara</span>
+            </a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="{{route('music.index')}}">
+              <i class="fa fa-music text-black"></i>
+              <span class="nav-link-text">Musik</span>
             </a>
           </li>
         </ul>
