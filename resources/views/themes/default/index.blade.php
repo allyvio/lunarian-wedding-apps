@@ -30,6 +30,15 @@
             <!-- event section begin -->
             @include('themes.default.components.event')
             <!-- section end -->
+
+            <!-- quote section begin -->
+            @include('themes.default.components.quote')
+            <!-- section end -->
+
+            <!-- gallery section begin -->
+            @include('themes.default.components.gallery')
+            <!-- section end -->
+            
             <!-- rsvp popup begin -->
             @if($wedding->invitation)
             @include('themes.default.components.rsvp.show')
