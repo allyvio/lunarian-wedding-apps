@@ -21,12 +21,12 @@
 </div>
 @endsection
 @section('dashboard-content')
-
 <div class="card">
   <!-- Card header -->
   <div class="card-header border-0">
     <div class="row">
         <!-- Button trigger modal -->
+        @if($package != 0)
         <button type="button" class="btn btn-outline-primary btn-sm" data-toggle="modal" data-target="#invitationModal">
           <span class="btn-inner--icon"><i class="fas fa-plus"></i></span>
           <span class="btn-inner--text">Tambah</span>
@@ -36,6 +36,17 @@
           <span class="btn-inner--text">Import</span>
         </button>
         <a href="{{route('download.file')}}"class="btn btn-default" data-toggle="tooltip" data-original-title="Unduh File CSV"><i class="fas fa-print"></i></a>
+        @else
+        <button type="button" class="btn btn-outline-primary btn-sm" data-toggle="modal" data-target="#invitationModal" disabled>
+          <span class="btn-inner--icon"><i class="fas fa-plus"></i></span>
+          <span class="btn-inner--text">Tambah</span>
+        </button>
+        <button type="button" class="btn btn-outline-default btn-sm"data-toggle="modal" data-target="#ImportModal" disabled>
+          <span class="btn-inner--icon"><i class="fas fa-file-import"></i></span>
+          <span class="btn-inner--text">Import</span>
+        </button>
+        <a href="{{route('download.file')}}"class="btn btn-default" data-toggle="tooltip" data-original-title="Unduh File CSV"><i class="fas fa-print"></i></a>
+        @endif
     </div>
   </div>
   <!-- Modal Import -->

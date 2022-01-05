@@ -12,23 +12,27 @@ class PackageTableSeeder extends Seeder
     public function run()
     {
         $package = new Package();
-        $package->name = 'Paket Setia';
-        $package->count = '2';
-        $package->price = '0';
+        $package->name = 'Basic';
+        $package->count_invitation = '0';
+        $package->price = '59000';
+        $package->value = '80000';
+        $package->count_galleri = '6';
         $package->save();
 
         $package = new Package();
-        $package->name = 'Paket Cinta';
-        $package->count = '100';
-        $package->price = '750000';
-        $package->value = '1000000';
+        $package->name = 'Premium';
+        $package->count_invitation = '50';
+        $package->price = '99000';
+        $package->value = '180000';
+        $package->count_galleri = '12';
         $package->save();
 
         $package = new Package();
-        $package->name = 'Paket Kasih';
-        $package->count = '1000';
-        $package->price = '1250000';
-        $package->value = '2000000';
+        $package->name = 'Ekclusif';
+        $package->count_invitation = '150';
+        $package->price = '129000';
+        $package->value = '260000';
+        $package->count_galleri = '21';
         $package->save();
     }
 }

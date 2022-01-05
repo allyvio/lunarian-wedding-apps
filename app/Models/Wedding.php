@@ -42,8 +42,13 @@ class Wedding extends Model
     {
         return $this->hasMany('App\Models\Invitation');
     }
+    public function music()
+    {
+        return $this->hasMany('App\Models\Music');
+    }
     public function comments()
     {
         return $this->hasManyThrough('App\Models\Comments', 'App\Models\Invitation');
     }
+
 }

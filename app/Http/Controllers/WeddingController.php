@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Http\Requests\WeddingRequest;
 use App\Models\Event;
 use App\Models\Wedding;
+use App\Models\Music;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -123,6 +124,8 @@ class WeddingController extends Controller
 
     public function show(Wedding $wedding, $code = null)
     {
+        $wedding_id = $wedding->id;
+        $musik = Music::where('wedding_id', $wedding_id)->get();
         $wedding->events = $wedding->events->sortBy('datetime');
         $main_event = $wedding->events->where('is_main', true)->first();
         $wedding->main_date = $main_event->datetime;
@@ -134,7 +137,7 @@ class WeddingController extends Controller
             if (!$wedding->invitation)
                 return redirect()->route('wedding.page', $wedding)->with('error', 'Invitation not found');
         }
-        return view('themes.' . $theme . '.index', compact('wedding'));
+        return view('themes.' . $theme . '.index', compact('wedding','musik'));
     }
 
     public function edit(Wedding $wedding)

@@ -4,6 +4,11 @@
 @include('themes.ourlove.layout.header')
 
 <body>
+    @foreach($musik as $data)
+    @if($data->status == 1)
+    <audio src="{{asset('storage/'.$data->music)}}" id="my_audio" loop="loop"></audio>
+    @endif
+    @endforeach
     <!-- Loading animation -->
     <div class="preloader">
         <div class="preloader-animation">
@@ -51,9 +56,12 @@
             @include('themes.ourlove.components.rsvp.form')
             @endif
             <!-- section end -->
-            <!-- RSVP Section -->
+            <!--Comment Section -->
             @include('themes.ourlove.components.comment')
-            <!-- /RSVP Section -->
+            <!-- Comment Section -->
+            <!--Protokol Section -->
+            @include('themes.ourlove.components.protokol')
+            <!-- Protokol Section -->
 
             <!-- Footer (Thank You block) -->
             <footer id="thanks" class="footer">
@@ -83,6 +91,10 @@
                 message: message,
                 position: 'topCenter',
             });
+        }
+        //music
+        window.onload=function(){
+          document.getElementById("my_audio").play();
         }
     </script>
 </body>

@@ -7,6 +7,11 @@
     <meta name="author" content="https://lunarian-id.com/">
     <meta name="csrf-token" content="{{ csrf_token() }}">
 
+    <!-- Argon CSS -->
+    <link rel="stylesheet" href="{{asset('css/argon.css')}}" type="text/css">
+    <!-- Icons -->
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.15.4/css/all.css">
+
     <link rel="stylesheet" href="{{asset('assets/themes/default/css/bootstrap.css')}}" type="text/css">
     <link rel="stylesheet" href="{{asset('assets/themes/default/css/animate.css')}}" type="text/css">
     <link rel="stylesheet" href="{{asset('assets/themes/default/css/owl.carousel.css')}}" type="text/css">

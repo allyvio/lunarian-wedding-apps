@@ -32,10 +32,14 @@ Route::prefix('dashboard')->middleware(['auth', 'wedding'])->group(function () {
     /** ------------------------- INVITATION Import ------------------------- */
     Route::get('/download', 'InvitationController@download')->name('download.file');
     Route::post('/users/import', 'InvitationController@store')->name('import.store');
-
     /** MEDIA  */
     Route::post('/media/store', 'MediaController@store')->name('media.store');
     Route::delete('/media/destroy/{media}', 'MediaController@destroy')->name('media.destroy');
+    /**  ------------------------- Music ------------------------- */
+    Route::get('/music', 'MusikController@index')->name('music.index');
+    Route::post('/add-music', 'MusikController@store')->name('add-music.store');
+    Route::get('/music/{id}', 'MusikController@update');
+    Route::delete('/music/{id}', 'MusikController@deleteMusik')->name('music.delete');
 });
 Route::get('/wedding/package', function () {
     return view('pages.package.index');
