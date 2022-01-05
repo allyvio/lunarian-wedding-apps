@@ -16,7 +16,8 @@ class Wedding extends Model
         'calon_pria_photo',
         'calon_wanita_photo',
         'theme',
-        'package_id'
+        'package_id',
+        'quote'
     ];
     protected $attributes = ['theme' => 'default', 'package_id' => 1];
     protected $with = ['events', 'comments'];
@@ -33,9 +34,9 @@ class Wedding extends Model
     {
         return $this->hasMany('App\Models\Event');
     }
-    public function medias()
+    public function gallery()
     {
-        return $this->hasMany('App\Models\Medias');
+        return $this->hasMany('App\Models\Media')->where('media_type', 'gallery');
     }
     public function invitations()
     {

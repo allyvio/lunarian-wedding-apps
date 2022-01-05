@@ -17,8 +17,8 @@ Route::prefix('dashboard')->middleware(['auth', 'wedding'])->group(function () {
     Route::resource('/wedding', 'WeddingController')->except([
         'show', 'store', 'create'
     ]);
-    Route::post('/wedding/update-photos/{wedding}','WeddingController@updateCouplePhoto')->name('wedding.update.photos');
-    Route::delete('/wedding/delete-photos/{wedding}','WeddingController@destroyCouplePhoto')->name('wedding.destroy.photos');
+    Route::post('/wedding/update-photos/{wedding}', 'WeddingController@updateCouplePhoto')->name('wedding.update.photos');
+    Route::delete('/wedding/delete-photos/{wedding}', 'WeddingController@destroyCouplePhoto')->name('wedding.destroy.photos');
 
     /**  ------------------------- EVENT ------------------------- */
     Route::get('/event', 'EventController@index')->name('event.index');
@@ -29,10 +29,13 @@ Route::prefix('dashboard')->middleware(['auth', 'wedding'])->group(function () {
     Route::get('/invitation/{id}', 'InvitationController@getInvitationById')->name('invitation.getbyid');
     Route::put('/invitation', 'InvitationController@updateInvitation')->name('invitation.update');
     Route::delete('/invitation/{id}', 'InvitationController@deleteInvitation')->name('invitation.delete');
-
     /** ------------------------- INVITATION Import ------------------------- */
     Route::get('/download', 'InvitationController@download')->name('download.file');
     Route::post('/users/import', 'InvitationController@store')->name('import.store');
+
+    /** MEDIA  */
+    Route::post('/media/store', 'MediaController@store')->name('media.store');
+    Route::delete('/media/destroy/{media}', 'MediaController@destroy')->name('media.destroy');
 });
 Route::get('/wedding/package', function () {
     return view('pages.package.index');
@@ -50,7 +53,7 @@ Route::post('/{wedding}/rsvp/{code}/confirm', 'InvitationController@rsvp')->name
 Route::post('/invitation/{invitation}/count', 'InvitationController@count')->name('rsvp.count');
 
 /** ------------------------- WEDDING ------------------------- */
-Route::post('wedding', 'WeddingController@store')->name('wedding.store');
+Route::post('wedding', 'WeddingController@store')->name('wedding.store'); // on SESSION
 Route::match(['get', 'post'], 'wedding/storedb', 'WeddingController@storeDB')->name('wedding.storeDB')->middleware('auth');
 Route::get('wedding/create', 'WeddingController@create')->name('wedding.create');
 Route::get('/{wedding}/{code?}', 'WeddingController@show')->name('wedding.page');
