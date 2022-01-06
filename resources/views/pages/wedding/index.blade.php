@@ -125,7 +125,8 @@
                                 </span>
                                 @enderror
                             </div>
-                            <div class="form-group text-right">
+                            <div class="form-group d-flex justify-content-between">
+                                <button type="button" id="clear-quill-content" class="btn btn-danger">Clear</button>
                                 <button type="submit" class="btn btn-primary">Simpan</button>
                             </div>
                         </form>
@@ -172,12 +173,8 @@
 @push('scripts')
 <script>
     var toolbarOptions = [
+        [{ 'size': ['small', false, 'large', 'huge'] }],  // custom dropdown
         ['bold', 'italic', 'underline', 'strike'], // toggled buttons
-        [{
-            'header': 1
-        }, {
-            'header': 2
-        }], // custom button values
         [{
             'list': 'ordered'
         }, {
@@ -214,14 +211,17 @@
         },
         theme: 'snow'
     });
-    // console.log(@json($wedding->quote));
-    // var content = JSON.parse('{!!$wedding->quote!!}')
-    // quill.setContents(content)
+    $('#clear-quill-content').click(function() {
+        var element = document.getElementsByClassName('ql-editor');
+        element[0].innerHTML = ""
+        // quill.setContents()
+    })
+    // element[0].innerHTML = "";
     quill.on('text-change', function(delta, oldDelta, source) {
         if (source == 'user') {
-            var editor = document.querySelector('#quill-container'),
-                a = editor.children[0].innerHTML
-            $('#quote').text(a)
+            quill.getText().trim().length === 0 ?
+                $('#quote').text('') :
+                $('#quote').text($('.ql-editor').html())
         }
     });
 
@@ -246,10 +246,8 @@
     myDropzone.on("error", function(file, response) {
         file.previewElement.classList.add("dz-error");
         $('.dz-error-message').text(response);
-        if (!file.accepted) {
-            this.removeFile(file);
-            Swal.fire('File Ditolak', response, 'error');
-        }
+        this.removeFile(file);
+        Swal.fire('File Ditolak', response, 'error');
     });
     myDropzone.on("sending", function(file, xhr, formData) {
         formData.append("type", 'gallery');
@@ -300,7 +298,6 @@
                 btn_submit.addClass('btn-progress')
             },
             success: function(res) {
-                console.log(res);
                 $.each(res, function(k, v) {
                     $form.find('input[name=' + k + ']').val(v)
                 })

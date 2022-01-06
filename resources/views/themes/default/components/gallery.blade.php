@@ -3,7 +3,7 @@
     <div class="container">
         <div class="row">
             <div class="col-md-12 text-center">
-                <h2>Our Gallery</h2>
+                <h1>Our Gallery</h1>
                 <div class="spacer-single"></div>
             </div>
 

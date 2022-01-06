@@ -1,6 +1,6 @@
 <section id="story" class="our-story section-boxed section-bg-color">
   <div class="container">
-    <div class="row">
+    <div class="row mb70">
       <div class="col-sm-12 text-center mb-100">
         <h1 class="h2">PROTOKOL KESEHATAN</h1>
         <div class=" text-center">
@@ -12,53 +12,49 @@
         </div>
       </div>
     </div>
-  </div>
-</section> <br><br>
-<section class="section section-lg pt-lg-0 mt--7">
-  <div class="container">
     <div class="row justify-content-center">
       <div class="col-lg-12">
         <div class="row">
-          <div class="col-lg-4">
-            <div class="card card-lift--hover shadow border-0">
-              <div class="card-body py-5">
-                <div class="icon icon-shape bg-gradient-yellow text-white rounded-circle mb-4">
+          <div class="col-lg-4 mb60">
+            <div class="card">
+              <div class="mb30">
+                <span class="circle" style="margin-top: 0;box-shadow: none;">
                   <i class="fas fa-hand-holding-water"></i>
-                </div>
-                <h4 class="h3 text-yellow text-uppercase">CUCI TANGAN</h4>
-                <h4>
-                  Cuci tangan dengan air mengalir sesuai dengan ketentuan prokes
-                  atau bisa menggunakan hand sanitizer.
-                </h4>
+                </span>
               </div>
+              <h4 class="h4 text-yellow text-uppercase">CUCI TANGAN</h4>
+              <p>
+                Cuci tangan dengan air mengalir sesuai dengan ketentuan prokes
+                atau bisa menggunakan hand sanitizer.
+              </p>
             </div>
           </div>
-          <div class="col-lg-4">
-            <div class="card card-lift--hover shadow border-0">
-              <div class="card-body py-5">
-                <div class="icon icon-shape bg-gradient-yellow text-white rounded-circle mb-4">
+          <div class="col-lg-4 mb60">
+            <div class="card">
+              <div class="mb30">
+                <span class="circle" style="margin-top: 0;box-shadow: none;">
                   <i class="fas fa-head-side-mask"></i>
-                </div>
-                <h4 class="h3 text-yellow text-uppercase">GUNAKAN MASKER</h4>
-                <h4>
-                  Gunakan masker saat menghadiri acara pernikahan dan pilih masker yang
-                  sudah sesuai dengan ketentuan prokes.
-                </h4>
+                </span>
               </div>
+              <h4 class="h4 text-yellow text-uppercase">GUNAKAN MASKER</h4>
+              <p>
+                Gunakan masker saat menghadiri acara pernikahan dan pilih masker yang
+                sudah sesuai dengan ketentuan prokes.
+              </p>
             </div>
           </div>
-          <div class="col-lg-4">
-            <div class="card card-lift--hover shadow border-0">
-              <div class="card-body py-5">
-                <div class="icon icon-shape bg-gradient-yellow text-white rounded-circle mb-4">
+          <div class="col-lg-4 mb60">
+            <div class="card">
+              <div class="mb30">
+                <span class="circle" style="margin-top: 0;box-shadow: none;">
                   <i class="fas fa-people-arrows"></i>
-                </div>
-                <h4 class="h3 text-yellow text-uppercase">JAGA JARAK</h4>
-                <h4>
-                  Jaga jarak antar tamu sekitar 2m sampai 3m
-                  susuai dengan ketentuan prokes yang sudah ditetapkan.
-                </h4>
+                </span>
               </div>
+              <h4 class="h4 text-uppercase">JAGA JARAK</h4>
+              <p>
+                Jaga jarak antar tamu sekitar 2m sampai 3m
+                susuai dengan ketentuan prokes yang sudah ditetapkan.
+              </p>
             </div>
           </div>
         </div>
