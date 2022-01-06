@@ -34,6 +34,12 @@
             </a>
           </li>
           <li class="nav-item">
+            <a class="nav-link" href="{{route('story.index')}}">
+              <i class="fa fa-scroll text-info"></i>
+              <span class="nav-link-text">Story</span>
+            </a>
+          </li>
+          <li class="nav-item">
             <a class="nav-link" href="{{route('invitation.index')}}">
               <i class="ni ni-book-bookmark text-green"></i>
               <span class="nav-link-text">Undangan</span>

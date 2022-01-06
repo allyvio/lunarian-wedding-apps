@@ -20,6 +20,8 @@ Route::prefix('dashboard')->middleware(['auth', 'wedding'])->group(function () {
     Route::post('/wedding/update-photos/{wedding}', 'WeddingController@updateCouplePhoto')->name('wedding.update.photos');
     Route::delete('/wedding/delete-photos/{wedding}', 'WeddingController@destroyCouplePhoto')->name('wedding.destroy.photos');
 
+    /** STORY */
+    Route::get('/story','StoryController@index')->name('story.index');
     /**  ------------------------- EVENT ------------------------- */
     Route::get('/event', 'EventController@index')->name('event.index');
 

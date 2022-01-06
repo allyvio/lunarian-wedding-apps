@@ -12,11 +12,15 @@
     <div id="wrapper">
         <div id="content" class="no-bottom no-top">
             <!-- hero section begin -->
-            @include('themes.default.components.hero-slider')
+            @include('themes.default.components.hero')
             <!-- section end -->
 
             <!-- couple section begin -->
             @include('themes.default.components.couple')
+            <!-- section end -->
+
+            <!-- story section begin -->
+            @include('themes.default.components.story')
             <!-- section end -->
 
             <!-- section begin -->
@@ -46,10 +50,6 @@
             @include('themes.default.components.rsvp.form')
             @endif
             <!-- section end -->
-            <!-- gallery section begin -->
-            <!-- @include('themes.default.components.gallery') -->
-            <!-- section end -->
-
             <!-- comment section begin -->
             @include('themes.default.components.comments.form')
             @include('themes.default.components.comments.show')

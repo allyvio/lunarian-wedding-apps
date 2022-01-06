@@ -8,7 +8,6 @@
     <meta name="csrf-token" content="{{ csrf_token() }}">
 
     <!-- Argon CSS -->
-    <link rel="stylesheet" href="{{asset('css/argon.css')}}" type="text/css">
     <!-- Icons -->
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.15.4/css/all.css">
 
