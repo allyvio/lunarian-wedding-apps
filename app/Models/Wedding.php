@@ -36,7 +36,7 @@ class Wedding extends Model
     }
     public function gallery()
     {
-        return $this->hasMany('App\Models\Media')->where('media_type', 'gallery');
+        return $this->hasMany('App\Models\Media')->where('type', 'gallery');
     }
     public function invitations()
     {

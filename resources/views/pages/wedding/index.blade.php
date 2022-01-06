@@ -252,7 +252,7 @@
         }
     });
     myDropzone.on("sending", function(file, xhr, formData) {
-        formData.append("media_type", 'gallery');
+        formData.append("type", 'gallery');
         formData.append("wedding_id", dropzone.data('wedding'));
     });
     myDropzone.on("success", file => {
