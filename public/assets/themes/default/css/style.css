@@ -5372,7 +5372,7 @@ a.read_more i {
 }
 .timeline>li {
 	position: relative;
-	margin-top: -15%;
+	/* margin-top: -2rem; */
 }
 .timeline>li:first-child {
 	position: relative;
@@ -5430,7 +5430,7 @@ a.read_more i {
 	font-size: 14px;
 	text-align: center;
 	position: absolute;
-	top: 16px;
+	top: 5px;
 	left: 50%;
 	margin-left: -20px;
 	background-color: #fff;
@@ -5474,8 +5474,12 @@ a.read_more i {
 	margin-top: 0;
 	color: inherit;
 }
+.timeline-body {
+	padding: 0;
+}
 .timeline-body>p, .timeline-body>ul {
 	margin-bottom: 0;
+	font-size: 14px;
 }
 .timeline-body>p+p {
 	margin-top: 5px;

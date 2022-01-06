@@ -38,6 +38,14 @@ class Wedding extends Model
     {
         return $this->hasMany('App\Models\Media')->where('type', 'gallery');
     }
+    public function medias()
+    {
+        return $this->hasMany('App\Models\Media');
+    }
+    public function stories()
+    {
+        return $this->hasMany('App\Models\Story');
+    }
     public function invitations()
     {
         return $this->hasMany('App\Models\Invitation');
@@ -45,6 +53,10 @@ class Wedding extends Model
     public function music()
     {
         return $this->hasMany('App\Models\Music');
+    }
+    public function package()
+    {
+        return $this->belongsTo('App\Models\Package');
     }
     public function comments()
     {

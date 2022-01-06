@@ -14,9 +14,7 @@
 </div>
 @endsection
 @section('dashboard-content')
-<div class="container p-0">
-    <div class="card">
-        <div class="card-body" id="events-container">@include('pages.event.show')</div>
-    </div>
+<div class="card">
+    <div class="card-body" id="events-container">@include('pages.event.show')</div>
 </div>
 @endsection
