@@ -6,14 +6,14 @@ use Illuminate\Database\Eloquent\Model;
 
 class Story extends Model
 {
-    protected $table = 'weddings';
+    protected $table = 'stories';
     protected $fillable = [
         'title',
         'subtitle',
         'content',
         'wedding_id',
     ];
-    public $timestamps = 'false';
+    public $timestamps = false;
     public function wedding()
     {
         return $this->belongsTo('App\Models\Wedding');

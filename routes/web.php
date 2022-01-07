@@ -22,6 +22,10 @@ Route::prefix('dashboard')->middleware(['auth', 'wedding'])->group(function () {
 
     /** STORY */
     Route::get('/story','StoryController@index')->name('story.index');
+    Route::post('/story','StoryController@store')->name('story.store');
+    Route::get('/story/{id}','StoryController@show')->name('story.show');
+    Route::put('/story/{id}/update','StoryController@update')->name('story.update');
+    Route::delete('/story/{id}','StoryController@destroy')->name('story.delete');
     /**  ------------------------- EVENT ------------------------- */
     Route::get('/event', 'EventController@index')->name('event.index');
 
