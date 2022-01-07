@@ -17,7 +17,7 @@ class CreateMediasTable extends Migration
             $table->id();
             $table->foreignId('wedding_id');
             $table->string('filename');
-            $table->enum('type', ['hero', 'quote', 'countdown', 'couple']);
+            $table->enum('type', ['hero', 'quote', 'countdown', 'couple','gallery']);
             $table->timestamps();
 
             $table->index(['wedding_id', 'filename', 'type']);
