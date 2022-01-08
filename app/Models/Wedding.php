@@ -20,7 +20,7 @@ class Wedding extends Model
         'quote'
     ];
     protected $attributes = ['theme' => 'default', 'package_id' => 1];
-    protected $with = ['events', 'comments'];
+    protected $with = ['events'];
 
     public function getRouteKeyName()
     {

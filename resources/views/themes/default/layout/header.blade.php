@@ -7,7 +7,6 @@
     <meta name="author" content="https://lunarian-id.com/">
     <meta name="csrf-token" content="{{ csrf_token() }}">
 
-    <!-- Argon CSS -->
     <!-- Icons -->
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.15.4/css/all.css">
 

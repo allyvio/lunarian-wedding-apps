@@ -46,12 +46,12 @@
             <!-- rsvp popup begin -->
             @if($wedding->invitation)
             @include('themes.default.components.rsvp.show')
+            @include('themes.default.components.comments.form')
             @else
             @include('themes.default.components.rsvp.form')
             @endif
             <!-- section end -->
             <!-- comment section begin -->
-            @include('themes.default.components.comments.form')
             @include('themes.default.components.comments.show')
             <!-- section end -->
             @include('themes.default.components.protokol')

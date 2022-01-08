@@ -57,6 +57,12 @@
               <span class="nav-link-text">Musik</span>
             </a>
           </li>
+          <li class="nav-item">
+            <a class="nav-link" href="{{route('comment.index')}}">
+              <i class="fa fa-comment-dots text-yellow"></i>
+              <span class="nav-link-text">Komentar</span>
+            </a>
+          </li>
         </ul>
       </div>
     </div>
