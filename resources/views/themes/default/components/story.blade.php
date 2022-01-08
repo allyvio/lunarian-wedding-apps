@@ -1,64 +1,31 @@
-<section class="mb60 mt60" style="background-color: white;">
+@if($wedding->stories->count() > 0)
+<section class="mb60" style="background-color: white;">
     <div class="container">
-        <div class="text-center">
+        <div class="text-center mb50">
             <h1>Our Story</h1>
         </div>
         <ul class="timeline">
-            <li class="wow fadeInUp">
+            <?php $count = 1;
+            foreach ($wedding->stories as $story) {
+                if ($count % 2 == 0) {
+                    echo '<li class="timeline-inverted wow fadeInUp">';
+                } else
+                    echo '<li class="wow fadeInUp">'; ?>
                 <div class="timeline-badge"><i class="fa fa-heart"></i></div>
                 <div class="timeline-panel">
                     <div class="timeline-heading">
-                        <h3 class="mb0">How We Meet</h3>
-                        <h4 class="mt0">1 July 2019</h4>
+                        <h3 class="mb0">{{$story->title}}</h3>
+                        <h4 class="mt0">{{$story->subtitle}}</h4>
                         <div class="tiny-border"></div>
                     </div>
                     <div class="timeline-body">
-                        <p>
-                            Mussum ipsum cacilds, vidis litro abertis. Consetis adipiscings elitis. Pra lá ,
-                            depois divoltis porris, paradis. Paisis,
-                            filhis, espiritis santis. Mé faiz elementum girarzis, nisi eros vermeio, in
-                            elementis
-                            mé pra quem é amistosis quis leo.
-                        </p>
+                        <p>{{$story->content}}</p>
                     </div>
                 </div>
-            </li>
-            <li class="timeline-inverted wow fadeInUp">
-                <div class="timeline-badge"><i class="fa fa-heart"></i></div>
-                <div class="timeline-panel">
-                    <div class="timeline-heading">
-                        <h3 class="mb0">How We Meet</h3>
-                        <h4 class="mt0">1 July 2019</h4>
-                        <div class="tiny-border"></div>
-                    </div>
-                    <div class="timeline-body">
-                        <p>Mussum ipsum cacilds, vidis litro abertis. Consetis adipiscings elitis. Pra lá ,
-                            depois divoltis
-                            porris, paradis. Paisis, filhis, espiritis santis. Mé faiz elementum girarzis, nisi
-                            eros
-                            vermeio, in elementis mé pra quem é amistosis quis leo.</p>
-                    </div>
-                </div>
-            </li>
-            <li class="wow fadeInUp">
-                <div class="timeline-badge"><i class="fa fa-heart"></i></div>
-                <div class="timeline-panel">
-                    <div class="timeline-heading">
-                        <h3 class="mb0">How We Meet</h3>
-                        <h4 class="mt0">1 July 2019</h4>
-                        <div class="tiny-border"></div>
-                    </div>
-                    <div class="timeline-body">
-                        <p>
-                            Mussum ipsum cacilds, vidis litro abertis. Consetis adipiscings elitis. Pra lá ,
-                            depois divoltis porris, paradis. Paisis,
-                            filhis, espiritis santis. Mé faiz elementum girarzis, nisi eros vermeio, in
-                            elementis
-                            mé pra quem é amistosis quis leo.
-                        </p>
-                    </div>
-                </div>
-            </li>
+                </li>
+            <?php $count++;
+            } ?>
         </ul>
     </div>
 </section>
+@endif
