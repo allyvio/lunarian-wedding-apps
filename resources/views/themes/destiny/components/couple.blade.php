@@ -2,7 +2,7 @@
     <div class="container">
         <div class="row">
             <div class="col-sm-12 text-center mb-100">
-                <h1 class="title">We Are Getting Hitched</h1>
+                <h1 class="title">Kami Terikat</h1>
             </div>
         </div>
         <div class="row">
@@ -40,10 +40,10 @@
                     </div>
                 </div>
                 <div class="block-quote">
-                    <blockquote class="mt-20">Friendship... is not something you learn in school. But if you
+                    <!-- <blockquote class="mt-20">Friendship... is not something you learn in school. But if you
                         haven't learned the meaning
                         of friendship, you really haven't learned anything.
-                    </blockquote>
+                    </blockquote> -->
                     <h2 class="heavy uppercase mt-20">Sincerely, {{$wedding->calon_wanita}} & {{$wedding->calon_pria}}</h2>
                 </div>
             </div>

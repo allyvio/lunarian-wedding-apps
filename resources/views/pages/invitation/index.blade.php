@@ -143,7 +143,8 @@
           <th>Email</th>
           <th>No.Hp</th>
           <th>Kehadiran</th>
-          <th>Kode Undangan</th>
+          <th>Jumlah</th>
+          <th>Kode</th>
           <th></th>
         </tr>
       </thead>
@@ -154,6 +155,7 @@
           <td>{{$data->email}}</td>
           <td>{{$data->phone}}</td>
           <td>{{$data->status}}</td>
+          <td>{{$data->count}} orang</td>
           <td>{{$data->code}}</td>
           <td class="table-actions">
             <a href="javascript:void(0)" onclick="editInvitation({{$data->id}})" class="btn btn-icon btn-outline-info btn-sm" data-toggle="tooltip" data-original-title="Ubah">

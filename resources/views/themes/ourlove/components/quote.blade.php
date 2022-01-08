@@ -1,5 +1,8 @@
 @if($wedding->quote)
-<section id="section-quote" aria-label="section-quote-1" class="text-light" data-stellar-background-ratio=".2">
+<section id="section-quote" aria-label="section-quote-1" class="footer">
+  <div id="footer-image-block" class="footer-image-block" style="background-attachment: fixed; background-position: 50%;" data-stellar-background-ratio="0.3">
+      <div class="footer-mask"></div>
+  </div>
     <div class="container">
         <div class="row">
             <div class="col-md-8 col-md-offset-2 wow fadeIn">

@@ -532,6 +532,7 @@ h1.large {
 
 .block-img {
     position: relative;
+    margin-bottom: 30px;
 }
 .block-img a {
     height: 352px;
@@ -976,7 +977,7 @@ blockquote {
         margin-top: 20px;
     }
     .img img {
-        max-width: 50%;
+        max-width: 100%;
     }
     h2.typo {
         font-size: 100px;
@@ -1144,6 +1145,18 @@ blockquote {
         overflow: auto;
         width: auto;
         height: 210px;
+    }
+    .img-round .img {
+        border-radius: 50%;
+    }
+    .img {
+        position: relative;
+    }
+    .img img {
+        width: 200px;
+        height: 200px;
+        object-fit: cover;
+        border-radius: 50%;
     }
 }
 

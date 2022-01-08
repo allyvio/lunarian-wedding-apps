@@ -7,7 +7,7 @@
 }
 /* ------- overlay: change here background color and opacity ----- */
 .vbox-overlay{
-   
+
     background: rgba(255,255,255, .9);
     width: 100%;
     height: auto;
@@ -24,12 +24,12 @@
 
 /* circle preloader */
 .vbox-preloader{
-    position:fixed; 
-    width:32px; 
+    position:fixed;
+    width:32px;
     height:32px;
-    left:50%; 
-    top:50%; 
-    margin-left:-16px; 
+    left:50%;
+    top:50%;
+    margin-left:-16px;
     margin-top:-16px;
     background-image: url(venobox/preload-circle.png);
     text-indent: -100px;
@@ -71,12 +71,12 @@
 /* IOS preloader */
 
 /*.vbox-preloader{
-    position:fixed; 
-    width:32px; 
+    position:fixed;
+    width:32px;
     height:32px;
-    left:50%; 
-    top:50%; 
-    margin-left:-16px; 
+    left:50%;
+    top:50%;
+    margin-left:-16px;
     margin-top:-16px;
     background-image: url(preload-ios.png);
     text-indent: -100px;
@@ -114,12 +114,12 @@
 /* dots preloader */
 /*
 .vbox-preloader{
-    position:fixed; 
-    width:32px; 
+    position:fixed;
+    width:32px;
     height:11px;
-    left:50%; 
-    top:50%; 
-    margin-left:-16px; 
+    left:50%;
+    top:50%;
+    margin-left:-16px;
     margin-top:-16px;
     background-image: url(preload-dots.png);
     text-indent: -100px;
@@ -157,12 +157,12 @@
 /* quads preloader */
 /*
 .vbox-preloader{
-    position:fixed; 
-    width:32px; 
+    position:fixed;
+    width:32px;
     height:10px;
-    left:50%; 
-    top:50%; 
-    margin-left:-16px; 
+    left:50%;
+    top:50%;
+    margin-left:-16px;
     margin-top:-16px;
     background-image: url(preload-quads.png);
     text-indent: -100px;
@@ -340,13 +340,13 @@
 /* ------- PLease do NOT edit this! (or do it at your own risk) ------ */
 .vbox-open{
     position:relative;
-	
+
 }
 .vbox-container{
     position: relative;
     background: #000;
     width: 100%;
-    max-width: 1200px;
+    max-width: 700px;
     margin: 0 auto;
     padding: 0 15px;
 }

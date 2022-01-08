@@ -9,6 +9,7 @@
  <script src="{{asset('assets/themes/ourlove/js/jquery.malihu.PageScroll2id.min.js')}}"></script>
  <script src="{{asset('assets/themes/ourlove/js/main.js')}}"></script>
  <script src="{{asset('vendor/izitoast/iziToast.min.js')}}"></script>
+ <script src="{{asset('vendor/quill/dist/quill.min.js')}}"></script>
  <script src="{{asset('assets/themes/main.js')}}"></script>
  <script>
     $.ajaxSetup({

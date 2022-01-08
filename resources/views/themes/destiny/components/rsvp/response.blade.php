@@ -2,8 +2,8 @@
 <div class="container">
     <div class="row">
         <div class="col-md-12 text-center">
-            <h3 class="heavy pb-10">Will You Attend?</h3>
-            <p class="lead">We look forward to celebrate with you. <br>Please kindly respond.<br></p>
+            <h3 class="heavy pb-10">Apakah Anda Akan Hadir??</h3>
+            <p class="lead">Kami berharap dapat merayakannya bersama Anda. <br>Mohon tanggapannya.<br></p>
             <div class="spacer-single"></div>
             <div class=" col-xs-4 col-sm-3 col-xs-offset-2 col-sm-offset-3 text-right">
                 <button class="btn btn-block btn-success btn-rsvp-confirm" data-rsvp="ya" data-wedding="{{$wedding->slug}}" data-invitation="{{$wedding->invitation->code}}" onclick="rsvpConfirm(this)">Ya</button>
@@ -19,8 +19,8 @@
 <div class="container">
     <div class="row">
         <div class="col-md-12 text-center">
-            <h3 class="heavy pb-10">Thank you, wish us the best.</h3>
-            <p class="lead">Your response is : <span class="badge badge-danger"><i class="fa fa-times"> Not Going</i></span></p>
+            <h3 class="heavy pb-10">Terima kasih, doakan kami yang terbaik.</h3>
+            <p class="lead">Tanggapan Anda adalah : <span class="badge badge-danger"><i class="fa fa-times"> Tidak pergi</i></span></p>
             <div class="pb-20">
                 <button class="btn btn-primary btn-rsvp-confirm" data-rsvp="reset" data-wedding="{{$wedding->slug}}" data-invitation="{{$wedding->invitation->code}}" onclick="rsvpConfirm(this)">Change</button>
             </div>
@@ -32,12 +32,12 @@
 <div class="container">
     <div class="row">
         <div class="col-md-12 text-center">
-            <h3 class="heavy pb-10">Thank you for your response. See you there!</h3>
-            <p class="lead">Your response is : <span class="badge badge-success"><i class="fa fa-check"> Going</i></span></p>
+            <h3 class="heavy pb-10">Terima kasih atas tanggapan Anda. Sampai jumpa!</h3>
+            <p class="lead">Tanggapan Anda adalah : <span class="badge badge-success"><i class="fa fa-check"> Pergi</i></span></p>
             <div class="pb-20">
                 <button class="btn btn-primary btn-rsvp-confirm" data-rsvp="reset" data-wedding="{{$wedding->slug}}" data-invitation="{{$wedding->invitation->code}}" onclick="rsvpConfirm(this)">Change</button>
             </div>
-            <p class="lead">How many guest?</p>
+            <p class="lead">Berapa banyak orang yang Hadir?</p>
             <div class="col-xs-6 col-md-2 col-xs-offset-3 col-md-offset-5">
                 <div class="input-group">
                     <span class="input-group-btn">
