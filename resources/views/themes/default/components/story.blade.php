@@ -2,7 +2,8 @@
 <section class="mb60" style="background-color: white;">
     <div class="container">
         <div class="text-center mb50">
-            <h1>Our Story</h1>
+            <h2 class="s2">Our Story</h2>
+            <div class="small-border" style="background-size: cover;"></div>
         </div>
         <ul class="timeline">
             <?php $count = 1;
@@ -19,7 +20,7 @@
                         <div class="tiny-border"></div>
                     </div>
                     <div class="timeline-body">
-                        <p>{{$story->content}}</p>
+                        <p style="text-align: justify;">{!! nl2br(e($story->content)) !!}</p>
                     </div>
                 </div>
                 </li>

@@ -1553,6 +1553,11 @@ a.btn-dark.btn-id {
 	font-weight: bold;
 	text-transform: uppercase;
 }
+.btn-custom:active,.btn-custom:focus {
+	color: #fff;
+}
+.btn-custom:focus{
+	opacity: .8;}
 .btn-custom.btn-small {
 	padding: 5px 20px 5px 20px;
 	font-weight: bold;
