@@ -6,7 +6,7 @@
 <body>
     @foreach($musik as $data)
     @if($data->status == 1)
-    <audio src="{{asset('storage/'.$data->music)}}" id="my_audio" loop="loop"></audio>
+    <audio src="{{asset('storage/'.$data->music)}}" autoplay loop="loop"></audio>
     @endif
     @endforeach
     <!-- Loading animation -->
@@ -49,6 +49,15 @@
             <!-- Wedding Events Section -->
             @include('themes.ourlove.components.event')
             <!-- /Wedding Events Section -->
+
+            <!-- Wedding Gallery Section -->
+            @include('themes.ourlove.components.quote')
+            <!-- /Wedding Gallery Section -->
+
+            <!-- Wedding Gallery Section -->
+            @include('themes.ourlove.components.gallery')
+            <!-- /Wedding Gallery Section -->
+
             <!-- rsvp popup begin -->
             @if($wedding->invitation)
             @include('themes.ourlove.components.rsvp.show')
@@ -56,16 +65,18 @@
             @include('themes.ourlove.components.rsvp.form')
             @endif
             <!-- section end -->
+
             <!--Comment Section -->
             @include('themes.ourlove.components.comment')
             <!-- Comment Section -->
+
             <!--Protokol Section -->
             @include('themes.ourlove.components.protokol')
             <!-- Protokol Section -->
 
             <!-- Footer (Thank You block) -->
             <footer id="thanks" class="footer">
-                <div id="footer-image-block" class="footer-image-block" data-stellar-background-ratio="0.3">
+                <div id="footer-image-block" class="footer-image-block" style="background-attachment: fixed; background-position: 50%;" data-stellar-background-ratio="0.3">
                     <div class="footer-mask"></div>
                 </div>
 
@@ -91,10 +102,6 @@
                 message: message,
                 position: 'topCenter',
             });
-        }
-        //music
-        window.onload=function(){
-          document.getElementById("my_audio").play();
         }
     </script>
 </body>

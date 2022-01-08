@@ -12,15 +12,11 @@
         </div>
       </div>
     </div>
-  </div>
-</section> <br><br>
-<section class="section section-lg pt-lg-0 mt--7">
-  <div class="container">
     <div class="row justify-content-center">
       <div class="col-lg-12">
         <div class="row">
           <div class="col-lg-4">
-            <div class="card card-lift--hover shadow border-0">
+            <!-- <div class="card card-lift--hover shadow border-0"> -->
               <div class="card-body py-5">
                 <div class="icon icon-shape bg-gradient-danger text-white rounded-circle mb-4">
                   <i class="fas fa-hand-holding-water"></i>
@@ -31,10 +27,10 @@
                   atau bisa menggunakan hand sanitizer.
                 </p>
               </div>
-            </div>
+            <!-- </div> -->
           </div>
           <div class="col-lg-4">
-            <div class="card card-lift--hover shadow border-0">
+            <!-- <div class="card card-lift--hover shadow border-0"> -->
               <div class="card-body py-5">
                 <div class="icon icon-shape bg-gradient-danger text-white rounded-circle mb-4">
                   <i class="fas fa-head-side-mask"></i>
@@ -45,10 +41,10 @@
                   sudah sesuai dengan ketentuan prokes.
                 </p>
               </div>
-            </div>
+            <!-- </div> -->
           </div>
           <div class="col-lg-4">
-            <div class="card card-lift--hover shadow border-0">
+            <!-- <div class="card card-lift--hover shadow border-0"> -->
               <div class="card-body py-5">
                 <div class="icon icon-shape bg-gradient-danger text-white rounded-circle mb-4">
                   <i class="fas fa-people-arrows"></i>
@@ -59,7 +55,7 @@
                   susuai dengan ketentuan prokes yang sudah ditetapkan.
                 </p>
               </div>
-            </div>
+            <!-- </div> -->
           </div>
         </div>
       </div>

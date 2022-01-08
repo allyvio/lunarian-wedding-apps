@@ -5,33 +5,102 @@
 <form id="package-form" data-stage="package">
   <div class="row row-example">
     @foreach(\App\Models\Package::all() as $package)
-    <div class="col col-md-1">
-      <span>
-        <div class="custom-control custom-radio">
-          <input name="package_id" class="custom-control-input" id="package-{{$package->id}}" value="{{$package->id}}" type="radio" {{$package->id == 1 ? 'checked' :'' }}>
-          <label class="custom-control-label" for="package-{{$package->id}}"></label>
-        </div>
-      </span>
-    </div>
-    <label for="package-{{$package->id}}" class="col-md-11">
+    @if($package->id == 1)
+    <label for="package-{{$package->id}}" class="col-md-12">
       <span style="cursor:pointer;">
         <div class="card-header">
-          <h3 class="mb-0">Paket {{ucfirst($package->name)}}</h3>
+          <div class="custom-control custom-radio">
+            <input name="package_id" class="custom-control-input" id="package-{{$package->id}}" value="{{$package->id}}" type="radio" {{$package->id == 1 ? 'checked' :'' }}>
+            <label class="custom-control-label" for="package-{{$package->id}}"><h3 class="mb-0">Paket {{ucfirst($package->name)}}</h3></label>
+          </div>
         </div>
         <div class="card-body">
           <div class="row no-gutters">
-            <div class="col-6 col-md-8">
-              <p class="description"><i class="fas fa-user mr-2"></i> {{$package->count}} Undangan</p>
-              <p class="description"><i class="ni ni-email-83 mr-2"></i>10 E-mail</p>
+            <div class="col-6 col-md-12">
+              <button type="button" class="btn btn-sm btn-primary" data-toggle="tooltip" data-placement="top" title="Dapat Menambah Foto Sebanyak {{$package->count_galleri}} Gambar" style="margin-bottom:10px;"><i class="fas fa-image mr-2"></i>Galeri</button>
+              <button type="button" class="btn btn-sm btn-primary" data-toggle="tooltip" data-placement="top" title="Dapat Menambah Kutipan" style="margin-bottom:10px;"><i class="fas fa-book mr-2"></i>Kutipan</button>
+              <button type="button" class="btn btn-sm btn-primary" data-toggle="tooltip" data-placement="top" title="Dapat Menambah Alamat Acara Pernikahan" style="margin-bottom:10px;"><i class="fas fa-map-marker-alt"></i> Navigasi</button>
+              <button type="button" class="btn btn-sm btn-primary" data-toggle="tooltip" data-placement="top" title="Dapat Memasukkan Data Diri Pengantin dan Detail Info Acara Pernikahan" style="margin-bottom:10px;"><i class="fas fa-user mr-2"></i>Informasi</button>
+              <button type="button" class="btn btn-sm btn-primary" data-toggle="tooltip" data-placement="top" title="Terdapat Jam Hitung Mundur Acara Yang Akan Dilaksanakan" style="margin-bottom:10px;"><i class="fas fa-clock mr-2"></i>Jam</button>
+              <button type="button" class="btn btn-sm btn-primary" data-toggle="tooltip" data-placement="top" title="Terdapat Edukasi Protokol Kesehatan" style="margin-bottom:10px;"><i class="fas fa-head-side-mask mr-2"></i>Protokol</button>
             </div>
-            <div class="col-6 col-md-4">
-              <p class="description" style="text-align:right"> <s>Rp.{{$package->value}}</s> </p>
-              <p class="description text-success font-weight-bold" style="text-align:right;">{!!$package->price ? 'Rp.'. number_format($package->price,2,",",".") : 'GRATIS'!!}</p>
-            </div>
+          </div>
+          <hr>
+          <div class="col-md-12">
+            <p class="description" style="float:left"> <s>Rp.{{$package->value}}</s> </p>
+            <p class="description text-success font-weight-bold" style="float:right;">{!!$package->price ? 'Rp.'. number_format($package->price,2,",",".") : 'GRATIS'!!}</p>
           </div>
         </div>
       </span>
     </label>
+    @elseif($package->id == 2)
+    <label for="package-{{$package->id}}" class="col-md-12">
+      <span style="cursor:pointer;">
+        <div class="card-header">
+          <div class="custom-control custom-radio">
+            <input name="package_id" class="custom-control-input" id="package-{{$package->id}}" value="{{$package->id}}" type="radio">
+            <label class="custom-control-label" for="package-{{$package->id}}"><h3 class="mb-0">Paket {{ucfirst($package->name)}}</h3></label>
+          </div>
+        </div>
+        <div class="card-body">
+          <div class="row no-gutters">
+            <div class="col-6 col-md-12">
+              <button type="button" class="btn btn-sm btn-primary" data-toggle="tooltip" data-placement="top" title="Dapat Menambah Foto Sebanyak {{$package->count_galleri}} Gambar" style="margin-bottom:10px;"><i class="fas fa-image mr-2"></i>Galeri</button>
+              <button type="button" class="btn btn-sm btn-primary" data-toggle="tooltip" data-placement="top" title="Dapat Menambah Cerita Cinta Perjalanan Menuju Ke Pernikahan" style="margin-bottom:10px;"><i class="fas fa-heart mr-2"></i>Cerita</button>
+              <button type="button" class="btn btn-sm btn-primary" data-toggle="tooltip" data-placement="top" title="Dapat Menambah Musik" style="margin-bottom:10px;"><i class="fas fa-music mr-2"></i>Musik</button>
+              <button type="button" class="btn btn-sm btn-primary" data-toggle="tooltip" data-placement="top" title="Dapat Menambah Tamu Undangan Sebanyak {{$package->count_invitation}} orang Dan share undangan melalui WhatsApp" style="margin-bottom:10px;"><i class="fas fa-user mr-2"></i>Undangan</button>
+              <button type="button" class="btn btn-sm btn-primary" data-toggle="tooltip" data-placement="top" title="Dapat Menambah Kutipan" style="margin-bottom:10px;"><i class="fas fa-book mr-2"></i>Kutipan</button>
+              <button type="button" class="btn btn-sm btn-primary" data-toggle="tooltip" data-placement="top" title="Dapat Menambah Alamat Acara Pernikahan" style="margin-bottom:10px;"><i class="fas fa-map-marker-alt"></i> Navigasi</button>
+              <button type="button" class="btn btn-sm btn-primary" data-toggle="tooltip" data-placement="top" title="Dapat Memasukkan Data Diri Pengantin dan Detail Info Acara Pernikahan" style="margin-bottom:10px;"><i class="fas fa-user mr-2"></i>Informasi</button>
+              <button type="button" class="btn btn-sm btn-primary" data-toggle="tooltip" data-placement="top" title="Terdapat Jam Hitung Mundur Acara Yang Akan Dilaksanakan" style="margin-bottom:10px;"><i class="fas fa-clock mr-2"></i>Jam</button>
+              <button type="button" class="btn btn-sm btn-primary" data-toggle="tooltip" data-placement="top" title="Terdapat Edukasi Protokol Kesehatan" style="margin-bottom:10px;"><i class="fas fa-head-side-mask mr-2"></i>Protokol</button>
+              <button type="button" class="btn btn-sm btn-primary" data-toggle="tooltip" data-placement="top" title="Terdapat Kolom Tanggapan Kehadiran Tamu" style="margin-bottom:10px;"><i class="fas fa-users mr-2"></i>RSVP</button>
+              <button type="button" class="btn btn-sm btn-primary" data-toggle="tooltip" data-placement="top" title="Terdapat Kolom Komentar Ucapan" style="margin-bottom:10px;"><i class="fas fa-columns mr-2"></i>Kolom Ucapan</button>
+            </div>
+          </div>
+          <hr>
+          <div class="col-md-12">
+            <p class="description" style="float:left"> <s>Rp.{{$package->value}}</s> </p>
+            <p class="description text-success font-weight-bold" style="float:right;">{!!$package->price ? 'Rp.'. number_format($package->price,2,",",".") : 'GRATIS'!!}</p>
+          </div>
+        </div>
+      </span>
+    </label>
+    @elseif($package->id == 3)
+    <label for="package-{{$package->id}}" class="col-md-12">
+      <span style="cursor:pointer;">
+        <div class="card-header">
+          <div class="custom-control custom-radio">
+            <input name="package_id" class="custom-control-input" id="package-{{$package->id}}" value="{{$package->id}}" type="radio">
+            <label class="custom-control-label" for="package-{{$package->id}}"><h3 class="mb-0">Paket {{ucfirst($package->name)}}</h3></label>
+          </div>
+        </div>
+        <div class="card-body">
+          <div class="row no-gutters">
+            <div class="col-6 col-md-12">
+              <button type="button" class="btn btn-sm btn-primary" data-toggle="tooltip" data-placement="top" title="Dapat Menambah Foto Sebanyak {{$package->count_galleri}} Gambar" style="margin-bottom:10px;"><i class="fas fa-image mr-2"></i>Galeri</button>
+              <button type="button" class="btn btn-sm btn-primary" data-toggle="tooltip" data-placement="top" title="Dapat Menambah Cerita Cinta Perjalanan Menuju Ke Pernikahan" style="margin-bottom:10px;"><i class="fas fa-heart mr-2"></i>Cerita</button>
+              <button type="button" class="btn btn-sm btn-primary" data-toggle="tooltip" data-placement="top" title="Dapat Menambah Musik" style="margin-bottom:10px;"><i class="fas fa-music mr-2"></i>Musik</button>
+              <button type="button" class="btn btn-sm btn-primary" data-toggle="tooltip" data-placement="top" title="Dapat Menambah Tamu Undangan Sebanyak {{$package->count_invitation}} orang Dan share undangan melalui WhatsApp" style="margin-bottom:10px;"><i class="fas fa-user mr-2"></i>Undangan</button>
+              <button type="button" class="btn btn-sm btn-primary" data-toggle="tooltip" data-placement="top" title="Dapat Menambah Kutipan" style="margin-bottom:10px;"><i class="fas fa-book mr-2"></i>Kutipan</button>
+              <button type="button" class="btn btn-sm btn-primary" data-toggle="tooltip" data-placement="top" title="Dapat Menambah Alamat Acara Pernikahan" style="margin-bottom:10px;"><i class="fas fa-map-marker-alt"></i> Navigasi</button>
+              <button type="button" class="btn btn-sm btn-primary" data-toggle="tooltip" data-placement="top" title="Dapat Memasukkan Data Diri Pengantin dan Detail Info Acara Pernikahan" style="margin-bottom:10px;"><i class="fas fa-user mr-2"></i>Informasi</button>
+              <button type="button" class="btn btn-sm btn-primary" data-toggle="tooltip" data-placement="top" title="Terdapat Jam Hitung Mundur Acara Yang Akan Dilaksanakan" style="margin-bottom:10px;"><i class="fas fa-clock mr-2"></i>Jam</button>
+              <button type="button" class="btn btn-sm btn-primary" data-toggle="tooltip" data-placement="top" title="Terdapat Edukasi Protokol Kesehatan" style="margin-bottom:10px;"><i class="fas fa-head-side-mask mr-2"></i>Protokol</button>
+              <button type="button" class="btn btn-sm btn-primary" data-toggle="tooltip" data-placement="top" title="Terdapat Kolom Tanggapan Kehadiran Tamu" style="margin-bottom:10px;"><i class="fas fa-users mr-2"></i>RSVP</button>
+              <button type="button" class="btn btn-sm btn-primary" data-toggle="tooltip" data-placement="top" title="Terdapat Kolom Komentar Ucapan" style="margin-bottom:10px;"><i class="fas fa-columns mr-2"></i>Kolom Ucapan</button>
+              <button type="button" class="btn btn-sm btn-primary" data-toggle="tooltip" data-placement="top" title="Terdapat Link Live Streaming" style="margin-bottom:10px;"><i class="fas fa-eye mr-2"></i>Link Live</button>
+            </div>
+          </div>
+          <hr>
+          <div class="col-md-12">
+            <p class="description" style="float:left"> <s>Rp.{{$package->value}}</s> </p>
+            <p class="description text-success font-weight-bold" style="float:right;">{!!$package->price ? 'Rp.'. number_format($package->price,2,",",".") : 'GRATIS'!!}</p>
+          </div>
+        </div>
+      </span>
+    </label>
+    @endif
     @endforeach
   </div>
 </form>

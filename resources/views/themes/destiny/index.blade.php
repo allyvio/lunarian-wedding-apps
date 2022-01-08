@@ -3,6 +3,11 @@
 @include('themes.destiny.layout.header')
 
 <body>
+    @foreach($musik as $data)
+    @if($data->status == 1)
+    <audio src="{{asset('storage/'.$data->music)}}" autoplay loop="loop"></audio>
+    @endif
+    @endforeach
     <!-- Preloader -->
     <div class="loader">
         <!-- Preloader inner -->
@@ -30,6 +35,12 @@
         <!--End date section-->
         <!--Wedding section-->
         @include('themes.destiny.components.event')
+        <!--End wedding section-->
+        <!--Wedding section-->
+        @include('themes.destiny.components.quote')
+        <!--End wedding section-->
+        <!--Wedding section-->
+        @include('themes.destiny.components.album')
         <!--End wedding section-->
         <!-- rsvp popup begin -->
         @if($wedding->invitation)
