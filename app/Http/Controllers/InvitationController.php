@@ -91,7 +91,7 @@ class InvitationController extends Controller
     public function store(Request $request)
     {
         $packet = Wedding::where('user_id', Auth::user()->id)->first()->package_id;
-        $limit = Package::findOrFail($packet)->count;
+        $limit = Package::findOrFail($packet)->count_invitation;
         $count_invitation = Invitation::where('wedding_id', Auth::user()->id)->get();
         $invitation = $request->file('field');
         $row = -1;
@@ -102,6 +102,7 @@ class InvitationController extends Controller
             }
         fclose($handle);
         }
+        // dd($limit);
         if (count($count_invitation) < $limit) {
             if ($row <= $limit) {
                 if (count($count_invitation) == 0) {

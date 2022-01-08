@@ -6,7 +6,7 @@
     <!-- Music -->
     @foreach($musik as $data)
     @if($data->status == 1)
-    <audio src="{{asset('storage/'.$data->music)}}" id="my_audio" loop="loop"></audio>
+    <audio src="{{asset('storage/'.$data->music)}}" autoplay loop="loop"></audio>
     @endif
     @endforeach
     <div id="wrapper">
@@ -42,7 +42,7 @@
             <!-- gallery section begin -->
             @include('themes.default.components.gallery')
             <!-- section end -->
-            
+
             <!-- rsvp popup begin -->
             @if($wedding->invitation)
             @include('themes.default.components.rsvp.show')
@@ -90,10 +90,6 @@
                 message: message,
                 position: 'topCenter'
             });
-        }
-        //music
-        window.onload=function(){
-          document.getElementById("my_audio").play();
         }
     </script>
 </body>

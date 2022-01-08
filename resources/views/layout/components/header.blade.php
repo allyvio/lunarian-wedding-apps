@@ -13,6 +13,7 @@
   <!-- Icons -->
   <link rel="stylesheet" href="{{asset('vendor/nucleo/css/nucleo.css')}}" type="text/css">
   <link rel="stylesheet" href="{{asset('vendor/@fortawesome/fontawesome-free/css/all.min.css')}}" type="text/css">
+  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.15.4/css/all.css">
   <!-- Page plugins -->
   <link rel="stylesheet" href="{{asset('vendor/animate.css/animate.min.css')}}">
   <link rel="stylesheet" href="{{asset('vendor/izitoast/izitoast.min.css')}}">

@@ -4,6 +4,7 @@
 <script src="{{asset('assets/themes/destiny/js/smooth-scroll.js')}}" type="text/javascript"></script>
 <script src="{{asset('assets/themes/destiny/js/script.js')}}" type="text/javascript"></script>
 <script src="{{asset('vendor/izitoast/iziToast.min.js')}}"></script>
+<script src="{{asset('vendor/quill/dist/quill.min.js')}}"></script>
 <script src="{{asset('assets/themes/main.js')}}"></script>
 <script>
     $.ajaxSetup({
