@@ -16,13 +16,14 @@
         </div>
       </div>
     </div>
-    <?php
-      $packages = \App\Models\Wedding::where('user_id', Auth::user()->id)->first()->package_id;
-		  $package = \App\Models\Package::findOrFail($packages);
-    ?>
     <div class="navbar-inner">
       <!-- Collapse -->
       <div class="collapse navbar-collapse" id="sidenav-collapse-main">
+        @if(Auth::user()->hasRole('customer'))
+        <?php
+        $packages = \App\Models\Wedding::where('user_id', Auth::user()->id)->first()->package_id;
+        $package = \App\Models\Package::findOrFail($packages);
+        ?>
         <!-- Nav items -->
         <ul class="navbar-nav">
           <li class="nav-item">
@@ -72,6 +73,23 @@
           </li>
           @endif
         </ul>
+        @else
+        <!-- Nav items -->
+        <ul class="navbar-nav">
+          <li class="nav-item">
+            <a class="nav-link" href="{{route('dashboard')}}">
+              <i class="fa fa-home text-primary"></i>
+              <span class="nav-link-text">Beranda</span>
+            </a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="{{route('admin.wedding.index')}}">
+              <i class="fa fa-columns text-danger"></i>
+              <span class="nav-link-text">Data Wedding</span>
+            </a>
+          </li>
+        </ul>
+        @endif
       </div>
     </div>
   </div>

@@ -11,6 +11,7 @@
 <script src="{{asset('vendor/chart.js/dist/Chart.extension.js')}}"></script>
 <script src="{{asset('vendor/dropzone/dist/min/dropzone.min.js')}}"></script>
 <script src="{{asset('vendor/bootstrap-notify/bootstrap-notify.min.js')}}"></script>
+<script src="{{asset('vendor/list.js/dist/list.min.js')}}"></script>
 <script src="{{asset('vendor/izitoast/izitoast.min.js')}}"></script>
 <script src="{{asset('vendor/owlcarousel/owl.carousel.min.js')}}"></script>
 <script src="{{asset('vendor/bootstrap-datepicker/dist/js/bootstrap-datepicker.min.js')}}"></script>

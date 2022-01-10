@@ -21,4 +21,12 @@
     <link rel="stylesheet" href="{{asset('assets/themes/ourlove/css/main.css')}}" type="text/css">
     <link rel="stylesheet" href="{{asset('vendor/izitoast/iziToast.min.css')}}" type="text/css">
     <link rel="stylesheet" href="{{asset('vendor/quill/dist/quill.snow.css')}}">
+    <style>
+        .grid {
+            display: grid;
+            grid-gap: 20px;
+            grid-template-columns: repeat(auto-fill, minmax(400px, 1fr));
+            grid-auto-rows: 20px;
+        }
+    </style>
 </head>

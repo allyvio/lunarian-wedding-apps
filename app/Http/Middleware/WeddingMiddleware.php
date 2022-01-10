@@ -17,7 +17,7 @@ class WeddingMiddleware
      */
     public function handle($request, Closure $next)
     {
-        if (!Auth::check() || !Auth::user()->wedding) {
+        if (!Auth::check() || (!Auth::user()->wedding && Auth::user()->hasRole('customer'))) {
             return redirect()->route('wedding.create');
         } else
             return $next($request);
