@@ -6,7 +6,7 @@
                 <h1 class="heavy pt-10 pb-30">We Invite You</h1>
             </div>
 
-            <div class="row" id="rsvp-container">
+            <div id="rsvp-container">
                 @include('themes.destiny.components.rsvp.response')
             </div>
             <div class="spacer-double"></div>

@@ -5,11 +5,13 @@
             <h3 class="heavy pb-10">Apakah Anda Akan Hadir??</h3>
             <p class="lead">Kami berharap dapat merayakannya bersama Anda. <br>Mohon tanggapannya.<br></p>
             <div class="spacer-single"></div>
-            <div class=" col-xs-4 col-sm-3 col-xs-offset-2 col-sm-offset-3 text-right">
-                <button class="btn btn-block btn-success btn-rsvp-confirm" data-rsvp="ya" data-wedding="{{$wedding->slug}}" data-invitation="{{$wedding->invitation->code}}" onclick="rsvpConfirm(this)">Ya</button>
-            </div>
-            <div class=" col-xs-4 col-sm-3 text-left">
-                <button class="btn btn-block btn-danger btn-rsvp-confirm" data-rsvp="tidak" data-wedding="{{$wedding->slug}}" data-invitation="{{$wedding->invitation->code}}" onclick="rsvpConfirm(this)">Tidak</button>
+            <div class="row justify-content-center">
+                <div class=" col-xs-4 col-sm-3 text-right">
+                    <button class="btn btn-block btn-success btn-rsvp-confirm" data-rsvp="ya" data-wedding="{{$wedding->slug}}" data-invitation="{{$wedding->invitation->code}}" onclick="rsvpConfirm(this)">Ya</button>
+                </div>
+                <div class=" col-xs-4 col-sm-3 text-left">
+                    <button class="btn btn-block btn-danger btn-rsvp-confirm" data-rsvp="tidak" data-wedding="{{$wedding->slug}}" data-invitation="{{$wedding->invitation->code}}" onclick="rsvpConfirm(this)">Tidak</button>
+                </div>
             </div>
         </div>
     </div>

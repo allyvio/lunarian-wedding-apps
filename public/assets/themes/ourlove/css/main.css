@@ -189,6 +189,10 @@ a.button:visited,
 a.button:focus {
     text-decoration: none;
 }
+button.disabled{
+    pointer-events: none;
+    opacity: 0.6;
+}
 /* /Buttons */
 
 /* Contact form */
