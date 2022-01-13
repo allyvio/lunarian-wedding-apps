@@ -1,6 +1,6 @@
 @extends('layout.wrapper-plain')
 @section('plain-content')
-<div class="header bg-gradient-lightbrown pt-8">
+<div class="header bg-lightbrown pt-8">
     <div class="container">
         <div class="header-body">
             <div class="row align-items-center">
