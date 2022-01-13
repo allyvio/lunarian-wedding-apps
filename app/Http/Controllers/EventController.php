@@ -108,7 +108,7 @@ class EventController extends Controller
             'description' => ['nullable', 'string', 'max:1000'],
             'start_date' => ['required', 'date:d-m-Y H:i'],
             'end_date' => ['nullable', 'date:d-m-Y H:i', 'after:start_date'],
-            'location' => ['nullable', 'string', 'max:200'],
+            'location' => ['nullable', 'string'],
         ]);
         if ($validator->fails()) {
             return response()->json(['success' => false, "errors" => $validator->getMessageBag()]);

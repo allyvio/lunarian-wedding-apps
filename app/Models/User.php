@@ -22,7 +22,13 @@ class User extends Authenticatable
     protected $casts = [
         'email_verified_at' => 'datetime',
     ];
-
+    public function hasRole($role)
+    {
+        if ($role == $this->role) {
+            return true;
+        }
+        return false;
+    }
     public function wedding()
     {
         return $this->hasOne('App\Models\Wedding');

@@ -24,7 +24,6 @@
                              <li>{{date('d F Y',strtotime($wedding->main_date))}}</li>
                          </ul>
                      </div>
-                     <p class="mt-20 lead"> {{$wedding->events->where('is_main',true)->first()->location ?? ''}}</p>
                  </div>
              </div>
              <!--End row-->

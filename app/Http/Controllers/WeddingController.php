@@ -13,6 +13,10 @@ use Illuminate\Support\Facades\Storage;
 
 class WeddingController extends Controller
 {
+    public function __construct()
+    {
+        $this->middleware('role:customer')->only(['index']);
+    }
     public function index()
     {
         $wedding = Auth::user()->wedding;
@@ -117,13 +121,12 @@ class WeddingController extends Controller
                 ];
             }
             $wedding->events()->createMany($new_arr);
-            session()->forget('wedding');
         }
         
         return view('pages.landing.index');
     }
 
-    public function show(Wedding $wedding, $code = null)
+    public function showPublic(Wedding $wedding, $code = null)
     {
         $wedding->events = $wedding->events->sortBy('datetime');
         $main_event = $wedding->events->where('is_main', true)->first();
@@ -136,7 +139,17 @@ class WeddingController extends Controller
             if (!$wedding->invitation)
                 return redirect()->route('wedding.page', $wedding)->with('error', 'Invitation not found');
         }
+
         return view('themes.' . $theme . '.index', compact('wedding'));
+    }
+    public function show(Wedding $wedding)
+    {
+        return view('pages.wedding.show',compact('wedding'));
+    }
+    public function table()
+    {
+        $weddings = Wedding::with(['user:id,name', 'package:id,name'])->get();
+        return view('pages.wedding.table', compact('weddings'));
     }
 
     public function edit(Wedding $wedding)

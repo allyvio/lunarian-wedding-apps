@@ -116,8 +116,8 @@
                             @method('PUT')
                             <div class="form-group">
                                 <input type="hidden" name="stage" value="quote">
-                                <label for="quote" class="form-control-label">Quote</label>
-                                <textarea class="form-control @error('quote') is-invalid @enderror" name="quote" id="quote">{!!$wedding->quote!!}</textarea>
+                                <label class="form-control-label">Quote</label>
+                                <textarea class="form-control @error('quote') is-invalid @enderror" name="quote" id="quote" style="display: none;">{!!$wedding->quote!!}</textarea>
                                 <div id="quill-container">{!!$wedding->quote!!}</div>
                                 @error('quote')
                                 <span class="invalid-feedback" role="alert">

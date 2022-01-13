@@ -1,12 +1,12 @@
 <!-- Topnav -->
-<nav class="navbar navbar-top navbar-expand navbar-dark bg-primary border-bottom py-2">
+<nav class="navbar navbar-top navbar-expand border-bottom">
   <div class="container-fluid">
     <div class="collapse navbar-collapse" id="navbarSupportedContent">
       <!-- Navbar links -->
-      <ul class="navbar-nav align-items-center ml-md-auto">
+      <ul class="navbar-nav align-items-center ml-md-auto order-1 order-md-2">
         <li class="nav-item d-xl-none">
           <!-- Sidenav toggler -->
-          <div class="pr-3 sidenav-toggler sidenav-toggler-dark" data-action="sidenav-pin" data-target="#sidenav-main">
+          <div class="pr-3 sidenav-toggler" data-action="sidenav-pin" data-target="#sidenav-main">
             <div class="sidenav-toggler-inner">
               <i class="sidenav-toggler-line"></i>
               <i class="sidenav-toggler-line"></i>
@@ -15,7 +15,17 @@
           </div>
         </li>
       </ul>
-      <ul class="navbar-nav align-items-center ml-auto ml-md-0">
+      @if(Auth::user()->hasRole('customer'))
+      <ul class="navbar-nav align-items-center order-2 order-md-1">
+        <li class="nav-item">
+          <a href="{{route('wedding.page',Auth::user()->wedding->slug)}}" target="_blank" class="nav-link text-primary font-weight-bold text-sm p-0">
+            <span class="btn-inner--icon"><i class="ni ni-world"></i></span>
+            <span class="btn-inner--text">{{request()->getHttpHost().'/'. Auth::user()->wedding->slug}}</span>
+          </a>
+        </li>
+      </ul>
+      @endif
+      <ul class="navbar-nav align-items-center ml-auto ml-md-0 order-3">
         <li class="nav-item dropdown">
           <a class="nav-link pr-0" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
             <div class="media align-items-center">
