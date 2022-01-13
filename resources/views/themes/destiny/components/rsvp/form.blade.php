@@ -1,3 +1,4 @@
+@if($wedding->package->count_invitation > 0)
 <section class=" pt-90">
     <div class="container pb-80">
         <div class="row">
@@ -17,3 +18,4 @@
         </div>
     </div>
 </section>
+@endif

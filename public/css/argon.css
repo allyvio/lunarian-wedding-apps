@@ -26158,6 +26158,21 @@ a.text-light:focus
     color: #a2aeb9 !important;
 }
 
+.text-brown
+{
+    color: #946863 !important;
+}
+
+a.text-brown.active{
+    background-color: #E4D4C7 !important;
+    font-weight: bold !important;
+}
+a.text-brown:hover,
+a.text-brown:focus
+{
+    color: #654641 !important;
+}
+
 .text-lighter
 {
     color: #e9ecef !important;
