@@ -122,7 +122,7 @@ class WeddingController extends Controller
             }
             $wedding->events()->createMany($new_arr);
         }
-
+        session()->forget('wedding');
         return view('pages.landing.index');
     }
 
