@@ -1,4 +1,4 @@
-<section id="story" class="our-story section-boxed section-bg-color">
+<section style="background-color: white;">
   <div class="container">
     <div class="row mb70">
       <div class="col-sm-12 text-center mb-100">

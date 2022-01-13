@@ -9,9 +9,9 @@
             <div class="col-md-12">
                 <div class="de_tab tab_style_3 text-center">
                     <div class="de_tab_content">
-                        <div class="mansory">
+                        <div class="masonry">
                             @foreach($wedding->gallery as $gallery)
-                            <figure class="picframe img-rounded mb20">
+                            <figure class="picframe mb20">
                                 <a class="image-popup-gallery" href="{{asset('storage/media/'.$gallery->filename)}}">
                                     <span class="overlay-v">
                                         <i></i>

@@ -2,7 +2,7 @@
 <div class="container">
     <div class="row">
         <div class="col-md-12 text-center">
-          <h3 class="heavy pb-10">Apakah Anda Akan Hadir??</h3>
+          <h3 class="heavy pb-10">Apakah Anda Akan Hadir?</h3>
           <p class="lead">Kami berharap dapat merayakannya bersama Anda. <br>Mohon tanggapannya.<br></p>
             <div class="spacer-single"></div>
             <div class=" col-xs-4 col-sm-3 col-xs-offset-2 col-sm-offset-3 text-right">

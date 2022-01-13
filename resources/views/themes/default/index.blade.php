@@ -39,7 +39,7 @@
             @include('themes.default.components.gallery')
             <!-- section end -->
 
-            <!-- rsvp popup begin -->
+            <!-- rsvp form begin -->
             @if($wedding->invitation)
             @include('themes.default.components.rsvp.show')
             @include('themes.default.components.comments.form')
