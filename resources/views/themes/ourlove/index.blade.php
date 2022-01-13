@@ -4,11 +4,6 @@
 @include('themes.ourlove.layout.header')
 
 <body>
-    @foreach($musik as $data)
-    @if($data->status == 1)
-    <audio src="{{asset('storage/'.$data->music)}}" autoplay loop="loop"></audio>
-    @endif
-    @endforeach
     <!-- Loading animation -->
     <div class="preloader">
         <div class="preloader-animation">
@@ -23,9 +18,9 @@
         <!-- Header -->
         <header id="header" class="header">
             <div class="container">
-                <div class="logo-container">
-                    <div class="header-logo">{{$wedding->calon_wanita}}<span class="main-color">&amp;</span> {{$wedding->calon_pria}}</div>
-                </div>
+                <!-- <div class="logo-container">
+                    <div class="header-logo">{{$wedding->calon_wanita}}<span class="main-color"> &amp;</span> {{$wedding->calon_pria}}</div>
+                </div> -->
                 <div class="header-date">
                     <p>{{date('l, d',strtotime($wedding->main_date))}} <span class="main-color">{{date('F',strtotime($wedding->main_date))}} </span> {{date('Y',strtotime($wedding->main_date))}} </p>
                 </div>

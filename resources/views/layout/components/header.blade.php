@@ -258,4 +258,29 @@
   .caption>p:nth-child(2) {
     font-size: 0.8em;
   }
+
+/* button wa */
+.act-btn{
+      /* background:green; */
+      display: block;
+      width: 60px;
+      height: 60px;
+      line-height: 60px;
+      text-align: center;
+      color: white;
+      font-size: 30px;
+      font-weight: bold;
+      border-radius: 50%;
+      -webkit-border-radius: 50%;
+      text-decoration: none;
+      transition: ease all 0.3s;
+      position: fixed;
+      right: 30px;
+      bottom:30px;
+    }
+.act-btn:hover{
+  /* background: blue; */
+  color: white;
+}
+
 </style>

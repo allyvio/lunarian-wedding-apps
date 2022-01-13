@@ -50,10 +50,10 @@ class Wedding extends Model
     {
         return $this->hasMany('App\Models\Invitation');
     }
-    public function music()
-    {
-        return $this->hasMany('App\Models\Music');
-    }
+    // public function music()
+    // {
+    //     return $this->hasMany('App\Models\Music');
+    // }
     public function package()
     {
         return $this->belongsTo('App\Models\Package');

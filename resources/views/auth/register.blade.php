@@ -5,8 +5,8 @@
         <div class="header-body text-center mb-7">
             <div class="row justify-content-center">
                 <div class="col-xl-5 col-lg-6 col-md-8 px-5">
-                    <h1 class="text-white">Create an account</h1>
-                    <p class="text-lead text-white">Use these awesome forms to login or create new account in your project for free.</p>
+                    <h1 class="text-white">Buat Akun Baru</h1>
+                    <p class="text-lead text-white">Gunakan formulir luar biasa ini untuk masuk atau membuat akun baru di proyek Anda secara gratis.</p>
                 </div>
             </div>
         </div>
@@ -23,6 +23,15 @@
             <div class="card bg-secondary border-0 mb-0">
                 <div class="card-header bg-transparent">
                     <h5 class="h2 m-0">Daftar</h5>
+                </div>
+                <div class="card-header bg-transparent pb-5">
+                  <div class="text-muted text-center mt-2 mb-3"><small>Masuk Dengan</small></div>
+                  <div class="btn-wrapper text-center">
+                    <a href="{{ url('google') }}" class="btn btn-neutral btn-icon">
+                      <span class="btn-inner--icon"><img src="/img/icons/common/google.svg"></span>
+                      <span class="btn-inner--text">Google</span>
+                    </a>
+                  </div>
                 </div>
                 <div class="card-body px-lg-5 py-lg-5">
                     <form method="POST" action="{{ route('register') }}">
