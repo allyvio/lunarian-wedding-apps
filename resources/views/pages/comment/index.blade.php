@@ -35,6 +35,7 @@
             is_show: data
         }, function(res) {
             $(elm).parents('.media-comment').replaceWith(res.html)
+            $('[data-toggle="tooltip"]').tooltip()
         })
     }
 

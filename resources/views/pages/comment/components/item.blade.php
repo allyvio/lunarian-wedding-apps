@@ -2,7 +2,7 @@
     <div class="avatar avatar-lg media-comment-avatar rounded-circle bg-gradient-info"><i class="fa fa-comment fa-lg"></i></div>
     <div class="media-body">
         <div class="media-comment-text">
-            <h6 class="h4 mt-0">{{$comment->invitation->name}} <span class="text-muted small">&#8226; {{$comment->created_at->format('d M Y H:i:s')}} @if(!$comment->is_show) <i class="fa fa-eye-slash ml-2"></i> @endif</span></h6>
+            <h6 class="h4 mt-0">{{$comment->invitation->name}} <span class="text-muted small">&#8226; {{$comment->created_at->format('d M Y H:i:s')}} @if(!$comment->is_show) <i class="fa fa-eye-slash ml-2" title="Komentar disembunyikan" data-toggle="tooltip"></i> @endif</span></h6>
             <p class="text-sm lh-160">{!! nl2br(e($comment->message)) !!}</p>
             <div class="icon-actions">
                 @if($comment->is_show)
