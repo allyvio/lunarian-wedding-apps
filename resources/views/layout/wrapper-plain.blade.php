@@ -4,7 +4,7 @@
 @include('layout.components.header')
 
 <body>
-    @include('sweetalert::alert')
+    
     <!-- Topnav -->
     @include('layout.components.topnav-plain')
     <!-- End Topnav -->
@@ -19,6 +19,8 @@
     @include('layout.components.footerjs')
     <!-- End Argon Scripts -->
     @include('layout.components.footer')
+    
+    @include('sweetalert::alert')
 
 </body>
 
