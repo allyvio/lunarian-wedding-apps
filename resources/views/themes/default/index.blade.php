@@ -42,36 +42,20 @@
             <!-- rsvp popup begin -->
             @if($wedding->invitation)
             @include('themes.default.components.rsvp.show')
+            @include('themes.default.components.comments.form')
             @else
             @include('themes.default.components.rsvp.form')
             @endif
             <!-- section end -->
             <!-- comment section begin -->
-            @include('themes.default.components.comments.form')
             @include('themes.default.components.comments.show')
             <!-- section end -->
             @include('themes.default.components.protokol')
         </div>
-
+        
         <!-- footer begin -->
-        <footer>
-            <div class="container text-center text-light">
-                <div class="row">
-                    <div class="col-md-12">
-                        <h2 class="hs1 wow fadeInUp">Laurie<span>&amp;</span>Briant</h2>
-                    </div>
-                </div>
-            </div>
-
-            <div class="subfooter">
-                <div class="container text-center">
-                    &copy; Copyright {{date('Y')}} - {{config('app.name')}}
-                </div>
-            </div>
-        </footer>
+        @include('themes.default.components.footer')
         <!-- footer close -->
-
-        <a href="#" id="back-to-top"></a>
         <div id="preloader">
             <div class="preloader1"></div>
         </div>

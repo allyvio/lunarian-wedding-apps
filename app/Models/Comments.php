@@ -15,9 +15,8 @@ class Comments extends Model
     protected $attributes = [
         'is_show' => true
     ];
-
     public function invitation()
     {
-        $this->belongsTo('App\Models\Invitation');
+        return $this->belongsTo('App\Models\Invitation');
     }
 }

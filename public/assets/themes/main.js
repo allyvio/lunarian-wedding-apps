@@ -148,3 +148,44 @@ $('#rsvp-form').on('submit', function (e) {
         }
     })
 })
+$(document).on('input propertyChange','#field-message',function(e){
+    var text = this.value;
+    if (text !== '') {
+        $("#comment-form-submit").removeClass('disabled');
+    }
+    else {
+        $("#comment-form-submit").addClass('disabled');
+    }
+})
+$('#invitation-comment-form').on('submit', function (e) {
+    e.preventDefault()
+    var $form = $(this), action = $form.attr('action'),
+        btn = $form.find('button[type="submit"]'),
+        comments_container = $('#comments-container')
+    $.ajax({
+        url: action,
+        method: 'post',
+        data: $form.serialize(),
+        beforeSend: function () {
+            btn.addClass('btn-progress disabled')
+        },
+        success: function (response) {
+            comments_container.html(response.html)
+            $form.trigger('reset')
+        },
+        complete: function (a) {
+            setTimeout(function () {
+                btn.removeClass('btn-progress')
+            }, 100)
+        }
+    })
+})
+function removeComment(selector) {
+    $.ajax({
+        method: 'delete',
+        url: $(selector).data('remove'),
+        success: function () {
+            $(selector).parents('.comment-item').remove();
+        }
+    })
+}
