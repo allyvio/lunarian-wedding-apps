@@ -6,6 +6,9 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', function () {
     return view('pages.landing.index');
 });
+Route::get('google', 'GoogleController@redirect');
+Route::get('auth/google/callback', 'GoogleController@callback');
+
 Auth::routes();
 Route::prefix('dashboard')->middleware(['auth', 'wedding'])->group(function () {
     Route::get('/', function () {
@@ -49,9 +52,9 @@ Route::prefix('dashboard')->middleware(['auth', 'wedding'])->group(function () {
     Route::post('/media/store', 'MediaController@store')->name('media.store');
     Route::delete('/media/destroy/{media}', 'MediaController@destroy')->name('media.destroy');
 });
-Route::get('/wedding/package', function () {
-    return view('pages.package.index');
-});
+// Route::get('/wedding/package', function () {
+//     return view('pages.package.index');
+// });
 
 /**  ------------------------- EVENT ------------------------- */
 Route::post('event/date', 'EventController@updateDate')->name('event.date.update');

@@ -920,6 +920,10 @@ ul.social-links li a:hover i {
 .gallery-item {
     margin-bottom: 30px;
 }
+.gallery-item img {
+  width: 300px;
+  height: 300px;
+}
 
 .gallery-item a {
     display: block;
@@ -1248,10 +1252,10 @@ ul.social-links li a:hover i {
         font-size: 15px;
     }
     .about-us-block .name {
-        padding-right: 120px;
+        padding-right: 10px;
     }
     .about-us-block.second-block .name {
-        padding-left: 120px;
+        padding-left: 10px;
     }
     .about-us-block .photo {
         width: 110px;
@@ -1270,8 +1274,8 @@ ul.social-links li a:hover i {
     .about-us-block .photo img {
         border-radius: 50%;
         object-fit: cover;
-        height: 100px;
-        width: 100px;
+        height: 200px;
+        width: 200px;
     }
     .about-us-block .photo {
         text-align: center;
@@ -1286,11 +1290,11 @@ ul.social-links li a:hover i {
         min-height: 90px;
     }
     .about-us-block .name {
-        padding-right: 100px;
+        padding-right: 10px;
     }
 
     .about-us-block.second-block .name {
-        padding-left: 100px;
+        padding-left: 10px;
     }
 
     .about-us-block .photo {
@@ -1304,8 +1308,8 @@ ul.social-links li a:hover i {
     .about-us-block .photo img {
         border-radius: 50%;
         object-fit: cover;
-        height: 100px;
-        width: 100px;
+        height: 150px;
+        width: 150px;
     }
     .about-us-block .photo {
         text-align: center;

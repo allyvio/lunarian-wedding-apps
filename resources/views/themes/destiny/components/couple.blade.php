@@ -44,7 +44,7 @@
                         haven't learned the meaning
                         of friendship, you really haven't learned anything.
                     </blockquote> -->
-                    <h2 class="heavy uppercase mt-20">Sincerely, {{$wedding->calon_wanita}} & {{$wedding->calon_pria}}</h2>
+                    <h2 class="heavy uppercase mt-20">{{$wedding->description ?? ''}}</h2>
                 </div>
             </div>
         </div>
