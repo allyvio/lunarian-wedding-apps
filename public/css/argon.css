@@ -7275,6 +7275,14 @@ button.bg-primary:focus {
     background-color: #324cdd !important;
 }
 
+.bg-lightbrown {
+    background-color: #d7c7b9 !important;
+}
+
+.bg-brown {
+    background-color: #654641 !important;
+}
+
 .bg-secondary {
     background-color: #f7fafc !important;
 }
@@ -20554,7 +20562,7 @@ button.bg-lighter:focus {
 }
 
 .bg-gradient-lightbrown {
-    background: linear-gradient(87deg, #d7c7b9 0, #d7c7b9 100%) !important;
+    background: linear-gradient(87deg, #d7c7b9 0, #654641 100%) !important;
 }
 .bg-gradient-primary {
     background: linear-gradient(87deg, #5e72e4 0, #825ee4 100%) !important;
@@ -21755,23 +21763,20 @@ a.text-light:focus {
     color: #a2aeb9 !important;
 }
 
-.text-brown
-{
+.text-brown {
     color: #946863 !important;
 }
 
-a.text-brown.active{
-    background-color: #E4D4C7 !important;
+a.text-brown.active {
+    background-color: #e4d4c7 !important;
     font-weight: bold !important;
 }
 a.text-brown:hover,
-a.text-brown:focus
-{
+a.text-brown:focus {
     color: #654641 !important;
 }
 
-.text-lighter
-{
+.text-lighter {
     color: #e9ecef !important;
 }
 

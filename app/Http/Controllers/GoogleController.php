@@ -44,8 +44,8 @@ class GoogleController extends Controller
             ];
           }
           $wedding->events()->createMany($new_arr);
-          session()->forget('wedding');
         }
+        session()->forget('wedding');
         return redirect('/');
 
       }else{
@@ -75,9 +75,8 @@ class GoogleController extends Controller
             ];
           }
           $wedding->events()->createMany($new_arr);
-          session()->forget('wedding');
         }
-
+        session()->forget('wedding');
         return redirect('/');
       }
 
