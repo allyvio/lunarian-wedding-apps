@@ -3,11 +3,6 @@
 @include('themes.destiny.layout.header')
 
 <body>
-    @foreach($musik as $data)
-    @if($data->status == 1)
-    <audio src="{{asset('storage/'.$data->music)}}" autoplay loop="loop"></audio>
-    @endif
-    @endforeach
     <!-- Preloader -->
     <div class="loader">
         <!-- Preloader inner -->

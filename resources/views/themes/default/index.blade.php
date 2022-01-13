@@ -4,11 +4,7 @@
 
 <body id="homepage">
     <!-- Music -->
-    @foreach($musik as $data)
-    @if($data->status == 1)
-    <audio src="{{asset('storage/'.$data->music)}}" autoplay loop="loop"></audio>
-    @endif
-    @endforeach
+    
     <div id="wrapper">
         <div id="content" class="no-bottom no-top">
             <!-- hero section begin -->

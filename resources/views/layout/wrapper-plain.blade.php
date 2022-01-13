@@ -4,6 +4,7 @@
 @include('layout.components.header')
 
 <body>
+    @include('sweetalert::alert')
     <!-- Topnav -->
     @include('layout.components.topnav-plain')
     <!-- End Topnav -->

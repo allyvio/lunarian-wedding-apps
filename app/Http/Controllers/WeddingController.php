@@ -122,14 +122,12 @@ class WeddingController extends Controller
             }
             $wedding->events()->createMany($new_arr);
         }
-        session()->forget('wedding');
-        return redirect()->route('dashboard');
+
+        return view('pages.landing.index');
     }
 
     public function showPublic(Wedding $wedding, $code = null)
     {
-        $wedding_id = $wedding->id;
-        $musik = Music::where('wedding_id', $wedding_id)->get();
         $wedding->events = $wedding->events->sortBy('datetime');
         $main_event = $wedding->events->where('is_main', true)->first();
         $wedding->main_date = $main_event->datetime;
@@ -141,7 +139,8 @@ class WeddingController extends Controller
             if (!$wedding->invitation)
                 return redirect()->route('wedding.page', $wedding)->with('error', 'Invitation not found');
         }
-        return view('themes.' . $theme . '.index', compact('wedding', 'musik'));
+
+        return view('themes.' . $theme . '.index', compact('wedding'));
     }
     public function show(Wedding $wedding)
     {

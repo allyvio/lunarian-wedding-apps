@@ -1,17 +1,17 @@
 @extends('layout.wrapper-plain')
 @section('plain-content')
-<div class="header bg-gradient-info pt-8">
+<div class="header bg-gradient-lightbrown pt-8">
     <div class="container">
         <div class="header-body">
             <div class="row align-items-center">
                 <div class="col-lg-6">
                     <div class="pr-5">
-                        <h1 class="display-3 text-white font-weight-bold mb-0">Buat undangan pernikahan Anda mudah bersama kami!</h1>
+                        <h1 class="display-3 text-white font-weight-bold mb-0">Make your wedding invitation easy with us !</h1>
                         <h2 class="display-5 text-white font-weight-light">by Lunarian ID</p>
-                            <p class="lead">Buat undangan digitalmu dengan mudah,cepat, dan lebih berkesan dengan fitur yang kami sediakan.</p>
+                            <p class="lead">Buat undangan digitalmu dengan mudah, cepat, dan lebih berkesan dengan fitur yang kami sediakan.</p>
                             <div class="mt-5">
-                                <a href="./pages/dashboards/dashboard.html" class="btn btn-neutral my-2">Explore Dashboard</a>
-                                <a href="https://www.creative-tim.com/product/argon-dashboard-pro" class="btn btn-default my-2">Purchase now</a>
+                                <a href="./pages/dashboards/dashboard.html" class="btn btn-brown2 my-2">Explore Dashboard</a>
+                                <a href="https://www.creative-tim.com/product/argon-dashboard-pro" class="btn btn-brown my-2">Purchase now</a>
                             </div>
                     </div>
                 </div>
@@ -40,7 +40,7 @@
             </div>
             <div class="col-md-6 order-md-1">
                 <div class="pr-md-5">
-                    <h1>Desain Elegan</h1>
+                    <h1>DDesign Elegant</h1>
                     <p>Pilihan tema elegant dan profesional</p>
                     <ul class="list-unstyled">
                         <li class="py-2">
@@ -199,79 +199,6 @@
         <path d="M 0,367 C 200,316.6 600,114 1000,115 C 1400,116 1800,320.6 2000,372L2000 400L0 400z" class="fill-secondary"></path>
     </svg>
 </section>
-<!-- <section class="section section-lg pt-lg-0 mt--9">
-    <div class="container">
-        <div class="row justify-content-center">
-            <div class="col-lg-12">
-                <div class="row">
-                    <div class="col-lg-4">
-                        <div class="card card-lift--hover shadow border-0">
-                            <div class="card-body py-5">
-                                <div class="media">
-                                    <div class="icon icon-shape bg-gradient-primary text-white rounded-circle mb-4 mr-4">
-                                        <i class="ni ni-check-bold"></i>
-                                    </div>
-                                    <div class="media-body">
-                                        <h4 class="h3 text-primary text-uppercase">Based on Bootstrap 4</h4>
-                                        <p class="description mt-3">Argon is built on top of the most popular open source toolkit for
-                                            developing with HTML, CSS, and JS.</p>
-                                        <div>
-                                            <span class="badge badge-pill badge-primary">bootstrap 4</span>
-                                            <span class="badge badge-pill badge-primary">dashboard</span>
-                                            <span class="badge badge-pill badge-primary">argon</span>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-lg-4">
-                        <div class="card card-lift--hover shadow border-0">
-                            <div class="card-body py-5">
-                                <div class="media">
-                                    <div class="icon icon-shape bg-gradient-success text-white rounded-circle mb-4 mr-4">
-                                        <i class="ni ni-istanbul"></i>
-                                    </div>
-                                    <div class="media-body">
-                                        <h4 class="h3 text-success text-uppercase">Integrated build tools</h4>
-                                        <p class="description mt-3">Use Argons's included npm and gulp scripts to compile source code, run
-                                            tests, and more with just a few simple commands.</p>
-                                        <div>
-                                            <span class="badge badge-pill badge-success">npm</span>
-                                            <span class="badge badge-pill badge-success">gulp</span>
-                                            <span class="badge badge-pill badge-success">build tools</span>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-lg-4">
-                        <div class="card card-lift--hover shadow border-0">
-                            <div class="card-body py-5">
-                                <div class="media">
-                                    <div class="icon icon-shape bg-gradient-warning text-white rounded-circle mb-4 mr-4">
-                                        <i class="ni ni-planet"></i>
-                                    </div>
-                                    <div class="media-body">
-                                        <h4 class="h3 text-warning text-uppercase">Full Sass support</h4>
-                                        <p class="description mt-3">Argon makes customization easier than ever before. You get all the tools
-                                            to make your website building process a breeze.</p>
-                                        <div>
-                                            <span class="badge badge-pill badge-warning">sass</span>
-                                            <span class="badge badge-pill badge-warning">design</span>
-                                            <span class="badge badge-pill badge-warning">customize</span>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-</section> -->
 <!-- END POINT OF 3 -->
 <!-- TESTIMONIAL -->
 <section class="py-7 pb-9 overflow-hidden">
@@ -321,7 +248,7 @@
                         </div>
                         <div class="card-body px-lg-5">
                             <div class="display-4">{!!$package->price ? 'Rp.'. number_format($package->price,2,",",".") : 'GRATIS'!!}</div>
-                            <span class="text-muted">per application</span>
+                            <!-- <span class="text-muted">per application</span> -->
                             <ul class="list-unstyled my-4">
                                 <li>
                                     <div class="d-flex align-items-center">
@@ -396,11 +323,11 @@
                                     </div>
                                 </li>
                             </ul>
-                            <button type="button" class="btn btn-primary mb-3">Start free trial</button>
+                            <!-- <button type="button" class="btn btn-primary mb-3">Start free trial</button> -->
                         </div>
-                        <div class="card-footer">
+                        <!-- <div class="card-footer">
                             <a href="#!" class="text-light">Request a demo</a>
-                        </div>
+                        </div> -->
                     </div>
                     @endif
                     @endforeach
@@ -412,7 +339,7 @@
                         </div>
                         <div class="card-body px-lg-5">
                             <div class="display-4">{!!$package->price ? 'Rp.'. number_format($package->price,2,",",".") : 'GRATIS'!!}</div>
-                            <span class="text-white">per application</span>
+                            <!-- <span class="text-white">per application</span> -->
                             <ul class="list-unstyled my-4">
                                 <li>
                                     <div class="d-flex align-items-center">
@@ -559,11 +486,11 @@
                                     </div>
                                 </li>
                             </ul>
-                            <button type="button" class="btn btn-secondary mb-3">Start free trial</button>
+                            <!-- <button type="button" class="btn btn-secondary mb-3">Start free trial</button> -->
                         </div>
-                        <div class="card-footer bg-transparent">
+                        <!-- <div class="card-footer bg-transparent">
                             <a href="#!" class="text-white">Contact sales</a>
-                        </div>
+                        </div> -->
                     </div>
                     @endif
                     @endforeach
@@ -575,7 +502,7 @@
                         </div>
                         <div class="card-body px-lg-5">
                             <div class="display-4">{!!$package->price ? 'Rp.'. number_format($package->price,2,",",".") : 'GRATIS'!!}</div>
-                            <span class="text-muted">per application</span>
+                            <!-- <span class="text-muted">per application</span> -->
                             <ul class="list-unstyled my-4">
                               <li>
                                   <div class="d-flex align-items-center">
@@ -710,106 +637,28 @@
                                   </div>
                               </li>
                             </ul>
-                            <button type="button" class="btn btn-primary mb-3">Start free trial</button>
+                            <!-- <button type="button" class="btn btn-primary mb-3">Start free trial</button> -->
                         </div>
-                        <div class="card-footer">
+                        <!-- <div class="card-footer">
                             <a href="#!" class="text-light">Request a demo</a>
-                        </div>
+                        </div> -->
                     </div>
                     @endif
                     @endforeach
                 </div>
             </div>
         </div>
-        <!-- <div class="d-flex justify-content-lg-center px-3 mt-5">
-            <div>
-                <div class="icon icon-shape bg-gradient-white shadow rounded-circle text-primary">
-                    <i class="ni ni-building text-primary"></i>
-                </div>
-            </div>
-            <div class="col-lg-6">
-                <p class="text-white"><strong>The Arctic Ocean</strong> freezes every winter and much of the sea-ice then thaws every summer, and that process will continue whatever.</p>
-            </div>
-        </div> -->
-        <div class="row row-grid justify-content-center">
-            <!-- <div class="col-lg-10">
-                <div class="table-responsive">
-                    <table class="table table-gradient-dark text-white mt-5">
-                        <thead>
-                            <tr>
-                                <th class="px-0 bg-transparent" scope="col">
-                                    <span class="text-light font-weight-700">Features</span>
-                                </th>
-                                <th class="text-center bg-transparent" scope="col">Bravo Pack</th>
-                                <th class="text-center bg-transparent" scope="col">Alpha Pack</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            <tr>
-                                <td class="px-0">IMAP/POP Support</td>
-                                <td class="text-center"><i class="fas fa-check text-success"></i>
-                                </td>
-                                <td class="text-center"><i class="fas fa-check text-success"></i>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td class="px-0">Email Forwarding</td>
-                                <td class="text-center"><i class="fas fa-check text-success"></i>
-                                </td>
-                                <td class="text-center"><i class="fas fa-check text-success"></i>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td class="px-0">Active Sync</td>
-                                <td class="text-center"><i class="fas fa-check text-success"></i>
-                                </td>
-                                <td class="text-center"><i class="fas fa-check text-success"></i>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td class="px-0">Multiple domain hosting</td>
-                                <td class="text-center"><i class="fas fa-check text-success"></i>
-                                </td>
-                                <td class="text-center">
-                                    <span class="text-sm text-light">Limited to 1 domain only</span>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td class="px-0">Additional storage upgrade</td>
-                                <td class="text-center"><i class="fas fa-check text-success"></i>
-                                </td>
-                                <td class="text-center"><i class="fas fa-check text-success"></i>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td class="px-0">30MB Attachment Limit</td>
-                                <td class="text-center"><i class="fas fa-check text-success"></i>
-                                </td>
-                                <td class="text-center">-</td>
-                            </tr>
-                            <tr>
-                                <td class="px-0">Password protected / Expiry links</td>
-                                <td class="text-center"><i class="fas fa-check text-success"></i>
-                                </td>
-                                <td class="text-center">-</td>
-                            </tr>
-                            <tr>
-                                <td class="px-0">Unlimited Custom Apps</td>
-                                <td class="text-center"><i class="fas fa-check text-success"></i>
-                                </td>
-                                <td class="text-center">-</td>
-                            </tr>
-                        </tbody>
-                    </table>
-                </div>
-            </div> -->
-        </div>
+        <div class="row row-grid justify-content-center"></div>
     </div>
     <svg width="100%" preserveAspectRatio="none" height="90px" viewBox="850 0 1200 28" fill="none" xmlns="http://www.w3.org/2000/svg">
         <path d="M0 48h2880V0h-720C1442.5 62 720 0 720 0H0v48z" class="fill-secondary"></path>
     </svg>
 </section>
 <!-- END TESTIMONIAL -->
+<!-- Button wa -->
+<a href="https://api.whatsapp.com/send?phone=6283832299180" class="act-btn bg-gradient-success" data-toggle="tooltip" data-placement="top" title="Hubungi Admin">
+    <span class="btn-inner--icon"><i class="fab fa-whatsapp"></i></span>
+</a>
 @endsection
 @push('scripts')
 <script>

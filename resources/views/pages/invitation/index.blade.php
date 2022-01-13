@@ -166,7 +166,7 @@
             </a>
             @if($data->phone != "")
             <a target="_blank" href="https://api.whatsapp.com/send?phone={{preg_replace('/^0/', '62', $data->phone)}}&text={{$data->name}}%20yang%20terhormat%2C%0AAnda%20diundang%20ke%20pernikahan%20kami!%0AMohon%20respon%20RSVP%20Anda%20dan%20tinggalkan%20komentar%20Anda%20di%20http://127.0.0.1:8000/{{$wedding->slug}}%0Akode%20invitations%20%3A%20{{$data->code}}" class="btn btn-icon btn-outline-success btn-sm" data-toggle="tooltip" data-original-title="Whatsapp">
-              <i class="ni ni-chat-round"></i>
+              <i class="fab fa-whatsapp"></i>
             </a>
             @endif
           </td>

@@ -17,10 +17,10 @@ class MusikController extends Controller
      */
     public function index()
     {
-        $musics = Music::get();
-        $wedding = Auth::user()->wedding;
-        $music = $wedding->music;
-        return view('pages.music.index', compact('wedding','music','musics'));
+        // $musics = Music::get();
+        // $wedding = Auth::user()->wedding;
+        // $music = $wedding->music;
+        return view('pages.music.index');
     }
 
     /**
@@ -42,10 +42,10 @@ class MusikController extends Controller
     public function store(Request $request)
     {
         $new_music = new Music;
-        $new_music->wedding_id = Wedding::where('user_id', Auth::user()->id)->first()->id;
-        $new_music->status = 0;
+        // $new_music->wedding_id = Wedding::where('user_id', Auth::user()->id)->first()->id;
+        // $new_music->status = 0;
         $music = $request->file('musik');
-        
+
         if ($music) {
             $music_path1 = $music->store('music','public');
             $new_music->music = $music_path1;
@@ -60,7 +60,7 @@ class MusikController extends Controller
 		$music = Music::where('id',$id)->first();
         // dd($music);
 		Storage::delete('public/music/'.$music);
- 
+
 		// hapus data
 		Music::where('id',$id)->delete();
         Alert::success('Berhasil', 'Data Undangan Berhasil Di Hapus');

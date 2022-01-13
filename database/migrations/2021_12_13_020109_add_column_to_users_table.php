@@ -17,6 +17,7 @@ class AddColumnToUsersTable extends Migration
             $table->enum('role', ['admin','customer'])->default('customer');
             $table->string('phone', 100)->nullable();
             $table->string('avatar')->nullable();
+            $table->string('google_id')->nullable();
         });
     }
 

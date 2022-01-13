@@ -8,7 +8,7 @@
         <div class="row gallery-grid">
             @foreach($wedding->gallery as $gallery)
             <div class="col-sm-6 col-md-4 gallery-item">
-                <a href="{{asset('storage/media/'.$gallery->filename)}}" title="The Cleaner">
+                <a href="{{asset('storage/media/'.$gallery->filename)}}" title="Digital Invitation">
                     <img src="{{asset('storage/media/'.$gallery->filename)}}" alt="">
                     <div class="mask"></div>
                 </a>
