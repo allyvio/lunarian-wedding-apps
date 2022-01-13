@@ -23,68 +23,70 @@
         <?php
         $packages = \App\Models\Wedding::where('user_id', Auth::user()->id)->first()->package_id;
         $package = \App\Models\Package::findOrFail($packages);
+        $nav_links = [
+          "Beranda" => [
+            "href" => 'dashboard',
+            "icon" => 'home',
+            "package" => false
+          ],
+          "Wedding" => [
+            "href" => 'wedding.index',
+            "icon" => 'heart',
+            "package" => false
+          ],
+          "Cerita" => [
+            "href" => 'story.index',
+            "icon" => 'book-open',
+            "package" => [2, 3]
+          ],
+          "Undangan" => [
+            "href" => 'invitation.index',
+            "icon" => 'bookmark',
+            "package" => [2, 3]
+          ],
+          "Acara" => [
+            "href" => 'event.index',
+            "icon" => 'calendar-day',
+            "package" => false
+          ],
+          "Musik" => [
+            "href" => 'music.index',
+            "icon" => 'music',
+            "package" => [2, 3]
+          ],
+          "Komentar" => [
+            "href" => 'comment.index',
+            "icon" => 'comments',
+            "package" => [2, 3]
+          ],
+        ]
         ?>
-        <!-- Nav items -->
+        @foreach($nav_links as $link => $attr)
+        @php
+        if($attr['package'] != false && !in_array($package->id,$attr['package']))
+        continue;
+        @endphp
         <ul class="navbar-nav">
           <li class="nav-item">
-            <a class="nav-link" href="{{route('dashboard')}}">
-              <i class="fa fa-home text-primary"></i>
-              <span class="nav-link-text">Beranda</span>
+            <a class="nav-link {{ Request::routeIs($attr['href']) ? 'text-brown active' : 'text-gray' }}" href="{{route($attr['href'])}}">
+              <i class="fa fa-{{$attr['icon']}}"></i>
+              <span class="nav-link-text">{{$link}}</span>
             </a>
           </li>
-          <li class="nav-item">
-            <a class="nav-link" href="{{route('wedding.index')}}">
-              <i class="fa fa-heart text-danger"></i>
-              <span class="nav-link-text">Wedding</span>
-            </a>
-          </li>
-          @if($package->id == 3 || $package->id == 2)
-          <li class="nav-item">
-            <a class="nav-link" href="{{route('story.index')}}">
-              <i class="fa fa-scroll text-info"></i>
-              <span class="nav-link-text">Story</span>
-            </a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="{{route('invitation.index')}}">
-              <i class="ni ni-book-bookmark text-green"></i>
-              <span class="nav-link-text">Undangan</span>
-            </a>
-          </li>
-          @endif
-          <li class="nav-item">
-            <a class="nav-link" href="{{route('event.index')}}">
-              <i class="fa fa-calendar-day text-red"></i>
-              <span class="nav-link-text">Acara</span>
-            </a>
-          </li>
-          @if($package->id == 3 || $package->id == 2)
-          <li class="nav-item">
-            <a class="nav-link" href="{{route('music.index')}}">
-              <i class="fa fa-music text-black"></i>
-              <span class="nav-link-text">Musik</span>
-            </a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="{{route('comment.index')}}">
-              <i class="fa fa-comment-dots text-yellow"></i>
-              <span class="nav-link-text">Komentar</span>
-            </a>
-          </li>
-          @endif
         </ul>
+        @endforeach
         @else
         <!-- Nav items -->
         <ul class="navbar-nav">
           <li class="nav-item">
-            <a class="nav-link" href="{{route('dashboard')}}">
-              <i class="fa fa-home text-primary"></i>
+            <a class="nav-link text-muted" href="{{route('dashboard')}}">
+              <i class="fa fa-home"></i>
               <span class="nav-link-text">Beranda</span>
             </a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="{{route('admin.wedding.index')}}">
-              <i class="fa fa-columns text-danger"></i>
+            <a class="nav-link text-muted" href="{{route('admin.wedding.index')}}">
+              <i class="fa fa-columns"></i>
               <span class="nav-link-text">Data Wedding</span>
             </a>
           </li>

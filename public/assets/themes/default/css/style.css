@@ -4257,7 +4257,7 @@ a, a:hover, .test-column, .test-column:hover {
 	position: relative;
 	overflow: hidden;
 }
-.mansory {
+.masonry {
 	-webkit-column-count: 3;
 	-moz-column-count: 3;
 	column-count: 3;
@@ -6645,7 +6645,7 @@ a, img {
 		max-width: 200px;
 		height: auto;
 	}
-	.mansory {
+	.masonry {
 		-webkit-column-count: 2;
 		-moz-column-count: 2;
 		column-count: 2;
@@ -6678,7 +6678,7 @@ a, img {
 	.pf_full_width.gallery_border .item {
 		width: 100% !important;
 	}
-	.mansory {
+	.masonry {
 		-webkit-column-count: 1;
 		-moz-column-count: 1;
 		column-count: 1;
