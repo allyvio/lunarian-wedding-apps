@@ -1,6 +1,6 @@
 @extends('layout.wrapper-plain')
 @section('plain-content')
-<div class="header bg-gradient-primary py-7 py-lg-8">
+<div class="header bg-lightbrown py-7 py-lg-8">
   <div class="container">
     <div class="header-body text-center mb-7">
       <div class="row justify-content-center">
@@ -13,11 +13,11 @@
   </div>
   <div class="separator separator-bottom separator-skew zindex-100">
     <svg x="0" y="0" viewBox="0 0 2560 100" preserveAspectRatio="none" version="1.1" xmlns="http://www.w3.org/2000/svg">
-      <polygon class="fill-default" points="2560 0 2560 100 0 100"></polygon>
+      <polygon class="fill-brown" points="2560 0 2560 100 0 100"></polygon>
     </svg>
   </div>
 </div>
-<div class="container-fluid mt--8 pb-5 bg-default">
+<div class="container-fluid mt--8 pb-5 bg-brown">
   <div class="row justify-content-center">
     <div class="col-lg-5 col-md-7">
       <div class="card bg-secondary border-0 mb-0">
@@ -58,7 +58,7 @@
               <label for="password" class="form-control-label">{{ __('Password') }}</label>
               @if (Route::has('password.request'))
               <small class="float-right">
-                <a href="{{ route('password.request') }}">
+                <a href="{{ route('password.request') }}" class="text-brown">
                   {{ __('Forgot Your Password?') }}
                 </a>
               </small>
@@ -71,12 +71,12 @@
               @enderror
             </div>
             <div class="text-center">
-              <button type="submit" class="btn btn-primary">
+              <button type="submit" class="btn btn-brown">
                 {{ __('Login') }}
               </button>
             </div>
           </form>
-          <div class="text-center small pt-4">Belum punya akun? <a href="{{route('register')}}">Daftar</a></div>
+          <div class="text-center small pt-4">Belum punya akun? <a href="{{route('register')}}" class="text-brown">Daftar</a></div>
         </div>
       </div>
     </div>

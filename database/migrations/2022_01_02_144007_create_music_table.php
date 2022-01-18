@@ -15,8 +15,8 @@ class CreateMusicTable extends Migration
     {
         Schema::create('music', function (Blueprint $table) {
             $table->id();
-            $table->string('music')->nullable();
-            $table->string('music_tema')->nullable();
+            $table->string('music');
+            $table->string('music_tema');
             $table->timestamps();
         });
     }

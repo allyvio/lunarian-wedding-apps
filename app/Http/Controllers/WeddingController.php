@@ -7,6 +7,7 @@ use App\Models\Event;
 use App\Models\Wedding;
 use App\Models\Music;
 use Carbon\Carbon;
+use DB;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Storage;
@@ -121,13 +122,31 @@ class WeddingController extends Controller
                 ];
             }
             $wedding->events()->createMany($new_arr);
+            $music = Music::where('music_tema', 'basic')->get();
+            foreach ($music as $key => $value) {
+              if ($key == 0) {
+                DB::table('weddingmusic')->insert([
+                  'wedding_id' => $wedding->id,
+                  'music_id' => $value->id,
+                  'status' => 1
+                ]);
+              } else {
+                DB::table('weddingmusic')->insert([
+                  'wedding_id' => $wedding->id,
+                  'music_id' => $value->id,
+                  'status' => 0
+                ]);
+              }
+
+            }
         }
         session()->forget('wedding');
-        return view('pages.landing.index');
+        return redirect('/');
     }
 
     public function showPublic(Wedding $wedding, $code = null)
     {
+        $music = DB::table('weddingmusic')->where('wedding_id', Auth::user()->wedding->id)->get();
         $wedding->events = $wedding->events->sortBy('datetime');
         $main_event = $wedding->events->where('is_main', true)->first();
         $wedding->main_date = $main_event->datetime;
@@ -140,7 +159,7 @@ class WeddingController extends Controller
                 return redirect()->route('wedding.page', $wedding)->with('error', 'Invitation not found');
         }
 
-        return view('themes.' . $theme . '.index', compact('wedding'));
+        return view('themes.' . $theme . '.index', compact('wedding','music'));
     }
     public function show(Wedding $wedding)
     {

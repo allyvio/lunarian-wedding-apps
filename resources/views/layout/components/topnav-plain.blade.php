@@ -23,6 +23,13 @@
         </div>
       </div>
       <ul class="navbar-nav mr-auto">
+        @if(Auth::check())
+        <li class="nav-item">
+          <a href="/" class="nav-link">
+            <span class="nav-link-inner--text">Home</span>
+          </a>
+        </li>
+        @else
         <li class="nav-item">
           <a href="/" class="nav-link">
             <span class="nav-link-inner--text">Home</span>
@@ -33,6 +40,7 @@
             <span class="nav-link-inner--text">Wedding</span>
           </a>
         </li>
+        @endif
         <!-- <li class="nav-item">
           <a href="{{route('wedding.create')}}" class="nav-link">
             <span class="nav-link-inner--text">Package</span>

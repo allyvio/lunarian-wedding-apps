@@ -1,5 +1,5 @@
 <!-- Topnav -->
-<nav class="navbar navbar-top navbar-expand border-bottom">
+<nav class="navbar navbar-top bg-lightbrown navbar-expand border-bottom">
   <div class="container-fluid">
     <div class="collapse navbar-collapse" id="navbarSupportedContent">
       <!-- Navbar links -->
@@ -18,7 +18,7 @@
       @if(Auth::user()->hasRole('customer'))
       <ul class="navbar-nav align-items-center order-2 order-md-1">
         <li class="nav-item">
-          <a href="{{route('wedding.page',Auth::user()->wedding->slug)}}" target="_blank" class="nav-link text-primary font-weight-bold text-sm p-0">
+          <a href="{{route('wedding.page',Auth::user()->wedding->slug)}}" target="_blank" class="nav-link text-brown font-weight-bold text-sm p-0">
             <span class="btn-inner--icon"><i class="ni ni-world"></i></span>
             <span class="btn-inner--text">{{request()->getHttpHost().'/'. Auth::user()->wedding->slug}}</span>
           </a>
@@ -27,7 +27,7 @@
       @endif
       <ul class="navbar-nav align-items-center ml-auto ml-md-0 order-3">
         <li class="nav-item dropdown">
-          <a class="nav-link pr-0" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+          <a class="nav-link text-brown pr-0" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
             <div class="media align-items-center">
               <div class="media-body ml-2 d-block">
                 <span class="mb-0 text-sm  font-weight-bold">Hi, {{Auth::user()->name}}</span>

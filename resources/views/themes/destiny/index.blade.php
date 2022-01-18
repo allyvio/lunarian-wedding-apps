@@ -3,6 +3,11 @@
 @include('themes.destiny.layout.header')
 
 <body>
+    @foreach($music as $data)
+    @if($data->status == 1)
+    <audio src="{{asset('storage/'.DB::table('music')->where('id', $data->music_id)->value('music'))}}" autoplay loop="loop"></audio>
+    @endif
+    @endforeach
     <!-- Preloader -->
     <div class="loader">
         <!-- Preloader inner -->

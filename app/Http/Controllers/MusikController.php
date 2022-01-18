@@ -5,8 +5,10 @@ use Illuminate\Support\Facades\Auth;
 use Illuminate\Http\Request;
 use\App\Models\Music;
 use\App\Models\Wedding;
+use\App\Models\weddingmusic;
 use Storage;
 use File;
+use DB;
 use RealRashid\SweetAlert\Facades\Alert;
 class MusikController extends Controller
 {
@@ -17,10 +19,10 @@ class MusikController extends Controller
      */
     public function index()
     {
-        // $musics = Music::get();
-        // $wedding = Auth::user()->wedding;
-        // $music = $wedding->music;
-        return view('pages.music.index');
+        $musics = Music::get();
+        // dd($musics);
+        $music = DB::table('weddingmusic')->where('wedding_id', Auth::user()->wedding->id)->get();
+        return view('pages.music.index',compact('music','musics'));
     }
 
     /**
@@ -42,8 +44,8 @@ class MusikController extends Controller
     public function store(Request $request)
     {
         $new_music = new Music;
-        // $new_music->wedding_id = Wedding::where('user_id', Auth::user()->id)->first()->id;
-        // $new_music->status = 0;
+        // $new_music->music_tema = "basic";//ganti
+        $new_music->music_tema = "premium";
         $music = $request->file('musik');
 
         if ($music) {
@@ -51,19 +53,26 @@ class MusikController extends Controller
             $new_music->music = $music_path1;
         }
         $new_music->save();
+        //dbtable weddingmusic insert
+        DB::table('weddingmusic')->insert([
+          'wedding_id' => Auth::user()->wedding->id,
+          'music_id' => $new_music->id,
+          'status' => 0
+        ]);
         return back();
     }
 
     public function deleteMusik($id)
     {
-        // hapus file
-		$music = Music::where('id',$id)->first();
+    //   dd($id);
+        $music_id = DB::table('weddingmusic')->where('id', $id)->value('music_id');
+        $music = Music::findOrFail($music_id);
         // dd($music);
-		Storage::delete('public/music/'.$music);
-
-		// hapus data
-		Music::where('id',$id)->delete();
-        Alert::success('Berhasil', 'Data Undangan Berhasil Di Hapus');
+  		Storage::delete('public/'.$music->music);
+  		// hapus data
+        $music->delete();
+        DB::table('weddingmusic')->where('music_id', $id)->delete();
+        Alert::success('Berhasil', 'Data Musik Berhasil Di Hapus');
         return response()->json();
     }
 
@@ -99,12 +108,13 @@ class MusikController extends Controller
      */
     public function update($id)
     {
-        Music::where('status', 1)->where('wedding_id', Auth::user()->id)->update([
+        DB::table('weddingmusic')->where('status', 1)->where('wedding_id', Auth::user()->wedding->id)->update([
             'status' => 0
         ]);
-        $musik = Music::findOrFail($id);
-        $musik->status = 1;
-        $musik->save();
+        DB::table('weddingmusic')->where('id', $id)->update([
+            'status' => 1
+        ]);
+
         Alert::success('Berhasil', 'Musik Berhasil Digunakan');
         return back();
     }
@@ -118,5 +128,37 @@ class MusikController extends Controller
     public function destroy($id)
     {
         //
+    }
+
+    public function indexAdmin()
+    {
+      $music = Music::where('music_tema','basic')->get();
+      return view('pages.music.indexAdmin', compact('music'));
+    }
+
+    public function storeAdmin(Request $request)
+    {
+      $new_music = new Music;
+      $new_music->music_tema = "basic";
+      $music = $request->file('musik');
+
+      if ($music) {
+          $music_path1 = $music->store('music','public');
+          $new_music->music = $music_path1;
+      }
+      $new_music->save();
+      return back();
+    }
+
+    public function deleteAdmin($id)
+    {
+        // dd($id);
+        $music = Music::findOrFail($id);
+        // dd($music);
+  		Storage::delete('public/'.$music->music);
+  		// hapus data
+        $music->delete();
+        Alert::success('Berhasil', 'Data Musik Berhasil Di Hapus');
+        return response()->json();
     }
 }

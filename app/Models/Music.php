@@ -9,9 +9,10 @@ class Music extends Model
   protected $table = 'music';
   protected $fillable = [
       'music',
+      'music_tema'
   ];
-  // public function wedding()
-  // {
-  //     return $this->belongsTo('App\Models\Wedding');
-  // }
+  public function wedding()
+  {
+      return $this->belongsToMany('App\Models\Wedding');
+  }
 }
