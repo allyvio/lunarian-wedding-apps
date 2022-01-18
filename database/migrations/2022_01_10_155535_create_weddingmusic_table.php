@@ -15,10 +15,14 @@ class CreateWeddingmusicTable extends Migration
     {
         Schema::create('weddingmusic', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('wedding_id')->nullable();
-            $table->foreignId('music_id')->nullable();
-            $table->integer('status')->nullable();
+            $table->foreignId('wedding_id');
+            $table->foreignId('music_id');
+            $table->integer('status');
             $table->timestamps();
+
+            $table->index(['wedding_id', 'music_id', 'id'], 'weddingmusic_index');
+            $table->foreign('wedding_id')->references('id')->on('weddings')->onDelete('cascade');
+            $table->foreign('music_id')->references('id')->on('music')->onDelete('cascade');
         });
     }
 

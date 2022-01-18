@@ -8,7 +8,7 @@
     <div class="nav-wrapper wizard pt-0">
         <div class="wizard-inner" style="position: relative;">
             <div class="progress wizard-progress" style="position: absolute;width: 100%;margin: 0 auto;top: 50%;z-index: -1;">
-                <div class="progress-bar bg-primary" role="progressbar" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100"></div>
+                <div class="progress-bar bg-lightbrown" role="progressbar" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100"></div>
             </div>
             <ul class="nav nav-pills d-flex justify-content-between nav-pills-circle" id="tabs_2" role="tablist">
                 <li class="nav-item text-center m-0">
@@ -100,8 +100,8 @@
             </button>
         </div>
         <div class="col text-right">
-            <button class="btn btn-icon btn-primary" id="next-step">
-                <span class="btn-inner--text">Selanjutnya</span>
+            <button class="btn btn-icon btn-brown" id="next-step">
+                <span class="btn-inner--text">lanjut</span>
                 <span class="btn-inner--icon"><i class="ni ni-bold-right"></i></span>
             </button>
         </div>
@@ -127,10 +127,10 @@
             $prevTarget.addClass('disabled')
             $('a[data-progress]').filter(function() {
                 return $(this).data('progress') < $target.data('progress')
-            }).addClass('bg-primary text-white');
+            }).addClass('bg-brown text-white');
             $('a[data-progress]').filter(function() {
                 return $(this).data('progress') > $target.data('progress')
-            }).removeClass('bg-primary text-white');
+            }).removeClass('bg-brown text-white');
             $progress_bar.css('width', $target.data('progress') + '%')
             if ($target.parent().hasClass('disabled')) {
                 return false;

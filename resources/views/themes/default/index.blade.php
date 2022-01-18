@@ -4,7 +4,11 @@
 
 <body id="homepage">
     <!-- Music -->
-    
+    @foreach($music as $data)
+    @if($data->status == 1)
+    <audio src="{{asset('storage/'.DB::table('music')->where('id', $data->music_id)->value('music'))}}" autoplay loop="loop"></audio>
+    @endif
+    @endforeach
     <div id="wrapper">
         <div id="content" class="no-bottom no-top">
             <!-- hero section begin -->
@@ -52,7 +56,7 @@
             <!-- section end -->
             @include('themes.default.components.protokol')
         </div>
-        
+
         <!-- footer begin -->
         @include('themes.default.components.footer')
         <!-- footer close -->

@@ -1,6 +1,6 @@
 @extends('layout.wrapper-plain')
 @section('plain-content')
-<div class="header bg-gradient-primary py-7 py-lg-8">
+<div class="header bg-lightbrown py-7 py-lg-8">
     <div class="container">
         <div class="header-body text-center mb-7">
             <div class="row justify-content-center">
@@ -13,11 +13,11 @@
     </div>
     <div class="separator separator-bottom separator-skew zindex-100">
         <svg x="0" y="0" viewBox="0 0 2560 100" preserveAspectRatio="none" version="1.1" xmlns="http://www.w3.org/2000/svg">
-            <polygon class="fill-default" points="2560 0 2560 100 0 100"></polygon>
+            <polygon class="fill-brown" points="2560 0 2560 100 0 100"></polygon>
         </svg>
     </div>
 </div>
-<div class="container-fluid mt--8 pb-5 bg-default">
+<div class="container-fluid mt--8 pb-5 bg-brown">
     <div class="row justify-content-center">
         <div class="col-lg-6 col-md-8">
             <div class="card bg-secondary border-0 mb-0">
@@ -25,7 +25,7 @@
                     <h5 class="h2 m-0">Daftar</h5>
                 </div>
                 <div class="card-header bg-transparent pb-5">
-                  <div class="text-muted text-center mt-2 mb-3"><small>Masuk Dengan</small></div>
+                  <div class="text-muted text-center mt-2 mb-3"><small>Daftar Dengan</small></div>
                   <div class="btn-wrapper text-center">
                     <a href="{{ url('google') }}" class="btn btn-neutral btn-icon">
                       <span class="btn-inner--icon"><img src="/img/icons/common/google.svg"></span>
@@ -71,11 +71,11 @@
                             <input id="password-confirm" type="password" class="form-control" name="password_confirmation" placeholder="Confirm Password" required autocomplete="new-password">
                         </div>
                         <div class="text-center">
-                            <button type="submit" class="btn btn-primary">
+                            <button type="submit" class="btn btn-brown">
                                 {{ __('Register') }}
                             </button>
                         </div>
-                        <div class="text-center small pt-4">Sudah punya akun? <a href="{{route('login')}}">Masuk</a></div>
+                        <div class="text-center small pt-4">Sudah punya akun? <a href="{{route('login')}}" class="text-brown">Masuk</a></div>
                     </form>
                 </div>
             </div>

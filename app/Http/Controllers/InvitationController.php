@@ -21,9 +21,9 @@ class InvitationController extends Controller
     {
         $wedding = Auth::user()->wedding;
         $invitations = $wedding->invitations;
-        $packages = Wedding::where('user_id', Auth::user()->id)->first()->package_id;
-		$package = Package::findOrFail($packages)->count_invitation;
-        return view('pages.invitation.index', compact('wedding','invitations','package'));
+        // $packages = Wedding::where('user_id', Auth::user()->id)->first()->package_id;
+		    // $package = Package::findOrFail($packages)->count_invitation;
+        return view('pages.invitation.index', compact('wedding','invitations'));
     }
 
     public function addInvitation(Request $request)

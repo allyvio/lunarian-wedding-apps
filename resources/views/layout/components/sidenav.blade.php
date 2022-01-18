@@ -2,8 +2,8 @@
   <div class="scrollbar-inner">
     <!-- Brand -->
     <div class="sidenav-header d-flex align-items-center">
-      <a class="navbar-brand" href="../../pages/dashboards/dashboard.html">
-        <img src="{{asset('img/brand/blue.png')}}" class="navbar-brand-img" alt="...">
+      <a class="navbar-brand" href="{{url('/')}}">
+        <img src="{{asset('img/brand/lunarian.png')}}" class="navbar-brand-img" alt="...">
       </a>
       <div class="ml-auto">
         <!-- Sidenav toggler -->
@@ -88,6 +88,18 @@
             <a class="nav-link text-muted" href="{{route('admin.wedding.index')}}">
               <i class="fa fa-columns"></i>
               <span class="nav-link-text">Data Wedding</span>
+            </a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link text-muted" href="{{route('music.indexAdmin')}}">
+              <i class="fa fa-music"></i>
+              <span class="nav-link-text">Data Music</span>
+            </a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link text-muted" href="{{route('package.index')}}">
+              <i class="fa fa-book"></i>
+              <span class="nav-link-text">Data Package</span>
             </a>
           </li>
         </ul>

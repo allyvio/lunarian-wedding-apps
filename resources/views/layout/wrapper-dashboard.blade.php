@@ -4,6 +4,10 @@
 @include('layout.components.header')
 
 <body>
+  <!-- Alert -->
+  @include('sweetalert::alert')
+  <!-- End Alert -->
+  
   <!-- Sidenav -->
   @include('layout.components.sidenav')
   <!-- End Sidenav -->
@@ -29,9 +33,7 @@
   @include('layout.components.footerjs')
   <!-- End Argon Scripts -->
 
-  <!-- Alert -->
-  @include('sweetalert::alert')
-  <!-- End Alert -->
+  
 
 
 </body>

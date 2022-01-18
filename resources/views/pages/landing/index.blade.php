@@ -40,7 +40,7 @@
             </div>
             <div class="col-md-6 order-md-1">
                 <div class="pr-md-5">
-                    <h1>DDesign Elegant</h1>
+                    <h1>Design Elegant</h1>
                     <p>Pilihan tema elegant dan profesional</p>
                     <ul class="list-unstyled">
                         <li class="py-2">
@@ -119,7 +119,7 @@
 </section>
 <!-- END OVERVIEW -->
 <!-- RULE OF 3 -->
-<section class="bg-gradient-success">
+<section class="bg-lightbrown">
     <svg width="100%" preserveAspectRatio="none" height="100px" transform="rotate(180)" viewBox="50 -16 1000 100" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
         <path class="fill-secondary" d="M1300,0 L1300,99.9998042 L0,99.9998042 L0,60.1910374 C549.576968,-84.3633414 541.584175,191.147059 1300,0 Z"></path>
     </svg>
@@ -232,7 +232,7 @@
     </div>
     </div>
 </section>
-<section class="bg-gradient-default">
+<section class="bg-lightbrown">
     <svg width="100%" preserveAspectRatio="none" height="90px" viewBox="0 0 2000 400" transform="rotate(180)" xmlns="http://www.w3.org/2000/svg" version="1.1" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:svgjs="http://svgjs.com/svgjs">
         <path d="M 0,367 C 200,316.6 600,114 1000,115 C 1400,116 1800,320.6 2000,372L2000 400L0 400z" class="fill-secondary"></path>
     </svg>
@@ -244,7 +244,7 @@
                   @if($package->id == 1)
                     <div class="card card-pricing border-0 text-center mb-4">
                         <div class="card-header bg-transparent">
-                            <h4 class="text-uppercase ls-1 text-primary py-3 mb-0">Paket {{$package->name}}</h4>
+                            <h4 class="text-uppercase ls-1 text-brown py-3 mb-0">Paket {{$package->name}}</h4>
                         </div>
                         <div class="card-body px-lg-5">
                             <div class="display-4">{!!$package->price ? 'Rp.'. number_format($package->price,2,",",".") : 'GRATIS'!!}</div>
@@ -253,7 +253,7 @@
                                 <li>
                                     <div class="d-flex align-items-center">
                                         <div>
-                                            <div class="icon icon-xs icon-shape bg-gradient-primary shadow rounded-circle text-white">
+                                            <div class="icon icon-xs icon-shape bg-gradient-lightbrown shadow rounded-circle text-white">
                                                 <i class="fas fa-image"></i>
                                             </div>
                                         </div>
@@ -265,7 +265,7 @@
                                 <li>
                                     <div class="d-flex align-items-center">
                                         <div>
-                                            <div class="icon icon-xs icon-shape bg-gradient-primary shadow rounded-circle text-white">
+                                            <div class="icon icon-xs icon-shape bg-gradient-lightbrown shadow rounded-circle text-white">
                                                 <i class="fas fa-book"></i>
                                             </div>
                                         </div>
@@ -277,7 +277,7 @@
                                 <li>
                                     <div class="d-flex align-items-center">
                                         <div>
-                                            <div class="icon icon-xs icon-shape bg-gradient-primary shadow rounded-circle text-white">
+                                            <div class="icon icon-xs icon-shape bg-gradient-lightbrown shadow rounded-circle text-white">
                                                 <i class="fas fa-map-marker-alt"></i>
                                             </div>
                                         </div>
@@ -289,7 +289,7 @@
                                 <li>
                                     <div class="d-flex align-items-center">
                                         <div>
-                                            <div class="icon icon-xs icon-shape bg-gradient-primary shadow rounded-circle text-white">
+                                            <div class="icon icon-xs icon-shape bg-gradient-lightbrown shadow rounded-circle text-white">
                                                 <i class="fas fa-user"></i>
                                             </div>
                                         </div>
@@ -301,7 +301,7 @@
                                 <li>
                                     <div class="d-flex align-items-center">
                                         <div>
-                                            <div class="icon icon-xs icon-shape bg-gradient-primary shadow rounded-circle text-white">
+                                            <div class="icon icon-xs icon-shape bg-gradient-lightbrown shadow rounded-circle text-white">
                                                 <i class="fas fa-clock"></i>
                                             </div>
                                         </div>
@@ -313,7 +313,7 @@
                                 <li>
                                     <div class="d-flex align-items-center">
                                         <div>
-                                            <div class="icon icon-xs icon-shape bg-gradient-primary shadow rounded-circle text-white">
+                                            <div class="icon icon-xs icon-shape bg-gradient-lightbrown shadow rounded-circle text-white">
                                                 <i class="fas fa-head-side-mask"></i>
                                             </div>
                                         </div>
@@ -333,12 +333,12 @@
                     @endforeach
                     @foreach(\App\Models\Package::all() as $package)
                     @if($package->id == 3)
-                    <div class="card card-pricing bg-gradient-success zoom-in shadow-lg rounded border-0 text-center mb-4">
+                    <div class="card card-pricing bg-brown zoom-in shadow-lg rounded border-0 text-center mb-4">
                         <div class="card-header bg-transparent">
                             <h4 class="text-uppercase ls-1 text-white py-3 mb-0">Paket {{$package->name}}</h4>
                         </div>
                         <div class="card-body px-lg-5">
-                            <div class="display-4">{!!$package->price ? 'Rp.'. number_format($package->price,2,",",".") : 'GRATIS'!!}</div>
+                            <div class="display-4 text-white">{!!$package->price ? 'Rp.'. number_format($package->price,2,",",".") : 'GRATIS'!!}</div>
                             <!-- <span class="text-white">per application</span> -->
                             <ul class="list-unstyled my-4">
                                 <li>
@@ -498,7 +498,7 @@
                     @if($package->id == 2)
                     <div class="card card-pricing border-0 text-center mb-4">
                         <div class="card-header bg-transparent">
-                            <h4 class="text-uppercase ls-1 text-primary py-3 mb-0">Paket {{$package->name}}</h4>
+                            <h4 class="text-uppercase ls-1 text-brown py-3 mb-0">Paket {{$package->name}}</h4>
                         </div>
                         <div class="card-body px-lg-5">
                             <div class="display-4">{!!$package->price ? 'Rp.'. number_format($package->price,2,",",".") : 'GRATIS'!!}</div>
@@ -507,7 +507,7 @@
                               <li>
                                   <div class="d-flex align-items-center">
                                       <div>
-                                          <div class="icon icon-xs icon-shape bg-gradient-primary shadow rounded-circle text-white">
+                                          <div class="icon icon-xs icon-shape bg-gradient-lightbrown shadow rounded-circle text-white">
                                               <i class="fas fa-image"></i>
                                           </div>
                                       </div>
@@ -519,7 +519,7 @@
                               <li>
                                   <div class="d-flex align-items-center">
                                       <div>
-                                          <div class="icon icon-xs icon-shape bg-gradient-primary shadow rounded-circle text-white">
+                                          <div class="icon icon-xs icon-shape bg-gradient-lightbrown shadow rounded-circle text-white">
                                               <i class="fas fa-book"></i>
                                           </div>
                                       </div>
@@ -531,7 +531,7 @@
                               <li>
                                   <div class="d-flex align-items-center">
                                       <div>
-                                          <div class="icon icon-xs icon-shape bg-gradient-primary shadow rounded-circle text-white">
+                                          <div class="icon icon-xs icon-shape bg-gradient-lightbrown shadow rounded-circle text-white">
                                               <i class="fas fa-map-marker-alt"></i>
                                           </div>
                                       </div>
@@ -543,7 +543,7 @@
                               <li>
                                   <div class="d-flex align-items-center">
                                       <div>
-                                          <div class="icon icon-xs icon-shape bg-gradient-primary shadow rounded-circle text-white">
+                                          <div class="icon icon-xs icon-shape bg-gradient-lightbrown shadow rounded-circle text-white">
                                               <i class="fas fa-user"></i>
                                           </div>
                                       </div>
@@ -555,7 +555,7 @@
                               <li>
                                   <div class="d-flex align-items-center">
                                       <div>
-                                          <div class="icon icon-xs icon-shape bg-gradient-primary shadow rounded-circle text-white">
+                                          <div class="icon icon-xs icon-shape bg-gradient-lightbrown shadow rounded-circle text-white">
                                               <i class="fas fa-clock"></i>
                                           </div>
                                       </div>
@@ -567,7 +567,7 @@
                               <li>
                                   <div class="d-flex align-items-center">
                                       <div>
-                                          <div class="icon icon-xs icon-shape bg-gradient-primary shadow rounded-circle text-white">
+                                          <div class="icon icon-xs icon-shape bg-gradient-lightbrown shadow rounded-circle text-white">
                                               <i class="fas fa-heart"></i>
                                           </div>
                                       </div>
@@ -579,7 +579,7 @@
                               <li>
                                   <div class="d-flex align-items-center">
                                       <div>
-                                          <div class="icon icon-xs icon-shape bg-gradient-primary shadow rounded-circle text-white">
+                                          <div class="icon icon-xs icon-shape bg-gradient-lightbrown shadow rounded-circle text-white">
                                               <i class="fas fa-music"></i>
                                           </div>
                                       </div>
@@ -591,7 +591,7 @@
                               <li>
                                   <div class="d-flex align-items-center">
                                       <div>
-                                          <div class="icon icon-xs icon-shape bg-gradient-primary shadow rounded-circle text-white">
+                                          <div class="icon icon-xs icon-shape bg-gradient-lightbrown shadow rounded-circle text-white">
                                               <i class="fas fa-user"></i>
                                           </div>
                                       </div>
@@ -603,7 +603,7 @@
                               <li>
                                   <div class="d-flex align-items-center">
                                       <div>
-                                          <div class="icon icon-xs icon-shape bg-gradient-primary shadow rounded-circle text-white">
+                                          <div class="icon icon-xs icon-shape bg-gradient-lightbrown shadow rounded-circle text-white">
                                               <i class="fas fa-users"></i>
                                           </div>
                                       </div>
@@ -615,7 +615,7 @@
                               <li>
                                   <div class="d-flex align-items-center">
                                       <div>
-                                          <div class="icon icon-xs icon-shape bg-gradient-primary shadow rounded-circle text-white">
+                                          <div class="icon icon-xs icon-shape bg-gradient-lightbrown shadow rounded-circle text-white">
                                               <i class="fas fa-columns"></i>
                                           </div>
                                       </div>
@@ -627,7 +627,7 @@
                               <li>
                                   <div class="d-flex align-items-center">
                                       <div>
-                                          <div class="icon icon-xs icon-shape bg-gradient-primary shadow rounded-circle text-white">
+                                          <div class="icon icon-xs icon-shape bg-gradient-lightbrown shadow rounded-circle text-white">
                                               <i class="fas fa-head-side-mask"></i>
                                           </div>
                                       </div>

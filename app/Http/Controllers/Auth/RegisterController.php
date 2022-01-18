@@ -34,7 +34,7 @@ class RegisterController extends Controller
         if (session()->has('wedding')) {
             return session()->get('url.intended');
         } else {
-            return '/';
+            return RouteServiceProvider::HOME;
         }
     }
 

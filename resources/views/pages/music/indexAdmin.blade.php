@@ -7,13 +7,6 @@
       <div class="row align-items-center py-4">
         <div class="col-lg-6 col-7">
           <h6 class="h2 d-inline-block mb-0">Musik</h6>
-          <!-- <nav aria-label="breadcrumb" class="d-none d-md-inline-block ml-md-4">
-            <ol class="breadcrumb breadcrumb-links">
-              <li class="breadcrumb-item"><a href="#"><i class="fas fa-home"></i></a></li>
-              <li class="breadcrumb-item"><a href="{{url('/dashboard')}}">Dashboards</a></li>
-              <li class="breadcrumb-item active" aria-current="page">Musik</li>
-            </ol>
-          </nav> -->
         </div>
       </div>
     </div>
@@ -42,7 +35,7 @@
           </button>
         </div>
         <div class="modal-body">
-          <form id="musik" action="{{route('add-music.store')}}" method="POST" enctype="multipart/form-data">
+          <form id="musik" action="{{route('add-music.storeAdmin')}}" method="POST" enctype="multipart/form-data">
             @csrf
             <div class="custom-file">
               <label for="musik">PILIH FILE</label>
@@ -61,45 +54,25 @@
   </div>
   <!-- Light table -->
   <div class="table-responsive">
-    <table class="table table-flush" id="datatable-basic">
+    <table class="table table-flush text-center" id="datatable-basic">
       <thead class="thead-light">
         <tr>
-          <th style="text-align:center;">Musik</th>
-          <th>Status</th>
-          <th>music tema</th>
-          <th></th>
+          <th>id</th>
+          <th>Musik</th>
+          <th>Aksi</th>
         </tr>
       </thead>
       <tbody>
-         @foreach($music as $data)
+        @foreach($music as $data)
         <tr>
-          <td style="text-align:center;">
-            <audio src="{{asset('storage/'.DB::table('music')->where('id', $data->music_id)->value('music'))}}" controls></audio>
+          <td>{{$data->id}}</td>
+          <td>
+            <audio src="{{asset('storage/'.$data->music)}}" controls></audio>
           </td>
           <td>
-            @if($data->status == 0)
-            <span class="badge badge-lg badge-danger">Tidak</span>
-            @else
-            <span class="badge badge-lg badge-success">Aktif</span>
-            @endif
-          </td>
-          <td>
-            {{DB::table('music')->where('id', $data->music_id)->value('music_tema')}}
-          </td>
-          <td>
-            @if($data->status == 0)
-              <a href="{{url('dashboard/music-update', $data->id)}}" type="button" class="btn btn-outline-primary btn-sm">
-                <span class="btn-inner--text">Gunakan</span>
-              </a>
-              @php
-              $music_tema = DB::table('music')->where('id', $data->music_id)->value('music_tema');
-              @endphp
-              @if($music_tema == 'premium')
-                <a href="javascript:void(0)" onclick="deleteMusik({{$data->id}})" class="btn btn-icon btn-outline-danger btn-sm" data-toggle="tooltip" data-original-title="Hapus">
-                    <i class="fas fa-trash"></i>
-                </a>
-              @endif
-            @endif
+            <a href="javascript:void(0)" onclick="deleteMusik({{$data->id}})" class="btn btn-icon btn-outline-danger btn-sm" data-toggle="tooltip" data-original-title="Hapus">
+                <i class="fas fa-trash"></i>
+            </a>
           </td>
         </tr>
         @endforeach
@@ -137,7 +110,7 @@
       cancelButtonText: "Batal"
     }).then((result) => {
       if (result.isConfirmed) {
-        var url = '{{route("music.delete",":id")}}'
+        var url = '{{route("music.deleteAdmin",":id")}}'
         url = url.replace(':id', id)
         $.ajax({
           url: url,

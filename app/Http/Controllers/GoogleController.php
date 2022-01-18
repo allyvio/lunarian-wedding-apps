@@ -4,8 +4,10 @@ namespace App\Http\Controllers;
 use Auth;
 use Socialite;
 use Exception;
+use DB;
 use RealRashid\SweetAlert\Facades\Alert;
 use App\Models\User;
+use App\Models\Music;
 use Illuminate\Http\Request;
 
 class GoogleController extends Controller
@@ -44,7 +46,26 @@ class GoogleController extends Controller
             ];
           }
           $wedding->events()->createMany($new_arr);
+
         }
+        $music = Music::where('music_tema', 'basic')->get();
+        foreach ($music as $key => $value) {
+          if ($key == 0) {
+            DB::table('weddingmusic')->insert([
+              'wedding_id' => $wedding->id,
+              'music_id' => $value->id,
+              'status' => 1
+            ]);
+          } else {
+            DB::table('weddingmusic')->insert([
+              'wedding_id' => $wedding->id,
+              'music_id' => $value->id,
+              'status' => 0
+            ]);
+          }
+
+        }
+        // dd($wedding);
         session()->forget('wedding');
         return redirect('/');
 
@@ -76,12 +97,30 @@ class GoogleController extends Controller
           }
           $wedding->events()->createMany($new_arr);
         }
+        $music = Music::where('music_tema', 'basic')->get();
+        foreach ($music as $key => $value) {
+          if ($key == 0) {
+            DB::table('weddingmusic')->insert([
+              'wedding_id' => $wedding->id,
+              'music_id' => $value->id,
+              'status' => 1
+            ]);
+          } else {
+            DB::table('weddingmusic')->insert([
+              'wedding_id' => $wedding->id,
+              'music_id' => $value->id,
+              'status' => 0
+            ]);
+          }
+
+        }
+        // dd($wedding);
         session()->forget('wedding');
         return redirect('/');
       }
 
     } catch (Exception $e) {
-
+      // dd($e);
       Alert::error('Login Gagal!', 'Email sudah terdaftar');
       return redirect()->route('login');
       // dd($e->getMessage());

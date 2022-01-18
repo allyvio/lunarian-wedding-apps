@@ -43,15 +43,28 @@ Route::prefix('dashboard')->middleware(['auth', 'wedding'])->group(function () {
     /** ------------------------- INVITATION Import ------------------------- */
     Route::get('/download', 'InvitationController@download')->name('download.file');
     Route::post('/users/import', 'InvitationController@store')->name('import.store');
-    
+
     /** ------------------------- COMMENT ------------------------- */
     Route::get('comment', 'CommentController@index')->name('comment.index');
     Route::post('comment/{comment}', 'CommentController@update')->name('comment.update');
-    /**  ------------------------- Music ------------------------- */
+
+    /**  ------------------------- Music User ------------------------- */
     Route::get('/music', 'MusikController@index')->name('music.index');
     Route::post('/add-music', 'MusikController@store')->name('add-music.store');
-    Route::get('/music/{id}', 'MusikController@update');
-    Route::delete('/music/{id}', 'MusikController@deleteMusik')->name('music.delete');
+    Route::get('/music-update/{id}', 'MusikController@update');
+    Route::get('/music/{id}', 'MusikController@deleteMusik')->name('music.delete');
+
+    /**  ------------------------- Music Admin ------------------------- */
+    Route::get('/music-admin', 'MusikController@indexAdmin')->name('music.indexAdmin');
+    Route::post('/add-music-admin', 'MusikController@storeAdmin')->name('add-music.storeAdmin');
+    Route::get('/music/admin/{id}', 'MusikController@deleteAdmin')->name('music.deleteAdmin');
+
+    /**  ------------------------- Package ------------------------- */
+    Route::get('/package', 'PackageController@index')->name('package.index');
+    Route::post('/add-package', 'PackageController@store')->name('add-package.store');
+    Route::get('/package/{id}', 'PackageController@show')->name('package.show');
+    Route::put('/package', 'PackageController@update')->name('package.update');
+    Route::delete('/package/{id}', 'PackageController@delete')->name('package.delete');
 
     /** ------------------------- MEDIA ------------------------- */
     Route::post('/media/store', 'MediaController@store')->name('media.store');

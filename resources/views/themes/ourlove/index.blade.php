@@ -4,6 +4,11 @@
 @include('themes.ourlove.layout.header')
 
 <body>
+    @foreach($music as $data)
+    @if($data->status == 1)
+    <audio src="{{asset('storage/'.DB::table('music')->where('id', $data->music_id)->value('music'))}}" autoplay loop="loop"></audio>
+    @endif
+    @endforeach
     <!-- Loading animation -->
     <div class="preloader">
         <div class="preloader-animation">
