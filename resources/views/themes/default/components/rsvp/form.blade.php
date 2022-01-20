@@ -1,10 +1,9 @@
 @if($wedding->package->count_invitation > 0)
 <section style="background-color: white;">
     <div class="container">
-        <div class="row">
-            <div class="col-md-4 col-md-offset-4 text-center">
-                <h3>Masukkan Kode Undangan</h3>
-                <br>
+        <div class="row text-center">
+            <h2 class="s2">Masukkan Kode Undangan</h2>
+            <div class="col-md-4 col-md-offset-4">
                 <h4>Masukkan 6 digit kode undangan Anda di bawah ini</h4>
                 <form id="rsvp-form" action="{{route('invitation.rsvp',[':wedding',':code'])}}" data-wedding="{{$wedding->id}}" data-wedding-slug="{{$wedding->slug}}">
                     <div class="input-group">
