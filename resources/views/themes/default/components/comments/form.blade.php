@@ -2,7 +2,7 @@
     <div class="container">
         <div class="row">
             <div class="col-md-12 text-center">
-                <h3 class="id-color"><span>Comments</span></h3>
+                <h3 class="id-color"><span>Berikan Ucapan</span></h3>
             </div>
         </div>
         <form id="invitation-comment-form" method="post" action="{{route('comment.post',$wedding->invitation->id)}}">

@@ -38,7 +38,7 @@ class MediaController extends Controller
             }
             return response()->json(['status' => 'success', 'media' => route('media.destroy', $media->id)]);
         }
-        return response('Gallery melebihi batas. Batas maksimum 6.',400);
+        return response('Gallery melebihi batas. Batas maksimum ' . $limit . '.', 400);
     }
 
     public function destroy(Media $media)

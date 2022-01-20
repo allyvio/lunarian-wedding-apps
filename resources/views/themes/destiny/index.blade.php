@@ -45,12 +45,15 @@
         <!-- rsvp popup begin -->
         @if($wedding->invitation)
         @include('themes.destiny.components.rsvp.show')
+        @include('themes.destiny.components.comments.form')
         @else
         @include('themes.destiny.components.rsvp.form')
         @endif
         <!-- section end -->
         <!--Comment section-->
-        @include('themes.destiny.components.comment')
+        @if($wedding->package_id != 1)
+        @include('themes.destiny.components.comments.show')
+        @endif
         <!--End Comment section-->
         <!--Just married section -->
         @include('themes.destiny.components.protokol')

@@ -23,9 +23,9 @@
         <!-- Header -->
         <header id="header" class="header">
             <div class="container">
-                <!-- <div class="logo-container">
+                <div class="logo-container">
                     <div class="header-logo">{{$wedding->calon_wanita}}<span class="main-color"> &amp;</span> {{$wedding->calon_pria}}</div>
-                </div> -->
+                </div>
                 <div class="header-date">
                     <p>{{date('l, d',strtotime($wedding->main_date))}} <span class="main-color">{{date('F',strtotime($wedding->main_date))}} </span> {{date('Y',strtotime($wedding->main_date))}} </p>
                 </div>
@@ -61,13 +61,16 @@
             <!-- rsvp popup begin -->
             @if($wedding->invitation)
             @include('themes.ourlove.components.rsvp.show')
+            @include('themes.ourlove.components.comments.form')
             @else
             @include('themes.ourlove.components.rsvp.form')
             @endif
             <!-- section end -->
 
             <!--Comment Section -->
-            @include('themes.ourlove.components.comment')
+            @if($wedding->package_id != 1)
+            @include('themes.ourlove.components.comments.show')
+            @endif
             <!-- Comment Section -->
 
             <!--Protokol Section -->

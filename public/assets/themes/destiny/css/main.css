@@ -709,6 +709,9 @@ blockquote {
     height: 42px;
     line-height: 0;
 }
+.registry-form .submit.disabled {
+    pointer-events: none;
+}
 .success,
 .error {
     display: none;
