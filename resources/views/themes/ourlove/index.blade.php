@@ -68,7 +68,9 @@
             <!-- section end -->
 
             <!--Comment Section -->
+            @if($wedding->package_id != 1)
             @include('themes.ourlove.components.comments.show')
+            @endif
             <!-- Comment Section -->
 
             <!--Protokol Section -->

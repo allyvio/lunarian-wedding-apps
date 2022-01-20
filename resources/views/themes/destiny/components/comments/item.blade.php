@@ -1,3 +1,6 @@
+@if($wedding->comments->where('is_show',true)->count() == 0)
+<div class="text-center">Belum ada ucapan.</div>
+@else
 @foreach($wedding->comments->where('is_show',true)->sortByDesc('created_at') as $comment)
 <div class="comment-item mb-3">
     <h2 class="heavy normal mb-5"><b>{{$comment->invitation->name}}</b></h2>
@@ -9,3 +12,4 @@
     </div>
 </div>
 @endforeach
+@endif

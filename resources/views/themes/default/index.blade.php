@@ -52,7 +52,9 @@
             @endif
             <!-- section end -->
             <!-- comment section begin -->
+            @if($wedding->package_id != 1)
             @include('themes.default.components.comments.show')
+            @endif
             <!-- section end -->
             @include('themes.default.components.protokol')
         </div>
