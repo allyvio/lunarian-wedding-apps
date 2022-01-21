@@ -189,7 +189,7 @@ a.button:visited,
 a.button:focus {
     text-decoration: none;
 }
-button.disabled{
+button.disabled {
     pointer-events: none;
     opacity: 0.6;
 }
@@ -391,7 +391,7 @@ textarea.form-control:focus {
 /* =============================================================================
 4. Site content
 ============================================================================= */
-.border{
+.border {
     border: grey 1pt solid;
 }
 .container {
@@ -541,7 +541,7 @@ p.intro {
     background-position: center center;
     background-repeat: no-repeat;
     filter: brightness(90%);
-    background-image: url('../img/hero-2.jpg');
+    background-image: url("../img/hero-2.jpg");
 }
 
 .hs-mask,
@@ -925,8 +925,8 @@ ul.social-links li a:hover i {
     margin-bottom: 30px;
 }
 .gallery-item img {
-  width: 300px;
-  height: 300px;
+    width: 300px;
+    height: 300px;
 }
 
 .gallery-item a {
@@ -1330,6 +1330,10 @@ ul.social-links li a:hover i {
         width: auto;
         height: 200px;
         margin-bottom: 40px;
+    }
+    .gallery-item img {
+        width: 500px;
+        height: 400px;
     }
 }
 @media screen and (min-width: 450px) {

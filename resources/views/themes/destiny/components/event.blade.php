@@ -34,10 +34,7 @@
         </div>
         <div class="row">
             <div class="col-sm-8 col-sm-offset-2 text-center">
-                <p class="lead mt-80 size-m">At vero eos et accusamus et iusto odio dignissimos ducimus qui
-                    blanditiis praesentium voluptatum deleniti atque corrupti quos dolores et quas molestias
-                    excepturi sint occae.Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do
-                    eiusmod tempor incididunt ut labore. </p>
+                <p class="lead mt-80 size-m"></p>
             </div>
         </div>
         <!--End row-->
