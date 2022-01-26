@@ -1,5 +1,9 @@
 <section id="home" class="home-section clearfix">
-  <div id="hs-image-block" class="hs-image-block" data-stellar-background-ratio="0.3">
+  @if($wedding->has('hero')->count() > 0)
+  <div id="hs-image-block" class="hs-image-block" data-stellar-background-ratio="0.3" style="background-image: url({{asset('storage/media/'.$wedding->hero->first()->filename)}});">
+    @else
+    <div id="hs-image-block" class="hs-image-block" data-stellar-background-ratio="0.3">
+  @endif
     <div class="hs-mask"></div>
   </div>
   <div class="hs-main-content container">

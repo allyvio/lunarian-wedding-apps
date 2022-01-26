@@ -34,6 +34,40 @@
                     <span class="btn-inner--icon"><i class="ni ni-world"></i></span>
                     <span class="btn-inner--text">{{request()->getHttpHost().'/'.$wedding->slug}}</span>
                 </a>
+                @switch($wedding->status)
+                @case('pending')
+                <div class="dropdown">
+                    <a href="#" class="text-warning small dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-expanded="false">
+                        <i class="fa fa-clock"></i> {{$wedding->status}}
+                    </a>
+                    <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                        <a class="dropdown-item" href="{{ route('logout') }}" onclick="event.preventDefault();document.getElementById('update-status').submit();">
+                            <span>Publish</span>
+                            <form id="update-status" action="{{ route('admin.wedding.update.status',$wedding->slug) }}" method="POST" class="d-none">
+                                @csrf
+                                <input type="hidden" name="status" value="publish">
+                            </form>
+                        </a>
+                    </div>
+                </div>
+                @break
+                @case('publish')
+                <div class="dropdown">
+                    <a href="#" class="text-success small dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-expanded="false">
+                        <i class="fa fa-check"></i> {{$wedding->status}}
+                    </a>
+                    <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                        <a class="dropdown-item" href="{{ route('logout') }}" onclick="event.preventDefault();document.getElementById('update-status').submit();">
+                            <span>Pending</span>
+                            <form id="update-status" action="{{ route('admin.wedding.update.status',$wedding->slug) }}" method="POST" class="d-none">
+                                @csrf
+                                <input type="hidden" name="status" value="pending">
+                            </form>
+                        </a>
+                    </div>
+                </div>
+                @break
+                @endswitch
             </div>
             <div class="col-12 col-sm-5">
                 <div class="card bg-gradient-success shadow">
@@ -54,6 +88,9 @@
     </div>
 </div>
 <div class="card">
+    <div class="card-header">
+        <h3 class="mb-0">Rangkaian Acara</h3>
+    </div>
     <div class="card-body">
         <div class="row">
             @foreach($wedding->events as $event)

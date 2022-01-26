@@ -2897,7 +2897,7 @@ fieldset:disabled a.btn {
         0 1px 3px rgba(184, 144, 121, 0.541);
 }
 .btn-brown:hover {
-    color: black;
+    color: #fff;
     border-color: #654641;
     background-color: #654641;
 }
@@ -14432,15 +14432,6 @@ button.bg-darker:focus {
     color: #fff !important;
 }
 
-.text-brown {
-    color: #654641 !important;
-}
-
-a.text-brown:hover,
-a.text-brown:focus {
-    color: #000 !important;
-}
-
 .text-lightbrown {
     color: #d7c7b9 !important;
 }
@@ -20582,6 +20573,9 @@ button.bg-lighter:focus {
 .bg-gradient-lightbrown {
     background: linear-gradient(87deg, #d7c7b9 0, #654641 100%) !important;
 }
+.bg-gradient-brown {
+    background: linear-gradient(87deg, #c6a19b 0, #654641 100%) !important;
+}
 .bg-gradient-primary {
     background: linear-gradient(87deg, #5e72e4 0, #825ee4 100%) !important;
 }
@@ -20615,7 +20609,7 @@ button.bg-lighter:focus {
 }
 
 .bg-gradient-default {
-    background: linear-gradient(87deg, #2c5caf 0, #1a174d 100%) !important;
+    background: linear-gradient(87deg, #2c5caf 0, #1d3240 100%) !important;
 }
 
 .bg-gradient-white {

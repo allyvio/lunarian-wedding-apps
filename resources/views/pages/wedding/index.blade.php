@@ -18,6 +18,7 @@
     <div class="col-3">
         <div class="nav flex-column nav-pills" id="v-pills-tab" role="tablist" aria-orientation="vertical">
             <a class="nav-link mb-2 active" id="v-pills-home-tab" data-toggle="pill" href="#v-pills-home" role="tab" aria-controls="v-pills-home" aria-selected="true">Umum</a>
+            <a class="nav-link mb-2" id="v-pills-hero-tab" data-toggle="pill" href="#v-pills-hero" role="tab" aria-controls="v-pills-hero" aria-selected="false">Hero</a>
             <a class="nav-link mb-2" id="v-pills-profile-tab" data-toggle="pill" href="#v-pills-profile" role="tab" aria-controls="v-pills-profile" aria-selected="false">Pasangan</a>
             <a class="nav-link mb-2" id="v-pills-quote-tab" data-toggle="pill" href="#v-pills-quote" role="tab" aria-controls="v-pills-quote" aria-selected="false">Quote</a>
             <a class="nav-link mb-2" id="v-pills-gallery-tab" data-toggle="pill" href="#v-pills-gallery" role="tab" aria-controls="v-pills-gallery" aria-selected="false">Gallery</a>
@@ -164,6 +165,39 @@
                             </div>
                         </div>
                     </div>
+                    <div class="tab-pane fade" id="v-pills-hero" role="tabpanel" aria-labelledby="v-pills-hero-tab">
+                        <h4>Hero</h4>
+                        <div class="dropzone" id="dropzone-hero" data-dropzone-url="{{route('media.store')}}" data-wedding="{{$wedding->id}}">
+                            <div class="fallback">
+                                <div class="custom-file">
+                                    <input type="file" class="custom-file-input" id="customFileUploadMultiple" multiple>
+                                    <label class="custom-file-label" for="customFileUploadMultiple">Choose file</label>
+                                </div>
+                            </div>
+                            <div class="gallery mt-4">
+                                @foreach($wedding->hero as $hero)
+                                <div class="gallery-item">
+                                    <img src="{{asset('storage/media/'.$hero->filename)}}" alt="">
+                                    <div class="transparent-box">
+                                        <div class="btn btn-icon btn-white text-danger btn-sm px-3 py-2 m-2 float-right" onclick="removeGalleryItem(this)" data-item-remove="{{route('media.destroy',$hero->id)}}">
+                                            <span class="btn-inner--icon"><i class="fa fa-trash"></i></span>
+                                        </div>
+                                    </div>
+                                </div>
+                                @endforeach
+                                <div class="dz-preview dz-preview-multiple">
+                                    <div class="gallery-item">
+                                        <img data-dz-thumbnail>
+                                        <div class="transparent-box">
+                                            <div class="remove btn btn-icon btn-white text-danger btn-sm px-3 py-2 m-2 float-right" onclick="removeGalleryItem(this)">
+                                                <span class="btn-inner--icon"><i class="fa fa-trash"></i></span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
@@ -173,7 +207,9 @@
 @push('scripts')
 <script>
     var toolbarOptions = [
-        [{ 'size': ['small', false, 'large', 'huge'] }],  // custom dropdown
+        [{
+            'size': ['small', false, 'large', 'huge']
+        }], // custom dropdown
         ['bold', 'italic', 'underline', 'strike'], // toggled buttons
         [{
             'list': 'ordered'
@@ -254,6 +290,41 @@
         formData.append("wedding_id", dropzone.data('wedding'));
     });
     myDropzone.on("success", file => {
+        if (file.xhr.response) {
+            let response = JSON.parse(file.xhr.response),
+                previewElm = $(file.previewElement)
+            previewElm.find('.remove').data('item-remove', response.media);
+        }
+    });
+    // Hero
+    var hero_dropzone = $('#dropzone-hero'),
+        preview = hero_dropzone.find('.dz-preview'),
+        options = {
+            headers: {
+                'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+            },
+            url: hero_dropzone.data('dropzone-url'),
+            thumbnailWidth: null,
+            thumbnailHeight: null,
+            previewsContainer: preview.get(0),
+            previewTemplate: preview.html(),
+            acceptedFiles: 'image/*',
+            dictInvalidFileType: "Upload bukti kegiatan dalam format gambar.",
+        }
+    preview.html('');
+    let myDropzoneHero = new Dropzone("#dropzone-hero", options);
+
+    myDropzoneHero.on("error", function(file, response) {
+        file.previewElement.classList.add("dz-error");
+        $('.dz-error-message').text(response);
+        this.removeFile(file);
+        Swal.fire('File Ditolak', response, 'error');
+    });
+    myDropzoneHero.on("sending", function(file, xhr, formData) {
+        formData.append("type", 'hero');
+        formData.append("wedding_id", hero_dropzone.data('wedding'));
+    });
+    myDropzoneHero.on("success", file => {
         if (file.xhr.response) {
             let response = JSON.parse(file.xhr.response),
                 previewElm = $(file.previewElement)

@@ -19,7 +19,7 @@ class Wedding extends Model
         'package_id',
         'quote'
     ];
-    protected $attributes = ['theme' => 'default', 'package_id' => 1];
+    protected $attributes = ['theme' => 'default', 'package_id' => 1, 'status' => 'pending'];
     protected $with = ['events'];
 
     public function getRouteKeyName()
@@ -37,6 +37,10 @@ class Wedding extends Model
     public function gallery()
     {
         return $this->hasMany('App\Models\Media')->where('type', 'gallery');
+    }
+    public function hero()
+    {
+        return $this->hasMany('App\Models\Media')->where('type', 'hero');
     }
     public function medias()
     {
@@ -62,5 +66,4 @@ class Wedding extends Model
     {
         return $this->hasManyThrough('App\Models\Comments', 'App\Models\Invitation');
     }
-
 }
