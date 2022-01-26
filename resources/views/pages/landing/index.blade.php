@@ -10,8 +10,8 @@
                         <h2 class="display-5 text-white font-weight-light">by Lunarian ID</p>
                             <p class="lead">Buat undangan digitalmu dengan mudah, cepat, dan lebih berkesan dengan fitur yang kami sediakan.</p>
                             <div class="mt-5">
-                                <a href="./pages/dashboards/dashboard.html" class="btn btn-brown2 my-2">Explore Dashboard</a>
-                                <a href="https://www.creative-tim.com/product/argon-dashboard-pro" class="btn btn-brown my-2">Purchase now</a>
+                                <!-- <a href="./pages/dashboards/dashboard.html" class="btn btn-brown2 my-2">Explore Dashboard</a> -->
+                                <a id="scroll-to-bottom" class="btn btn-brown my-2" style="cursor:pointer">Explore Dashboard</a>
                             </div>
                     </div>
                 </div>
@@ -32,7 +32,7 @@
     </svg>
 </div>
 <!-- OVERVIEW -->
-<section class="py-6">
+<section id="page-bottom" class="py-6">
     <div class="container">
         <div class="row row-grid align-items-center">
             <div class="col-md-6 order-md-2">
@@ -45,37 +45,82 @@
                     <ul class="list-unstyled">
                         <li class="py-2">
                             <div class="d-flex align-items-center">
-                                <div>
-                                    <div class="badge badge-circle badge-success mr-3">
-                                        <i class="ni ni-settings-gear-65"></i>
+                                <!-- Button trigger modal -->
+                                <button type="button" class="btn btn-sm btn-block btn-outline-brown" data-toggle="modal" data-target="#temaTropical">
+                                <i class="ni ni-box-2"></i> TEMA-TROPICAL
+                                </button>
+                                <!-- Modal -->
+                                <div class="modal fade" id="temaTropical" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                                    <div class="modal-dialog modal-dialog-centered" role="document">
+                                        <div class="modal-content">
+                                        <div class="modal-header">
+                                            <h5 class="modal-title" id="exampleModalLabel">Tema Tropical</h5>
+                                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                            <span aria-hidden="true">&times;</span>
+                                            </button>
+                                        </div>
+                                        <div class="modal-body">
+                                            <img src="{{asset('img/theme/tropical.jpeg')}}" class="img-fluid">
+                                        </div>
+                                        <div class="modal-footer">
+                                            <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                                        </div>
+                                        </div>
                                     </div>
-                                </div>
-                                <div>
-                                    <h4 class="mb-0">Lovus</h4>
                                 </div>
                             </div>
                         </li>
                         <li class="py-2">
                             <div class="d-flex align-items-center">
-                                <div>
-                                    <div class="badge badge-circle badge-success mr-3">
-                                        <i class="ni ni-html5"></i>
+                                <!-- Button trigger modal -->
+                                <button type="button" class="btn btn-sm btn-block btn-outline-brown" data-toggle="modal" data-target="#temaClassic">
+                                <i class="ni ni-box-2"></i> TEMA-CLASSIC
+                                </button>
+                                <!-- Modal -->
+                                <div class="modal fade" id="temaClassic" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                                    <div class="modal-dialog modal-dialog-centered" role="document">
+                                        <div class="modal-content">
+                                        <div class="modal-header">
+                                            <h5 class="modal-title" id="exampleModalLabel">Tema CLASSIC</h5>
+                                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                            <span aria-hidden="true">&times;</span>
+                                            </button>
+                                        </div>
+                                        <div class="modal-body">
+                                            <img src="{{asset('img/theme/clasic.jpeg')}}" class="img-fluid">
+                                        </div>
+                                        <div class="modal-footer">
+                                            <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                                        </div>
+                                        </div>
                                     </div>
-                                </div>
-                                <div>
-                                    <h4 class="mb-0">Our Love</h4>
                                 </div>
                             </div>
                         </li>
                         <li class="py-2">
-                            <div class="d-flex align-items-center">
-                                <div>
-                                    <div class="badge badge-circle badge-success mr-3">
-                                        <i class="ni ni-satisfied"></i>
+                           <div class="d-flex align-items-center">
+                                <!-- Button trigger modal -->
+                                <button type="button" class="btn btn-sm btn-block btn-outline-brown" data-toggle="modal" data-target="#temaRustic">
+                                <i class="ni ni-box-2"></i> TEMA-RUSTIC
+                                </button>
+                                <!-- Modal -->
+                                <div class="modal fade" id="temaRustic" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                                    <div class="modal-dialog modal-dialog-centered" role="document">
+                                        <div class="modal-content">
+                                        <div class="modal-header">
+                                            <h5 class="modal-title" id="exampleModalLabel">Tema RUSTIC</h5>
+                                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                            <span aria-hidden="true">&times;</span>
+                                            </button>
+                                        </div>
+                                        <div class="modal-body">
+                                            <img src="{{asset('img/theme/rustic.jpeg')}}" class="img-fluid">
+                                        </div>
+                                        <div class="modal-footer">
+                                            <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                                        </div>
+                                        </div>
                                     </div>
-                                </div>
-                                <div>
-                                    <h4 class="mb-0">Destiny</h4>
                                 </div>
                             </div>
                         </li>
@@ -126,34 +171,30 @@
     <div class="container mt-6 pb-9">
       <div class="row justify-content-center text-center">
         <!-- <div class="col-md-6"> -->
-        <h2 class="display-3 text-white">Fitur Utama</h3>
+        <h2 class="display-3 text-dark">Fitur Utama</h3>
           <!-- <div class="row justify-content-center"> -->
             <div class="col-lg-12">
               <div class="row">
                 <div class="col-lg-6 mb60">
                   <!-- <div class="card"> -->
                   <div class="mb30">
-                    <span class="h1 circle">
+                    <span class="h1 circle text-brown">
                       <i class="fas fa-music"></i>
                     </span>
                   </div>
-                  <h4 class="h2 text-white text-uppercase">Musik</h4>
-                  <p>
-                    Pilih lagu kesukaanmu untuk menambah keromantisan undangan
-                  </p>
+                  <h4 class="h2 text-dark text-uppercase">Musik</h4>
+                  <h4 class="h4 text-brown text-uppercase">Pilih lagu kesukaanmu untuk menambah keromantisan undangan</h4>
                   <!-- </div> -->
                 </div>
                 <div class="col-lg-6 mb60">
                   <!-- <div class="card"> -->
                   <div class="mb30">
-                    <span class="h1 circle">
+                    <span class="h1 circle text-brown">
                       <i class="fas fa-map-marker-alt"></i>
                     </span>
                   </div>
-                  <h4 class="h2 text-white text-uppercase">Navigas</h4>
-                  <p>
-                    Petunjuk venue acara ditampilkan untuk mempermudah para undangan
-                  </p>
+                  <h4 class="h2 text-dark text-uppercase">Navigasi</h4>
+                  <h4 class="h4 text-brown text-uppercase">Petunjuk venue acara ditampilkan untuk mempermudah para undangan</h4>
                   <!-- </div> -->
                 </div>
               </div>
@@ -165,27 +206,23 @@
                 <div class="col-lg-6 mb60">
                   <!-- <div class="card"> -->
                   <div class="mb30">
-                    <span class="h1 circle">
+                    <span class="h1 circle text-brown">
                       <i class="fas fa-image"></i>
                     </span>
                   </div>
-                  <h4 class="h2 text-white text-uppercase">Galeri foto</h4>
-                  <p>
-                    tampilkan foto dan video yang melambangkan moment bahagiamu
-                  </p>
+                  <h4 class="h2 text-dark text-uppercase">Galeri foto</h4>
+                  <h4 class="h4 text-brown text-uppercase">Tampilkan foto dan video yang melambangkan moment bahagiamu</h4>
                   <!-- </div> -->
                 </div>
                 <div class="col-lg-6 mb60">
                   <!-- <div class="card"> -->
                   <div class="mb30">
-                    <span class="h1 circle">
+                    <span class="h1 circle text-brown">
                       <i class="fas fa-heart"></i>
                     </span>
                   </div>
-                  <h4 class="h2 text-white text-uppercase">Love story</h4>
-                  <p>
-                    cerita kisah cintamu untuk melengkapi moment bahagia
-                  </p>
+                  <h4 class="h2 text-dark text-uppercase">Love story</h4>
+                  <h4 class="h4 text-brown text-uppercase">Cerita kisah cintamu untuk melengkapi moment bahagia</h4>
                   <!-- </div> -->
                 </div>
               </div>
@@ -201,14 +238,13 @@
 </section>
 <!-- END POINT OF 3 -->
 <!-- TESTIMONIAL -->
-<section class="py-7 pb-9 overflow-hidden">
+<!-- <section class="py-7 pb-9 overflow-hidden">
     <div class="container">
         <div class="row justify-content-center mb-5">
             <div class="col-lg-8 text-center">
                 <h2 class="display-3">Testimonial</h2>
             </div>
         </div>
-        <!-- Carousel -->
         <div class="owl-carousel owl-theme slider mb-6">
             @for($i = 0;$i < 10; $i++) <div class="item" style="width: 450px;">
                 <div class="card">
@@ -231,8 +267,8 @@
         @endfor
     </div>
     </div>
-</section>
-<section class="bg-lightbrown">
+</section> -->
+<section>
     <svg width="100%" preserveAspectRatio="none" height="90px" viewBox="0 0 2000 400" transform="rotate(180)" xmlns="http://www.w3.org/2000/svg" version="1.1" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:svgjs="http://svgjs.com/svgjs">
         <path d="M 0,367 C 200,316.6 600,114 1000,115 C 1400,116 1800,320.6 2000,372L2000 400L0 400z" class="fill-secondary"></path>
     </svg>
@@ -245,12 +281,13 @@
                     <div class="card card-pricing border-0 text-center mb-4">
                         <div class="card-header bg-transparent">
                             <h4 class="text-uppercase ls-1 text-brown py-3 mb-0">Paket {{$package->name}}</h4>
+                            <span class="badge badge-pill badge-warning">Diskon 30%</span>
                         </div>
                         <div class="card-body px-lg-5">
-                            <div class="display-4">{!!$package->price ? 'Rp.'. number_format($package->price,2,",",".") : 'GRATIS'!!}</div>
-                            <!-- <span class="text-muted">per application</span> -->
+                            <div class="display-4">{!!$package->price ? 'Rp.'. number_format($package->price, 0, "," , ".") : 'GRATIS'!!}</div>
+                            <span class="text-muted"><s>{!!$package->value ? 'Rp.'. number_format($package->value,0,",",".") : 'GRATIS'!!}</s></span>
                             <ul class="list-unstyled my-4">
-                                <li>
+                                 <li>
                                     <div class="d-flex align-items-center">
                                         <div>
                                             <div class="icon icon-xs icon-shape bg-gradient-lightbrown shadow rounded-circle text-white">
@@ -258,7 +295,7 @@
                                             </div>
                                         </div>
                                         <div>
-                                            <span class="pl-2">{{$package->count_galleri}} Foto</span>
+                                            <span class="pl-2 text-dark">{{$package->count_galleri}} Foto</span>
                                         </div>
                                     </div>
                                 </li>
@@ -270,7 +307,7 @@
                                             </div>
                                         </div>
                                         <div>
-                                            <span class="pl-2">Kutipan</span>
+                                            <span class="pl-2 text-dark">Kutipan</span>
                                         </div>
                                     </div>
                                 </li>
@@ -282,7 +319,7 @@
                                             </div>
                                         </div>
                                         <div>
-                                            <span class="pl-2">Navigasi</span>
+                                            <span class="pl-2 text-dark">Navigasi</span>
                                         </div>
                                     </div>
                                 </li>
@@ -294,7 +331,7 @@
                                             </div>
                                         </div>
                                         <div>
-                                            <span class="pl-2">Informasi</span>
+                                            <span class="pl-2 text-dark">Informasi</span>
                                         </div>
                                     </div>
                                 </li>
@@ -306,7 +343,7 @@
                                             </div>
                                         </div>
                                         <div>
-                                            <span class="pl-2">Jam</span>
+                                            <span class="pl-2 text-dark">Jam</span>
                                         </div>
                                     </div>
                                 </li>
@@ -318,12 +355,13 @@
                                             </div>
                                         </div>
                                         <div>
-                                            <span class="pl-2">Protokol</span>
+                                            <span class="pl-2 text-dark">Protokol</span>
                                         </div>
                                     </div>
                                 </li>
                             </ul>
-                            <!-- <button type="button" class="btn btn-primary mb-3">Start free trial</button> -->
+                            <a href="#" class="btn btn-outline-brown mb-3">Gunakan</a>
+                            <!-- <button type="button" class="btn btn-outline-primary">Primary</button> -->
                         </div>
                         <!-- <div class="card-footer">
                             <a href="#!" class="text-light">Request a demo</a>
@@ -336,10 +374,11 @@
                     <div class="card card-pricing bg-brown zoom-in shadow-lg rounded border-0 text-center mb-4">
                         <div class="card-header bg-transparent">
                             <h4 class="text-uppercase ls-1 text-white py-3 mb-0">Paket {{$package->name}}</h4>
+                            <span class="badge badge-pill badge-warning">Diskon 50%</span>
                         </div>
                         <div class="card-body px-lg-5">
-                            <div class="display-4 text-white">{!!$package->price ? 'Rp.'. number_format($package->price,2,",",".") : 'GRATIS'!!}</div>
-                            <!-- <span class="text-white">per application</span> -->
+                            <div class="display-4 text-white">{!!$package->price ? 'Rp.'. number_format($package->price,0,",",".") : 'GRATIS'!!}</div>
+                            <span class="text-muted"><s>{!!$package->value ? 'Rp.'. number_format($package->value,0,",",".") : 'GRATIS'!!}</s></span>
                             <ul class="list-unstyled my-4">
                                 <li>
                                     <div class="d-flex align-items-center">
@@ -486,7 +525,7 @@
                                     </div>
                                 </li>
                             </ul>
-                            <!-- <button type="button" class="btn btn-secondary mb-3">Start free trial</button> -->
+                            <a href="#" class="btn btn-secondary mb-3">Coming Soon</a>
                         </div>
                         <!-- <div class="card-footer bg-transparent">
                             <a href="#!" class="text-white">Contact sales</a>
@@ -499,12 +538,13 @@
                     <div class="card card-pricing border-0 text-center mb-4">
                         <div class="card-header bg-transparent">
                             <h4 class="text-uppercase ls-1 text-brown py-3 mb-0">Paket {{$package->name}}</h4>
+                            <span class="badge badge-pill badge-warning">Diskon 45%</span>
                         </div>
                         <div class="card-body px-lg-5">
-                            <div class="display-4">{!!$package->price ? 'Rp.'. number_format($package->price,2,",",".") : 'GRATIS'!!}</div>
-                            <!-- <span class="text-muted">per application</span> -->
+                            <div class="display-4">{!!$package->price ? 'Rp.'. number_format($package->price,0,",",".") : 'GRATIS'!!}</div>
+                            <span class="text-muted"><s>{!!$package->value ? 'Rp.'. number_format($package->value,0,",",".") : 'GRATIS'!!}</s></span>
                             <ul class="list-unstyled my-4">
-                              <li>
+                             <li>
                                   <div class="d-flex align-items-center">
                                       <div>
                                           <div class="icon icon-xs icon-shape bg-gradient-lightbrown shadow rounded-circle text-white">
@@ -512,7 +552,7 @@
                                           </div>
                                       </div>
                                       <div>
-                                          <span class="pl-2">{{$package->count_galleri}} Foto</span>
+                                          <span class="pl-2 text-dark">{{$package->count_galleri}} Foto</span>
                                       </div>
                                   </div>
                               </li>
@@ -524,7 +564,7 @@
                                           </div>
                                       </div>
                                       <div>
-                                          <span class="pl-2">Kutipan</span>
+                                          <span class="pl-2 text-dark">Kutipan</span>
                                       </div>
                                   </div>
                               </li>
@@ -536,7 +576,7 @@
                                           </div>
                                       </div>
                                       <div>
-                                          <span class="pl-2">Navigasi</span>
+                                          <span class="pl-2 text-dark">Navigasi</span>
                                       </div>
                                   </div>
                               </li>
@@ -548,7 +588,7 @@
                                           </div>
                                       </div>
                                       <div>
-                                          <span class="pl-2">Informasi</span>
+                                          <span class="pl-2 text-dark">Informasi</span>
                                       </div>
                                   </div>
                               </li>
@@ -560,7 +600,7 @@
                                           </div>
                                       </div>
                                       <div>
-                                          <span class="pl-2">Jam</span>
+                                          <span class="pl-2 text-dark">Jam</span>
                                       </div>
                                   </div>
                               </li>
@@ -572,7 +612,7 @@
                                           </div>
                                       </div>
                                       <div>
-                                          <span class="pl-2">Cerita Cinta</span>
+                                          <span class="pl-2 text-dark">Cerita Cinta</span>
                                       </div>
                                   </div>
                               </li>
@@ -584,7 +624,7 @@
                                           </div>
                                       </div>
                                       <div>
-                                          <span class="pl-2">Musik</span>
+                                          <span class="pl-2 text-dark">Musik</span>
                                       </div>
                                   </div>
                               </li>
@@ -596,7 +636,7 @@
                                           </div>
                                       </div>
                                       <div>
-                                          <span class="pl-2">{{$package->count_invitation}} Undangan</span>
+                                          <span class="pl-2 text-dark">{{$package->count_invitation}} Undangan</span>
                                       </div>
                                   </div>
                               </li>
@@ -608,7 +648,7 @@
                                           </div>
                                       </div>
                                       <div>
-                                          <span class="pl-2">RSVP</span>
+                                          <span class="pl-2 text-dark">RSVP</span>
                                       </div>
                                   </div>
                               </li>
@@ -620,7 +660,7 @@
                                           </div>
                                       </div>
                                       <div>
-                                          <span class="pl-2">Kolom Ucapan</span>
+                                          <span class="pl-2 text-dark">Kolom Ucapan</span>
                                       </div>
                                   </div>
                               </li>
@@ -632,12 +672,12 @@
                                           </div>
                                       </div>
                                       <div>
-                                          <span class="pl-2">Protokol</span>
+                                          <span class="pl-2 text-dark">Protokol</span>
                                       </div>
                                   </div>
                               </li>
                             </ul>
-                            <!-- <button type="button" class="btn btn-primary mb-3">Start free trial</button> -->
+                            <a href="#" class="btn btn-outline-brown mb-3">Coming Soon</a>
                         </div>
                         <!-- <div class="card-footer">
                             <a href="#!" class="text-light">Request a demo</a>
@@ -677,6 +717,13 @@
                 items: 3
             },
         }
+    })
+
+    let scrollToBottom = document.querySelector("#scroll-to-bottom")
+    let pageBottom = document.querySelector("#page-bottom")
+
+    scrollToBottom.addEventListener("click", function() {
+    pageBottom.scrollIntoView()
     })
 </script>
 @endpush

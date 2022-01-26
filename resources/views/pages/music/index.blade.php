@@ -25,7 +25,7 @@
   <!-- Card header -->
   <div class="card-header border-0">
     <div class="row">
-      <button type="button" class="btn btn-outline-primary btn-sm" data-toggle="modal" data-target="#MusikModal">
+      <button type="button" class="btn btn-outline-brown btn-sm" data-toggle="modal" data-target="#MusikModal">
         <span class="btn-inner--icon"><i class="fas fa-plus"></i></span>
         <span class="btn-inner--text">Tambah</span>
       </button>
@@ -53,7 +53,7 @@
           </div>
           <div class="modal-footer">
             <button type="button" class="btn btn-secondary" data-dismiss="modal">Kembali</button>
-            <button type="submit" class="btn btn-primary">Tambah</button>
+            <button type="submit" class="btn btn-brown">Tambah</button>
           </div>
         </form>
       </div>
@@ -88,7 +88,7 @@
           </td>
           <td>
             @if($data->status == 0)
-              <a href="{{url('dashboard/music-update', $data->id)}}" type="button" class="btn btn-outline-primary btn-sm">
+              <a href="{{url('dashboard/music-update', $data->id)}}" type="button" class="btn btn-outline-brown btn-sm">
                 <span class="btn-inner--text">Gunakan</span>
               </a>
               @php

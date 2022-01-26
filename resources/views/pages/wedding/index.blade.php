@@ -62,7 +62,7 @@
                                 </div>
                             </div>
                             <div class="form-group text-right">
-                                <button type="submit" class="btn btn-primary">Simpan</button>
+                                <button type="submit" class="btn btn-brown">Simpan</button>
                             </div>
                         </form>
                     </div>
@@ -106,7 +106,7 @@
                                 </div>
                             </div>
                             <div class="form-group text-right">
-                                <button type="submit" class="btn btn-primary">Simpan</button>
+                                <button type="submit" class="btn btn-brown">Simpan</button>
                             </div>
                         </form>
                     </div>
@@ -127,7 +127,7 @@
                             </div>
                             <div class="form-group d-flex justify-content-between">
                                 <button type="button" id="clear-quill-content" class="btn btn-danger">Clear</button>
-                                <button type="submit" class="btn btn-primary">Simpan</button>
+                                <button type="submit" class="btn btn-brown">Simpan</button>
                             </div>
                         </form>
                     </div>

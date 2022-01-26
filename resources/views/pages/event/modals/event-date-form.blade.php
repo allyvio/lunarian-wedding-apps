@@ -15,7 +15,7 @@
                     </div>
                     <div class="text-right">
                         <button type="button" class="btn btn-white" class="close" data-dismiss="modal" aria-label="Close">Tutup</button>
-                        <button type="submit" class="btn btn-primary">Simpan</button>
+                        <button type="submit" class="btn btn-brown">Simpan</button>
                     </div>
                 </form>
             </div>

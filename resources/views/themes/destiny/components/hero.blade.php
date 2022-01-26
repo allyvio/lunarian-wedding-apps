@@ -1,6 +1,6 @@
  <section class="hero overlay">
      <div class="background-img">
-         <img src="{{asset('assets/themes/destiny/img/hero.jpg')}}" alt="">
+         <img src="{{asset('assets/themes/destiny/img/hero-3.jpeg')}}" alt="">
      </div>
      <!--Inner hero-->
      <div class="inner-hero">

@@ -19,7 +19,7 @@
     <hr class="m-0 mb-4">
     @endforeach
 </div>
-<button class="btn btn-outline-primary btn-sm" type="button" data-wedding="{{$events->wedding}}" data-toggle="modal" data-target="#modal-event-create-form"><i class="fas fa-plus"></i> Tambah Hari</button>
+<button class="btn btn-outline-brown btn-sm" type="button" data-wedding="{{$events->wedding}}" data-toggle="modal" data-target="#modal-event-create-form"><i class="fas fa-plus"></i> Tambah Hari</button>
 
 @push('modals')
 @include('pages.event.modals.event-date-form')

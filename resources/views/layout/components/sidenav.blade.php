@@ -3,7 +3,7 @@
     <!-- Brand -->
     <div class="sidenav-header d-flex align-items-center">
       <a class="navbar-brand" href="{{url('/')}}">
-        <img src="{{asset('img/brand/lunarian.png')}}" class="navbar-brand-img" alt="...">
+        <img src="{{asset('img/brand/akad.png')}}" class="navbar-brand-img" alt="...">
       </a>
       <div class="ml-auto">
         <!-- Sidenav toggler -->

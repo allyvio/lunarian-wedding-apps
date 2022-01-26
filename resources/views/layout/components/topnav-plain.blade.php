@@ -1,7 +1,7 @@
 <nav id="navbar-main" class="navbar navbar-horizontal navbar-transparent navbar-main navbar-expand-lg navbar-light">
   <div class="container">
     <a class="navbar-brand" href="/">
-      <img src="{{asset('img/brand/lunarian1.png')}}">
+      <img src="{{asset('img/brand/akad.png')}}">
     </a>
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbar-collapse" aria-controls="navbar-collapse" aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
@@ -10,8 +10,8 @@
       <div class="navbar-collapse-header">
         <div class="row">
           <div class="col-6 collapse-brand">
-            <a href="./pages/dashboards/dashboard.html">
-              <img src="{{asset('img/brand/blue.png')}}">
+            <a href="/">
+              <img src="{{asset('img/brand/akad.png')}}">
             </a>
           </div>
           <div class="col-6 collapse-close">
