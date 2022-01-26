@@ -25,10 +25,10 @@
             <thead class="thead-light">
                 <tr>
                     <th scope="col">Customer</th>
-                    <th scope="col">Judul</th>
                     <th scope="col">Slug</th>
                     <th scope="col">Tema</th>
                     <th scope="col">Paket</th>
+                    <th scope="col">Status</th>
                     <th scope="col"></th>
                 </tr>
             </thead>
@@ -39,16 +39,23 @@
                         <div class="">{{$wedding->user->name}}</div>
                     </th>
                     <td>
-                        {{$wedding->title}}
-                    </td>
-                    <td>
-                        <a href="{{route('wedding.page',$wedding->slug)}}">{{$wedding->slug}} <i class="fa fa-external-link-alt fa-sm"></i></a>
+                        <a target="_blank" href="{{route('wedding.page',$wedding->slug)}}">{{$wedding->slug}} <i class="fa fa-external-link-alt fa-sm"></i></a>
                     </td>
                     <td>
                         {{$wedding->theme}}
                     </td>
                     <td>
                         {{$wedding->package->name}}
+                    </td>
+                    <td>
+                        @switch($wedding->status)
+                        @case('pending')
+                        <div class="badge badge-warning badge-pill">{{$wedding->status}}</div>
+                        @break
+                        @case('publish')
+                        <div class="badge badge-success badge-pill">{{$wedding->status}}</div>
+                        @break
+                        @endswitch
                     </td>
                     <td class="text-right">
                         <a href="{{route('admin.wedding.show',$wedding->slug)}}" class="btn btn-primary btn-sm">Detail</a>
