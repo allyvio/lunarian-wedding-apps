@@ -23,7 +23,7 @@
                     </div>
                     <div class="text-right">
                         <button type="button" class="btn btn-white" class="close" data-dismiss="modal" aria-label="Close">Batal</button>
-                        <button type="submit" class="btn btn-primary">Tambah</button>
+                        <button type="submit" class="btn btn-brown">Tambah</button>
                     </div>
                 </form>
             </div>

@@ -1,7 +1,7 @@
 <nav class="navbar navbar-expand navbar-dark bg-lightbrown py-2">
   <div class="container-fluid">
     <a class="navbar-brand" href="{{route('dashboard')}}">
-      <img height="30" src="{{asset('img/brand/lunarian1.png')}}">
+      <img height="50" src="{{asset('img/brand/akad.png')}}">
     </a>
     <div class="order-3 ml-auto">
       @auth

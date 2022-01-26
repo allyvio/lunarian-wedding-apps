@@ -28,7 +28,7 @@
     </div>
     <div id="custom-owl-slider" class="owl-slide" data-scroll-speed="2">
         <div class="item">
-            <img src="{{asset('assets/themes/default/images/slider/1.jpg')}}" alt="">
+            <img src="{{asset('assets/themes/default/images/slider/hero-3.jpeg')}}" alt="">
         </div>
         <div class="item">
             <img src="{{asset('assets/themes/default/images/slider/2.jpg')}}" alt="">

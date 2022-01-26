@@ -146,7 +146,8 @@ class WeddingController extends Controller
 
     public function showPublic(Wedding $wedding, $code = null)
     {
-        $music = DB::table('weddingmusic')->where('wedding_id', Auth::user()->wedding->id)->get();
+        // dd($wedding);
+        $music = DB::table('weddingmusic')->where('wedding_id', $wedding->id)->get();
         $wedding->events = $wedding->events->sortBy('datetime');
         $main_event = $wedding->events->where('is_main', true)->first();
         $wedding->main_date = $main_event->datetime;

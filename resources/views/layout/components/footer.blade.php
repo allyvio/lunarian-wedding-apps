@@ -1,4 +1,4 @@
-<footer class="py-5" id="footer-main">
+<footer class="py-5 bg-lightbrown" id="footer-main">
     <div class="container">
         <div class="row align-items-center justify-content-xl-between">
             <div class="col-xl-6">
@@ -9,9 +9,9 @@
             <div class="col-xl-6">
                 <ul class="nav nav-footer justify-content-center justify-content-xl-end">
                     <li class="nav-item">
-                        <a href="https://www.creative-tim.com" class="nav-link text-brown" target="_blank">Creative Tim</a>
+                        <a href="/" class=" font-weight-bold nav-link text-brown" target="_blank">AKAD.IN</a>
                     </li>
-                    <li class="nav-item">
+                    <!-- <li class="nav-item">
                         <a href="https://www.creative-tim.com/presentation" class="nav-link text-brown" target="_blank">About Us</a>
                     </li>
                     <li class="nav-item">
@@ -19,7 +19,7 @@
                     </li>
                     <li class="nav-item">
                         <a href="https://www.creative-tim.com/license" class="nav-link text-brown" target="_blank">License</a>
-                    </li>
+                    </li> -->
                 </ul>
             </div>
         </div>

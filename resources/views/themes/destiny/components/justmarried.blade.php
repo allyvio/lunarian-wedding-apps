@@ -1,6 +1,6 @@
 <section class="just-married pt-200 pb-200 overlay">
     <div class="background-img">
-        <img src="{{asset('assets/themes/destiny/img/hero.jpg')}}" alt="">
+        <img src="{{asset('assets/themes/destiny/img/hero-3.jpeg')}}" alt="">
     </div>
     <!--Container-->
     <div class="container">
