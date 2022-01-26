@@ -8,7 +8,7 @@
         <div class="row">
             <div class="col-sm-4 col-sm-offset-2 text-center">
                 <div class="img-round">
-                    <div class="img"><img src="{{asset('storage/couple/' . $wedding->calon_wanita_photo)}}" alt=""></div>
+                    <div class="img"><img src="{{asset('storage/couple/' . $wedding->calon_pria_photo)}}" alt=""></div>
                     <svg viewBox="0 0 103 103" version="1.1" xmlns="http://www.w3.org/2000/svg" class="dashed-border">
                         <circle cx="50%" cy="50%" r="50" />
                     </svg>
@@ -16,17 +16,17 @@
             </div>
             <div class="col-sm-4 text-center">
                 <div class="img-round ">
-                    <div class="img"><img src="{{asset('storage/couple/' . $wedding->calon_pria_photo)}}" alt=""></div>
+                    <div class="img"><img src="{{asset('storage/couple/' . $wedding->calon_wanita_photo)}}" alt=""></div>
                     <svg viewBox="0 0 103 103" version="1.1" xmlns="http://www.w3.org/2000/svg" class="dashed-border">
                         <circle cx="50%" cy="50%" r="50" />
                     </svg>
                 </div>
             </div>
             <div class="col-sm-4 col-sm-offset-2 text-center">
-                <h2 class="heavy mt-20">{{$wedding->calon_wanita}}<br><span>Bridesmaid </span></h2>
+                <h2 class="heavy mt-20">{{$wedding->calon_pria}}<br></h2>
             </div>
             <div class="col-sm-4 text-center">
-                <h2 class="heavy mt-20">{{$wedding->calon_pria}}<br><span>Groomsman </span></h2>
+                <h2 class="heavy mt-20">{{$wedding->calon_wanita}}<br></h2>
             </div>
         </div>
         <div class="row">

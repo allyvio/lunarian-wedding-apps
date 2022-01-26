@@ -35,7 +35,7 @@
         @endforeach
         @else
         <div class="item">
-            <img src="{{asset('assets/themes/default/images/slider/1.jpg')}}" alt="">
+            <img src="{{asset('assets/themes/default/images/slider/hero-3.jpeg')}}" alt="">
         </div>
         <div class="item">
             <img src="{{asset('assets/themes/default/images/slider/2.jpg')}}" alt="">

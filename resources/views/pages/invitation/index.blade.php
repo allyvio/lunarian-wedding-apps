@@ -26,7 +26,7 @@
   <div class="card-header border-0">
     <div class="row">
         <!-- Button trigger modal -->
-        <button type="button" class="btn btn-outline-primary btn-sm" data-toggle="modal" data-target="#invitationModal">
+        <button type="button" class="btn btn-outline-brown btn-sm" data-toggle="modal" data-target="#invitationModal">
           <span class="btn-inner--icon"><i class="fas fa-plus"></i></span>
           <span class="btn-inner--text">Tambah</span>
         </button>
@@ -59,7 +59,7 @@
           </div>
           <div class="modal-footer">
             <button type="button" class="btn btn-secondary" data-dismiss="modal">Kembali</button>
-            <button type="submit" class="btn btn-primary">Import</button>
+            <button type="submit" class="btn btn-brown">Import</button>
           </div>
         </form>
       </div>
@@ -92,7 +92,7 @@
             </div>
             <div class="modal-footer">
               <button type="button" class="btn btn-secondary" data-dismiss="modal">Keluar</button>
-              <button type="submit" class="btn btn-primary">Simpan</button>
+              <button type="submit" class="btn btn-brown">Simpan</button>
             </div>
           </form>
         </div>
@@ -126,8 +126,8 @@
               <input name="phone" type="number" class="form-control" placeholder="08xxxxxxxxxx" id="phone-update">
             </div>
             <div class="modal-footer">
-              <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-              <button type="submit" class="btn btn-primary">Save changes</button>
+              <button type="button" class="btn btn-secondary" data-dismiss="modal">Kembali</button>
+              <button type="submit" class="btn btn-brown">Simpan</button>
             </div>
           </form>
         </div>

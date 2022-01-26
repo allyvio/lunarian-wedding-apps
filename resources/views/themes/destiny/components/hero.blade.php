@@ -13,7 +13,7 @@
              <!--Row-->
              <div class="row">
                  <div class="col-sm-12 text-center">
-                     <h1 class="large mb-20" style="font-family:italic;"> {{$wedding->calon_wanita}} <br> &amp; <br> {{$wedding->calon_pria}}</h1>
+                     <h1 class="large mb-20" style="font-family:italic;"> {{$wedding->calon_pria}} <br> &amp; <br> {{$wedding->calon_wanita}}</h1>
                      <div class="block-date-hero">
                          <div class="circle-dashed bg-n">
                              <div class="round-circle">

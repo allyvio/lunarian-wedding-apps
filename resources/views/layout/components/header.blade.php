@@ -283,4 +283,8 @@
   color: white;
 }
 
+html {
+  scroll-behavior: smooth;
+}
+
 </style>

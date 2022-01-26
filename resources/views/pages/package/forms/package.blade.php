@@ -2,10 +2,14 @@
   <h5 class="h1 mb-0" style="text-align:center;">Pilih Paket</h5>
   <p class="mb-0" style="text-align:center;">Kami menawarkan paket dengan harga spesial</p>
 </div>
+
 <form id="package-form" data-stage="package">
   <div class="row row-example">
     @foreach(\App\Models\Package::all() as $package)
     @if($package->id == 1)
+    <div class="card-header bg-transparent">
+        <span class="badge badge-pill badge-warning">Diskon 30%</span>
+    </div>
     <label for="package-{{$package->id}}" class="col-md-12">
       <span style="cursor:pointer;">
         <div class="card-header">
@@ -27,13 +31,16 @@
           </div>
           <hr>
           <div class="col-md-12">
-            <p class="description" style="float:left"> <s>Rp.{{$package->value}}</s> </p>
-            <p class="description text-success font-weight-bold" style="float:right;">{!!$package->price ? 'Rp.'. number_format($package->price,2,",",".") : 'GRATIS'!!}</p>
+            <p class="description" style="float:left"> <s>{!!$package->value ? 'Rp.'. number_format($package->value,0,",",".") : 'GRATIS'!!}</s> </p>
+            <p class="description text-success font-weight-bold" style="float:right;">{!!$package->price ? 'Rp.'. number_format($package->price,0,",",".") : 'GRATIS'!!}</p>
           </div>
         </div>
       </span>
     </label>
     @elseif($package->id == 2)
+     <div class="card-header bg-transparent">
+        <span class="badge badge-pill badge-warning">Diskon 45%</span>
+    </div>
     <label for="package-{{$package->id}}" class="col-md-12">
       <span style="cursor:pointer;">
         <div class="card-header">
@@ -60,13 +67,16 @@
           </div>
           <hr>
           <div class="col-md-12">
-            <p class="description" style="float:left"> <s>Rp.{{$package->value}}</s> </p>
-            <p class="description text-success font-weight-bold" style="float:right;">{!!$package->price ? 'Rp.'. number_format($package->price,2,",",".") : 'GRATIS'!!}</p>
+            <p class="description" style="float:left"> <s>{!!$package->value ? 'Rp.'. number_format($package->value,0,",",".") : 'GRATIS'!!}</s> </p>
+            <p class="description text-success font-weight-bold" style="float:right;">{!!$package->price ? 'Rp.'. number_format($package->price,0,",",".") : 'GRATIS'!!}</p>
           </div>
         </div>
       </span>
     </label>
     @elseif($package->id == 3)
+     <div class="card-header bg-transparent">
+        <span class="badge badge-pill badge-warning">Diskon 50%</span>
+    </div>
     <label for="package-{{$package->id}}" class="col-md-12">
       <span style="cursor:pointer;">
         <div class="card-header">
@@ -94,8 +104,8 @@
           </div>
           <hr>
           <div class="col-md-12">
-            <p class="description" style="float:left"> <s>Rp.{{$package->value}}</s> </p>
-            <p class="description text-success font-weight-bold" style="float:right;">{!!$package->price ? 'Rp.'. number_format($package->price,2,",",".") : 'GRATIS'!!}</p>
+            <p class="description" style="float:left"> <s>{!!$package->value ? 'Rp.'. number_format($package->value,0,",",".") : 'GRATIS'!!}</s> </p>
+            <p class="description text-success font-weight-bold" style="float:right;">{!!$package->price ? 'Rp.'. number_format($package->price,0,",",".") : 'GRATIS'!!}</p>
           </div>
         </div>
       </span>
