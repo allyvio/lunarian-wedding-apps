@@ -87,25 +87,25 @@
         <!-- Nav items -->
         <ul class="navbar-nav">
           <li class="nav-item">
-            <a class="nav-link text-muted" href="{{route('dashboard')}}">
+            <a class="nav-link {{ Request::routeIs('dashboard') ? 'text-brown active' : 'text-gray' }}" href="{{route('dashboard')}}">
               <i class="fa fa-home"></i>
               <span class="nav-link-text">Beranda</span>
             </a>
           </li>
           <li class="nav-item">
-            <a class="nav-link text-muted" href="{{route('admin.wedding.index')}}">
+            <a class="nav-link {{ Request::routeIs('admin.wedding.index') ? 'text-brown active' : 'text-gray' }}" href="{{route('admin.wedding.index')}}">
               <i class="fa fa-columns"></i>
               <span class="nav-link-text">Data Wedding</span>
             </a>
           </li>
           <li class="nav-item">
-            <a class="nav-link text-muted" href="{{route('music.indexAdmin')}}">
+            <a class="nav-link {{ Request::routeIs('music.indexAdmin') ? 'text-brown active' : 'text-gray' }}" href="{{route('music.indexAdmin')}}">
               <i class="fa fa-music"></i>
               <span class="nav-link-text">Data Music</span>
             </a>
           </li>
           <li class="nav-item">
-            <a class="nav-link text-muted" href="{{route('package.index')}}">
+            <a class="nav-link {{ Request::routeIs('package.index') ? 'text-brown active' : 'text-gray' }}" href="{{route('package.index')}}">
               <i class="fa fa-book"></i>
               <span class="nav-link-text">Data Package</span>
             </a>

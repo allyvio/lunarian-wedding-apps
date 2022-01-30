@@ -6,6 +6,7 @@ use App\Http\Requests\WeddingRequest;
 use App\Models\Event;
 use App\Models\Wedding;
 use App\Models\Music;
+use App\Models\Package;
 use Carbon\Carbon;
 use DB;
 use Illuminate\Http\Request;
@@ -29,7 +30,19 @@ class WeddingController extends Controller
     {
         if (auth()->check() && auth()->user()->wedding)
             return redirect()->route('dashboard');
-        return view('pages.wedding.create');
+        $urlQuery = request()->query('package');
+        if ($urlQuery) {
+            $package = Package::where('name', $urlQuery)->first();
+            if ($package)
+                $package = 'exists';
+            else
+                $package = 'not found';
+        } else {
+            $package = 'not set';
+        }
+        return view('pages.wedding.create', compact('package'));
+        // if($package)
+        // $package = 'exists'
     }
 
     public function store(WeddingRequest $request)
@@ -48,7 +61,6 @@ class WeddingController extends Controller
             $request->session()->put('wedding', $wedding);
         }
 
-        /** Save wedding pada stage couple. */
         if ($request->stage == 'couple') {
             if ($wedding->calon_pria_photo)
                 Storage::delete('public/couple/' . $wedding->calon_pria_photo);
@@ -71,10 +83,9 @@ class WeddingController extends Controller
                 $wedding->calon_wanita_photo = null;
             }
         }
-        /** Menghapus SESSION WEDDING setelah stage terakhir */
+        /** Create Event pertama kali */
         if ($request->stage == 'theme') {
 
-            /** Create Event pertama kali */
             if ($wedding->events->count() == 0) {
                 $date = Carbon::now()->addDays(14);
                 $wedding->events[0] = new Event([
@@ -223,7 +234,7 @@ class WeddingController extends Controller
     public function updateTheme(Request $request, Wedding $wedding)
     {
         $request->validate([
-            'theme' => ['required', 'in:default,destiny,ourlove']
+            'theme' => ['required', 'in:tropical,rustic,classic']
         ]);
         $wedding->update([
             'theme' => $request->theme

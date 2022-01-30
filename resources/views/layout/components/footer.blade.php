@@ -11,15 +11,6 @@
                     <li class="nav-item">
                         <a href="/" class=" font-weight-bold nav-link text-brown" target="_blank">AKAD.IN</a>
                     </li>
-                    <!-- <li class="nav-item">
-                        <a href="https://www.creative-tim.com/presentation" class="nav-link text-brown" target="_blank">About Us</a>
-                    </li>
-                    <li class="nav-item">
-                        <a href="http://blog.creative-tim.com" class="nav-link text-brown" target="_blank">Blog</a>
-                    </li>
-                    <li class="nav-item">
-                        <a href="https://www.creative-tim.com/license" class="nav-link text-brown" target="_blank">License</a>
-                    </li> -->
                 </ul>
             </div>
         </div>

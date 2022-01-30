@@ -19,7 +19,7 @@ class Wedding extends Model
         'package_id',
         'quote'
     ];
-    protected $attributes = ['theme' => 'default', 'package_id' => 1, 'status' => 'pending'];
+    protected $attributes = ['theme' => 'classic', 'package_id' => 1, 'status' => 'pending'];
     protected $with = ['events'];
 
     public function getRouteKeyName()

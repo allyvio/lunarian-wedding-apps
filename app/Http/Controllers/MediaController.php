@@ -20,7 +20,7 @@ class MediaController extends Controller
                 $limit = $wedding->package->count_galleri;
                 break;
             case 'hero':
-                $limit = 1;
+                $limit = $wedding->package_id == 1 ? 1 : 3;
                 break;
         }
         if ($media_count <= $limit) {
