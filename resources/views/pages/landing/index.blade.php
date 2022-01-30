@@ -360,7 +360,7 @@
                                     </div>
                                 </li>
                             </ul>
-                            <a href="#" class="btn btn-outline-brown mb-3">Gunakan</a>
+                            <a href="#" class="btn btn-outline-brown mb-3">Beli Sekrang</a>
                             <!-- <button type="button" class="btn btn-outline-primary">Primary</button> -->
                         </div>
                         <!-- <div class="card-footer">

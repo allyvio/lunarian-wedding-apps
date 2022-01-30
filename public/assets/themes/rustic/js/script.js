@@ -5,7 +5,7 @@
 
     $(window).on("load", function () {
 
-        // Site loader 
+        // Site loader
 
         $(".loader-inner").fadeOut();
         $(".loader").delay(200).fadeOut("slow");

@@ -1,5 +1,6 @@
 <script src="{{asset('assets/themes/rustic/js/jquery.min.js')}}" type="text/javascript"></script>
 <script src="{{asset('assets/themes/rustic/js/jquery.countdown.min.js')}}" type="text/javascript"></script>
+<script src="{{asset('assets/themes/rustic/js/bootstrap.min.js')}}"></script>
 <script src="{{asset('assets/themes/rustic/js/venobox.min.js')}}" type="text/javascript"></script>
 <script src="{{asset('assets/themes/rustic/js/smooth-scroll.js')}}" type="text/javascript"></script>
 <script src="{{asset('assets/themes/rustic/js/script.js')}}" type="text/javascript"></script>
