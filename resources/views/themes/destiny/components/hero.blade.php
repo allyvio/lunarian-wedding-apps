@@ -1,6 +1,10 @@
  <section class="hero overlay">
      <div class="background-img">
-         <!-- <img src="{{asset('assets/themes/destiny/img/hero-3.jpeg')}}" alt=""> -->
+         @if($wedding->has('hero')->count() > 0)
+         @foreach($wedding->hero as $hero)
+         <img src="{{asset('storage/media/'.$hero->filename)}}" alt="">
+         @endforeach
+         @endif
      </div>
      <div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel">
        <ol class="carousel-indicators">

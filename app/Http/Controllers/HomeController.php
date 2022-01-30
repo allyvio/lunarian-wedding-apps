@@ -24,7 +24,8 @@ class HomeController extends Controller
     public function index(Request $request)
     {
         if ($request->user()->hasRole('customer')) {
-            return view('pages.dashboard.customer');
+            $wedding = $request->user()->wedding;
+            return view('pages.dashboard.customer', compact('wedding'));
         }
         if ($request->user()->hasRole('admin')) {
             return view('pages.dashboard.admin');

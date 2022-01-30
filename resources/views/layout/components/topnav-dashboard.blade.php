@@ -23,6 +23,16 @@
             <span class="btn-inner--text">{{request()->getHttpHost().'/'. Auth::user()->wedding->slug}}</span>
           </a>
         </li>
+        <li class="nav-item pl-2">
+          @switch(Auth::user()->wedding->status)
+          @case('pending')
+          <span class="badge bg-danger text-white badge-pill"><i class="fa fa-clock mr-1"></i> {{Auth::user()->wedding->status}}</span>
+          @break
+          @case('publish')
+          <span class="badge bg-success text-white badge-pill"><i class="fa fa-check mr-1"></i> {{Auth::user()->wedding->status}}</span>
+          @break
+          @endswitch
+        </li>
       </ul>
       @endif
       <ul class="navbar-nav align-items-center ml-auto ml-md-0 order-3">

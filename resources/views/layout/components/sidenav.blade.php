@@ -21,43 +21,51 @@
       <div class="collapse navbar-collapse" id="sidenav-collapse-main">
         @if(Auth::user()->hasRole('customer'))
         <?php
-        $packages = \App\Models\Wedding::where('user_id', Auth::user()->id)->first()->package_id;
+        $wedding = \App\Models\Wedding::where('user_id', Auth::user()->id)->first();
+        $packages = $wedding->package_id;
         $package = \App\Models\Package::findOrFail($packages);
         $nav_links = [
           "Beranda" => [
             "href" => 'dashboard',
             "icon" => 'home',
-            "package" => false
+            "package" => false,
+            "status" => false
           ],
           "Wedding" => [
             "href" => 'wedding.index',
             "icon" => 'heart',
-            "package" => false
+            "package" => false,
+            "status" => true
           ],
           "Cerita" => [
             "href" => 'story.index',
             "icon" => 'book-open',
-            "package" => [2, 3]
+            "package" => [2, 3],
+            "status" => true
           ],
           "Undangan" => [
             "href" => 'invitation.index',
             "icon" => 'bookmark',
-            "package" => [2, 3]
+            "package" => [2, 3],
+            "status" => true
           ],
           "Acara" => [
             "href" => 'event.index',
             "icon" => 'calendar-day',
-            "package" => false
+            "package" => false,
+            "status" => true
           ],
           "Musik" => [
             "href" => 'music.index',
             "icon" => 'music',
-            "package" => [2, 3]
+            "package" => [2, 3],
+            "status" => true
           ],
           "Komentar" => [
             "href" => 'comment.index',
             "icon" => 'comments',
-            "package" => [2, 3]
+            "package" => [2, 3],
+            "status" => true
           ],
         ]
         ?>
@@ -68,7 +76,7 @@
         @endphp
         <ul class="navbar-nav">
           <li class="nav-item">
-            <a class="nav-link {{ Request::routeIs($attr['href']) ? 'text-brown active' : 'text-gray' }}" href="{{route($attr['href'])}}">
+            <a class="nav-link @if($attr['status'] && $wedding->status == 'pending') disabled @endif {{ Request::routeIs($attr['href']) ? 'text-brown active' : 'text-gray' }}" href="{{route($attr['href'])}}">
               <i class="fa fa-{{$attr['icon']}}"></i>
               <span class="nav-link-text">{{$link}}</span>
             </a>

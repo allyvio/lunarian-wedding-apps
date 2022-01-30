@@ -27,6 +27,13 @@
         </div>
     </div>
     <div id="custom-owl-slider" class="owl-slide" data-scroll-speed="2">
+        @if($wedding->has('hero')->count() > 0)
+        @foreach($wedding->hero as $hero)
+        <div class="item">
+            <img src="{{asset('storage/media/'.$hero->filename)}}" alt="">
+        </div>
+        @endforeach
+        @else
         <div class="item">
             <img src="{{asset('assets/themes/default/images/slider/hero-3.jpeg')}}" alt="">
         </div>
@@ -36,5 +43,6 @@
         <div class="item">
             <img src="{{asset('assets/themes/default/images/slider/3.jpg')}}" alt="">
         </div>
+        @endif
     </div>
 </section>

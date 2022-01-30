@@ -19,6 +19,9 @@ class MediaController extends Controller
             case 'gallery':
                 $limit = $wedding->package->count_galleri;
                 break;
+            case 'hero':
+                $limit = 1;
+                break;
         }
         if ($media_count <= $limit) {
             $request->validate([

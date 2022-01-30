@@ -11,6 +11,7 @@ use DB;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Storage;
+use RealRashid\SweetAlert\Facades\Alert;
 
 class WeddingController extends Controller
 {
@@ -124,20 +125,19 @@ class WeddingController extends Controller
             $wedding->events()->createMany($new_arr);
             $music = Music::where('music_tema', 'basic')->get();
             foreach ($music as $key => $value) {
-              if ($key == 0) {
-                DB::table('weddingmusic')->insert([
-                  'wedding_id' => $wedding->id,
-                  'music_id' => $value->id,
-                  'status' => 1
-                ]);
-              } else {
-                DB::table('weddingmusic')->insert([
-                  'wedding_id' => $wedding->id,
-                  'music_id' => $value->id,
-                  'status' => 0
-                ]);
-              }
-
+                if ($key == 0) {
+                    DB::table('weddingmusic')->insert([
+                        'wedding_id' => $wedding->id,
+                        'music_id' => $value->id,
+                        'status' => 1
+                    ]);
+                } else {
+                    DB::table('weddingmusic')->insert([
+                        'wedding_id' => $wedding->id,
+                        'music_id' => $value->id,
+                        'status' => 0
+                    ]);
+                }
             }
         }
         session()->forget('wedding');
@@ -146,7 +146,8 @@ class WeddingController extends Controller
 
     public function showPublic(Wedding $wedding, $code = null)
     {
-        // dd($wedding);
+        if ($wedding->status == 'pending')
+            return view('pages.comingsoon', compact('wedding'));
         $music = DB::table('weddingmusic')->where('wedding_id', $wedding->id)->get();
         $wedding->events = $wedding->events->sortBy('datetime');
         $main_event = $wedding->events->where('is_main', true)->first();
@@ -160,11 +161,11 @@ class WeddingController extends Controller
                 return redirect()->route('wedding.page', $wedding)->with('error', 'Invitation not found');
         }
 
-        return view('themes.' . $theme . '.index', compact('wedding','music'));
+        return view('themes.' . $theme . '.index', compact('wedding', 'music'));
     }
     public function show(Wedding $wedding)
     {
-        return view('pages.wedding.show',compact('wedding'));
+        return view('pages.wedding.show', compact('wedding'));
     }
     public function table()
     {
@@ -228,7 +229,13 @@ class WeddingController extends Controller
             'theme' => $request->theme
         ]);
     }
-
+    public function updateStatus(Request $request, Wedding $wedding)
+    {
+        $wedding->status = $request->status;
+        $wedding->save();
+        Alert::success('Berhasil', 'Status wedding berhasil di ' . $request->status);
+        return back();
+    }
     public function destroy(Wedding $wedding)
     {
         //
