@@ -21,14 +21,14 @@
     </div>
     <!-- Light table -->
     <div class="table-responsive">
-        <table class="table align-items-center table-flush">
+        <table class="table align-items-center table-flush" id="datatable-wedding">
             <thead class="thead-light">
                 <tr>
                     <th scope="col">Customer</th>
-                    <th scope="col">Judul</th>
                     <th scope="col">Slug</th>
-                    <th scope="col">Tema</th>
                     <th scope="col">Paket</th>
+                    <th scope="col">Status</th>
+                    <th scope="col">Tgl Dibuat</th>
                     <th scope="col"></th>
                 </tr>
             </thead>
@@ -39,16 +39,23 @@
                         <div class="">{{$wedding->user->name}}</div>
                     </th>
                     <td>
-                        {{$wedding->title}}
-                    </td>
-                    <td>
-                        <a href="{{route('wedding.page',$wedding->slug)}}">{{$wedding->slug}} <i class="fa fa-external-link-alt fa-sm"></i></a>
-                    </td>
-                    <td>
-                        {{$wedding->theme}}
+                        <a target="_blank" href="{{route('wedding.page',$wedding->slug)}}">{{$wedding->slug}} <i class="fa fa-external-link-alt fa-sm"></i></a>
                     </td>
                     <td>
                         {{$wedding->package->name}}
+                    </td>
+                    <td>
+                        @switch($wedding->status)
+                        @case('pending')
+                        <div class="badge badge-warning badge-pill">{{$wedding->status}}</div>
+                        @break
+                        @case('publish')
+                        <div class="badge badge-success badge-pill">{{$wedding->status}}</div>
+                        @break
+                        @endswitch
+                    </td>
+                    <td>
+                        {{$wedding->created_at->format('d M Y H:i')}}
                     </td>
                     <td class="text-right">
                         <a href="{{route('admin.wedding.show',$wedding->slug)}}" class="btn btn-primary btn-sm">Detail</a>
@@ -58,31 +65,32 @@
             </tbody>
         </table>
     </div>
-    <!-- Card footer -->
-    <!-- <div class="card-footer py-4">
-        <nav aria-label="...">
-            <ul class="pagination justify-content-end mb-0">
-                <li class="page-item disabled">
-                    <a class="page-link" href="#" tabindex="-1">
-                        <i class="fas fa-angle-left"></i>
-                        <span class="sr-only">Previous</span>
-                    </a>
-                </li>
-                <li class="page-item active">
-                    <a class="page-link" href="#">1</a>
-                </li>
-                <li class="page-item">
-                    <a class="page-link" href="#">2 <span class="sr-only">(current)</span></a>
-                </li>
-                <li class="page-item"><a class="page-link" href="#">3</a></li>
-                <li class="page-item">
-                    <a class="page-link" href="#">
-                        <i class="fas fa-angle-right"></i>
-                        <span class="sr-only">Next</span>
-                    </a>
-                </li>
-            </ul>
-        </nav>
-    </div> -->
 </div>
 @endsection
+@push('scripts')
+<script>
+    var options = {
+        keys: !0,
+        order:[4,'desc'],
+        select: {
+            style: "multi",
+        },
+        language: {
+            paginate: {
+                previous: "<i class='fas fa-angle-left'>",
+                next: "<i class='fas fa-angle-right'>",
+            },
+        },
+    };
+
+    // Init the datatable
+
+    var table = $('#datatable-wedding')
+        .on("init.dt", function() {
+            $("div.dataTables_length select").removeClass(
+                "custom-select custom-select-sm"
+            );
+        })
+        .DataTable(options);
+</script>
+@endpush

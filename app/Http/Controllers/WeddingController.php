@@ -6,11 +6,13 @@ use App\Http\Requests\WeddingRequest;
 use App\Models\Event;
 use App\Models\Wedding;
 use App\Models\Music;
+use App\Models\Package;
 use Carbon\Carbon;
 use DB;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Storage;
+use RealRashid\SweetAlert\Facades\Alert;
 
 class WeddingController extends Controller
 {
@@ -28,7 +30,19 @@ class WeddingController extends Controller
     {
         if (auth()->check() && auth()->user()->wedding)
             return redirect()->route('dashboard');
-        return view('pages.wedding.create');
+        $urlQuery = request()->query('package');
+        if ($urlQuery) {
+            $package = Package::where('name', $urlQuery)->first();
+            if ($package)
+                $package = 'exists';
+            else
+                $package = 'not found';
+        } else {
+            $package = 'not set';
+        }
+        return view('pages.wedding.create', compact('package'));
+        // if($package)
+        // $package = 'exists'
     }
 
     public function store(WeddingRequest $request)
@@ -47,7 +61,6 @@ class WeddingController extends Controller
             $request->session()->put('wedding', $wedding);
         }
 
-        /** Save wedding pada stage couple. */
         if ($request->stage == 'couple') {
             if ($wedding->calon_pria_photo)
                 Storage::delete('public/couple/' . $wedding->calon_pria_photo);
@@ -70,10 +83,9 @@ class WeddingController extends Controller
                 $wedding->calon_wanita_photo = null;
             }
         }
-        /** Menghapus SESSION WEDDING setelah stage terakhir */
+        /** Create Event pertama kali */
         if ($request->stage == 'theme') {
 
-            /** Create Event pertama kali */
             if ($wedding->events->count() == 0) {
                 $date = Carbon::now()->addDays(14);
                 $wedding->events[0] = new Event([
@@ -124,20 +136,19 @@ class WeddingController extends Controller
             $wedding->events()->createMany($new_arr);
             $music = Music::where('music_tema', 'basic')->get();
             foreach ($music as $key => $value) {
-              if ($key == 0) {
-                DB::table('weddingmusic')->insert([
-                  'wedding_id' => $wedding->id,
-                  'music_id' => $value->id,
-                  'status' => 1
-                ]);
-              } else {
-                DB::table('weddingmusic')->insert([
-                  'wedding_id' => $wedding->id,
-                  'music_id' => $value->id,
-                  'status' => 0
-                ]);
-              }
-
+                if ($key == 0) {
+                    DB::table('weddingmusic')->insert([
+                        'wedding_id' => $wedding->id,
+                        'music_id' => $value->id,
+                        'status' => 1
+                    ]);
+                } else {
+                    DB::table('weddingmusic')->insert([
+                        'wedding_id' => $wedding->id,
+                        'music_id' => $value->id,
+                        'status' => 0
+                    ]);
+                }
             }
         }
         session()->forget('wedding');
@@ -146,7 +157,8 @@ class WeddingController extends Controller
 
     public function showPublic(Wedding $wedding, $code = null)
     {
-        // dd($wedding);
+        if ($wedding->status == 'pending')
+            return view('pages.comingsoon', compact('wedding'));
         $music = DB::table('weddingmusic')->where('wedding_id', $wedding->id)->get();
         $wedding->events = $wedding->events->sortBy('datetime');
         $main_event = $wedding->events->where('is_main', true)->first();
@@ -160,11 +172,11 @@ class WeddingController extends Controller
                 return redirect()->route('wedding.page', $wedding)->with('error', 'Invitation not found');
         }
 
-        return view('themes.' . $theme . '.index', compact('wedding','music'));
+        return view('themes.' . $theme . '.index', compact('wedding', 'music'));
     }
     public function show(Wedding $wedding)
     {
-        return view('pages.wedding.show',compact('wedding'));
+        return view('pages.wedding.show', compact('wedding'));
     }
     public function table()
     {
@@ -222,13 +234,19 @@ class WeddingController extends Controller
     public function updateTheme(Request $request, Wedding $wedding)
     {
         $request->validate([
-            'theme' => ['required', 'in:default,destiny,ourlove']
+            'theme' => ['required', 'in:tropical,rustic,classic']
         ]);
         $wedding->update([
             'theme' => $request->theme
         ]);
     }
-
+    public function updateStatus(Request $request, Wedding $wedding)
+    {
+        $wedding->status = $request->status;
+        $wedding->save();
+        Alert::success('Berhasil', 'Status wedding berhasil di ' . $request->status);
+        return back();
+    }
     public function destroy(Wedding $wedding)
     {
         //
