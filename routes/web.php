@@ -18,6 +18,7 @@ Route::prefix('dashboard')->middleware(['auth', 'wedding'])->group(function () {
         Route::get('/wedding/table', 'WeddingController@table')->name('wedding.index');
         Route::get('/wedding/{wedding}', 'WeddingController@show')->name('wedding.show');
         Route::post('/wedding/{wedding}/update-status', 'WeddingController@updateStatus')->name('wedding.update.status');
+        Route::get('/package/api/statistic', 'PackageController@statistic')->name('package.statistic');
     });
     /** ------------------------- WEDDING ------------------------- */
     Route::resource('/wedding', 'WeddingController')->except([

@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Package;
+use App\Models\Wedding;
 use Illuminate\Http\Request;
 
 class HomeController extends Controller
@@ -28,7 +30,8 @@ class HomeController extends Controller
             return view('pages.dashboard.customer', compact('wedding'));
         }
         if ($request->user()->hasRole('admin')) {
-            return view('pages.dashboard.admin');
+            $latestWedding = Wedding::where('status','pending')->with('package')->latest()->take(5)->get();
+            return view('pages.dashboard.admin',compact('latestWedding'));
         }
     }
 }

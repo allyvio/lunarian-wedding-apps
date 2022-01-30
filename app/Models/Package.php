@@ -15,5 +15,8 @@ class Package extends Model
         'music',
         'count_galleri',
     ];
-
+    public function weddings()
+    {
+        return $this->hasMany('App\Models\Wedding');
+    }
 }
