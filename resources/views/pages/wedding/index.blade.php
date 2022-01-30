@@ -134,7 +134,7 @@
                     </div>
                     <div class="tab-pane fade" id="v-pills-gallery" role="tabpanel" aria-labelledby="v-pills-gallery-tab">
                         <h4>Gallery</h4>
-                        <div class="dropzone" id="dropzone-gallery" data-dropzone-url="{{route('media.store')}}" data-wedding="{{$wedding->id}}">
+                        <div class="dropzone dropzone-media" id="dropzone-gallery" data-dropzone-url="{{route('media.store')}}" data-wedding="{{$wedding->id}}" data-media-type="gallery">
                             <div class="fallback">
                                 <div class="custom-file">
                                     <input type="file" class="custom-file-input" id="customFileUploadMultiple" multiple>
@@ -142,16 +142,6 @@
                                 </div>
                             </div>
                             <div class="gallery mt-4">
-                                @foreach($wedding->gallery as $gallery)
-                                <div class="gallery-item">
-                                    <img src="{{asset('storage/media/'.$gallery->filename)}}" alt="">
-                                    <div class="transparent-box">
-                                        <div class="btn btn-icon btn-white text-danger btn-sm px-3 py-2 m-2 float-right" onclick="removeGalleryItem(this)" data-item-remove="{{route('media.destroy',$gallery->id)}}">
-                                            <span class="btn-inner--icon"><i class="fa fa-trash"></i></span>
-                                        </div>
-                                    </div>
-                                </div>
-                                @endforeach
                                 <div class="dz-preview dz-preview-multiple">
                                     <div class="gallery-item">
                                         <img data-dz-thumbnail>
@@ -162,12 +152,23 @@
                                         </div>
                                     </div>
                                 </div>
+                                @foreach($wedding->gallery->sortByDesc('created_at') as $gallery)
+                                <div class="gallery-item">
+                                    <img src="{{asset('storage/media/'.$gallery->filename)}}" alt="">
+                                    <div class="transparent-box">
+                                        <div class="btn btn-icon btn-white text-danger btn-sm px-3 py-2 m-2 float-right" onclick="removeGalleryItem(this)" data-item-remove="{{route('media.destroy',$gallery->id)}}">
+                                            <span class="btn-inner--icon"><i class="fa fa-trash"></i></span>
+                                        </div>
+                                        <div class="caption">{{$gallery->created_at}}</div>
+                                    </div>
+                                </div>
+                                @endforeach
                             </div>
                         </div>
                     </div>
                     <div class="tab-pane fade" id="v-pills-hero" role="tabpanel" aria-labelledby="v-pills-hero-tab">
                         <h4>Hero</h4>
-                        <div class="dropzone" id="dropzone-hero" data-dropzone-url="{{route('media.store')}}" data-wedding="{{$wedding->id}}">
+                        <div class="dropzone dropzone-media" id="dropzone-hero" data-dropzone-url="{{route('media.store')}}" data-wedding="{{$wedding->id}}" data-media-type="hero">
                             <div class="fallback">
                                 <div class="custom-file">
                                     <input type="file" class="custom-file-input" id="customFileUploadMultiple" multiple>
@@ -175,7 +176,7 @@
                                 </div>
                             </div>
                             <div class="gallery mt-4">
-                                @foreach($wedding->hero as $hero)
+                                @foreach($wedding->hero->sortByDesc('created_at') as $hero)
                                 <div class="gallery-item">
                                     <img src="{{asset('storage/media/'.$hero->filename)}}" alt="">
                                     <div class="transparent-box">
@@ -250,9 +251,7 @@
     $('#clear-quill-content').click(function() {
         var element = document.getElementsByClassName('ql-editor');
         element[0].innerHTML = ""
-        // quill.setContents()
     })
-    // element[0].innerHTML = "";
     quill.on('text-change', function(delta, oldDelta, source) {
         if (source == 'user') {
             quill.getText().trim().length === 0 ?
@@ -262,76 +261,52 @@
     });
 
     Dropzone.autoDiscover = false;
-    var dropzone = $('#dropzone-gallery'),
-        preview = dropzone.find('.dz-preview'),
-        options = {
-            headers: {
-                'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
-            },
-            url: dropzone.data('dropzone-url'),
-            thumbnailWidth: null,
-            thumbnailHeight: null,
-            previewsContainer: preview.get(0),
-            previewTemplate: preview.html(),
-            acceptedFiles: 'image/*',
-            dictInvalidFileType: "Upload bukti kegiatan dalam format gambar.",
-        }
-    preview.html('');
-    let myDropzone = new Dropzone("#dropzone-gallery", options);
+    var $dropzone = $('.dropzone-media'),
+        $preview = $('.dz-preview')
 
-    myDropzone.on("error", function(file, response) {
-        file.previewElement.classList.add("dz-error");
-        $('.dz-error-message').text(response);
-        this.removeFile(file);
-        Swal.fire('File Ditolak', response, 'error');
-    });
-    myDropzone.on("sending", function(file, xhr, formData) {
-        formData.append("type", 'gallery');
-        formData.append("wedding_id", dropzone.data('wedding'));
-    });
-    myDropzone.on("success", file => {
-        if (file.xhr.response) {
-            let response = JSON.parse(file.xhr.response),
-                previewElm = $(file.previewElement)
-            previewElm.find('.remove').data('item-remove', response.media);
-        }
-    });
-    // Hero
-    var hero_dropzone = $('#dropzone-hero'),
-        preview = hero_dropzone.find('.dz-preview'),
-        options = {
-            headers: {
-                'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
-            },
-            url: hero_dropzone.data('dropzone-url'),
-            thumbnailWidth: null,
-            thumbnailHeight: null,
-            previewsContainer: preview.get(0),
-            previewTemplate: preview.html(),
-            acceptedFiles: 'image/*',
-            dictInvalidFileType: "Upload bukti kegiatan dalam format gambar.",
-        }
-    preview.html('');
-    let myDropzoneHero = new Dropzone("#dropzone-hero", options);
+    function init($this) {
+        var preview = $this.find($preview),
+            options = {
+                headers: {
+                    'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+                },
+                url: $this.data('dropzone-url'),
+                thumbnailWidth: null,
+                thumbnailHeight: null,
+                previewsContainer: preview.get(0),
+                previewTemplate: preview.html(),
+                acceptedFiles: 'image/*',
+                dictInvalidFileType: "Upload bukti kegiatan dalam format gambar.",
+                init: function() {
+                    this.on('addedfile', function(file) {
+                        preview.prepend($(file.previewElement));
+                    });
+                    this.on("error", function(file, response) {
+                        file.previewElement.classList.add("dz-error");
+                        $this.find('.dz-error-message').text(response);
+                        this.removeFile(file);
+                        Swal.fire('File Ditolak', response, 'error');
+                    });
+                    this.on("sending", function(file, xhr, formData) {
+                        formData.append("type", $this.data('media-type'));
+                        formData.append("wedding_id", $this.data('wedding'));
+                    });
+                    this.on("success", file => {
+                        if (file.xhr.response) {
+                            let response = JSON.parse(file.xhr.response),
+                                previewElm = $(file.previewElement)
+                            previewElm.find('.remove').data('item-remove', response.media);
+                        }
+                    });
+                }
+            }
 
-    myDropzoneHero.on("error", function(file, response) {
-        file.previewElement.classList.add("dz-error");
-        $('.dz-error-message').text(response);
-        this.removeFile(file);
-        Swal.fire('File Ditolak', response, 'error');
+        preview.html('');
+        $this.dropzone(options)
+    }
+    $dropzone.each(function() {
+        init($(this));
     });
-    myDropzoneHero.on("sending", function(file, xhr, formData) {
-        formData.append("type", 'hero');
-        formData.append("wedding_id", hero_dropzone.data('wedding'));
-    });
-    myDropzoneHero.on("success", file => {
-        if (file.xhr.response) {
-            let response = JSON.parse(file.xhr.response),
-                previewElm = $(file.previewElement)
-            previewElm.find('.remove').data('item-remove', response.media);
-        }
-    });
-
     function removeGalleryItem(elm) {
         var $this = $(elm),
             url = $this.data('item-remove')

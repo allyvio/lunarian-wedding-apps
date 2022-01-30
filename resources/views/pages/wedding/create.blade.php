@@ -1,9 +1,6 @@
 @extends('layout.wrapper-dashboard-alt')
 
 @section('dashboard-alt-content')
-<style>
-
-</style>
 <div class="container px-lg-8">
     <div class="nav-wrapper wizard pt-0">
         <div class="wizard-inner" style="position: relative;">
@@ -17,25 +14,27 @@
                     </a>
                 </li>
                 <li class="nav-item text-center m-0">
-                    <a title="Pasangan" class="nav-link rounded-circle disabled" id="couple-tab" data-progress="25" data-toggle="tab" href="#tabs-couple" role="tab" aria-controls="tabs-couple" aria-selected="false">
+                    <a title="Pasangan" class="nav-link rounded-circle disabled" id="couple-tab" data-progress="{{$package != 'exists' ? '25' : '33'}}" data-toggle="tab" href="#tabs-couple" role="tab" aria-controls="tabs-couple" aria-selected="false">
                         <span class="nav-link-icon d-block"><i class="fa fa-heart"></i></span>
                     </a>
                 </li>
                 <li class="nav-item text-center m-0">
-                    <a title="Tema" class="nav-link rounded-circle disabled" id="theme-tab" data-progress="50" data-toggle="tab" href="#tabs-theme" role="tab" aria-controls="tabs-theme" aria-selected="false">
+                    <a title="Tema" class="nav-link rounded-circle disabled" id="theme-tab" data-progress="{{$package != 'exists' ? '50' : '66'}}" data-toggle="tab" href="#tabs-theme" role="tab" aria-controls="tabs-theme" aria-selected="false">
                         <span class="nav-link-icon d-block"><i class="fas fa-clone"></i></span>
                     </a>
                 </li>
                 <li class="nav-item text-center m-0">
-                    <a title="Acara" class="nav-link rounded-circle disabled" id="event-tab" data-progress="75" data-toggle="tab" href="#tabs-event" role="tab" aria-controls="tabs-event" aria-selected="false">
+                    <a title="Acara" class="nav-link rounded-circle disabled" id="event-tab" data-progress="{{$package != 'exists' ? '75' : '99'}}" data-toggle="tab" href="#tabs-event" role="tab" aria-controls="tabs-event" aria-selected="false">
                         <span class="nav-link-icon d-block"><i class="fa fa-calendar"></i></span>
                     </a>
                 </li>
+                @if($package != 'exists')
                 <li class="nav-item text-center m-0">
                     <a title="Paket" class="nav-link rounded-circle disabled" id="package-tab" data-progress="99" data-toggle="tab" href="#tabs-package" role="tab" aria-controls="tabs-package" aria-selected="false">
                         <span class="nav-link-icon d-block"><i class="fa fa-cube"></i></span>
                     </a>
                 </li>
+                @endif
             </ul>
         </div>
     </div>
@@ -53,30 +52,30 @@
                         <div id="theme-selection">
                             <div class="form-group row">
                                 <div class="col-md-4">
-                                    <label for="theme-default">
-                                        <img alt="thumbnail" src="{{asset('assets/themes/default/thumbnail.png')}}" class="img-thumbnail rounded mb-2">
+                                    <label for="theme-classic">
+                                        <img alt="thumbnail" src="{{asset('assets/themes/classic/thumbnail.png')}}" class="img-thumbnail rounded mb-2">
                                     </label>
                                     <div class="custom-control custom-radio custom-control-inline">
-                                        <input type="radio" id="theme-default" name="theme" class="custom-control-input" value="default" checked>
-                                        <label class="custom-control-label" for="theme-default">Tema Default</label>
+                                        <input type="radio" id="theme-classic" name="theme" class="custom-control-input" value="classic" checked>
+                                        <label class="custom-control-label" for="theme-classic">Tema classic</label>
                                     </div>
                                 </div>
                                 <div class="col-md-4">
-                                    <label for="theme-destiny">
-                                        <img alt="thumbnail" src="{{asset('assets/themes/destiny/thumbnail.png')}}" class="img-thumbnail rounded mb-2">
+                                    <label for="theme-tropical">
+                                        <img alt="thumbnail" src="{{asset('assets/themes/tropical/thumbnail.png')}}" class="img-thumbnail rounded mb-2">
                                     </label>
                                     <div class="custom-control custom-radio custom-control-inline">
-                                        <input type="radio" id="theme-destiny" name="theme" class="custom-control-input" value="destiny">
-                                        <label class="custom-control-label" for="theme-destiny">Tema Destiny</label>
+                                        <input type="radio" id="theme-tropical" name="theme" class="custom-control-input" value="tropical" disabled>
+                                        <label class="custom-control-label" for="theme-tropical">Tema tropical</label>
                                     </div>
                                 </div>
                                 <div class="col-md-4">
-                                    <label for="theme-ourlove">
-                                        <img alt="thumbnail" src="{{asset('assets/themes/ourlove/thumbnail.png')}}" class="img-thumbnail rounded mb-2">
+                                    <label for="theme-rustic">
+                                        <img alt="thumbnail" src="{{asset('assets/themes/rustic/thumbnail.png')}}" class="img-thumbnail rounded mb-2">
                                     </label>
                                     <div class="custom-control custom-radio custom-control-inline">
-                                        <input type="radio" id="theme-ourlove" name="theme" class="custom-control-input" value="ourlove">
-                                        <label class="custom-control-label" for="theme-ourlove">Tema Ourlove</label>
+                                        <input type="radio" id="theme-rustic" name="theme" class="custom-control-input" value="rustic" disabled>
+                                        <label class="custom-control-label" for="theme-rustic">Tema rustic</label>
                                     </div>
                                 </div>
                             </div>

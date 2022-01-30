@@ -7,7 +7,7 @@
   <!-- Alert -->
   @include('sweetalert::alert')
   <!-- End Alert -->
-  
+
   <!-- Sidenav -->
   @include('layout.components.sidenav')
   <!-- End Sidenav -->
@@ -26,14 +26,13 @@
     <div class="container-fluid mt--6">
       @yield('dashboard-content')
       <!-- Footer -->
-      <!-- @include('layout.components.footer') -->
     </div>
   </div>
   <!-- Argon Scripts -->
   @include('layout.components.footerjs')
   <!-- End Argon Scripts -->
 
-  
+
 
 
 </body>

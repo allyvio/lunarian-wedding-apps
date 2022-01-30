@@ -10,23 +10,23 @@
                 <div class="col-lg-6 col-5 text-right">
                 </div>
             </div>
+            @if(Auth::user()->wedding->status === 'pending')
+            <div class="alert alert-danger bg-gradient-red show mb-4" role="alert">
+                <div class="row">
+                    <div class="col-auto pr-0"><span class="alert-icon m-0"><i class="fa fa-exclamation-circle"></i></span></div>
+                    <div class="col">
+                        <h3 class="text-white">Notifikasi</h3>
+                        <span class="alert-text">Saat ini status weddingmu sedang <span class="text-uppercase font-weight-bold">{{$wedding->status}}</span>.
+                            <br> Lihat detail tagihanmu <a href="#modal-invoice-detail" data-toggle="modal" class="text-white text-underline">disini</a>, apabila sudah menyelesaikan transaksi <a href="https://api.whatsapp.com/send?phone=6283832299180" target="_blank" class="text-white text-underline"> hubungi kontak layanan</a>.</span>
+                    </div>
+                </div>
+            </div>
+            @endif
         </div>
     </div>
 </div>
 @endsection
 @section('dashboard-content')
-@if(Auth::user()->wedding->status === 'pending')
-<div class="alert alert-danger bg-gradient-red show mb-4" role="alert">
-    <div class="row">
-        <div class="col-auto"><span class="alert-icon m-0"><i class="fa fa-exclamation-circle"></i></span></div>
-        <div class="col">
-            <h3 class="text-white">Notifikasi</h3>
-            <span class="alert-text">Saat ini status weddingmu sedang <span class="text-uppercase font-weight-bold">{{$wedding->status}}</span>.
-                <br> Lihat detail tagihanmu <a href="#modal-invoice-detail" data-toggle="modal" class="text-white text-underline">disini</a>,  apabila sudah menyelesaikan transaksi <a href="https://api.whatsapp.com/send?phone=6283832299180" target="_blank" class="text-white text-underline"> hubungi kontak layanan</a>.</span>
-        </div>
-    </div>
-</div>
-@endif
 <div class="row">
     <div class="col-5">
         <div class="card">
@@ -57,25 +57,13 @@
             </div>
         </div>
         <div class="card">
-            <div class="card-body">
-                <div class="card-title d-flex justify-content-between">
-                    <h3 class="text-uppercase mb-0">Tema</h3>
-                    <a href="" class="btn btn-neutral btn-sm">Detail</a>
-                </div>
-                <div class="row">
-                    <div class="col">
-                        <h4 class="text-muted mb-0">Invoice No.</h4>
-                        <h3 class="">#981239</h3>
-                    </div>
-                    <div class="col-auto">
-                        <div class="badge badge-warning">Menunggu Pembayaran</div>
-                    </div>
-                </div>
+            <div class="card-header">
+                <h4>Butuh Bantuan?</h4>
             </div>
-            <!-- <div class="card-body">
-                Saat ini status weddingmu sedang <span class="text-uppercase font-weight-bold">{{$wedding->status}}</span>.
-                <h4 class="font-weight-normal">Silahkan selesaikan transaksi atau hubungi kontak layanan.</h4>
-            </div> -->
+            <ul class="list-group list-group-flush">
+                <a href="" class="list-group-item text-sm px-4 text-brown"><i class="fa fa-life-ring mr-2"></i> Kontak Layanan</a>
+                <a href="" class="list-group-item text-sm px-4 text-brown"><i class="fa fa-book mr-2"></i> Panduan Pengguna</a>
+            </ul>
         </div>
     </div>
     <div class="col">
@@ -87,7 +75,7 @@
                 <div class="timeline timeline-one-side" data-timeline-content="axis" data-timeline-axis-style="dashed">
                     @foreach($wedding->events->sortBy('datetime')->groupBy(function ($i) {return $i->date;}) as $date =>$events)
                     <div class="timeline-block my-2">
-                        <span class="timeline-step bg-gradient-brown text-white">
+                        <span class="timeline-step bg-gradient-default text-white">
                             <i class="ni ni-bell-55"></i>
                         </span>
                         <div class="timeline-content">
@@ -95,10 +83,10 @@
                             @foreach($events as $event)
                             <div class="bg-secondary rounded p-3 mt-2">
                                 <h5 class="mb-0">{{$event->title}}</h5>
-                                <div class=" text-sm font-weight-normal mt-1 mb-0">
+                                <div class="text-sm font-weight-normal mt-1 mb-0">
                                     <i class="far fa-clock mr-2"></i>{{$event->start_date}} - {{$event->end_date ? $event->end_date : 'selesai'}}
                                 </div>
-                                <div class=" text-sm font-weight-normal mb-0">
+                                <div class="text-sm font-weight-normal mb-0">
                                     <div class="row">
                                         <div class="col-auto pr-0">
                                             <i class="ni ni-square-pin mr-2"></i>
@@ -108,7 +96,6 @@
                                             Lokasi Google Maps <br>
                                             <iframe class="mt-2" src="{{$event->location}}" width="100%" height="100" frameborder="0"></iframe>
                                             @else
-                                            {{$event->location ?? ''}}
                                             {{$event->location ?? 'not set'}}
                                             @endif
                                         </div>
@@ -129,7 +116,7 @@
 @include('pages.invoice.modals.invoice-detail')
 @endpush
 @push('scripts')
-<script src="{{asset('assets/themes/destiny/js/jquery.countdown.min.js')}}" type="text/javascript"></script>
+<script src="{{asset('assets/themes/rustic/js/jquery.countdown.min.js')}}" type="text/javascript"></script>
 
 <script type="text/javascript">
     $(document).ready(function() {

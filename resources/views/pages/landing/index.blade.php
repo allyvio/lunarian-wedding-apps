@@ -525,7 +525,7 @@
                                     </div>
                                 </li>
                             </ul>
-                            <a href="#" class="btn btn-secondary mb-3">Coming Soon</a>
+                            <a href="{{route('wedding.create',['package'=>'asds'])}}" class="btn btn-secondary mb-3">Coming Soon</a>
                         </div>
                         <!-- <div class="card-footer bg-transparent">
                             <a href="#!" class="text-white">Contact sales</a>
@@ -679,9 +679,6 @@
                             </ul>
                             <a href="#" class="btn btn-outline-brown mb-3">Coming Soon</a>
                         </div>
-                        <!-- <div class="card-footer">
-                            <a href="#!" class="text-light">Request a demo</a>
-                        </div> -->
                     </div>
                     @endif
                     @endforeach
