@@ -19,7 +19,7 @@
                   <div class="container">
                       <div class="row row-grid align-items-center">
                           <!-- <div class="col-md-6"> -->
-                              <img src="{{asset('img/theme/landing-2.png')}}" class="img-fluid">
+                              <img src="{{asset('img/theme/mock2.png')}}" class="img-fluid">
                           <!-- </div> -->
                       </div>
                   </div>
@@ -36,7 +36,7 @@
     <div class="container">
         <div class="row row-grid align-items-center">
             <div class="col-md-6 order-md-2">
-                <img src="{{asset('img/theme/landing-1.png')}}" class="img-fluid">
+                <img src="{{asset('img/theme/mock1.png')}}" class="img-fluid">
             </div>
             <div class="col-md-6 order-md-1">
                 <div class="pr-md-5">
@@ -134,7 +134,7 @@
     <div class="container">
         <div class="row row-grid align-items-center">
             <div class="col-md-6">
-                <img src="{{asset('img/theme/landing-2.png')}}" class="img-fluid">
+                <img src="{{asset('img/theme/mock3.png')}}" class="img-fluid">
             </div>
             <div class="col-md-6">
                 <div class="pr-md-5">
@@ -150,7 +150,7 @@
     <div class="container">
         <div class="row row-grid align-items-center">
             <div class="col-md-6 order-md-2">
-                <img src="{{asset('img/theme/landing-3.png')}}" class="img-fluid">
+                <img src="{{asset('img/theme/mock4.png')}}" class="img-fluid">
             </div>
             <div class="col-md-6 order-md-1">
                 <div class="pr-md-5">
@@ -696,7 +696,7 @@
 </section>
 <!-- END TESTIMONIAL -->
 <!-- Button wa -->
-<a href="https://api.whatsapp.com/send?phone=6283832299180" class="act-btn bg-gradient-success" data-toggle="tooltip" data-placement="top" title="Hubungi Admin">
+<a href="https://api.whatsapp.com/send?phone=6281359598007" class="act-btn bg-gradient-success" data-toggle="tooltip" data-placement="top" title="Hubungi Admin">
     <span class="btn-inner--icon"><i class="fab fa-whatsapp"></i></span>
 </a>
 @endsection

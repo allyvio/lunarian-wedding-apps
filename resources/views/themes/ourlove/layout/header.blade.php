@@ -12,7 +12,6 @@
 
     <!-- Argon CSS -->
     <link rel="stylesheet" href="{{asset('css/argon.css')}}" type="text/css">
-
     <link rel="stylesheet" href="{{asset('assets/themes/ourlove/css/bootstrap.css')}}" type="text/css">
     <link rel="stylesheet" href="{{asset('assets/themes/ourlove/css/normalize.css')}}" type="text/css">
     <link rel="stylesheet" href="{{asset('assets/themes/ourlove/css/owl.carousel.css')}}" type="text/css">
