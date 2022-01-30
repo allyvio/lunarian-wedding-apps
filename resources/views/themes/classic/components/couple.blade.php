@@ -1,7 +1,5 @@
 <section id="home" class="home-section clearfix">
-<<<<<<< HEAD:resources/views/themes/classic/components/couple.blade.php
   @if($wedding->hero->count() > 0)
-=======
   <div id="hs-image-block" class="hs-image-block" data-stellar-background-ratio="0.3">
     <div class="hs-mask">
       <div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel" style="width:100%; height:100%;">
@@ -46,7 +44,6 @@
     </div>
 //master
   @if($wedding->has('hero')->count() > 0)
->>>>>>> 63e81f373016a8456adc8f95996c5afa19486698:resources/views/themes/ourlove/components/couple.blade.php
   <div id="hs-image-block" class="hs-image-block" data-stellar-background-ratio="0.3" style="background-image: url({{asset('storage/media/'.$wedding->hero->first()->filename)}});">
     @else
     <div id="hs-image-block" class="hs-image-block" data-stellar-background-ratio="0.3">
