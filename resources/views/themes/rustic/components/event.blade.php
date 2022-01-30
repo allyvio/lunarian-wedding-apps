@@ -10,7 +10,7 @@
             @foreach($wedding->events as $event)
             <div class="event-block text-center" >
                 <div class="content">
-                    <div class="block-event center-block swap" style="padding: 30px;">
+                    <div class="block-event center-block swap">
                         <div class="circle-dashed relative bg">
                             <div class="round-circle before">
                                 <svg viewBox="0 0 103 103" version="1.1" xmlns="http://www.w3.org/2000/svg" class="dashed-border">
