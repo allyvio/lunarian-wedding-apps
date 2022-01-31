@@ -1,4 +1,4 @@
-<section id="section-countdown" aria-label="section-countdown" class="pt60 pb60 text-light" data-stellar-background-ratio=".2">
+<section id="section-countdown" aria-label="section-countdown" class="pt60 pb60 text-light" data-stellar-background-ratio=".2" style="background-image: url({{asset('storage/media/'.$wedding->hero->first()->filename)}});">
     <div class="container">
         <div class="row">
             <div class="col-md-12 text-center">
