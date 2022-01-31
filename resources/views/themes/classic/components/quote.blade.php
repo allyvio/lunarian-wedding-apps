@@ -1,6 +1,6 @@
 @if($wedding->quote)
 <section id="section-quote" aria-label="section-quote-1" class="footer">
-  <div id="footer-image-block" class="footer-image-block" style="background-attachment: fixed; background-position: 50%;" data-stellar-background-ratio="0.3">
+  <div id="footer-image-block" class="footer-image-block" style="background-image: url({{asset('storage/media/'.$wedding->hero->first()->filename)}}); background-attachment: fixed; background-position: 50%;" data-stellar-background-ratio="0.3">
       <div class="footer-mask"></div>
   </div>
     <div class="container">
