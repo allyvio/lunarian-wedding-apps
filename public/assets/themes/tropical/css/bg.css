@@ -15,6 +15,8 @@ section,#subheader{
 -moz-background-size: 100% !important;
 -o-background-size: 100% !important;
 background-size: 100% !important;
+background-attachment:fixed !important;
+
 }
 
 
@@ -55,7 +57,7 @@ background-size: 100% !important;
 	-moz-background-size: auto 100% !important;
 	-o-background-size: auto 100% !important;
 	background-size: auto 100% !important;
-	background-attachment:scroll !important;
+	background-attachment:fixed !important;
 	}
 }
 @media only screen and (max-width: 992px) {
@@ -64,7 +66,7 @@ background-size: 100% !important;
 	-moz-background-size: cover !important;
 	-o-background-size: cover !important;
 	background-size: cover !important;
-	background-attachment:scroll !important;
+	background-attachment:fixed !important;
 	}
 }
 @media only screen and (max-width: 992px) {
@@ -73,6 +75,6 @@ background-size: 100% !important;
 	-moz-background-size: auto 100% !important;
 	-o-background-size: auto 100% !important;
 	background-size: auto 100% !important;
-	background-attachment:scroll !important;
+	background-attachment:fixed !important;
 	}
 }

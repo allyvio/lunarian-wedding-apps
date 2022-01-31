@@ -33,8 +33,7 @@
             </div>
             <div id="custom-owl-slider" class="owl-slide" data-scroll-speed="2">
             @foreach($wedding->hero as $hero)
-                <div class="item">
-                    <img src="{{asset('storage/media/'.$hero->filename)}}" alt="">
+                <div class="item" style="background-image: url({{asset('storage/media/'.$hero->filename)}});height:100%;background-position:center;">
                 </div>
             @endforeach
         @endif

@@ -34,11 +34,11 @@ class WeddingController extends Controller
         if ($urlQuery) {
             $package = Package::where('name', $urlQuery)->first();
             if ($package)
-                $package = 'exists';
+                $package = $package->id;
             else
                 $package = 'not found';
         } else {
-            $package = 'not set';
+            $package = 'not found';
         }
         return view('pages.wedding.create', compact('package'));
         // if($package)
