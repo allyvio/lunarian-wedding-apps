@@ -22,7 +22,8 @@ class CreateWeddingsTable extends Migration
             $table->string('calon_wanita', 100);
             $table->string('calon_pria_photo')->nullable();
             $table->string('calon_wanita_photo')->nullable();
-            $table->enum('theme', ['default']);
+            $table->text('quote')->nullable();
+            $table->enum('theme', ['tropical','rustic','classic']);
             $table->softDeletes();
             $table->timestamps();
             $table->index(['id', 'slug']);

@@ -13,15 +13,16 @@ class Invitation extends Model
         'name',
         'email',
         'phone',
-        'is_vip',
         'count',
         'status',
         'invited_at',
         'opened_at',
-        'rsvp_at'
+        'rsvp_at',
+        'deleted_at',
     ];
+
+    // protected $guarded = [];
     protected $attributes = [
-        'is_vip' => false,
         'count' => 0,
     ];
 

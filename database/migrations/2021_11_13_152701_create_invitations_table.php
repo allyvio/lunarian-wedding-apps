@@ -21,7 +21,7 @@ class CreateInvitationsTable extends Migration
             $table->string('email', 100)->nullable();
             $table->string('phone', 100)->nullable();
             $table->tinyInteger('count');
-            $table->enum('status', ['hadir', 'tidak hadir'])->nullable();
+            $table->enum('status', ['ya', 'tidak'])->nullable();
             $table->timestamp('invited_at')->nullable();
             $table->timestamp('opened_at')->nullable();
             $table->timestamp('rsvp_at')->nullable();

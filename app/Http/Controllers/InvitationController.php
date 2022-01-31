@@ -4,41 +4,142 @@ namespace App\Http\Controllers;
 
 use App\Models\Invitation;
 use App\Models\Wedding;
+use App\Models\Package;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Validation\Rule;
+use Illuminate\Support\Str;
+use Validator;
+use Storage;
+use RealRashid\SweetAlert\Facades\Alert;
+use Maatwebsite\Excel\Facades\Excel;
+use App\Imports\UsersImport;
 
 class InvitationController extends Controller
 {
+    public function index()
+    {
+        $wedding = Auth::user()->wedding;
+        $invitations = $wedding->invitations;
+        // $packages = Wedding::where('user_id', Auth::user()->id)->first()->package_id;
+		    // $package = Package::findOrFail($packages)->count_invitation;
+        return view('pages.invitation.index', compact('wedding','invitations'));
+    }
+
+    public function addInvitation(Request $request)
+    {
+        \Validator::make($request->all(),
+        [
+          'name' => 'required',
+          'email' => 'required|email',
+          'phone' => 'required|between:10,12'
+        ]
+        )->validate();
+
+        $packet = Wedding::where('user_id', Auth::user()->id)->first()->package_id;
+		    $limit = Package::findOrFail($packet)->count_invitation;
+        $count_invitation = Invitation::where('wedding_id', Auth::user()->id)->get();
+        if (count($count_invitation) < $limit) {
+            $invitation = new Invitation;
+            $invitation->code = Str::random(6);
+            $invitation->wedding_id = Wedding::where('user_id', Auth::user()->id)->first()->id;
+            $invitation->name = $request->name;
+            $invitation->email = $request->email;
+            $invitation->phone = $request->phone;
+            $invitation->save();
+            Alert::success('Berhasil', 'Data Undangan Berhasil Di Tambahkan');
+            return response()->json('Berhasil');
+        }else{
+            Alert::error('Gagal', 'Undangan Melebihi Batas');
+            return response()->json('Berhasil');
+        }
+    }
+
+    public function getInvitationById($id)
+    {
+        $invitation = Invitation::find($id);
+        return response()->json($invitation);
+    }
+
+    public function updateInvitation(Request $request)
+    {
+        \Validator::make($request->all(),
+        [
+          'name' => 'required',
+          'email' => 'required|email',
+          'phone' => 'required|between:10,12'
+        ]
+        )->validate();
+
+        $invitation = Invitation::find($request->id);
+        $invitation->name = $request->name;
+        $invitation->email = $request->email;
+        $invitation->phone = $request->phone;
+        $invitation->save();
+        Alert::success('Berhasil', 'Data Undangan Berhasil Di Edit');
+        return response()->json($invitation);
+    }
+
+    public function deleteInvitation($id)
+    {
+        $invitation = Invitation::findOrFail($id);
+        $invitation->delete();
+        Alert::success('Berhasil', 'Data Undangan Berhasil Di Hapus');
+        return response()->json();
+    }
+
+    public function store(Request $request)
+    {
+        $packet = Wedding::where('user_id', Auth::user()->id)->first()->package_id;
+        $limit = Package::findOrFail($packet)->count_invitation;
+        $count_invitation = Invitation::where('wedding_id', Auth::user()->id)->get();
+        $invitation = $request->file('field');
+        $row = -1;
+        if (($handle = fopen($invitation, "r")) !== FALSE) {
+            while (($data = fgetcsv($handle, 1000, ",")) !== FALSE) {
+            $num = count($data);
+            $row++;
+            }
+        fclose($handle);
+        }
+        // dd($limit);
+        if (count($count_invitation) < $limit) {
+            if ($row <= $limit) {
+                if (count($count_invitation) == 0) {
+                    (new UsersImport)->import($invitation);
+                    Alert::success('Berhasil', 'Data Undangan Berhasil Di Tambah');
+                    return back();
+                } else{
+                    Alert::error('Gagal', 'Kosongkan Data Undangan Terlebih Dahulu!');
+                    return back();
+                }
+
+            } else {
+                Alert::error('Gagal', 'Undangan Melebihi Batas');
+                return back();
+            }
+
+        } else {
+            Alert::error('Gagal', 'Undangan Melebihi Batas');
+            return back();
+        }
+    }
+
+    public function download()
+    {
+        try {
+            return Storage::disk('local')->download('public/csv/digital_invitation.csv');
+            return back();
+        } catch (\Throwable $th) {
+            Alert::error('Gagal', 'Coba Lagi');
+            return back();
+        }
+    }
+
     public static function show($wedding_id, $code)
     {
         $invitation = Invitation::where('wedding_id', $wedding_id)->where('code', $code)->first();
         return $invitation;
-    }
-    public function store(Request $request)
-    {
-        $weddingId = $request->wedding_id;
-        $request->validateWithBag('CreateInvitation', [
-            'wedding_id' => ['required', 'exists:weddings,id'],
-            'name' => ['required', 'string', 'between:2,30'],
-            'email' => ['string', 'email', 'max:100', 'nullable'],
-            'phone' => ['string', 'between:9,16', 'nullable'],
-            'is_vip' => ['boolean', 'required'],
-        ]);
-        Invitation::create([
-            'wedding_id' => $request->wedding_id,
-            'name' => $request->name,
-            'email' => $request->email,
-            'phone' => $request->phone,
-            'is_vip' => $request->is_vip
-        ]);
-    }
-
-    public function codeChecker($wedding_id, $code)
-    {
-        return Invitation::where(['code', $code])->where(['wedding_id', $wedding_id])->first();
-        // Rule::unique('invitations', 'code')->where(function ($query) use ($weddingId) {
-        //     return $query->where('wedding_id', $weddingId);
-        // });
     }
 
     public function rsvp(Wedding $wedding, $code, Request $request)
@@ -51,8 +152,10 @@ class InvitationController extends Controller
         if ($status === 'reset') {
             $invitation->status = null;
             $invitation->rsvp_at = null;
+            $invitation->count = 0;
         } else {
             $invitation->status = $status;
+            $invitation->count = 1;
             $invitation->rsvp_at = now();
         }
         $invitation->save();
@@ -63,6 +166,17 @@ class InvitationController extends Controller
             $view = view('themes.' . $theme . '.components.rsvp.response', compact('wedding'))->render();
             return response()->json(['html' => $view]);
         }
-        // return response()->json(['wedding' => $wedding, 'request' => $request->all()]);
+    }
+
+    public function count(Invitation $invitation, Request $request)
+    {
+        $request->validate([
+            'rsvp_count' => ['required', 'integer', 'between:1,5']
+        ]);
+        $invitation->count = $request->rsvp_count;
+        $invitation->save();
+        if ($request->ajax()) {
+            return response()->json(['count' => $invitation->count]);
+        }
     }
 }
