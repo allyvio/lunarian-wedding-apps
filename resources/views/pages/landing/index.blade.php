@@ -360,7 +360,7 @@
                                     </div>
                                 </li>
                             </ul>
-                            <a href="#" class="btn btn-outline-brown mb-3">Beli Sekrang</a>
+                            <a href="{{route('wedding.create',['package'=>'basic'])}}" class="btn btn-outline-brown mb-3">Beli Sekrang</a>
                             <!-- <button type="button" class="btn btn-outline-primary">Primary</button> -->
                         </div>
                         <!-- <div class="card-footer">
@@ -525,7 +525,7 @@
                                     </div>
                                 </li>
                             </ul>
-                            <a href="{{route('wedding.create',['package'=>'asds'])}}" class="btn btn-secondary mb-3">Coming Soon</a>
+                            <a href="{{route('wedding.create',['package'=>'exclusive'])}}" class="btn btn-secondary mb-3 disabled">Coming Soon</a>
                         </div>
                         <!-- <div class="card-footer bg-transparent">
                             <a href="#!" class="text-white">Contact sales</a>
@@ -677,7 +677,7 @@
                                   </div>
                               </li>
                             </ul>
-                            <a href="#" class="btn btn-outline-brown mb-3">Coming Soon</a>
+                            <a href="{{route('wedding.create',['package'=>'premium'])}}" class="btn btn-outline-brown mb-3 disabled">Coming Soon</a>
                         </div>
                     </div>
                     @endif

@@ -45,7 +45,7 @@
       <span style="cursor:pointer;">
         <div class="card-header">
           <div class="custom-control custom-radio">
-            <input name="package_id" class="custom-control-input" id="package-{{$package->id}}" value="{{$package->id}}" type="radio">
+            <input name="package_id" class="custom-control-input" id="package-{{$package->id}}" value="{{$package->id}}" type="radio" disabled>
             <label class="custom-control-label" for="package-{{$package->id}}"><h3 class="mb-0">Paket {{ucfirst($package->name)}}</h3></label>
           </div>
         </div>
@@ -81,7 +81,7 @@
       <span style="cursor:pointer;">
         <div class="card-header">
           <div class="custom-control custom-radio">
-            <input name="package_id" class="custom-control-input" id="package-{{$package->id}}" value="{{$package->id}}" type="radio">
+            <input name="package_id" class="custom-control-input" id="package-{{$package->id}}" value="{{$package->id}}" type="radio" disabled>
             <label class="custom-control-label" for="package-{{$package->id}}"><h3 class="mb-0">Paket {{ucfirst($package->name)}}</h3></label>
           </div>
         </div>

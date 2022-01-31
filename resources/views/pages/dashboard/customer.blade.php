@@ -17,7 +17,7 @@
                     <div class="col">
                         <h3 class="text-white">Notifikasi</h3>
                         <span class="alert-text">Saat ini status weddingmu sedang <span class="text-uppercase font-weight-bold">{{$wedding->status}}</span>.
-                            <br> Lihat detail tagihanmu <a href="#modal-invoice-detail" data-toggle="modal" class="text-white text-underline">disini</a>, apabila sudah menyelesaikan transaksi <a href="https://api.whatsapp.com/send?phone=6283832299180" target="_blank" class="text-white text-underline"> hubungi kontak layanan</a>.</span>
+                            <br> Lihat detail tagihanmu <a href="#modal-invoice-detail" data-toggle="modal" class="text-white text-underline">disini</a>, apabila sudah menyelesaikan transaksi <a href="https://api.whatsapp.com/send?phone=6281359598007" target="_blank" class="text-white text-underline"> hubungi kontak layanan</a>.</span>
                     </div>
                 </div>
             </div>

@@ -14,21 +14,21 @@
                     </a>
                 </li>
                 <li class="nav-item text-center m-0">
-                    <a title="Pasangan" class="nav-link rounded-circle disabled" id="couple-tab" data-progress="{{$package != 'exists' ? '25' : '33'}}" data-toggle="tab" href="#tabs-couple" role="tab" aria-controls="tabs-couple" aria-selected="false">
+                    <a title="Pasangan" class="nav-link rounded-circle disabled" id="couple-tab" data-progress="{{$package == 'not found' ? '25' : '33'}}" data-toggle="tab" href="#tabs-couple" role="tab" aria-controls="tabs-couple" aria-selected="false">
                         <span class="nav-link-icon d-block"><i class="fa fa-heart"></i></span>
                     </a>
                 </li>
                 <li class="nav-item text-center m-0">
-                    <a title="Tema" class="nav-link rounded-circle disabled" id="theme-tab" data-progress="{{$package != 'exists' ? '50' : '66'}}" data-toggle="tab" href="#tabs-theme" role="tab" aria-controls="tabs-theme" aria-selected="false">
+                    <a title="Tema" class="nav-link rounded-circle disabled" id="theme-tab" data-progress="{{$package == 'not found' ? '50' : '66'}}" data-toggle="tab" href="#tabs-theme" role="tab" aria-controls="tabs-theme" aria-selected="false">
                         <span class="nav-link-icon d-block"><i class="fas fa-clone"></i></span>
                     </a>
                 </li>
                 <li class="nav-item text-center m-0">
-                    <a title="Acara" class="nav-link rounded-circle disabled" id="event-tab" data-progress="{{$package != 'exists' ? '75' : '99'}}" data-toggle="tab" href="#tabs-event" role="tab" aria-controls="tabs-event" aria-selected="false">
+                    <a title="Acara" class="nav-link rounded-circle disabled" id="event-tab" data-progress="{{$package == 'not found' ? '75' : '99'}}" data-toggle="tab" href="#tabs-event" role="tab" aria-controls="tabs-event" aria-selected="false">
                         <span class="nav-link-icon d-block"><i class="fa fa-calendar"></i></span>
                     </a>
                 </li>
-                @if($package != 'exists')
+                @if($package == 'not found')
                 <li class="nav-item text-center m-0">
                     <a title="Paket" class="nav-link rounded-circle disabled" id="package-tab" data-progress="99" data-toggle="tab" href="#tabs-package" role="tab" aria-controls="tabs-package" aria-selected="false">
                         <span class="nav-link-icon d-block"><i class="fa fa-cube"></i></span>
@@ -149,8 +149,8 @@
 
     function nextTab(elem) {
         var tabpanel = $('#' + $(elem).attr('aria-controls')),
-            form = tabpanel.find('form')
-
+            form = tabpanel.find('form'),
+            package = '{{$package}}'
         // if (tabpanel.next().data('stage') == 'event')
         //     $.get("{{route('event.showAll')}}", function(data) {
         //         $('#events-container').html(data.html)
@@ -158,11 +158,19 @@
 
         if (tabpanel.data('stage') == 'event') {
             $('#next-step').addClass('btn-progress disabled')
-            var event_res = $.post("{{route('wedding.store')}}", {
-                stage: 'event'
-            }, function(data) {
-                console.log(data);
-            });
+            if (package == 'not found')
+                var event_res = $.post("{{route('wedding.store')}}", {
+                    stage: 'event'
+                }, function(data) {
+                    console.log(data);
+                });
+            else
+                var event_res = $.post("{{route('wedding.store')}}", {
+                    stage: 'package',
+                    package_id: package
+                }, function() {
+                    window.location.href = "{{route('wedding.storeDB')}}";
+                });
             event_res.done(function() {
                 $(elem).parent().next().find('a[data-toggle="tab"]').removeClass('disabled').tab('show');
             }).always(a => {
