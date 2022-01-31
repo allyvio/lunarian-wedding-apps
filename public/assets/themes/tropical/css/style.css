@@ -5572,7 +5572,20 @@ a.read_more i {
 .owl-custom-nav .btn-prev:hover:before, .owl-custom-nav .btn-next:hover:before {
 	cursor: pointer;
 }
-.hero-image, #custom-owl-slider {
+.hero-image{
+	background-repeat: no-repeat;
+	background-attachment: fixed;
+	background-position: center;
+	filter:brightness(0.6);
+	display: block;
+	overflow: hidden;
+	width: 100%;
+	height: 100vh;
+	position: absolute;
+	top: 0;
+	z-index: -1;
+}
+#custom-owl-slider {
 	filter:brightness(0.6);
 	display: block;
 	overflow: hidden;
@@ -5582,6 +5595,10 @@ a.read_more i {
 	top: 0;
 	z-index: -1;
 	background: #fff;
+
+}
+#custom-owl-slider .owl-wrapper-outer,#custom-owl-slider .owl-wrapper,#custom-owl-slider .owl-item{
+	height: 100%;
 }
 #custom-owl-slider .items {
 	width: 100%;
@@ -5592,7 +5609,9 @@ a.read_more i {
 	opacity: 1;
 }
 #custom-owl-slider .item img {
-	display: block;
+	object-position: center center;
+	object-fit: fill;
+	/* display: block; */
 	width: 100%;
 	height: 100%;
 }
@@ -6183,8 +6202,8 @@ a, img {
 }
 @media only screen and (max-width: 992px) {
 	#custom-owl-slider .item img{
-		width:100% !important;
-		height:auto !important;
+		/* width:100% !important;
+		height:auto !important; */
 	}
 	#custom-owl-slider .item{
 		overflow:hidden;
@@ -6556,9 +6575,9 @@ a, img {
 
 @media only screen and (max-width: 767px) {
 	#custom-owl-slider .item img{
-		width:200% !important;
+		/* width:200% !important;
 		height:auto !important;
-		margin-left:-60%;
+		margin-left:-60%; */
 	}
 	#custom-owl-slider .item{
 		overflow:hidden;
