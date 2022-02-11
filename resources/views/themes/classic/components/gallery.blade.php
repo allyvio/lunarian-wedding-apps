@@ -9,7 +9,7 @@
             @foreach($wedding->gallery as $gallery)
             <div class="col-sm-6 col-md-4 gallery-item">
                 <a href="{{asset('storage/media/'.$gallery->filename)}}" title="Digital Invitation">
-                    <img src="{{asset('storage/media/'.$gallery->filename)}}" alt="">
+                    <img src="{{asset('storage/media/'.$gallery->filename)}}" alt="" style="object-fit: cover;">
                     <div class="mask"></div>
                 </a>
             </div>

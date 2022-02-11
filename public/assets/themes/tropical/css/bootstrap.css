@@ -334,8 +334,8 @@ img {
   object-fit:cover;
   object-position: center; 
   -o-object-position: center; 
-  height: 340px;
   width: 340px;
+  aspect-ratio: 1/1;
 }
 hr {
   margin-top: 20px;
@@ -5847,7 +5847,6 @@ td.visible-md {
   display: none !important;
 }
 @media (min-width: 992px) and (max-width: 1199px) {
-  .img-couple{max-width: 100%;}
   .visible-md {
     display: block !important;
   }
@@ -5884,6 +5883,7 @@ td.visible-lg {
   }
 }
 @media (max-width: 767px) {
+  .img-couple{max-width: 100%;}
   .hidden-xs,
   tr.hidden-xs,
   th.hidden-xs,
