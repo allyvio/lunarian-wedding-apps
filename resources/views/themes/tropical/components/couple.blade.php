@@ -1,7 +1,6 @@
 <section id="section-couple" class="no-top">
     <div class="container relative mt-60 z-index">
         <div class="row">
-
             <div class="col-md-5 col-md-offset-1 text-center">
                 <img src="{{asset('storage/couple/' . $wedding->calon_wanita_photo)}}" alt="bride-photo" class="img-couple img-rounded wow fadeInLeft" data-wow-delay=".2s" />
                 <div class="padding40">

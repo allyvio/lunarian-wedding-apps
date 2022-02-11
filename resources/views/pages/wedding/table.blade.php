@@ -42,7 +42,7 @@
                         <a target="_blank" href="{{route('wedding.page',$wedding->slug)}}">{{$wedding->slug}} <i class="fa fa-external-link-alt fa-sm"></i></a>
                     </td>
                     <td>
-                        {{$wedding->package->name}}
+                        {{$wedding->package->name}} ({{$wedding->theme}})
                     </td>
                     <td>
                         @switch($wedding->status)

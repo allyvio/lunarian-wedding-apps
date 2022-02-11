@@ -27,7 +27,7 @@
            ?>
           @foreach($wedding->hero as $hero)
           <div class="item {{($x == 1 ) ?  'active' : '' }}"style="width:100%; height:100%;">
-            <img style="width:100%; height:100%;" src="{{asset('storage/media/'.$hero->filename)}}">
+            <img style="width:100%; height:100%;object-fit: cover;" src="{{asset('storage/media/'.$hero->filename)}}">
             <?php
                 $x++;
              ?>
