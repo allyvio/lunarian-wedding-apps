@@ -1,6 +1,6 @@
 <section class="just-married pt-200 pb-200 overlay">
     <div class="background-img">
-        <img src="{{asset('assets/themes/rustic/img/hero-3.jpeg')}}" alt="">
+        <img src="{{asset('storage/media/'.$wedding->hero->first()->filename)}}" alt="">
     </div>
     <!--Container-->
     <div class="container">

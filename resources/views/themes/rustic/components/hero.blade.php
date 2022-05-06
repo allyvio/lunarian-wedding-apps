@@ -12,11 +12,11 @@
       </ol>
 
       <!-- Wrapper for slides -->
-      <div class="carousel-inner" role="listbox" style="object-fit:cover; width:100%; height:100%;">
+      <div class="carousel-inner" role="listbox" style="height: inherit;">
         <?php $x = 1; ?>
         @foreach($wedding->hero as $hero)
-        <div class="item {{($x == 1 ) ?  'active' : '' }}" style="width:100%; height:100%;">
-          <img style="width:100%; height:100%;" src="{{asset('storage/media/'.$hero->filename)}}">
+        <div class="item {{($x == 1 ) ?  'active' : '' }}" style="height: inherit;">
+          <img style="width:100%; height:inherit;object-fit: cover;" src="{{asset('storage/media/'.$hero->filename)}}">
           <?php $x++; ?>
         </div>
         @endforeach
