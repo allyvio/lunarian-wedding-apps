@@ -31,13 +31,12 @@ class InvitationController extends Controller
         \Validator::make($request->all(),
         [
           'name' => 'required',
-          'email' => 'required|email',
-          'phone' => 'required|between:10,12'
+          'phone' => 'required'
         ]
         )->validate();
 
         $packet = Wedding::where('user_id', Auth::user()->id)->first()->package_id;
-		    $limit = Package::findOrFail($packet)->count_invitation;
+		    $limit = 1100;
         $count_invitation = Invitation::where('wedding_id', Auth::user()->id)->get();
         if (count($count_invitation) < $limit) {
             $invitation = new Invitation;
@@ -46,6 +45,7 @@ class InvitationController extends Controller
             $invitation->name = $request->name;
             $invitation->email = $request->email;
             $invitation->phone = $request->phone;
+            $invitation->slug = Str::slug($request->name);
             $invitation->save();
             Alert::success('Berhasil', 'Data Undangan Berhasil Di Tambahkan');
             return response()->json('Berhasil');
@@ -66,8 +66,7 @@ class InvitationController extends Controller
         \Validator::make($request->all(),
         [
           'name' => 'required',
-          'email' => 'required|email',
-          'phone' => 'required|between:10,12'
+          'phone' => 'required'
         ]
         )->validate();
 
@@ -75,6 +74,7 @@ class InvitationController extends Controller
         $invitation->name = $request->name;
         $invitation->email = $request->email;
         $invitation->phone = $request->phone;
+        $invitation->slug = Str::slug($request->name);
         $invitation->save();
         Alert::success('Berhasil', 'Data Undangan Berhasil Di Edit');
         return response()->json($invitation);
@@ -91,7 +91,8 @@ class InvitationController extends Controller
     public function store(Request $request)
     {
         $packet = Wedding::where('user_id', Auth::user()->id)->first()->package_id;
-        $limit = Package::findOrFail($packet)->count_invitation;
+        // $limit = Package::findOrFail($packet)->count_invitation;
+        $limit = 1000;
         $count_invitation = Invitation::where('wedding_id', Auth::user()->id)->get();
         $invitation = $request->file('field');
         $row = -1;
@@ -138,7 +139,10 @@ class InvitationController extends Controller
 
     public static function show($wedding_id, $code)
     {
-        $invitation = Invitation::where('wedding_id', $wedding_id)->where('code', $code)->first();
+        $invitation = Invitation::where('wedding_id', $wedding_id)->where(function ($query) use ($code) {
+                        $query->where('code', $code)
+                        ->orWhere('slug', $code);
+                    })->first();
         return $invitation;
     }
 
@@ -149,13 +153,15 @@ class InvitationController extends Controller
             'rsvp_confirm' => ['required', Rule::in(['ya', 'tidak', 'reset'])]
         ]);
         $status = $request->rsvp_confirm;
+        $count = $request->count;
+
         if ($status === 'reset') {
             $invitation->status = null;
             $invitation->rsvp_at = null;
             $invitation->count = 0;
         } else {
             $invitation->status = $status;
-            $invitation->count = 1;
+            $invitation->count = $count;
             $invitation->rsvp_at = now();
         }
         $invitation->save();

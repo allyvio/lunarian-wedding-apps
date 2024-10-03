@@ -39,15 +39,17 @@ class WeddingRequest extends FormRequest
             ];
         if ($stage == 'couple')
             $rules += [
-                'calon_pria' => ['required', 'string', 'between:2,30'],
-                'calon_wanita' => ['required', 'string', 'between:2,30'],
+                'calon_pria' => ['required', 'string', 'between:2,100'],
+                'calon_wanita' => ['required', 'string', 'between:2,100'],
+                'nama_calon_pria' => ['required', 'string', 'between:2,100'],
+                'nama_calon_wanita' => ['required', 'string', 'between:2,100'],
                 'calon_pria_photo' => ['nullable', 'image', 'max:5120'],
                 'calon_wanita_photo' => ['nullable', 'image', 'max:5120'],
             ];
         if ($stage == 'theme')
             $rules += [
-                // 'theme' => ['required', Rule::in(['tropical', 'rustic', 'classic'])]
-                'theme' => ['required', Rule::in(['classic'])]
+                'theme' => ['required', Rule::in(['tropical', 'rustic', 'classic'])]
+                // 'theme' => ['required', Rule::in(['classic'])]
             ];
         if ($stage == 'package')
             $rules += [

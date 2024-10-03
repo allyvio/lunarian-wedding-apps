@@ -12,7 +12,7 @@
         <div class="input-group">
             <div class="input-group-prepend">
                 <span class="input-group-text">
-                    <h4 class="text-muted m-0">digital-invitation.com/</h4>
+                    <h4 class="text-muted m-0">akadinvitation.id/</h4>
                 </span>
             </div>
             <input class="form-control" type="text" name="slug">

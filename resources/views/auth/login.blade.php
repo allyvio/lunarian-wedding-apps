@@ -6,7 +6,7 @@
       <div class="row justify-content-center">
         <div class="col-xl-5 col-lg-6 col-md-8 px-5">
           <h1 class="text-white">Selamat datang!</h1>
-          <p class="text-lead text-white">Gunakan formulir luar biasa ini untuk masuk atau membuat akun baru di proyek Anda secara gratis.</p>
+          <p class="text-lead text-white">Silahkan login terlebih dahulu dan buat undangan pernikalahan kalian dalam bentuk website.</p>
         </div>
       </div>
     </div>

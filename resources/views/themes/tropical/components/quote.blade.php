@@ -1,5 +1,9 @@
 @if($wedding->quote)
-<section id="section-quote" aria-label="section-quote-1" class="text-light" data-stellar-background-ratio=".2" style="background-image: url({{asset('storage/media/'.$wedding->hero->first()->filename)}}">
+@if ($wedding->hero->first() != null)
+<section id="section-countdown" aria-label="section-countdown" class="pt60 pb60 text-light" data-stellar-background-ratio=".2" style="background-image: url({{asset('storage/media/'.$wedding->hero->first()->filename)}});">
+    @else
+    <section id="section-countdown" aria-label="section-countdown" class="pt60 pb60 text-light" data-stellar-background-ratio=".2">
+        @endif    
     <div class="container">
         <div class="row">
             <div class="col-md-8 col-md-offset-2 wow fadeIn">

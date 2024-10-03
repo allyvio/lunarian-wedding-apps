@@ -9,6 +9,7 @@ class Invitation extends Model
     protected $table = 'invitations';
     protected $fillable = [
         'code',
+        'slug',
         'wedding_id',
         'name',
         'email',

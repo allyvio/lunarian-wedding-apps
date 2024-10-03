@@ -13,6 +13,8 @@ class Wedding extends Model
         'description',
         'calon_pria',
         'calon_wanita',
+        'nama_calon_pria',
+        'nama_calon_wanita',
         'calon_pria_photo',
         'calon_wanita_photo',
         'theme',

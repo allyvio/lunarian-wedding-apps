@@ -1,42 +1,29 @@
-<section id="section-event">
-    <div class="container">
-        <?php $c = 1;
-        foreach ($wedding->events as $event) { ?>
-            @if ($c % 2 == 0)
-            <div class="row">
-                <div class="col-md-5 pt40 pb40 text-right wow fadeIn" data-wow-delay=".5s">
-                    <h3>{{$event->title}}</h3>
-                    {{date('l, d F Y',strtotime($event->date))}}<br> {{$event->start_date}} - {{$event->end_date ? $event->end_date : 'selesai'}}<br>
-                    @if(filter_var($event->location, FILTER_VALIDATE_URL))
-                    Lokasi Google Maps
-                    <iframe src="{{$event->location}}" width="100%" height="300" frameborder="0"></iframe>
-                    @else
-                    {{$event->location ?? ''}}
-                    @endif
-                </div>
-                <div class="col-md-6 col-md-offset-1">
-                    <img src="{{asset('assets/themes/tropical/images/misc/4.jpg')}}" alt="" class="img-responsive img-rounded wow fadeInRight">
-                </div>
+<style>
+    footer::before {
+        content: "";
+        background-position: center;
+        background-repeat: no-repeat;
+        background-size: cover;
+        padding-top: 340px;
+        position: absolute;
+        top: 0px;
+        right: 0px;
+        left: 0px;
+        filter: brightness(0.7);
+        background-image: url({{asset('storage/media/'.$wedding->hero->first()->filename)}});
+    }
+</style>
+<footer style="position: relative;padding-top: 150px;">
+    <div class="container text-center text-light">
+        <div class="row">
+            <div class="col-md-12">
+                <h2 class="hs1 wow fadeInUp">{{strtok($wedding->calon_wanita," ")}}<span>&amp;</span>{{strtok($wedding->calon_pria," ")}}</h2>
             </div>
-            @else
-            <div class="row">
-                <div class="col-md-6">
-                    <img src="{{asset('assets/themes/tropical/images/misc/3.jpg')}}" alt="" class="img-responsive img-rounded wow fadeInLeft">
-                </div>
-                <div class="col-md-5 col-md-offset-1 pt40 pb40 wow fadeIn" data-wow-delay=".5s">
-                    <h3>{{$event->title}}</h3>
-                    {{date('l, d F Y',strtotime($event->date))}}<br> {{$event->start_date}} - {{$event->end_date ? $event->end_date : 'selesai'}}<br>
-                    @if(filter_var($event->location, FILTER_VALIDATE_URL))
-                    Lokasi Google Maps
-                    <iframe src="{{$event->location}}" width="100%" height="300" frameborder="0"></iframe>
-                    @else
-                    {{$event->location ?? ''}}
-                    @endif
-                </div>
-            </div>
-            @endif
-            <div class="spacer-double"></div>
-        <?php $c++;
-        } ?>
+        </div>
     </div>
-</section>
+    <div class="subfooter" style="margin-top: 140px;">
+        <div class="container text-center">
+            &copy; Copyright {{date('Y')}} - {{config('app.name')}}
+        </div>
+    </div>
+</footer>

@@ -211,7 +211,7 @@
                     </span>
                   </div>
                   <h4 class="h2 text-dark text-uppercase">Galeri foto</h4>
-                  <h4 class="h4 text-brown text-uppercase">Tampilkan foto dan video yang melambangkan moment bahagiamu</h4>
+                  <h4 class="h4 text-brown text-uppercase">Tampilkan foto yang melambangkan moment bahagiamu</h4>
                   <!-- </div> -->
                 </div>
                 <div class="col-lg-6 mb60">
@@ -360,7 +360,7 @@
                                     </div>
                                 </li>
                             </ul>
-                            <a href="{{route('wedding.create',['package'=>'basic'])}}" class="btn btn-outline-brown mb-3">Beli Sekrang</a>
+                            <a href="{{route('wedding.create',['package'=>'basic'])}}" class="btn btn-outline-brown mb-3">Beli Sekarang</a>
                             <!-- <button type="button" class="btn btn-outline-primary">Primary</button> -->
                         </div>
                         <!-- <div class="card-footer">

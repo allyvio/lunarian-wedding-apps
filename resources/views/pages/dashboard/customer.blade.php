@@ -28,14 +28,14 @@
 @endsection
 @section('dashboard-content')
 <div class="row">
-    <div class="col-5">
+    <div class="col-md-5 col-sm-12">
         <div class="card">
             <div class="card-header" style="background: linear-gradient(rgba(148, 104, 99, 0.2),rgba(148, 104, 99, 0.8)), url({{asset('img/theme/wedding-thumbnail.jpg')}});">
                 <!-- <img class="card-img" src="{{asset('img/theme/wedding-thumbnail.jpg')}}" alt="Card image"> -->
                 <h4 class="text-white mb-0">{{$wedding->title}}</h4>
-                <span class="display-4 text-neutral">{{strtok($wedding->calon_wanita," ")}} </span>
+                <span class="display-4 text-neutral">{{strtok($wedding->nama_calon_wanita," ")}} </span>
                 <span class="display-4 text-neutral"> & </span>
-                <span class="display-4 text-neutral">{{strtok($wedding->calon_pria," ")}}</span>
+                <span class="display-4 text-neutral">{{strtok($wedding->nama_calon_pria," ")}}</span>
             </div>
             <div class="card-body">
                 <div class="row">

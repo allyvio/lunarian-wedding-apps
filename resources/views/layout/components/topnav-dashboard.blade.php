@@ -16,7 +16,7 @@
         </li>
       </ul>
       @if(Auth::user()->hasRole('customer'))
-      <ul class="navbar-nav align-items-center order-2 order-md-1">
+      <ul class="navbar-nav align-items-center order-2 order-md-1 d-none d-sm-block">
         <li class="nav-item">
           <a href="{{route('wedding.page',Auth::user()->wedding->slug)}}" target="_blank" class="nav-link text-brown font-weight-bold text-sm p-0">
             <span class="btn-inner--icon"><i class="ni ni-world"></i></span>

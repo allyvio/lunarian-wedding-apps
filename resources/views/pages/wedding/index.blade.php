@@ -51,7 +51,7 @@
                                 <div class="input-group">
                                     <div class="input-group-prepend">
                                         <span class="input-group-text">
-                                            <h4 class="text-muted m-0">digital-invitation.com/</h4>
+                                            <h4 class="text-muted m-0">akadinvitation.id/</h4>
                                         </span>
                                     </div>
                                     <input type="text" class="form-control @error('slug') is-invalid @enderror" id="slug" name="slug" value="{{old('slug') ?? $wedding->slug}}">
@@ -80,8 +80,18 @@
                                         <input class="form-control" type="file" name="calon_pria_photo" id="calon_pria_photo" accept="image/*" style="display: none;" />
                                     </div>
                                     <div class="text-left">
-                                        <label class="form-control-label" for="calon_pria">Nama</label>
+                                        <label class="form-control-label" for="calon_pria">Nama Lengkap</label>
                                         <input type="text" class="form-control @error('calon_pria') is-invalid @enderror" id="calon_pria" name="calon_pria" value="{{old('calon_pria') ?? $wedding->calon_pria}}">
+                                        @error('calon_pria')
+                                        <span class="invalid-feedback" role="alert">
+                                            {{$message}}
+                                        </span>
+                                        @enderror
+                                    </div>
+
+                                    <div class="text-left">
+                                        <label class="form-control-label" for="nama_calon_pria">Nama</label>
+                                        <input type="text" class="form-control @error('nama_calon_pria') is-invalid @enderror" id="nama_calon_pria" name="nama_calon_pria" value="{{old('nama_calon_pria') ?? $wedding->nama_calon_pria}}">
                                         @error('calon_pria')
                                         <span class="invalid-feedback" role="alert">
                                             {{$message}}
@@ -96,9 +106,19 @@
                                         <input class="form-control" type="file" name="calon_wanita_photo" id="calon_wanita_photo" accept="image/*" style="display: none;" />
                                     </div>
                                     <div class="text-left">
-                                        <label class="form-control-label" for="calon_wanita">Nama</label>
+                                        <label class="form-control-label" for="calon_wanita">Nama Lengkap</label>
                                         <input type="text" class="form-control @error('calon_wanita') is-invalid @enderror" id="calon_wanita" name="calon_wanita" value="{{old('calon_wanita') ?? $wedding->calon_wanita}}">
                                         @error('calon_wanita')
+                                        <span class="invalid-feedback" role="alert">
+                                            {{$message}}
+                                        </span>
+                                        @enderror
+                                    </div>
+
+                                    <div class="text-left">
+                                        <label class="form-control-label" for="nama_calon_wanita">Nama</label>
+                                        <input type="text" class="form-control @error('nama_calon_wanita') is-invalid @enderror" id="nama_calon_wanita" name="nama_calon_wanita" value="{{old('nama_calon_wanita') ?? $wedding->nama_calon_wanita}}">
+                                        @error('nama_calon_wanita')
                                         <span class="invalid-feedback" role="alert">
                                             {{$message}}
                                         </span>

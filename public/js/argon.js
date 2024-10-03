@@ -1602,9 +1602,7 @@ var DatatableBasic = (function () {
 
         var options = {
             keys: !0,
-            select: {
-                style: "multi",
-            },
+            select: false,
             language: {
                 paginate: {
                     previous: "<i class='fas fa-angle-left'>",

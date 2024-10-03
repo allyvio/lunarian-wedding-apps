@@ -7,13 +7,6 @@
       <div class="row align-items-center py-4">
         <div class="col-lg-6 col-7">
           <h6 class="h2 d-inline-block mb-0">Undangan</h6>
-          <!-- <nav aria-label="breadcrumb" class="d-none d-md-inline-block ml-md-4">
-            <ol class="breadcrumb breadcrumb-links">
-              <li class="breadcrumb-item"><a href="#"><i class="fas fa-home"></i></a></li>
-              <li class="breadcrumb-item"><a href="{{url('/dashboard')}}">Dashboards</a></li>
-              <li class="breadcrumb-item active" aria-current="page">Undangan</li>
-            </ol>
-          </nav> -->
         </div>
       </div>
     </div>
@@ -25,16 +18,16 @@
   <!-- Card header -->
   <div class="card-header border-0">
     <div class="row">
-        <!-- Button trigger modal -->
-        <button type="button" class="btn btn-outline-brown btn-sm" data-toggle="modal" data-target="#invitationModal">
-          <span class="btn-inner--icon"><i class="fas fa-plus"></i></span>
-          <span class="btn-inner--text">Tambah</span>
-        </button>
-        <button type="button" class="btn btn-outline-default btn-sm"data-toggle="modal" data-target="#ImportModal">
-          <span class="btn-inner--icon"><i class="fas fa-file-import"></i></span>
-          <span class="btn-inner--text">Import</span>
-        </button>
-        <a href="{{route('download.file')}}"class="btn btn-default" data-toggle="tooltip" data-original-title="Unduh File CSV"><i class="fas fa-print"></i></a>
+      <!-- Button trigger modal -->
+      <button type="button" class="btn btn-outline-brown btn-sm" data-toggle="modal" data-target="#invitationModal">
+        <span class="btn-inner--icon"><i class="fas fa-plus"></i></span>
+        <span class="btn-inner--text">Tambah</span>
+      </button>
+      <button type="button" class="btn btn-outline-default btn-sm"data-toggle="modal" data-target="#ImportModal">
+        <span class="btn-inner--icon"><i class="fas fa-file-import"></i></span>
+        <span class="btn-inner--text">Import</span>
+      </button>
+      <a href="{{route('download.file')}}"class="btn btn-default" data-toggle="tooltip" data-original-title="Unduh File CSV"><i class="fas fa-print"></i></a>
     </div>
   </div>
   <!-- Modal Import -->
@@ -51,8 +44,6 @@
           <form id="invitationImport" action="{{route('import.store')}}" method="POST" enctype="multipart/form-data">
             @csrf
             <div class="custom-file">
-              <!-- <input type="file" class="custom-file-input" id="customFileLang" lang="en">
-              <label class="custom-file-label" for="customFileLang">Masukkan File Excel</label> -->
               <label for="field">PILIH FILE</label>
               <input type="file" id="field" name="field" class="form-control" required>
             </div>
@@ -139,37 +130,51 @@
     <table class="table table-flush" id="datatable-basic">
       <thead class="thead-light">
         <tr>
+          <th></th>
           <th>Nama</th>
-          <th>Email</th>
+          {{-- <th class="">Email</th> --}}
           <th>No.Hp</th>
           <th>Kehadiran</th>
-          <th>Jumlah</th>
-          <th>Kode</th>
+          <th class="">Jumlah</th>
+          {{-- <th class="">Kode</th> --}}
           <th></th>
         </tr>
       </thead>
       <tbody>
         @foreach($invitations as $data)
         <tr id="sid{{$data->id}}">
-          <td class="table-user">{{$data->name}}</td>
-          <td>{{$data->email}}</td>
-          <td>{{$data->phone}}</td>
-          <td>{{$data->status}}</td>
-          <td>{{$data->count}} orang</td>
-          <td>{{$data->code}}</td>
-          <td class="table-actions">
-            <a href="javascript:void(0)" onclick="editInvitation({{$data->id}})" class="btn btn-icon btn-outline-info btn-sm" data-toggle="tooltip" data-original-title="Ubah">
-              <i class="fas fa-user-edit"></i>
-            </a>
-            <a href="javascript:void(0)" onclick="deleteInvitation({{$data->id}})" class="btn btn-icon btn-outline-danger btn-sm" data-toggle="tooltip" data-original-title="Hapus">
-              <i class="fas fa-trash"></i>
-            </a>
+           <td class="table-actions">
             @if($data->phone != "")
-            <a target="_blank" href="https://api.whatsapp.com/send?phone={{preg_replace('/^0/', '62', $data->phone)}}&text={{$data->name}}%20yang%20terhormat%2C%0AAnda%20diundang%20ke%20pernikahan%20kami!%0AMohon%20respon%20RSVP%20Anda%20dan%20tinggalkan%20komentar%20Anda%20di%20http://127.0.0.1:8000/{{$wedding->slug}}%0Akode%20invitations%20%3A%20{{$data->code}}" class="btn btn-icon btn-outline-success btn-sm" data-toggle="tooltip" data-original-title="Whatsapp">
+            @if ($data->slug != null)
+
+            <a target="_blank" href="https://api.whatsapp.com/send?phone={{preg_replace('/^0/', '62', $data->phone)}}&text=%D8%A7%D9%84%D8%B3%D9%8E%D9%91%D9%84%D8%A7%D9%8E%D9%85%D9%8F%20%D8%B9%D9%8E%D9%84%D9%8E%D9%8A%D9%92%D9%83%D9%8F%D9%85%D9%92%20%D9%88%D9%8E%D8%B1%D9%8E%D8%AD%D9%92%D9%85%D9%8E%D8%A9%D9%8F%20%D8%A7%D9%84%D9%84%D9%87%D9%90%20%D9%88%D9%8E%D8%A8%D9%8E%D8%B1%D9%8E%D9%83%D9%8E%D8%A7%D8%AA%D9%8F%D9%87%D9%8F%0A%0AMaha%20suci%20Allah%20yang%20telah%20menjadikan%20segala%20sesuatu%20lebih%20indah%20dan%20sempurna.%0A%0ATanpa%20mengurangi%20rasa%20hormat%2C%20perkenankan%20kami%20mengundang%20Bapak%2FIbu%2FSaudara%2Fi%2C%20teman%20sekaligus%20sahabat%2C%20untuk%20menghadiri%20acara%20pernikahan%20kami%20%3A%0A%0A {{$wedding->nama_calon_wanita}} %20%26%20 {{$wedding->nama_calon_pria}} %0A%0ABerikut%20link%20untuk%20info%20lengkap%20dari%20acara%20kami%20untuk%20mengantarkan%20Bapak%2FIbu%2C%20teman%2C%20serta%20sahabat%20ketujuan%20%3A%0A%20 {{url($wedding->slug, $data->slug)}} %0A%0AMerupakan%20suatu%20kebahagiaan%20bagi%20kami%20apabila%20Bapak%2FIbu%2FSaudara%2Fi%20berkenan%20untuk%20hadir%20dan%20memberikan%20doa%20restu.%0A%0AMohon%20maaf%20perihal%20undangan%20hanya%20di%20bagikan%20melalui%20%20pesan%20ini.%0A%0A%D9%88%D9%8E%D8%A7%D9%84%D8%B3%D9%8E%D9%91%D9%84%D8%A7%D9%8E%D9%85%D9%8F%20%D8%B9%D9%8E%D9%84%D9%8E%D9%8A%D9%92%D9%83%D9%8F%D9%85%D9%92%20%D9%88%D9%8E%D8%B1%D9%8E%D8%AD%D9%92%D9%85%D9%8E%D8%A9%D9%8F%20%D8%A7%D9%84%D9%84%D9%87%D9%90%20%D9%88%D9%8E%D8%A8%D9%8E%D8%B1%D9%8E%D9%83%D9%8E%D8%A7%D8%AA%D9%8F%D9%87%D9%8F%0A%0AJangan%20lupa%20di%20pin%20tanggal%20nya%20yaa%F0%9F%98%8A%0A%0AKami%20yang%20berbahagia%0A {{$wedding->nama_calon_wanita}} %20%26%20 {{$wedding->nama_calon_pria}}" class="btn btn-icon btn-outline-success btn-sm" data-toggle="tooltip" data-original-title="Whatsapp">
               <i class="fab fa-whatsapp"></i>
             </a>
+            @else 
+            <a target="_blank" href="https://api.whatsapp.com/send?phone={{preg_replace('/^0/', '62', $data->phone)}}&text={{$data->name}}%20yang%20terhormat%2C%0AAnda%20diundang%20ke%20pernikahan%20kami!%0AMohon%20respon%20RSVP%20Anda%20dan%20tinggalkan%20komentar%20Anda%20di%20{{url($wedding->slug, $data->code)}}" class="btn btn-icon btn-outline-success btn-sm" data-toggle="tooltip" data-original-title="Whatsapp">
+              <i class="fab fa-whatsapp"></i>
+            </a>
+
+           
+            @endif
+            
             @endif
           </td>
+          <td class="table-user">{{$data->name}}</td>
+          {{-- <td class="">{{$data->email}}</td> --}}
+          <td>{{$data->phone}}</td>
+          <td>{{$data->status}}</td>
+          <td class="">{{$data->count}} orang</td>
+          {{-- <td class="">{{$data->code}}</td> --}}
+          <td>
+            <a href="javascript:void(0)" onclick="editInvitation({{$data->id}})" class="btn btn-icon btn-outline-info btn-sm " data-toggle="tooltip" data-original-title="Ubah">
+              <i class="fas fa-user-edit"></i>
+            </a>
+            <a href="javascript:void(0)" onclick="deleteInvitation({{$data->id}})" class="btn btn-icon btn-outline-danger btn-sm " data-toggle="tooltip" data-original-title="Hapus">
+              <i class="fas fa-trash"></i>
+            </a>
+          </td>
+         
         </tr>
         @endforeach
       </tbody>
@@ -186,7 +191,7 @@
     var email = $("input[name=email]");
     var phone = $("input[name=phone]");
     var _token = $("input[name=_token]");
-
+    
     $.ajax({
       url: "{{route('invitation.add')}}",
       type: "POST",
@@ -198,7 +203,7 @@
         _token: _token.val()
       },
       success: function(response) {
-         Swal.fire({
+        Swal.fire({
           title: 'Data sedang diproses',
           timerProgressBar: true,
           didOpen: () => {
@@ -216,13 +221,12 @@
         minlength: 2
       },
       email: {
-        email: true,
-        required: true
+        email: true
       },
       phone: {
         required: true,
         minlength: 10,
-        maxlength: 12
+        maxlength: 16
       }
     },
     messages: {
@@ -237,7 +241,7 @@
       phone: {
         required: "No.Hp Tidak Boleh Kosong!",
         minlength: "No.Hp Minimal 10 Angka!",
-        maxlength: "No.Hp Maximal 12 Angka!"
+        maxlength: "No.Hp Maximal 16 Angka!"
       }
     }
   });
@@ -253,7 +257,7 @@
       $("#invitationEditModal").modal("toggle");
     });
   }
-
+  
   $("#invitationEditForm").submit(function(e) {
     e.preventDefault();
     var id = $("#id").val();
@@ -261,7 +265,7 @@
     var email = $("#email-update").val();
     var phone = $("#phone-update").val();
     var _token = $("input[name=_token]").val();
-
+    
     $.ajax({
       url: "{{route('invitation.update')}}",
       type: 'PUT',
@@ -273,7 +277,7 @@
         _token: _token
       },
       success: function(response) {
-         Swal.fire({
+        Swal.fire({
           title: 'Data sedang diproses',
           timerProgressBar: true,
           didOpen: () => {
@@ -283,7 +287,7 @@
         location.reload();
       }
     });
-
+    
   })
   $('#invitationEditForm').validate({
     rules: {
@@ -292,13 +296,12 @@
         minlength: 2
       },
       email: {
-        email: true,
-        required: true
+        email: true
       },
       phone: {
         required: true,
         minlength: 10,
-        maxlength: 12
+        maxlength: 16
       }
     },
     messages: {
@@ -313,7 +316,7 @@
       phone: {
         required: "No.Hp Tidak Boleh Kosong!",
         minlength: "No.Hp Minimal 10 Angka!",
-        maxlength: "No.Hp Maximal 12 Angka!"
+        maxlength: "No.Hp Maximal 16 Angka!"
       }
     }
   });
@@ -353,8 +356,8 @@
       }
     })
   }
-//import Invitation
-$('#invitationImport').validate({
+  //import Invitation
+  $('#invitationImport').validate({
     rules: {
       field: {
         required: true,

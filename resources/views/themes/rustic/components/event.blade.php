@@ -1,41 +1,62 @@
-<section id="wedding" class="wedding bg-grey pt-120 pb-120">
-    <div class="container">
+<section id="wedding" class="wedding" style="background-color: #FFFFFF !important">
+    <div class="container event-container" >
         <div class="row">
-            <div class="col-sm-12 text-center mb-100">
-                <h1 class="title">Acara pernikahan</h1>
-                <p>Upacara utama - Pesta pernikahan</p>
+            <div class="col-sm-12 text-center">
+                <p class="title-with-love mt-5">With Love</p>
+            </div>
+            <div class="col-sm-12 text-center px-4 py-4">
+                <p class="content-with-love">Dengan segala kerendahan hati dan dengan ucapan syukur atas karunia Tuhan, kami menyampaikan kabar bahagia pernikahan kami yang akan dilaksanakan pada:</p>
             </div>
         </div>
-        <div class="grid">
-            @foreach($wedding->events as $event)
-            <div class="event-block text-center" >
-                <div class="content">
-                    <div class="block-event center-block swap">
-                        <div class="circle-dashed relative bg">
-                            <div class="round-circle before">
-                                <svg viewBox="0 0 103 103" version="1.1" xmlns="http://www.w3.org/2000/svg" class="dashed-border">
-                                    <circle cx="50%" cy="50%" r="50" />
-                                </svg>
-                                <i class="icon-glass"></i>
-                            </div>
+        <div class="row border-radius-event row-event" style="opacity: 0.98; background: url(&quot;https://akadinvitation.id/img/brand/bg.jpg&quot;); ">
+            {{-- <div class="background-img" style="opacity: 0.98;">
+                <img src="{{asset('img/brand/bg.jpg')}}" alt="">
+            </div> --}}
+            @foreach($wedding->events as $key => $event)
+            <div class="col-sm-12 col-md-6 col-xl-6 text-center col-event">
+                <section class="content border-radius-event" style="background-color: #1E1E1E; position: relative">
+                    <div class="border-radius-event overlay-event" style="background: url('{{asset('storage/media/'.$wedding->hero[$key]->filename)}}'); background-position: center center; background-size: cover; "></div>
+                    <div class="content-event">
+                        @if ($key == 0)
+                        <div class="img-event">
+                            <img src="https://akadinvitation.id/img/akad.png" alt="">
                         </div>
-                        <p class="mt-30 mb-30">{{$event->title}}<span>{{date('l, d F Y',strtotime($event->date))}}<br> {{$event->start_date}} - {{$event->end_date ? $event->end_date : 'selesai'}}</span></p>
-                        @if(filter_var($event->location, FILTER_VALIDATE_URL))
-                        <p class="mb-10">Lokasi Google Maps</p>
-                        <iframe src="{{$event->location}}" width="100%" height="300" frameborder="0"></iframe>
-                        @else
-                        {{$event->location ?? ''}}
-                        <p>Alamat <span><em>{{$event->location ?? 'not set'}}</em></span></p>
+                        @else 
+                        <div class="img-event">
+                            <img src="https://akadinvitation.id/img/resepsi.png" alt="">
+                        </div>
+                        @endif
+                        <div class="title-event animasi-zooin animated">
+                            <p class="judul">{{$event->title}}</p>
+                            <p class="tanggal"><span>{{\Carbon\Carbon::parse($event->date)->isoFormat('dddd, D MMMM Y')}}<br> {{$event->start_date}} - {{$event->end_date ? $event->end_date : 'selesai'}}</span></p>
+                        </div>
+                        
+                        <div class="elementor-icon">
+                            <i aria-hidden="true" class="fas fa-home"></i>			
+                        </div>
+                        
+                        <div class="title-event mt-3 animasi-fadeup animated">
+                            <p class="tanggal text-uppercase mb-0">
+                                {{$event->description}}
+                            </p>
+                        </div>
+                        
+                        <div class="title-event mt-1 animasi-fadeup animated" style="font-size: 12px">
+                            <p class="tanggal mb-0">
+                                {{$event->location}}
+                            </p>
+                        </div>
+                        
+                        @if ($event->maps)
+                        <a href="{{$event->maps}}" target="_blank" class="button-lokasi mt-3">
+                            <i class="fa fa-map-pin"></i>
+                            Lihat Lokasi
+                        </a>
                         @endif
                     </div>
-                </div>
+                </section>
             </div>
             @endforeach
-        </div>
-        <div class="row">
-            <div class="col-sm-8 col-sm-offset-2 text-center">
-                <p class="lead mt-80 size-m"></p>
-            </div>
         </div>
         <!--End row-->
     </div>
@@ -50,22 +71,22 @@
         rowSpan = Math.ceil((item.querySelector('.content').getBoundingClientRect().height + rowGap) / (rowHeight + rowGap));
         item.style.gridRowEnd = "span " + rowSpan;
     }
-
+    
     function resizeAllGridItems() {
         allItems = document.getElementsByClassName("event-block");
         for (x = 0; x < allItems.length; x++) {
             resizeGridItem(allItems[x]);
         }
     }
-
+    
     function resizeInstance(instance) {
         item = instance.elements[0];
         resizeGridItem(item);
     }
-
+    
     window.onload = resizeAllGridItems();
     window.addEventListener("resize", resizeAllGridItems);
-
+    
     allItems = document.getElementsByClassName("event-block");
 </script>
 @endpush

@@ -23,9 +23,9 @@ class UsersImport implements ToModel, WithHeadingRow
         return new Invitation([
             'code'=>  Str::random(6),
             'wedding_id' => Wedding::where('user_id', Auth::user()->id)->first()->id,
-            'name' => $row['nama'],
-            'email' => $row['email'],
-            'phone' => $row['phone'],
+            'name' => $row['name'],
+            'phone' => '0'.$row['phone'],
+            'slug' => Str::slug($row['name'])
         ]);
     }
 }

@@ -50,6 +50,7 @@ class WeddingController extends Controller
         $validated = $request->except(['calon_pria_photo', 'calon_wanita_photo']);
         $couplePhotos = $request->only(['calon_pria_photo', 'calon_wanita_photo']);
 
+
         /** Data form wizard tiap stage disimpan dalam SESSION WEDDING */
         if (empty($request->session()->get('wedding'))) {
             $wedding = new Wedding();
@@ -172,7 +173,7 @@ class WeddingController extends Controller
                 return redirect()->route('wedding.page', $wedding)->with('error', 'Invitation not found');
         }
 
-        return view('themes.' . $theme . '.index', compact('wedding', 'music'));
+        return view('themes.' . $theme . '.index', compact('wedding', 'music', 'code'));
     }
     public function show(Wedding $wedding)
     {

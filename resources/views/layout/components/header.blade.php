@@ -1,8 +1,8 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-  <meta name="description" content="Start your development with a Dashboard for Bootstrap 4.">
-  <meta name="author" content="Creative Tim">
+  <meta name="description" content="Buat undangan digitalmu dengan mudah, cepat, dan lebih berkesan dengan fitur yang kami sediakan.">
+  <meta name="author" content="Lunarian ID">
   <meta name="csrf-token" content="{{ csrf_token() }}">
 
   <title>{{config('app.name')}}</title>
@@ -14,7 +14,8 @@
   <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.15.4/css/all.css">
   <!-- Page plugins -->
   <link rel="stylesheet" href="{{asset('vendor/animate.css/animate.min.css')}}">
-  <link rel="stylesheet" href="{{asset('vendor/izitoast/izitoast.min.css')}}">
+  {{-- <link rel="stylesheet" href="{{asset('vendor/izitoast/izitoast.min.css')}}"> --}}
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/izitoast/1.4.0/css/iziToast.css" integrity="sha512-DIW4FkYTOxjCqRt7oS9BFO+nVOwDL4bzukDyDtMO7crjUZhwpyrWBFroq+IqRe6VnJkTpRAS6nhDvf0w+wHmxg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
   <link rel="stylesheet" href="{{asset('vendor/sweetalert2/dist/sweetalert2.min.css')}}">
   <link rel="stylesheet" href="{{asset('vendor/owlcarousel/owl.carousel.min.css')}}">
   <link rel="stylesheet" href="{{asset('vendor/owlcarousel/owl.theme.default.min.css')}}">
@@ -24,6 +25,8 @@
   <link rel="stylesheet" href="{{asset('vendor/quill/dist/quill.snow.css')}}">
   <!-- Argon CSS -->
   <link rel="stylesheet" href="{{asset('css/argon.css')}}" type="text/css">
+
+  <link rel="icon" type="image/png" sizes="32x32" href="{{asset('public/img/icons/icon.png')}}">
 
 </head>
 <style>
@@ -120,6 +123,23 @@
     background-repeat: no-repeat;
     background-position: center center;
   }
+
+  @media (max-width: 576px) {
+    .input-preview-label {
+    text-align: center;
+    width: 100%;
+    height: 150px;
+    border: 2px dashed #ddd;
+    border-radius: 3px;
+    position: relative;
+    overflow: hidden;
+    background-color: #ffffff;
+    color: lightgrey;
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center center;
+  }
+}
 
   .input-preview-label.loader,.gallery-item.loader {
     pointer-events: none;

@@ -12,7 +12,8 @@
 <script src="{{asset('vendor/dropzone/dist/min/dropzone.min.js')}}"></script>
 <script src="{{asset('vendor/bootstrap-notify/bootstrap-notify.min.js')}}"></script>
 <script src="{{asset('vendor/list.js/dist/list.min.js')}}"></script>
-<script src="{{asset('vendor/izitoast/izitoast.min.js')}}"></script>
+{{-- <script src="{{asset('vendor/izitoast/izitoast.min.js')}}"></script> --}}
+<script src="https://cdnjs.cloudflare.com/ajax/libs/izitoast/1.4.0/js/iziToast.min.js" integrity="sha512-Zq9o+E00xhhR/7vJ49mxFNJ0KQw1E1TMWkPTxrWcnpfEFDEXgUiwJHIKit93EW/XxE31HSI5GEOW06G6BF1AtA==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
 <script src="{{asset('vendor/owlcarousel/owl.carousel.min.js')}}"></script>
 <script src="{{asset('vendor/bootstrap-datepicker/dist/js/bootstrap-datepicker.min.js')}}"></script>
 <script src="{{asset('vendor/datatables.net/js/jquery.dataTables.min.js')}}"></script>
